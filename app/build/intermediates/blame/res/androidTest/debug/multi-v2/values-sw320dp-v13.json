@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "C:\\Projects\\facebook-account-kit-android\\lesson2\\AccountKitLoginStarterProject\\app\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-sw320dp-v13\\values-sw320dp-v13.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\account-kit-sdk-4.31.0.aar\\458ae3ce3973adf37106774965a86016\\res\\values-sw320dp-v13\\values-sw320dp-v13.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,118",
+                        "endColumns": "62,74",
+                        "endOffsets": "113,188"
+                    }
+                }
+            ]
+        }
+    ]
+}

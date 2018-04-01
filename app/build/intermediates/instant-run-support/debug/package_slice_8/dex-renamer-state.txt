@@ -1,0 +1,4 @@
+#Mon Mar 26 15:42:38 CEST 2018
+base.0=C\:\\Projects\\facebook-account-kit-android\\lesson2\\AccountKitLoginStarterProject\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\8
+path.0=classes.dex
+renamed.0=classes.dex

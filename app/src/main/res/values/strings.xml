@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Tic Tac Toe Online</string>
+    <string name="login_email_label">Login with Email</string>
+    <string name="login_phone_label">Login with Phone Number</string>
+    <string name="account">Account</string>
+    <string name="id_label">Account ID</string>
+    <string name="phone_label">Phone Number</string>
+    <string name="email_label">Email</string>
+    <string name="logout_label">Log Out</string>
+
+    <string name="FACEBOOK_APP_ID">814480842076351</string>
+    <string name="ACCOUNT_KIT_CLIENT_TOKEN">192f86a5eeb4ab9e356924e27d25c9e0</string>
+
+    <string name="ak_login_protocol_scheme">ak814480842076351</string>
+
+    <string name="facebook_app_id">814480842076351</string>
+    <string name="fb_login_protocol_scheme">fb814480842076351</string>
+    <string name="surrender">Surrender</string>
+
+    <string-array name="menu">
+        <item>Play Tic Tac Toe</item>
+        <item>Rankings</item>
+        <item>My account</item>
+    </string-array>
+    <string name="title_activity_game_finder">GameFinderActivity</string>
+</resources>

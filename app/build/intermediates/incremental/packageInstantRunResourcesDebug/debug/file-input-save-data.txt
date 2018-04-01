@@ -1,0 +1,7 @@
+#Internal package file, do not edit.
+#Mon Mar 26 15:41:51 CEST 2018
+0.baseType=DIRECTORY
+0.base=C\:\\Projects\\facebook-account-kit-android\\lesson2\\AccountKitLoginStarterProject\\app\\build\\intermediates\\assets\\debug
+0.path=fonts/avenir-black.ttf
+0.set=ASSET
+count=1
