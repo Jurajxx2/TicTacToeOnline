@@ -18,10 +18,6 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class MenuActivity extends AppCompatActivity {
 
-    Button cancel;
-    Button play3;
-    Button play4;
-    Button play5;
     GoogleSignInClient mGoogleSignInClient;
 
     @Override
@@ -35,10 +31,6 @@ public class MenuActivity extends AppCompatActivity {
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
-        cancel = (Button) findViewById(com.trasimus.tictactoe.online.R.id.button14);
-        play3 = (Button) findViewById(com.trasimus.tictactoe.online.R.id.button11);
-        play4 = (Button) findViewById(com.trasimus.tictactoe.online.R.id.button12);
-        play5 = (Button) findViewById(com.trasimus.tictactoe.online.R.id.button13);
         ListView menu = (ListView) findViewById(com.trasimus.tictactoe.online.R.id.menu);
 
         menu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -48,6 +40,7 @@ public class MenuActivity extends AppCompatActivity {
                     case 0:
                         Intent intent = new Intent(MenuActivity.this, GameFinderActivity.class);
                         startActivity(intent);
+                        finish();
                         break;
                     case 2:
                         launchAccountActivity();
@@ -57,32 +50,6 @@ public class MenuActivity extends AppCompatActivity {
                 }
             }
         });
-    }
-
-    public void hideSelection(View view){
-        cancel.setVisibility(View.GONE);
-        play3.setVisibility(View.GONE);
-        play4.setVisibility(View.GONE);
-        play5.setVisibility(View.GONE);
-
-    }
-
-    public void launchGameActivity3(View view){
-        Intent intent = new Intent(MenuActivity.this, GameActivity.class);
-        intent.putExtra("size", 3);
-        startActivity(intent);
-    }
-
-    public void launchGameActivity4(View view){
-        Intent intent = new Intent(MenuActivity.this, GameActivity.class);
-        intent.putExtra("size", 4);
-        startActivity(intent);
-    }
-
-    public void launchGameActivity5(View view){
-        Intent intent = new Intent(MenuActivity.this, GameActivity.class);
-        intent.putExtra("size", 5);
-        startActivity(intent);
     }
 
     public void launchAccountActivity() {

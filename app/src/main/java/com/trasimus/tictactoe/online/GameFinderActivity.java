@@ -3,10 +3,14 @@ package com.trasimus.tictactoe.online;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -27,6 +31,10 @@ public class GameFinderActivity extends AppCompatActivity {
     private ArrayAdapter<String> arrayAdapter;
     private List<String> fruits_list;
 
+    private GameObject mGameObject;
+    private GameListAdapter mAdapter;
+
+
 
 
     @Override
@@ -35,42 +43,34 @@ public class GameFinderActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game_finder);
 
         database = FirebaseDatabase.getInstance();
-        myRef = database.getReference("games");
-
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                value = dataSnapshot.getValue(String.class);
-
-                fruits_list.add(value);
-                arrayAdapter.notifyDataSetChanged();
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
+        myRef = database.getReference();
 
         mListView = (ListView) findViewById(R.id.gameList);
 
-            fruits = new String[]{
-                    "Cape Gooseberry",
-                    "Capuli cherry",
-            };
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                GameObject test = mAdapter.getItem(position);
+                test.getGameID();
+                Toast.makeText(GameFinderActivity.this, "test" + test.getGameID(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
-        fruits_list = new ArrayList<String>(Arrays.asList(fruits));
 
-        arrayAdapter = new ArrayAdapter<String>
-                (this, android.R.layout.simple_list_item_1, fruits_list);
+    @Override
+    public void onStart(){
+        super.onStart();
+        Log.d("test", "test2");
 
-        mListView.setAdapter(arrayAdapter);
+        mAdapter = new GameListAdapter(this, myRef);
+        mListView.setAdapter(mAdapter);
+    }
 
-            fruits_list.add("testxxx");
-            arrayAdapter.notifyDataSetChanged();
-
+    @Override
+    public void onStop() {
+        super.onStop();
+        mAdapter.cleanup();
 
     }
 

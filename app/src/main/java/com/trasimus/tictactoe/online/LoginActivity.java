@@ -207,41 +207,33 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    private void onLogin(final LoginType loginType) {
-        final Intent intent = new Intent(this, AccountKitActivity.class);
-        AccountKitConfiguration.AccountKitConfigurationBuilder configurationBuilder =
-                new AccountKitConfiguration.AccountKitConfigurationBuilder(
-                        loginType,
-                        AccountKitActivity.ResponseType.TOKEN); // or .ResponseType.TOKEN
-        // ... perform additional configuration ...
-        intent.putExtra(
-                AccountKitActivity.ACCOUNT_KIT_ACTIVITY_CONFIGURATION,
-                configurationBuilder.build());
-        startActivityForResult(intent, APP_REQUEST_CODE);
-    }
+//    private void onLogin(final LoginType loginType) {
+//        final Intent intent = new Intent(this, AccountKitActivity.class);
+//        AccountKitConfiguration.AccountKitConfigurationBuilder configurationBuilder =
+//                new AccountKitConfiguration.AccountKitConfigurationBuilder(
+//                        loginType,
+//                        AccountKitActivity.ResponseType.TOKEN); // or .ResponseType.TOKEN
+//        // ... perform additional configuration ...
+//        intent.putExtra(
+//                AccountKitActivity.ACCOUNT_KIT_ACTIVITY_CONFIGURATION,
+//                configurationBuilder.build());
+//        startActivityForResult(intent, APP_REQUEST_CODE);
+//    }
 
-    public void onPhoneLogin(View view) {
-        onLoginSMS(view);
-        onLogin(LoginType.PHONE);
-    }
-
-    public void onEmailLogin(View view) {
-        onLoginEmail(view);
-        onLogin(LoginType.EMAIL);
-    }
+//    public void onPhoneLogin(View view) {
+//        onLoginSMS(view);
+//        onLogin(LoginType.PHONE);
+//    }
+//
+//    public void onEmailLogin(View view) {
+//        onLoginEmail(view);
+//        onLogin(LoginType.EMAIL);
+//    }
 
     private void launchAccountActivity() {
         Intent intent = new Intent(this, MenuActivity.class);
         startActivity(intent);
         finish();
-    }
-
-    public void onLoginSMS(final View view) {
-        logger.logEvent("onSMSLogin");
-    }
-
-    public void onLoginEmail(final View view) {
-        logger.logEvent("onEmailLogin");
     }
 
 }

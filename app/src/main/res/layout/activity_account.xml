@@ -29,19 +29,19 @@
         app:layout_constraintBottom_toBottomOf="parent" />
 
     <TextView
-        android:id="@+id/id_label"
+        android:id="@+id/mail_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="88dp"
         android:textColor="@color/accountLabel"
         android:textSize="14sp"
-        android:text="@string/id_label"
+        android:text="Mail"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profile_image" />
 
     <TextView
-        android:id="@+id/id"
+        android:id="@+id/mail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -49,10 +49,10 @@
         android:textSize="16sp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/id_label" />
+        app:layout_constraintTop_toBottomOf="@+id/mail_label" />
 
     <TextView
-        android:id="@+id/info_label"
+        android:id="@+id/name_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -60,10 +60,11 @@
         android:textSize="14sp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/id" />
+        app:layout_constraintTop_toBottomOf="@+id/mail"
+        android:text="Name"/>
 
     <TextView
-        android:id="@+id/info"
+        android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -71,6 +72,6 @@
         android:textSize="16sp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/info_label" />
+        app:layout_constraintTop_toBottomOf="@+id/name_label" />
 
 </android.support.constraint.ConstraintLayout>
