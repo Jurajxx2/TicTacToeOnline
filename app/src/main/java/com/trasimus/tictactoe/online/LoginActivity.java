@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.facebook.CallbackManager;
@@ -35,8 +36,14 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Arrays;
+import java.util.UUID;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -50,12 +57,23 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseUser currentUser;
 
+    private EditText mail;
+    private EditText pass;
+
+    private String email;
+    private String password;
+
+    private String mailX;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(com.trasimus.tictactoe.online.R.layout.activity_login);
         FontHelper.setCustomTypeface(findViewById(com.trasimus.tictactoe.online.R.id.view_root));
+
+        mail = (EditText) findViewById(R.id.mailInput);
+        pass = (EditText) findViewById(R.id.passwordInput);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -78,19 +96,19 @@ public class LoginActivity extends AppCompatActivity {
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-        if (account != null) {
-            launchAccountActivity();
-        }
+//        if (account != null) {
+//            launchAccountActivity();
+//        }
 
         logger = AppEventsLogger.newLogger(this);
 
         AccessToken accessToken = AccountKit.getCurrentAccessToken();
         com.facebook.AccessToken token = com.facebook.AccessToken.getCurrentAccessToken();
 
-        if (accessToken != null || token != null) {
-            //Handle Returning User
-            launchAccountActivity();
-        }
+//        if (accessToken != null || token != null) {
+//            //Handle Returning User
+//            launchAccountActivity();
+//        }
 
         fbLoginButton = (LoginButton) findViewById(com.trasimus.tictactoe.online.R.id.facebook_login_button);
         fbLoginButton.setReadPermissions(Arrays.asList(EMAIL));
@@ -231,9 +249,106 @@ public class LoginActivity extends AppCompatActivity {
 //    }
 
     private void launchAccountActivity() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        checkIfUserExist(user);
+
+        Toast.makeText(this, user.getEmail(), Toast.LENGTH_SHORT).show();
+
         Intent intent = new Intent(this, MenuActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    private void checkIfUserExist(FirebaseUser user){
+        mailX = user.getEmail();
+        DatabaseReference mDatabaseReference = FirebaseDatabase.getInstance().getReference().child("UserMap").child(user.getUid());
+        Log.d("test", "checking for user");
+        mDatabaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Log.d("test", "onDataChange started");
+                if(!dataSnapshot.exists()) {
+                    //create new user
+                    FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+                    Log.d("test", "new user");
+
+                    String uniqueID = UUID.randomUUID().toString();
+                    UserMap map = new UserMap(mailX, uniqueID);
+                    Log.d("test", "usermap initiated");
+
+                    DefaultUser defaultUser = new DefaultUser(uniqueID, mailX, firebaseUser.getDisplayName(), 0, null, null, null, null);
+                    Log.d("test", "default user initiated");
+
+
+                    FirebaseDatabase.getInstance().getReference().child("UserMap").child(firebaseUser.getUid()).setValue(map);
+                    Log.d("test", "user map zapisany v databaze");
+
+                    FirebaseDatabase.getInstance().getReference().child("Users").child(uniqueID).setValue(defaultUser);
+                    Log.d("test", "toto tu este je?");
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+    public void signIn(View view){
+
+        email = mail.getText().toString();
+        password = pass.getText().toString();
+
+        if (email.equals("") || password.equals("")){
+            Toast.makeText(this, "Please fill in the email and password fields", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+
+                        if (!task.isSuccessful()) {
+                            Toast.makeText(LoginActivity.this, "Login error: wrong username or password", Toast.LENGTH_SHORT).show();
+                        } else {
+                            checkIfEmailVerified();
+                        }
+                    }
+                });
+
+
+    }
+
+    public void signUp(View view){
+        Intent intent = new Intent(this, RegisterActivity.class);
+        startActivity(intent);
+    }
+
+    private void checkIfEmailVerified()
+    {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (user.isEmailVerified())
+        {
+            // user is verified, so you can finish this activity or send user to activity which you want.
+            Toast.makeText(LoginActivity.this, "Successfully logged in", Toast.LENGTH_SHORT).show();
+            launchAccountActivity();
+        }
+        else
+        {
+            // email is not verified, so just prompt the message to the user and restart this activity.
+            // NOTE: don't forget to log out the user.
+            Toast.makeText(LoginActivity.this, "Please verify your email", Toast.LENGTH_SHORT).show();
+            FirebaseAuth.getInstance().signOut();
+
+            //restart this activity
+
+        }
     }
 
 }

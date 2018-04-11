@@ -60,9 +60,6 @@ public class GameListAdapter extends BaseAdapter {
         mDatabaseReference.addChildEventListener(mListener);
 
         mSnapshotList = new ArrayList<>();
-
-        Log.d("test", "Game list adapter called");
-
     }
 
     static class ViewHolder{
@@ -84,7 +81,6 @@ public class GameListAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        Log.d("test", "getItemId called");
         return position;
     }
 
@@ -92,7 +88,12 @@ public class GameListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Log.d("test", "getView beginning, why not working???");
+
+        final GameObject gameObject = getItem(position);
+
+        if (!gameObject.getPlayer2().equals("")){
+            return null;
+        }
 
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) mActivity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -104,7 +105,6 @@ public class GameListAdapter extends BaseAdapter {
         }
 
         Log.d("test", "getView called");
-        final GameObject gameObject = getItem(position);
         final ViewHolder holder = (ViewHolder) convertView.getTag();
 
         String size = gameObject.getSize() + "x" + gameObject.getSize() + " game";

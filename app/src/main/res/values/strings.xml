@@ -15,7 +15,7 @@
 
     <string name="facebook_app_id">814480842076351</string>
     <string name="fb_login_protocol_scheme">fb814480842076351</string>
-    <string name="surrender">Surrender</string>
+    <string name="surrender">Exit</string>
 
     <string-array name="menu">
         <item>Play Tic Tac Toe</item>
@@ -23,4 +23,5 @@
         <item>My account</item>
     </string-array>
     <string name="title_activity_game_finder">GameFinderActivity</string>
+    <string name="title_activity_rankings">RankingsActivity</string>
 </resources>

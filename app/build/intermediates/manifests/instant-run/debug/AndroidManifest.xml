@@ -99,6 +99,8 @@
         <activity android:name="com.trasimus.tictactoe.online.MenuActivity" />
         <activity android:name="com.trasimus.tictactoe.online.GameActivity" />
         <activity android:name="com.trasimus.tictactoe.online.GameFinderActivity" />
+        <activity android:name="com.trasimus.tictactoe.online.RegisterActivity" />
+        <activity android:name="com.trasimus.tictactoe.online.RankingsActivity" />
         <!--
              The initialization ContentProvider will call AccountKit.initialize automatically
              with the application context. This config is merged in with the host app's manifest,

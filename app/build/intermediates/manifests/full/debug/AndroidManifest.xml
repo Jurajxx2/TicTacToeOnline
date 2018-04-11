@@ -26,7 +26,6 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:testOnly="true"
         android:theme="@style/AppTheme" >
         <meta-data
             android:name="com.facebook.accountkit.ApplicationName"
@@ -99,6 +98,9 @@
         <activity android:name="com.trasimus.tictactoe.online.MenuActivity" />
         <activity android:name="com.trasimus.tictactoe.online.GameActivity" />
         <activity android:name="com.trasimus.tictactoe.online.GameFinderActivity" />
+        <activity android:name="com.trasimus.tictactoe.online.RegisterActivity" />
+        <activity android:name="com.trasimus.tictactoe.online.RankingsActivity" />
+        <activity android:name="com.trasimus.tictactoe.online.ConnectAccountsActivity" />
         <!--
              The initialization ContentProvider will call AccountKit.initialize automatically
              with the application context. This config is merged in with the host app's manifest,

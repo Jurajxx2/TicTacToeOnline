@@ -69,7 +69,10 @@
             android:screenOrientation="portrait" />
         <activity android:name=".MenuActivity" />
         <activity android:name=".GameActivity" />
-        <activity android:name=".GameFinderActivity"></activity>
+        <activity android:name=".GameFinderActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".RankingsActivity" />
+        <activity android:name=".ConnectAccountsActivity"></activity>
     </application>
 
 </manifest>

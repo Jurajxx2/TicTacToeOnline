@@ -1,14 +1,13 @@
 package com.trasimus.tictactoe.online;
 
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 
-public class ConnectedGameActivity extends AppCompatActivity {
+public class ConnectAccountsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.trasimus.tictactoe.online.R.layout.activity_game);
+        setContentView(R.layout.activity_connect_accounts);
     }
-
 }

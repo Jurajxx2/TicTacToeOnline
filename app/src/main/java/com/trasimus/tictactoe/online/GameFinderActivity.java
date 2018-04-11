@@ -53,6 +53,13 @@ public class GameFinderActivity extends AppCompatActivity {
                 GameObject test = mAdapter.getItem(position);
                 test.getGameID();
                 Toast.makeText(GameFinderActivity.this, "test" + test.getGameID(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(GameFinderActivity.this, GameActivity.class);
+
+                intent.putExtra("gameID", test.getGameID());
+                intent.putExtra("size", 3);
+
+                startActivity(intent);
+                finish();
             }
         });
     }
@@ -71,11 +78,9 @@ public class GameFinderActivity extends AppCompatActivity {
     public void onStop() {
         super.onStop();
         mAdapter.cleanup();
-
     }
 
     public void launchGameActivity3(View view){
-        myRef.setValue("3x3 game");
         Intent intent = new Intent(GameFinderActivity.this, GameActivity.class);
         intent.putExtra("size", 3);
         startActivity(intent);
@@ -83,7 +88,6 @@ public class GameFinderActivity extends AppCompatActivity {
     }
 
     public void launchGameActivity4(View view){
-        myRef.setValue("4x4 game");
         Intent intent = new Intent(GameFinderActivity.this, GameActivity.class);
         intent.putExtra("size", 4);
         startActivity(intent);
@@ -91,7 +95,6 @@ public class GameFinderActivity extends AppCompatActivity {
     }
 
     public void launchGameActivity5(View view){
-        myRef.setValue("5x5 game");
         Intent intent = new Intent(GameFinderActivity.this, GameActivity.class);
         intent.putExtra("size", 5);
         startActivity(intent);

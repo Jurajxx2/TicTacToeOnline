@@ -48,6 +48,10 @@
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\facebook-login-4.31.0.aar\\28000aed97357bdc68460d45d9cd31a5\\res\\drawable-mdpi-v4\\com_facebook_tooltip_blue_bottomnub.png"
     },
     {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_connect_accounts.xml.flat",
+        "source": "C:\\Projects\\AATicTacToeOnline\\app\\src\\main\\res\\layout\\activity_connect_accounts.xml"
+    },
+    {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_btn_radio_to_on_mtrl_015.png.flat",
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\c0da661d7de833d56b8e6945628a81b1\\res\\drawable-mdpi-v4\\abc_btn_radio_to_on_mtrl_015.png"
     },
@@ -1584,6 +1588,10 @@
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.0.2.aar\\bf8bbb03511c1d33131e6a26c1e7c24a\\res\\layout-sw600dp-v13\\design_layout_snackbar.xml"
     },
     {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_rankings.xml.flat",
+        "source": "C:\\Projects\\AATicTacToeOnline\\app\\src\\main\\res\\layout\\activity_rankings.xml"
+    },
+    {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_textfield_search_activated_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\c0da661d7de833d56b8e6945628a81b1\\res\\drawable-xhdpi-v4\\abc_textfield_search_activated_mtrl_alpha.9.png"
     },
@@ -2706,6 +2714,10 @@
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\color_abc_tint_btn_checkable.xml.flat",
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\c0da661d7de833d56b8e6945628a81b1\\res\\color\\abc_tint_btn_checkable.xml"
+    },
+    {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_register.xml.flat",
+        "source": "C:\\Projects\\AATicTacToeOnline\\app\\src\\main\\res\\layout\\activity_register.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_com_facebook_tooltip_blue_background.9.png.flat",
