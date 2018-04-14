@@ -14364,7 +14364,243 @@
         <item>Play Tic Tac Toe</item>
         <item>Rankings</item>
         <item>My account</item>
-    </string-array><string name="title_activity_game_finder">GameFinderActivity</string><string name="title_activity_rankings">RankingsActivity</string></file><file path="C:\Projects\AATicTacToeOnline\app\src\main\res\values\styles.xml" qualifiers=""><style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item>Friends</item>
+    </string-array><string name="title_activity_game_finder">GameFinderActivity</string><string name="title_activity_rankings">RankingsActivity</string><string-array name="countries_array">
+        <item>Afghanistan</item>
+        <item>Albania</item>
+        <item>Algeria</item>
+        <item>American Samoa</item>
+        <item>Andorra</item>
+        <item>Angola</item>
+        <item>Anguilla</item>
+        <item>Antarctica</item>
+        <item>Antigua and Barbuda</item>
+        <item>Argentina</item>
+        <item>Armenia</item>
+        <item>Aruba</item>
+        <item>Australia</item>
+        <item>Austria</item>
+        <item>Azerbaijan</item>
+        <item>Bahamas</item>
+        <item>Bahrain</item>
+        <item>Bangladesh</item>
+        <item>Barbados</item>
+        <item>Belarus</item>
+        <item>Belgium</item>
+        <item>Belize</item>
+        <item>Benin</item>
+        <item>Bermuda</item>
+        <item>Bhutan</item>
+        <item>Bolivia</item>
+        <item>Bosnia and Herzegovina</item>
+        <item>Botswana</item>
+        <item>Brazil</item>
+        <item>British Indian Ocean Territory</item>
+        <item>British Virgin Islands</item>
+        <item>Brunei</item>
+        <item>Bulgaria</item>
+        <item>Burkina Faso</item>
+        <item>Burundi</item>
+        <item>Cambodia</item>
+        <item>Cameroon</item>
+        <item>Canada</item>
+        <item>Cape Verde</item>
+        <item>Cayman Islands</item>
+        <item>Central African Republic</item>
+        <item>Chad</item>
+        <item>Chile</item>
+        <item>China</item>
+        <item>Christmas Island</item>
+        <item>Cocos Islands</item>
+        <item>Colombia</item>
+        <item>Comoros</item>
+        <item>Cook Islands</item>
+        <item>Costa Rica</item>
+        <item>Croatia</item>
+        <item>Cuba</item>
+        <item>Cyprus</item>
+        <item>Czech Republic</item>
+        <item>Democratic Republic of the Congo</item>
+        <item>Denmark</item>
+        <item>Djibouti</item>
+        <item>Dominica</item>
+        <item>Dominican Republic</item>
+        <item>East Timor</item>
+        <item>Ecuador</item>
+        <item>Egypt</item>
+        <item>El Salvador</item>
+        <item>Equatorial Guinea</item>
+        <item>Eritrea</item>
+        <item>Estonia</item>
+        <item>Ethiopia</item>
+        <item>Falkland Islands</item>
+        <item>Faroe Islands</item>
+        <item>Fiji</item>
+        <item>Finland</item>
+        <item>France</item>
+        <item>French Polynesia</item>
+        <item>Gabon</item>
+        <item>Gambia</item>
+        <item>Georgia</item>
+        <item>Germany</item>
+        <item>Ghana</item>
+        <item>Gibraltar</item>
+        <item>Greece</item>
+        <item>Greenland</item>
+        <item>Grenada</item>
+        <item>Guam</item>
+        <item>Guatemala</item>
+        <item>Guinea</item>
+        <item>Guinea-Bissau</item>
+        <item>Guyana</item>
+        <item>Haiti</item>
+        <item>Honduras</item>
+        <item>Hong Kong</item>
+        <item>Hungary</item>
+        <item>Iceland</item>
+        <item>India</item>
+        <item>Indonesia</item>
+        <item>Iran</item>
+        <item>Iraq</item>
+        <item>Ireland</item>
+        <item>Isle of Man</item>
+        <item>Israel</item>
+        <item>Italy</item>
+        <item>Ivory Coast</item>
+        <item>Jamaica</item>
+        <item>Japan</item>
+        <item>Jersey</item>
+        <item>Jordan</item>
+        <item>Kazakhstan</item>
+        <item>Kenya</item>
+        <item>Kiribati</item>
+        <item>Kuwait</item>
+        <item>Kyrgyzstan</item>
+        <item>Laos</item>
+        <item>Latvia</item>
+        <item>Lebanon</item>
+        <item>Lesotho</item>
+        <item>Liberia</item>
+        <item>Libya</item>
+        <item>Liechtenstein</item>
+        <item>Lithuania</item>
+        <item>Luxembourg</item>
+        <item>Macao</item>
+        <item>Macedonia</item>
+        <item>Madagascar</item>
+        <item>Malawi</item>
+        <item>Malaysia</item>
+        <item>Maldives</item>
+        <item>Mali</item>
+        <item>Malta</item>
+        <item>Marshall Islands</item>
+        <item>Mauritania</item>
+        <item>Mauritius</item>
+        <item>Mayotte</item>
+        <item>Mexico</item>
+        <item>Micronesia</item>
+        <item>Moldova</item>
+        <item>Monaco</item>
+        <item>Mongolia</item>
+        <item>Montenegro</item>
+        <item>Montserrat</item>
+        <item>Morocco</item>
+        <item>Mozambique</item>
+        <item>Myanmar</item>
+        <item>Namibia</item>
+        <item>Nauru</item>
+        <item>Nepal</item>
+        <item>Netherlands</item>
+        <item>Netherlands Antilles</item>
+        <item>New Caledonia</item>
+        <item>New Zealand</item>
+        <item>Nicaragua</item>
+        <item>Niger</item>
+        <item>Nigeria</item>
+        <item>Niue</item>
+        <item>North Korea</item>
+        <item>Northern Mariana Islands</item>
+        <item>Norway</item>
+        <item>Oman</item>
+        <item>Pakistan</item>
+        <item>Palau</item>
+        <item>Panama</item>
+        <item>Papua New Guinea</item>
+        <item>Paraguay</item>
+        <item>Peru</item>
+        <item>Philippines</item>
+        <item>Pitcairn</item>
+        <item>Poland</item>
+        <item>Portugal</item>
+        <item>Puerto Rico</item>
+        <item>Qatar</item>
+        <item>Republic of the Congo</item>
+        <item>Romania</item>
+        <item>Russia</item>
+        <item>Rwanda</item>
+        <item>Saint Barthelemy</item>
+        <item>Saint Helena</item>
+        <item>Saint Kitts and Nevis</item>
+        <item>Saint Lucia</item>
+        <item>Saint Martin</item>
+        <item>Saint Pierre and Miquelon</item>
+        <item>Saint Vincent and the Grenadines</item>
+        <item>Samoa</item>
+        <item>San Marino</item>
+        <item>Sao Tome and Principe</item>
+        <item>Saudi Arabia</item>
+        <item>Senegal</item>
+        <item>Serbia</item>
+        <item>Seychelles</item>
+        <item>Sierra Leone</item>
+        <item>Singapore</item>
+        <item>Slovakia</item>
+        <item>Slovenia</item>
+        <item>Solomon Islands</item>
+        <item>Somalia</item>
+        <item>South Africa</item>
+        <item>South Georgia and the South Sandwich Islands</item>
+        <item>South Korea</item>
+        <item>Spain</item>
+        <item>Sri Lanka</item>
+        <item>Sudan</item>
+        <item>Suriname</item>
+        <item>Svalbard and Jan Mayen</item>
+        <item>Swaziland</item>
+        <item>Sweden</item>
+        <item>Switzerland</item>
+        <item>Syria</item>
+        <item>Taiwan</item>
+        <item>Tajikistan</item>
+        <item>Tanzania</item>
+        <item>Thailand</item>
+        <item>Togo</item>
+        <item>Tokelau</item>
+        <item>Tonga</item>
+        <item>Trinidad and Tobago</item>
+        <item>Tunisia</item>
+        <item>Turkey</item>
+        <item>Turkmenistan</item>
+        <item>Turks and Caicos Islands</item>
+        <item>Tuvalu</item>
+        <item>U.S. Virgin Islands</item>
+        <item>Uganda</item>
+        <item>Ukraine</item>
+        <item>United Arab Emirates</item>
+        <item>United Kingdom</item>
+        <item>United States</item>
+        <item>Uruguay</item>
+        <item>Uzbekistan</item>
+        <item>Vanuatu</item>
+        <item>Vatican</item>
+        <item>Venezuela</item>
+        <item>Vietnam</item>
+        <item>Wallis and Futuna</item>
+        <item>Western Sahara</item>
+        <item>Yemen</item>
+        <item>Zambia</item>
+        <item>Zimbabwe</item>
+    </string-array></file><file path="C:\Projects\AATicTacToeOnline\app\src\main\res\values\styles.xml" qualifiers=""><style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -14388,7 +14624,7 @@
         <item name="windowNoTitle">true</item>
     </style></file><file path="C:\Projects\AATicTacToeOnline\app\src\main\res\values-v19\styles.xml" qualifiers="v19"><style name="FullscreenTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowTranslucentStatus">true</item>
-    </style></file><file path="C:\Projects\AATicTacToeOnline\app\src\main\res\values\dimens.xml" qualifiers=""><dimen name="fab_margin">16dp</dimen></file><file name="activity_game_finder" path="C:\Projects\AATicTacToeOnline\app\src\main\res\layout\activity_game_finder.xml" qualifiers="" type="layout"/><file name="game_item" path="C:\Projects\AATicTacToeOnline\app\src\main\res\layout\game_item.xml" qualifiers="" type="layout"/><file name="activity_register" path="C:\Projects\AATicTacToeOnline\app\src\main\res\layout\activity_register.xml" qualifiers="" type="layout"/><file name="activity_rankings" path="C:\Projects\AATicTacToeOnline\app\src\main\res\layout\activity_rankings.xml" qualifiers="" type="layout"/><file name="activity_connect_accounts" path="C:\Projects\AATicTacToeOnline\app\src\main\res\layout\activity_connect_accounts.xml" qualifiers="" type="layout"/></source><source path="C:\Projects\AATicTacToeOnline\app\build\generated\res\rs\debug"/><source path="C:\Projects\AATicTacToeOnline\app\build\generated\res\resValues\debug"/><source path="C:\Projects\AATicTacToeOnline\app\build\generated\res\google-services\debug"><file path="C:\Projects\AATicTacToeOnline\app\build\generated\res\google-services\debug\values\values.xml" qualifiers=""><string name="default_web_client_id" translatable="false">456171505925-2vo2n65n302u1ltrpih379pd30d88fiv.apps.googleusercontent.com</string><string name="firebase_database_url" translatable="false">https://tictactoe-online-e9551.firebaseio.com</string><string name="gcm_defaultSenderId" translatable="false">456171505925</string><string name="google_api_key" translatable="false">AIzaSyBXhz8yDkeDEwoN0fagEbhOe7fVO3fo-kk</string><string name="google_app_id" translatable="false">1:456171505925:android:a81b20bfec415661</string><string name="google_crash_reporting_api_key" translatable="false">AIzaSyBXhz8yDkeDEwoN0fagEbhOe7fVO3fo-kk</string><string name="google_storage_bucket" translatable="false">tictactoe-online-e9551.appspot.com</string><string name="project_id" translatable="false">tictactoe-online-e9551</string></file></source></dataSet><dataSet config="debug$Generated" generated="true"><source path="C:\Projects\AATicTacToeOnline\app\src\debug\res"/></dataSet><dataSet config="debug" generated-set="debug$Generated"><source path="C:\Projects\AATicTacToeOnline\app\src\debug\res"/></dataSet><mergedItems><configuration qualifiers=""><declare-styleable name="AlertDialog"><attr name="android:layout"/><attr format="reference" name="buttonPanelSideLayout"/><attr format="reference" name="listLayout"/><attr format="reference" name="multiChoiceItemLayout"/><attr format="reference" name="singleChoiceItemLayout"/><attr format="reference" name="listItemLayout"/><attr format="boolean" name="showTitle"/></declare-styleable><declare-styleable name="ButtonBarContainerTheme"><attr format="reference" name="metaButtonBarStyle"/><attr format="reference" name="metaButtonBarButtonStyle"/></declare-styleable><declare-styleable name="AppCompatSeekBar"><attr name="android:thumb"/><attr format="reference" name="tickMark"/><attr format="color" name="tickMarkTint"/><attr name="tickMarkTintMode">
+    </style></file><file path="C:\Projects\AATicTacToeOnline\app\src\main\res\values\dimens.xml" qualifiers=""><dimen name="fab_margin">16dp</dimen></file><file name="activity_game_finder" path="C:\Projects\AATicTacToeOnline\app\src\main\res\layout\activity_game_finder.xml" qualifiers="" type="layout"/><file name="game_item" path="C:\Projects\AATicTacToeOnline\app\src\main\res\layout\game_item.xml" qualifiers="" type="layout"/><file name="activity_register" path="C:\Projects\AATicTacToeOnline\app\src\main\res\layout\activity_register.xml" qualifiers="" type="layout"/><file name="activity_rankings" path="C:\Projects\AATicTacToeOnline\app\src\main\res\layout\activity_rankings.xml" qualifiers="" type="layout"/><file name="activity_connect_accounts" path="C:\Projects\AATicTacToeOnline\app\src\main\res\layout\activity_connect_accounts.xml" qualifiers="" type="layout"/><file name="activity_friends" path="C:\Projects\AATicTacToeOnline\app\src\main\res\layout\activity_friends.xml" qualifiers="" type="layout"/><file name="empty_item" path="C:\Projects\AATicTacToeOnline\app\src\main\res\layout\empty_item.xml" qualifiers="" type="layout"/><file name="activity_find_friends" path="C:\Projects\AATicTacToeOnline\app\src\main\res\layout\activity_find_friends.xml" qualifiers="" type="layout"/><file name="mymenu" path="C:\Projects\AATicTacToeOnline\app\src\main\res\menu\mymenu.xml" qualifiers="" type="menu"/><file name="accountmenu" path="C:\Projects\AATicTacToeOnline\app\src\main\res\menu\accountmenu.xml" qualifiers="" type="menu"/></source><source path="C:\Projects\AATicTacToeOnline\app\build\generated\res\rs\debug"/><source path="C:\Projects\AATicTacToeOnline\app\build\generated\res\resValues\debug"/><source path="C:\Projects\AATicTacToeOnline\app\build\generated\res\google-services\debug"><file path="C:\Projects\AATicTacToeOnline\app\build\generated\res\google-services\debug\values\values.xml" qualifiers=""><string name="default_web_client_id" translatable="false">456171505925-2vo2n65n302u1ltrpih379pd30d88fiv.apps.googleusercontent.com</string><string name="firebase_database_url" translatable="false">https://tictactoe-online-e9551.firebaseio.com</string><string name="gcm_defaultSenderId" translatable="false">456171505925</string><string name="google_api_key" translatable="false">AIzaSyBXhz8yDkeDEwoN0fagEbhOe7fVO3fo-kk</string><string name="google_app_id" translatable="false">1:456171505925:android:a81b20bfec415661</string><string name="google_crash_reporting_api_key" translatable="false">AIzaSyBXhz8yDkeDEwoN0fagEbhOe7fVO3fo-kk</string><string name="google_storage_bucket" translatable="false">tictactoe-online-e9551.appspot.com</string><string name="project_id" translatable="false">tictactoe-online-e9551</string></file></source></dataSet><dataSet config="debug$Generated" generated="true"><source path="C:\Projects\AATicTacToeOnline\app\src\debug\res"/></dataSet><dataSet config="debug" generated-set="debug$Generated"><source path="C:\Projects\AATicTacToeOnline\app\src\debug\res"/></dataSet><mergedItems><configuration qualifiers=""><declare-styleable name="AlertDialog"><attr name="android:layout"/><attr format="reference" name="buttonPanelSideLayout"/><attr format="reference" name="listLayout"/><attr format="reference" name="multiChoiceItemLayout"/><attr format="reference" name="singleChoiceItemLayout"/><attr format="reference" name="listItemLayout"/><attr format="boolean" name="showTitle"/></declare-styleable><declare-styleable name="ButtonBarContainerTheme"><attr format="reference" name="metaButtonBarStyle"/><attr format="reference" name="metaButtonBarButtonStyle"/></declare-styleable><declare-styleable name="AppCompatSeekBar"><attr name="android:thumb"/><attr format="reference" name="tickMark"/><attr format="color" name="tickMarkTint"/><attr name="tickMarkTintMode">
             
             <enum name="src_over" value="3"/>
             

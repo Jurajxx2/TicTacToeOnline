@@ -72,7 +72,9 @@
         <activity android:name=".GameFinderActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".RankingsActivity" />
-        <activity android:name=".ConnectAccountsActivity"></activity>
+        <activity android:name=".ConnectAccountsActivity" />
+        <activity android:name=".FriendsActivity" />
+        <activity android:name=".FindFriends"></activity>
     </application>
 
 </manifest>

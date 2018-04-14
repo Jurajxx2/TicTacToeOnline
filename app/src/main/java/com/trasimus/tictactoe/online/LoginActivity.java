@@ -42,6 +42,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.UUID;
 
@@ -64,6 +65,8 @@ public class LoginActivity extends AppCompatActivity {
     private String password;
 
     private String mailX;
+
+    private ArrayList<ArrayList<String>> friends;
 
 
     @Override
@@ -252,12 +255,6 @@ public class LoginActivity extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         checkIfUserExist(user);
-
-        Toast.makeText(this, user.getEmail(), Toast.LENGTH_SHORT).show();
-
-        Intent intent = new Intent(this, MenuActivity.class);
-        startActivity(intent);
-        finish();
     }
 
     private void checkIfUserExist(FirebaseUser user){
@@ -269,15 +266,14 @@ public class LoginActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Log.d("test", "onDataChange started");
                 if(!dataSnapshot.exists()) {
+                    friends = new ArrayList<ArrayList<String>>();
                     //create new user
                     FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-                    Log.d("test", "new user");
 
                     String uniqueID = UUID.randomUUID().toString();
                     UserMap map = new UserMap(mailX, uniqueID);
-                    Log.d("test", "usermap initiated");
 
-                    DefaultUser defaultUser = new DefaultUser(uniqueID, mailX, firebaseUser.getDisplayName(), 0, null, null, null, null);
+                    DefaultUser defaultUser = new DefaultUser(uniqueID, mailX, firebaseUser.getDisplayName(), "" , "", 0, friends, null, null, null);
                     Log.d("test", "default user initiated");
 
 
@@ -286,8 +282,8 @@ public class LoginActivity extends AppCompatActivity {
 
                     FirebaseDatabase.getInstance().getReference().child("Users").child(uniqueID).setValue(defaultUser);
                     Log.d("test", "toto tu este je?");
-
                 }
+                startActivity();
             }
 
             @Override
@@ -296,6 +292,12 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void startActivity(){
+        Intent intent = new Intent(this, MenuActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     public void signIn(View view){

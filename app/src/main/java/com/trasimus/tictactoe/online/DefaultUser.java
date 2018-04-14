@@ -2,6 +2,8 @@ package com.trasimus.tictactoe.online;
 
 import android.net.Uri;
 
+import java.util.ArrayList;
+
 public class DefaultUser {
 
     private String userID;
@@ -9,16 +11,18 @@ public class DefaultUser {
     private String name;
     private int points;
     private Uri userIMG;
-    private String[] friends;
+    private ArrayList<ArrayList<String>> friends;
     private String fbAccount;
     private String googleAccount;
     private String mailAccount;
+    private String age;
+    private String country;
 
     public DefaultUser(){
 
     }
 
-    public DefaultUser(String userID, String mail, String name, int points, String[] friends, String fbAccount, String googleAccount, String mailAccount){
+    public DefaultUser(String userID, String mail, String name, String age, String country, int points, ArrayList<ArrayList<String>> friends, String fbAccount, String googleAccount, String mailAccount){
 
         this.userID = userID;
         this.mail = mail;
@@ -29,6 +33,8 @@ public class DefaultUser {
         this.fbAccount = fbAccount;
         this.googleAccount = googleAccount;
         this.mailAccount = mailAccount;
+        this.age = age;
+        this.country = country;
     }
 
     public String getUserID() {
@@ -71,11 +77,11 @@ public class DefaultUser {
         this.userIMG = userIMG;
     }
 
-    public String[] getFriends() {
+    public ArrayList<ArrayList<String>> getFriends() {
         return friends;
     }
 
-    public void setFriends(String[] friends) {
+    public void setFriends(ArrayList<ArrayList<String>> friends) {
         this.friends = friends;
     }
 
@@ -101,5 +107,21 @@ public class DefaultUser {
 
     public void setMailAccount(String mailAccount) {
         this.mailAccount = mailAccount;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 }

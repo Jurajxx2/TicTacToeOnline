@@ -101,6 +101,9 @@
         <activity android:name="com.trasimus.tictactoe.online.GameFinderActivity" />
         <activity android:name="com.trasimus.tictactoe.online.RegisterActivity" />
         <activity android:name="com.trasimus.tictactoe.online.RankingsActivity" />
+        <activity android:name="com.trasimus.tictactoe.online.ConnectAccountsActivity" />
+        <activity android:name="com.trasimus.tictactoe.online.FriendsActivity" />
+        <activity android:name="com.trasimus.tictactoe.online.FindFriends" />
         <!--
              The initialization ContentProvider will call AccountKit.initialize automatically
              with the application context. This config is merged in with the host app's manifest,

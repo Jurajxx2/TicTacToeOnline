@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-78:12
-INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-78:12
-INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-78:12
-INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-78:12
+ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-80:12
+INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-80:12
+INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-80:12
+INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-80:12
 MERGED from [com.facebook.android:account-kit-sdk:4.31.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\account-kit-sdk-4.31.0.aar\08d24bcf152e268d781407371aae71e9\AndroidManifest.xml:21:1-55:12
 MERGED from [com.facebook.android:facebook-android-sdk:4.31.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\facebook-android-sdk-4.31.0.aar\5fd5344f9f879f71c125412e76c32bc2\AndroidManifest.xml:21:1-31:12
 MERGED from [com.facebook.android:facebook-login:4.31.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\facebook-login-4.31.0.aar\28000aed97357bdc68460d45d9cd31a5\AndroidManifest.xml:21:1-31:12
@@ -61,22 +61,22 @@ MERGED from [com.google.firebase:firebase-database-connection-license:11.8.0] C:
 MERGED from [com.google.firebase:firebase-common-license:11.8.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\firebase-common-license-11.8.0.aar\ad4b99bbfcec7ca5942be39c18a1cf8f\AndroidManifest.xml:2:1-6:12
 MERGED from [com.google.firebase:firebase-analytics-impl-license:11.8.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-license-11.8.0.aar\035490c547c932d04d09076ce024bebe\AndroidManifest.xml:2:1-6:12
 MERGED from [com.google.firebase:firebase-iid-license:11.8.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\firebase-iid-license-11.8.0.aar\8cffeb72350c2265fff71e143ff94771\AndroidManifest.xml:2:1-6:12
-INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-78:12
-INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-78:12
-INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-78:12
+INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-80:12
+INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-80:12
+INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-80:12
 	package
 		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:4:5-44
 		INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml
-		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-78:12
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-80:12
 		INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml
 	xmlns:tools
 		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:3:5-51
 	android:versionCode
 		INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml
-		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-78:12
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-80:12
 		INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:11-69
@@ -93,7 +93,7 @@ MERGED from [com.google.firebase:firebase-iid:11.8.0] C:\Users\juraj\.gradle\cac
 	android:name
 		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:6:22-64
 application
-ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:8:5-76:19
+ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:8:5-78:19
 MERGED from [com.facebook.android:account-kit-sdk:4.31.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\account-kit-sdk-4.31.0.aar\08d24bcf152e268d781407371aae71e9\AndroidManifest.xml:28:5-53:19
 MERGED from [com.facebook.android:account-kit-sdk:4.31.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\account-kit-sdk-4.31.0.aar\08d24bcf152e268d781407371aae71e9\AndroidManifest.xml:28:5-53:19
 MERGED from [com.facebook.android:facebook-android-sdk:4.31.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\facebook-android-sdk-4.31.0.aar\5fd5344f9f879f71c125412e76c32bc2\AndroidManifest.xml:28:5-29:19
@@ -317,9 +317,17 @@ ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:74:9-5
 	android:name
 		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:74:19-51
 activity#com.trasimus.tictactoe.online.ConnectAccountsActivity
-ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:75:9-70
+ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:75:9-61
 	android:name
 		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:75:19-58
+activity#com.trasimus.tictactoe.online.FriendsActivity
+ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:76:9-53
+	android:name
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:76:19-50
+activity#com.trasimus.tictactoe.online.FindFriends
+ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:77:9-58
+	android:name
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:77:19-46
 uses-sdk
 INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml

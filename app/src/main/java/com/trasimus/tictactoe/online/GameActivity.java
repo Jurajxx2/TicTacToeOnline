@@ -97,6 +97,13 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(com.trasimus.tictactoe.online.R.layout.activity_game);
 
+
+        if (!(firstPlayerEventListener==null || myRef==null)) {
+            firstPlayerEventListener.removeEventListener(listener1);
+            myRef.removeEventListener(gameListener);
+        }
+
+
         //Get extra info
         bundle = getIntent().getExtras();
         int gameSize = bundle.getInt("size");
@@ -439,20 +446,20 @@ public class GameActivity extends AppCompatActivity {
 
         //if player 2 is not present, game does not begin
         if (newGame.getPlayer2().equals("")) {
-            //return;
+            return;
         }
 
 
         //If player one is not on the move, he cannot click
         if (playerOne) {
             if (!newGame.getMoveP1()) {
-                //return;
+                return;
             }
         }
         //If player two is not on the move, he cannot click
         if (playerTwo) {
             if (!newGame.getMoveP2()) {
-                //return;
+                return;
             }
         }
 
@@ -535,8 +542,6 @@ public class GameActivity extends AppCompatActivity {
 
     @Override
     protected void onStop() {
-        firstPlayerEventListener.removeEventListener(listener1);
-        myRef.removeEventListener(gameListener);
 
         if (playerOne && newGame.getPlayer2().equals("")){
             mDatabaseReference.child("games").child(key).removeValue();
@@ -561,36 +566,36 @@ public class GameActivity extends AppCompatActivity {
             mDatabaseReference.child("games").child(key).child("connectedP2").setValue(true);
         }
 
-        if (playerOne) {
-            listener1 = firstPlayerEventListener.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    newGame = dataSnapshot.getValue(GameObject.class);
-
-                    if (newGame.getWinnerP1() || newGame.getWinnerP2()) {
-                        myRef.removeEventListener(gameListener);
-                    }
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                }
-            });
-        } else if(playerTwo){
-            listener1 = firstPlayerEventListener.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    newGame = dataSnapshot.getValue(GameObject.class);
-
-                    players.setText(newGame.getPlayer1() + " vs " + newGame.getPlayer2());
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-        }
+//        if (playerOne) {
+//            listener1 = firstPlayerEventListener.addValueEventListener(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(DataSnapshot dataSnapshot) {
+//                    newGame = dataSnapshot.getValue(GameObject.class);
+//
+//                    if (newGame.getWinnerP1() || newGame.getWinnerP2()) {
+//                        myRef.removeEventListener(gameListener);
+//                    }
+//                }
+//
+//                @Override
+//                public void onCancelled(DatabaseError databaseError) {
+//                }
+//            });
+//        } else if(playerTwo){
+//            listener1 = firstPlayerEventListener.addValueEventListener(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(DataSnapshot dataSnapshot) {
+//                    newGame = dataSnapshot.getValue(GameObject.class);
+//
+//                    players.setText(newGame.getPlayer1() + " vs " + newGame.getPlayer2());
+//                }
+//
+//                @Override
+//                public void onCancelled(DatabaseError databaseError) {
+//
+//                }
+//            });
+//        }
     }
 
     private void getPoints(){

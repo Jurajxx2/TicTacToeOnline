@@ -1,4 +1,4 @@
-package com.trasimus.tictactoe.online;
+ package com.trasimus.tictactoe.online;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

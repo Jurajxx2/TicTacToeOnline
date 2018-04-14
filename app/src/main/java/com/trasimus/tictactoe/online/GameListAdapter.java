@@ -2,6 +2,7 @@ package com.trasimus.tictactoe.online;
 
 import android.app.Activity;
 import android.content.Context;
+import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -92,7 +93,17 @@ public class GameListAdapter extends BaseAdapter {
         final GameObject gameObject = getItem(position);
 
         if (!gameObject.getPlayer2().equals("")){
-            return null;
+            if (convertView == null) {
+                LayoutInflater inflater = (LayoutInflater) mActivity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                convertView = inflater.inflate(R.layout.empty_item, parent, false);
+                final ViewHolder holder = new ViewHolder();
+                convertView.setTag(holder);
+            }
+
+            Log.d("test", "getView2 called");
+            final ViewHolder holder = (ViewHolder) convertView.getTag();
+
+            return convertView;
         }
 
         if (convertView == null) {
