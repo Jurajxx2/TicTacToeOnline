@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-80:12
-INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-80:12
-INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-80:12
-INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-80:12
+ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-81:12
+INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-81:12
+INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-81:12
+INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-81:12
 MERGED from [com.facebook.android:account-kit-sdk:4.31.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\account-kit-sdk-4.31.0.aar\08d24bcf152e268d781407371aae71e9\AndroidManifest.xml:21:1-55:12
 MERGED from [com.facebook.android:facebook-android-sdk:4.31.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\facebook-android-sdk-4.31.0.aar\5fd5344f9f879f71c125412e76c32bc2\AndroidManifest.xml:21:1-31:12
 MERGED from [com.facebook.android:facebook-login:4.31.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\facebook-login-4.31.0.aar\28000aed97357bdc68460d45d9cd31a5\AndroidManifest.xml:21:1-31:12
@@ -61,22 +61,22 @@ MERGED from [com.google.firebase:firebase-database-connection-license:11.8.0] C:
 MERGED from [com.google.firebase:firebase-common-license:11.8.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\firebase-common-license-11.8.0.aar\ad4b99bbfcec7ca5942be39c18a1cf8f\AndroidManifest.xml:2:1-6:12
 MERGED from [com.google.firebase:firebase-analytics-impl-license:11.8.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-license-11.8.0.aar\035490c547c932d04d09076ce024bebe\AndroidManifest.xml:2:1-6:12
 MERGED from [com.google.firebase:firebase-iid-license:11.8.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\firebase-iid-license-11.8.0.aar\8cffeb72350c2265fff71e143ff94771\AndroidManifest.xml:2:1-6:12
-INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-80:12
-INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-80:12
-INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-80:12
+INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-81:12
+INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-81:12
+INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-81:12
 	package
 		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:4:5-44
 		INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml
-		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-80:12
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-81:12
 		INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml
 	xmlns:tools
 		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:3:5-51
 	android:versionCode
 		INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml
-		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-80:12
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-81:12
 		INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:11-69
@@ -93,7 +93,7 @@ MERGED from [com.google.firebase:firebase-iid:11.8.0] C:\Users\juraj\.gradle\cac
 	android:name
 		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:6:22-64
 application
-ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:8:5-78:19
+ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:8:5-79:19
 MERGED from [com.facebook.android:account-kit-sdk:4.31.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\account-kit-sdk-4.31.0.aar\08d24bcf152e268d781407371aae71e9\AndroidManifest.xml:28:5-53:19
 MERGED from [com.facebook.android:account-kit-sdk:4.31.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\account-kit-sdk-4.31.0.aar\08d24bcf152e268d781407371aae71e9\AndroidManifest.xml:28:5-53:19
 MERGED from [com.facebook.android:facebook-android-sdk:4.31.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\facebook-android-sdk-4.31.0.aar\5fd5344f9f879f71c125412e76c32bc2\AndroidManifest.xml:28:5-29:19
@@ -270,14 +270,14 @@ MERGED from [com.facebook.android:account-kit-sdk:4.31.0] C:\Users\juraj\.gradle
 		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:55:13-42
 	android:name
 		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:53:13-73
-activity#com.trasimus.tictactoe.online.LoginActivity
+activity#com.trasimus.tictactoe.online.Other.LoginActivity
 ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:56:9-65:20
 	android:screenOrientation
 		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:58:13-49
 	android:theme
 		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:59:13-51
 	android:name
-		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:57:13-42
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:57:13-48
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
 ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:60:13-64:29
 action#android.intent.action.MAIN
@@ -288,46 +288,50 @@ category#android.intent.category.LAUNCHER
 ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:63:17-77
 	android:name
 		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:63:27-74
-activity#com.trasimus.tictactoe.online.AccountActivity
+activity#com.trasimus.tictactoe.online.Account.AccountActivity
 ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:66:9-69:52
 	android:screenOrientation
 		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:69:13-49
 	android:label
 		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:68:13-44
 	android:name
-		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:67:13-44
-activity#com.trasimus.tictactoe.online.MenuActivity
-ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:70:9-50
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:67:13-52
+activity#com.trasimus.tictactoe.online.Other.MenuActivity
+ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:70:9-56
 	android:name
-		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:70:19-47
-activity#com.trasimus.tictactoe.online.GameActivity
-ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:71:9-50
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:70:19-53
+activity#com.trasimus.tictactoe.online.Game.GameActivity
+ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:71:9-55
 	android:name
-		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:71:19-47
-activity#com.trasimus.tictactoe.online.GameFinderActivity
-ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:72:9-56
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:71:19-52
+activity#com.trasimus.tictactoe.online.Game.GameFinderActivity
+ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:72:9-61
 	android:name
-		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:72:19-53
-activity#com.trasimus.tictactoe.online.RegisterActivity
-ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:73:9-54
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:72:19-58
+activity#com.trasimus.tictactoe.online.Other.RegisterActivity
+ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:73:9-60
 	android:name
-		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:73:19-51
-activity#com.trasimus.tictactoe.online.RankingsActivity
-ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:74:9-54
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:73:19-57
+activity#com.trasimus.tictactoe.online.Other.RankingsActivity
+ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:74:9-60
 	android:name
-		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:74:19-51
-activity#com.trasimus.tictactoe.online.ConnectAccountsActivity
-ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:75:9-61
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:74:19-57
+activity#com.trasimus.tictactoe.online.Account.ConnectAccountsActivity
+ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:75:9-69
 	android:name
-		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:75:19-58
-activity#com.trasimus.tictactoe.online.FriendsActivity
-ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:76:9-53
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:75:19-66
+activity#com.trasimus.tictactoe.online.Friends.FriendsActivity
+ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:76:9-61
 	android:name
-		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:76:19-50
-activity#com.trasimus.tictactoe.online.FindFriends
-ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:77:9-58
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:76:19-58
+activity#com.trasimus.tictactoe.online.Friends.FindFriends
+ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:77:9-57
 	android:name
-		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:77:19-46
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:77:19-54
+activity#com.trasimus.tictactoe.online.Friends.LobbyActivity
+ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:78:9-59
+	android:name
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:78:19-56
 uses-sdk
 INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml

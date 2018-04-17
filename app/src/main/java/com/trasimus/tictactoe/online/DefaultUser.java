@@ -17,12 +17,13 @@ public class DefaultUser {
     private String mailAccount;
     private String age;
     private String country;
+    private String lobbyID;
 
     public DefaultUser(){
 
     }
 
-    public DefaultUser(String userID, String mail, String name, String age, String country, int points, ArrayList<ArrayList<String>> friends, String fbAccount, String googleAccount, String mailAccount){
+    public DefaultUser(String userID, String mail, String name, String age, String country, int points, ArrayList<ArrayList<String>> friends, String fbAccount, String googleAccount, String mailAccount, String lobbyID){
 
         this.userID = userID;
         this.mail = mail;
@@ -35,6 +36,7 @@ public class DefaultUser {
         this.mailAccount = mailAccount;
         this.age = age;
         this.country = country;
+        this.lobbyID = lobbyID;
     }
 
     public String getUserID() {
@@ -123,5 +125,13 @@ public class DefaultUser {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public String getLobbyID() {
+        return lobbyID;
+    }
+
+    public void setLobbyID(String lobbyID) {
+        this.lobbyID = lobbyID;
     }
 }

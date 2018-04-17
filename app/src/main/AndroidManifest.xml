@@ -54,7 +54,7 @@
             android:theme="@style/AppLoginTheme"
             tools:replace="android:theme" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".Other.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/FullscreenTheme">
             <intent-filter>
@@ -64,17 +64,18 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AccountActivity"
+            android:name=".Account.AccountActivity"
             android:label="@string/account"
             android:screenOrientation="portrait" />
-        <activity android:name=".MenuActivity" />
-        <activity android:name=".GameActivity" />
-        <activity android:name=".GameFinderActivity" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".RankingsActivity" />
-        <activity android:name=".ConnectAccountsActivity" />
-        <activity android:name=".FriendsActivity" />
-        <activity android:name=".FindFriends"></activity>
+        <activity android:name=".Other.MenuActivity" />
+        <activity android:name=".Game.GameActivity" />
+        <activity android:name=".Game.GameFinderActivity" />
+        <activity android:name=".Other.RegisterActivity" />
+        <activity android:name=".Other.RankingsActivity" />
+        <activity android:name=".Account.ConnectAccountsActivity" />
+        <activity android:name=".Friends.FriendsActivity" />
+        <activity android:name=".Friends.FindFriends" />
+        <activity android:name=".Friends.LobbyActivity" />
     </application>
 
 </manifest>

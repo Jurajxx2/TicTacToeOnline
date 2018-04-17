@@ -54,22 +54,22 @@ public final class R {
     public static final class id {
         public static final int adjust_height = 0x7f09001b;
         public static final int adjust_width = 0x7f09001c;
-        public static final int auto = 0x7f090024;
-        public static final int button = 0x7f09002d;
-        public static final int center = 0x7f09004d;
-        public static final int dark = 0x7f090094;
-        public static final int email = 0x7f0900a5;
-        public static final int icon_only = 0x7f0900c7;
-        public static final int light = 0x7f0900d5;
-        public static final int none = 0x7f0900f2;
-        public static final int normal = 0x7f0900f3;
-        public static final int progressBar = 0x7f09010b;
-        public static final int radio = 0x7f090112;
-        public static final int standard = 0x7f090143;
-        public static final int text = 0x7f09014c;
-        public static final int text2 = 0x7f09014d;
-        public static final int wide = 0x7f090170;
-        public static final int wrap_content = 0x7f090173;
+        public static final int auto = 0x7f090023;
+        public static final int button = 0x7f09002c;
+        public static final int center = 0x7f09004c;
+        public static final int dark = 0x7f090092;
+        public static final int email = 0x7f0900a3;
+        public static final int icon_only = 0x7f0900c6;
+        public static final int light = 0x7f0900d7;
+        public static final int none = 0x7f0900f7;
+        public static final int normal = 0x7f0900f8;
+        public static final int progressBar = 0x7f090110;
+        public static final int radio = 0x7f090117;
+        public static final int standard = 0x7f09014c;
+        public static final int text = 0x7f090157;
+        public static final int text2 = 0x7f090158;
+        public static final int wide = 0x7f09017d;
+        public static final int wrap_content = 0x7f090180;
     }
     public static final class integer {
         public static final int google_play_services_version = 0x7f0a0008;

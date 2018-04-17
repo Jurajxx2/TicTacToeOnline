@@ -83,7 +83,7 @@
             android:theme="@style/AppLoginTheme"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name="com.trasimus.tictactoe.online.LoginActivity"
+            android:name="com.trasimus.tictactoe.online.Other.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/FullscreenTheme" >
             <intent-filter>
@@ -93,17 +93,18 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.trasimus.tictactoe.online.AccountActivity"
+            android:name="com.trasimus.tictactoe.online.Account.AccountActivity"
             android:label="@string/account"
             android:screenOrientation="portrait" />
-        <activity android:name="com.trasimus.tictactoe.online.MenuActivity" />
-        <activity android:name="com.trasimus.tictactoe.online.GameActivity" />
-        <activity android:name="com.trasimus.tictactoe.online.GameFinderActivity" />
-        <activity android:name="com.trasimus.tictactoe.online.RegisterActivity" />
-        <activity android:name="com.trasimus.tictactoe.online.RankingsActivity" />
-        <activity android:name="com.trasimus.tictactoe.online.ConnectAccountsActivity" />
-        <activity android:name="com.trasimus.tictactoe.online.FriendsActivity" />
-        <activity android:name="com.trasimus.tictactoe.online.FindFriends" />
+        <activity android:name="com.trasimus.tictactoe.online.Other.MenuActivity" />
+        <activity android:name="com.trasimus.tictactoe.online.Game.GameActivity" />
+        <activity android:name="com.trasimus.tictactoe.online.Game.GameFinderActivity" />
+        <activity android:name="com.trasimus.tictactoe.online.Other.RegisterActivity" />
+        <activity android:name="com.trasimus.tictactoe.online.Other.RankingsActivity" />
+        <activity android:name="com.trasimus.tictactoe.online.Account.ConnectAccountsActivity" />
+        <activity android:name="com.trasimus.tictactoe.online.Friends.FriendsActivity" />
+        <activity android:name="com.trasimus.tictactoe.online.Friends.FindFriends" />
+        <activity android:name="com.trasimus.tictactoe.online.Friends.LobbyActivity" />
         <!--
              The initialization ContentProvider will call AccountKit.initialize automatically
              with the application context. This config is merged in with the host app's manifest,
