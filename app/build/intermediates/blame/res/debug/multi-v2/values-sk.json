@@ -4,6 +4,23 @@
             "outputFile": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sk\\values-sk.xml",
             "map": [
                 {
+                    "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\aa01363b79d10f83bf7d7997f8cc8f73\\res\\values-sk\\values-sk.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "433",
+                        "startColumns": "4",
+                        "startOffsets": "31305",
+                        "endColumns": "100",
+                        "endOffsets": "31401"
+                    }
+                },
+                {
                     "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\f62d9d2d49d2992c50dca82b673e6337\\res\\values-sk\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
@@ -66,11 +83,11 @@
                         "endOffsets": "207,307,418,504,612,730,811,892,976,1081,1190,1289,1395,1506,1615,1781,1879,1967"
                     },
                     "to": {
-                        "startLines": "240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,425",
+                        "startLines": "240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,432",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "9619,9726,9826,9937,10023,10131,10249,10330,10411,10495,10600,10709,10808,10914,11025,11134,11300,30608",
+                        "startOffsets": "9619,9726,9826,9937,10023,10131,10249,10330,10411,10495,10600,10709,10808,10914,11025,11134,11300,31217",
                         "endColumns": "106,99,110,85,107,117,80,80,83,104,108,98,105,110,108,165,97,87",
-                        "endOffsets": "9721,9821,9932,10018,10126,10244,10325,10406,10490,10595,10704,10803,10909,11020,11129,11295,11393,30691"
+                        "endOffsets": "9721,9821,9932,10018,10126,10244,10325,10406,10490,10595,10704,10803,10909,11020,11129,11295,11393,31300"
                     }
                 },
                 {
@@ -91,20 +108,20 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.0.2.aar\\a737afcaf16e77f3307556bf65ed300c\\res\\values-sk\\values-sk.xml",
+                    "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-ads-11.8.0.aar\\bd6548c39fc7cf6f33ac4010c8984f8d\\res\\values-sk\\values.xml",
                     "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
+                        "startLines": "4,5,6,7,8,9,10",
+                        "startColumns": "0,0,0,0,0,0,0",
+                        "startOffsets": "235,308,417,481,548,637,740",
+                        "endColumns": "72,108,63,66,88,102,75",
+                        "endOffsets": "307,416,480,547,636,739,815"
                     },
                     "to": {
-                        "startLines": "426",
-                        "startColumns": "4",
-                        "startOffsets": "30696",
-                        "endColumns": "100",
-                        "endOffsets": "30792"
+                        "startLines": "425,426,427,428,429,430,431",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "30608,30685,30798,30866,30937,31030,31137",
+                        "endColumns": "76,112,67,70,92,106,79",
+                        "endOffsets": "30680,30793,30861,30932,31025,31132,31212"
                     }
                 },
                 {

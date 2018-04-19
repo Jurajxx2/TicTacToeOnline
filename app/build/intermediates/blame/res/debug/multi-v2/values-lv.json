@@ -4,23 +4,6 @@
             "outputFile": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-lv\\values-lv.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.0.2.aar\\a737afcaf16e77f3307556bf65ed300c\\res\\values-lv\\values-lv.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "108",
-                        "startColumns": "4",
-                        "startOffsets": "10948",
-                        "endColumns": "100",
-                        "endOffsets": "11044"
-                    }
-                },
-                {
                     "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\f62d9d2d49d2992c50dca82b673e6337\\res\\values-lv\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
@@ -35,6 +18,23 @@
                         "startOffsets": "2348,2457,2650,2785,2895,3096,3229,3376,3736,3970,4081,4281,4418,4646,4831,4925,5023",
                         "endColumns": "108,192,134,109,200,132,146,134,233,110,199,136,227,184,93,97,117",
                         "endOffsets": "2452,2645,2780,2890,3091,3224,3371,3506,3965,4076,4276,4413,4641,4826,4920,5018,5136"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-ads-11.8.0.aar\\bd6548c39fc7cf6f33ac4010c8984f8d\\res\\values-lv\\values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10",
+                        "startColumns": "0,0,0,0,0,0,0",
+                        "startOffsets": "235,310,413,479,545,629,735",
+                        "endColumns": "74,102,65,65,83,105,70",
+                        "endOffsets": "309,412,478,544,628,734,805"
+                    },
+                    "to": {
+                        "startLines": "107,108,109,110,111,112,113",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "10866,10945,11052,11122,11192,11280,11390",
+                        "endColumns": "78,106,69,69,87,109,74",
+                        "endOffsets": "10940,11047,11117,11187,11275,11385,11460"
                     }
                 },
                 {
@@ -81,11 +81,28 @@
                         "endOffsets": "220,328,437,523,627,749,831,913,998,1107,1219,1318,1429,1538,1643,1817,1916,1998"
                     },
                     "to": {
-                        "startLines": "3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,107",
+                        "startLines": "3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,114",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "532,652,760,869,955,1059,1181,1263,1345,1430,1539,1651,1750,1861,1970,2075,2249,10866",
+                        "startOffsets": "532,652,760,869,955,1059,1181,1263,1345,1430,1539,1651,1750,1861,1970,2075,2249,11465",
                         "endColumns": "119,107,108,85,103,121,81,81,84,108,111,98,110,108,104,173,98,81",
-                        "endOffsets": "647,755,864,950,1054,1176,1258,1340,1425,1534,1646,1745,1856,1965,2070,2244,2343,10943"
+                        "endOffsets": "647,755,864,950,1054,1176,1258,1340,1425,1534,1646,1745,1856,1965,2070,2244,2343,11542"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\aa01363b79d10f83bf7d7997f8cc8f73\\res\\values-lv\\values-lv.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "115",
+                        "startColumns": "4",
+                        "startOffsets": "11547",
+                        "endColumns": "100",
+                        "endOffsets": "11643"
                     }
                 }
             ]

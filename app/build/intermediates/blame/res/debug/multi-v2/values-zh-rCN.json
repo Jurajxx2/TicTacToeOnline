@@ -21,6 +21,23 @@
                     }
                 },
                 {
+                    "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\aa01363b79d10f83bf7d7997f8cc8f73\\res\\values-zh-rCN\\values-zh-rCN.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "434",
+                        "startColumns": "4",
+                        "startOffsets": "25556",
+                        "endColumns": "100",
+                        "endOffsets": "25652"
+                    }
+                },
+                {
                     "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\c0da661d7de833d56b8e6945628a81b1\\res\\values-zh-rCN\\values-zh-rCN.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
@@ -30,11 +47,11 @@
                         "endOffsets": "196,291,391,473,570,676,752,828,906,1002,1098,1193,1290,1385,1483,1632,1726,1804"
                     },
                     "to": {
-                        "startLines": "240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,426",
+                        "startLines": "240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,433",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "7954,8050,8145,8245,8327,8424,8530,8606,8682,8760,8856,8952,9047,9144,9239,9337,9486,25000",
+                        "startOffsets": "7954,8050,8145,8245,8327,8424,8530,8606,8682,8760,8856,8952,9047,9144,9239,9337,9486,25478",
                         "endColumns": "95,94,99,81,96,105,75,75,77,95,95,94,96,94,97,148,93,77",
-                        "endOffsets": "8045,8140,8240,8322,8419,8525,8601,8677,8755,8851,8947,9042,9139,9234,9332,9481,9575,25073"
+                        "endOffsets": "8045,8140,8240,8322,8419,8525,8601,8677,8755,8851,8947,9042,9139,9234,9332,9481,9575,25551"
                     }
                 },
                 {
@@ -55,23 +72,6 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.0.2.aar\\a737afcaf16e77f3307556bf65ed300c\\res\\values-zh-rCN\\values-zh-rCN.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "427",
-                        "startColumns": "4",
-                        "startOffsets": "25078",
-                        "endColumns": "100",
-                        "endOffsets": "25174"
-                    }
-                },
-                {
                     "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\f62d9d2d49d2992c50dca82b673e6337\\res\\values-zh-rCN\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
@@ -86,6 +86,23 @@
                         "startOffsets": "18300,18403,18564,18681,18785,18949,19067,19199,19478,19645,19748,19909,20026,20189,20327,20413,20500",
                         "endColumns": "102,160,116,103,163,117,131,120,166,102,160,116,162,137,85,86,102",
                         "endOffsets": "18398,18559,18676,18780,18944,19062,19194,19315,19640,19743,19904,20021,20184,20322,20408,20495,20598"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-ads-11.8.0.aar\\bd6548c39fc7cf6f33ac4010c8984f8d\\res\\values-zh-rCN\\values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10",
+                        "startColumns": "0,0,0,0,0,0,0",
+                        "startOffsets": "239,300,373,433,493,557,627",
+                        "endColumns": "60,72,59,59,63,69,61",
+                        "endOffsets": "299,372,432,492,556,626,688"
+                    },
+                    "to": {
+                        "startLines": "426,427,428,429,430,431,432",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "25000,25065,25142,25206,25270,25338,25412",
+                        "endColumns": "64,76,63,63,67,73,65",
+                        "endOffsets": "25060,25137,25201,25265,25333,25407,25473"
                     }
                 },
                 {

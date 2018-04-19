@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Friends.LobbyActivity">
+    tools:context=".friends.LobbyActivity">
 
     <TextView
         android:id="@+id/user1"
@@ -37,7 +37,7 @@
         app:layout_constraintEnd_toStartOf="@+id/isOnline2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/user1"
-        android:enabled="false"/>
+        />
 
     <Switch
         android:id="@+id/switch2"
@@ -48,7 +48,7 @@
         android:text="Ready?"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/switch1"
-        android:enabled="false"/>
+        />
 
     <EditText
         android:id="@+id/messageText"
@@ -66,6 +66,7 @@
 
     <Button
         android:id="@+id/sendButton"
+        style="@style/com_facebook_button_send"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -93,10 +94,10 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
+        android:clickable="false"
         android:text="Connected"
         app:layout_constraintEnd_toStartOf="@+id/switch1"
-        app:layout_constraintTop_toBottomOf="@+id/gameSize"
-        android:enabled="false"/>
+        app:layout_constraintTop_toBottomOf="@+id/gameSize" />
 
     <CheckBox
         android:id="@+id/isOnline2"
@@ -107,7 +108,7 @@
         android:text="Connected"
         app:layout_constraintEnd_toStartOf="@+id/switch2"
         app:layout_constraintTop_toBottomOf="@+id/isOnline"
-        android:enabled="false"/>
+        android:clickable="false"/>
 
     <RadioGroup
         android:id="@+id/gameSize"
@@ -119,6 +120,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <RadioButton
+            android:checked="true"
             android:id="@+id/size3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

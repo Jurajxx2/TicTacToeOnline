@@ -18,12 +18,13 @@ public class DefaultUser {
     private String age;
     private String country;
     private String lobbyID;
+    private String photoID;
 
     public DefaultUser(){
 
     }
 
-    public DefaultUser(String userID, String mail, String name, String age, String country, int points, ArrayList<ArrayList<String>> friends, String fbAccount, String googleAccount, String mailAccount, String lobbyID){
+    public DefaultUser(String userID, String mail, String name, String age, String country, int points, ArrayList<ArrayList<String>> friends, String fbAccount, String googleAccount, String mailAccount, String lobbyID, String photoID){
 
         this.userID = userID;
         this.mail = mail;
@@ -37,6 +38,7 @@ public class DefaultUser {
         this.age = age;
         this.country = country;
         this.lobbyID = lobbyID;
+        this.photoID = photoID;
     }
 
     public String getUserID() {
@@ -133,5 +135,13 @@ public class DefaultUser {
 
     public void setLobbyID(String lobbyID) {
         this.lobbyID = lobbyID;
+    }
+
+    public String getPhotoID() {
+        return photoID;
+    }
+
+    public void setPhotoID(String photoID) {
+        this.photoID = photoID;
     }
 }

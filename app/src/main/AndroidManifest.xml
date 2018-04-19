@@ -23,6 +23,9 @@
             android:name="com.facebook.accountkit.ClientToken"
             android:value="@string/ACCOUNT_KIT_CLIENT_TOKEN" />
 
+        <service android:name=".other.GameInvitationListener"
+            android:enabled="true"/>
+
         <activity android:name="com.facebook.accountkit.ui.AccountKitEmailRedirectActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -54,7 +57,7 @@
             android:theme="@style/AppLoginTheme"
             tools:replace="android:theme" />
         <activity
-            android:name=".Other.LoginActivity"
+            android:name=".other.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/FullscreenTheme">
             <intent-filter>
@@ -64,18 +67,35 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Account.AccountActivity"
+            android:name=".account.AccountActivity"
             android:label="@string/account"
             android:screenOrientation="portrait" />
-        <activity android:name=".Other.MenuActivity" />
-        <activity android:name=".Game.GameActivity" />
-        <activity android:name=".Game.GameFinderActivity" />
-        <activity android:name=".Other.RegisterActivity" />
-        <activity android:name=".Other.RankingsActivity" />
-        <activity android:name=".Account.ConnectAccountsActivity" />
-        <activity android:name=".Friends.FriendsActivity" />
-        <activity android:name=".Friends.FindFriends" />
-        <activity android:name=".Friends.LobbyActivity" />
+        <activity android:name=".other.MenuActivity"
+            android:label="Menu"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".game.GameActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".game.GameFinderActivity"
+            android:label="Game Finder"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".other.RegisterActivity"
+            android:label="Register"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".other.RankingsActivity"
+            android:label="Rankings"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".account.ConnectAccountsActivity"
+            android:label="Connect Accounts"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".friends.FriendsActivity"
+            android:label="Friends"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".friends.FindFriends"
+            android:label="Add New"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".friends.LobbyActivity"
+            android:label="Lobby"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

@@ -4,7 +4,24 @@
             "outputFile": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ro\\values-ro.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.0.2.aar\\a737afcaf16e77f3307556bf65ed300c\\res\\values-ro\\values-ro.xml",
+                    "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-ads-11.8.0.aar\\bd6548c39fc7cf6f33ac4010c8984f8d\\res\\values-ro\\values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10",
+                        "startColumns": "0,0,0,0,0,0,0",
+                        "startOffsets": "235,308,433,500,566,655,769",
+                        "endColumns": "72,124,66,65,88,113,71",
+                        "endOffsets": "307,432,499,565,654,768,840"
+                    },
+                    "to": {
+                        "startLines": "401,402,403,404,405,406,407",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "28258,28335,28464,28535,28605,28698,28816",
+                        "endColumns": "76,128,70,69,92,117,75",
+                        "endOffsets": "28330,28459,28530,28600,28693,28811,28887"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\aa01363b79d10f83bf7d7997f8cc8f73\\res\\values-ro\\values-ro.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -13,11 +30,11 @@
                         "endOffsets": "151"
                     },
                     "to": {
-                        "startLines": "402",
+                        "startLines": "409",
                         "startColumns": "4",
-                        "startOffsets": "28341",
+                        "startOffsets": "28975",
                         "endColumns": "100",
-                        "endOffsets": "28437"
+                        "endOffsets": "29071"
                     }
                 },
                 {
@@ -30,11 +47,11 @@
                         "endOffsets": "221,325,438,526,638,759,844,925,1008,1120,1233,1333,1447,1552,1658,1822,1925,2008"
                     },
                     "to": {
-                        "startLines": "240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,401",
+                        "startLines": "240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,408",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "9593,9714,9818,9931,10019,10131,10252,10337,10418,10501,10613,10726,10826,10940,11045,11151,11315,28258",
+                        "startOffsets": "9593,9714,9818,9931,10019,10131,10252,10337,10418,10501,10613,10726,10826,10940,11045,11151,11315,28892",
                         "endColumns": "120,103,112,87,111,120,84,80,82,111,112,99,113,104,105,163,102,82",
-                        "endOffsets": "9709,9813,9926,10014,10126,10247,10332,10413,10496,10608,10721,10821,10935,11040,11146,11310,11413,28336"
+                        "endOffsets": "9709,9813,9926,10014,10126,10247,10332,10413,10496,10608,10721,10821,10935,11040,11146,11310,11413,28970"
                     }
                 },
                 {

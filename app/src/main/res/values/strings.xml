@@ -25,6 +25,8 @@
     </string-array>
     <string name="title_activity_game_finder">GameFinderActivity</string>
     <string name="title_activity_rankings">RankingsActivity</string>
+    <string name="channel_name">Game invitation</string>
+    <string name="channel_description">Tic Tac Toe Game Invitation</string>
 
 
     <string-array name="countries_array">

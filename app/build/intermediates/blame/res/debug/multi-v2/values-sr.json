@@ -21,6 +21,23 @@
                     }
                 },
                 {
+                    "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-ads-11.8.0.aar\\bd6548c39fc7cf6f33ac4010c8984f8d\\res\\values-sr\\values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10",
+                        "startColumns": "0,0,0,0,0,0,0",
+                        "startOffsets": "235,304,424,490,553,640,758",
+                        "endColumns": "68,119,65,62,86,117,69",
+                        "endOffsets": "303,423,489,552,639,757,827"
+                    },
+                    "to": {
+                        "startLines": "107,108,109,110,111,112,113",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "10445,10518,10642,10712,10779,10870,10992",
+                        "endColumns": "72,123,69,66,90,121,73",
+                        "endOffsets": "10513,10637,10707,10774,10865,10987,11061"
+                    }
+                },
+                {
                     "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-basement-11.8.0.aar\\08c44d9abef77e922fbaa021fb4b97ad\\res\\values-sr\\values.xml",
                     "from": {
                         "startLines": "4",
@@ -38,6 +55,23 @@
                     }
                 },
                 {
+                    "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\aa01363b79d10f83bf7d7997f8cc8f73\\res\\values-sr\\values-sr.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "115",
+                        "startColumns": "4",
+                        "startOffsets": "11150",
+                        "endColumns": "100",
+                        "endOffsets": "11246"
+                    }
+                },
+                {
                     "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\c0da661d7de833d56b8e6945628a81b1\\res\\values-sr\\values-sr.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
@@ -47,28 +81,11 @@
                         "endOffsets": "209,312,418,504,608,726,807,887,975,1080,1188,1289,1393,1501,1602,1769,1866,1950"
                     },
                     "to": {
-                        "startLines": "3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,107",
+                        "startLines": "3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,114",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "503,612,715,821,907,1011,1129,1210,1290,1378,1483,1591,1692,1796,1904,2005,2172,10445",
+                        "startOffsets": "503,612,715,821,907,1011,1129,1210,1290,1378,1483,1591,1692,1796,1904,2005,2172,11066",
                         "endColumns": "108,102,105,85,103,117,80,79,87,104,107,100,103,107,100,166,96,83",
-                        "endOffsets": "607,710,816,902,1006,1124,1205,1285,1373,1478,1586,1687,1791,1899,2000,2167,2264,10524"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.0.2.aar\\a737afcaf16e77f3307556bf65ed300c\\res\\values-sr\\values-sr.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "108",
-                        "startColumns": "4",
-                        "startOffsets": "10529",
-                        "endColumns": "100",
-                        "endOffsets": "10625"
+                        "endOffsets": "607,710,816,902,1006,1124,1205,1285,1373,1478,1586,1687,1791,1899,2000,2167,2264,11145"
                     }
                 },
                 {

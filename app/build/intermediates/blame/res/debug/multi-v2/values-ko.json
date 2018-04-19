@@ -4,6 +4,23 @@
             "outputFile": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ko\\values-ko.xml",
             "map": [
                 {
+                    "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\aa01363b79d10f83bf7d7997f8cc8f73\\res\\values-ko\\values-ko.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "434",
+                        "startColumns": "4",
+                        "startOffsets": "26642",
+                        "endColumns": "100",
+                        "endOffsets": "26738"
+                    }
+                },
+                {
                     "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-basement-11.8.0.aar\\08c44d9abef77e922fbaa021fb4b97ad\\res\\values-ko\\values.xml",
                     "from": {
                         "startLines": "4",
@@ -30,11 +47,28 @@
                         "endOffsets": "195,289,391,473,571,677,756,832,912,1010,1105,1200,1300,1396,1495,1647,1741,1819"
                     },
                     "to": {
-                        "startLines": "240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,426",
+                        "startLines": "240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,433",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "8114,8209,8303,8405,8487,8585,8691,8770,8846,8926,9024,9119,9214,9314,9410,9509,9661,26045",
+                        "startOffsets": "8114,8209,8303,8405,8487,8585,8691,8770,8846,8926,9024,9119,9214,9314,9410,9509,9661,26564",
                         "endColumns": "94,93,101,81,97,105,78,75,79,97,94,94,99,95,98,151,93,77",
-                        "endOffsets": "8204,8298,8400,8482,8580,8686,8765,8841,8921,9019,9114,9209,9309,9405,9504,9656,9750,26118"
+                        "endOffsets": "8204,8298,8400,8482,8580,8686,8765,8841,8921,9019,9114,9209,9309,9405,9504,9656,9750,26637"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-ads-11.8.0.aar\\bd6548c39fc7cf6f33ac4010c8984f8d\\res\\values-ko\\values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10",
+                        "startColumns": "0,0,0,0,0,0,0",
+                        "startOffsets": "235,298,389,449,509,577,662",
+                        "endColumns": "62,90,59,59,67,84,63",
+                        "endOffsets": "297,388,448,508,576,661,725"
+                    },
+                    "to": {
+                        "startLines": "426,427,428,429,430,431,432",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "26045,26112,26207,26271,26335,26407,26496",
+                        "endColumns": "66,94,63,63,71,88,67",
+                        "endOffsets": "26107,26202,26266,26330,26402,26491,26559"
                     }
                 },
                 {
@@ -105,23 +139,6 @@
                         "startOffsets": "16681,16816,16936,17055,17164,17244,17328,17405,17490,17576,17683,17785,17873,17961,18056,18169,18248,18329,18458,18552,18653,18759,18855",
                         "endColumns": "134,119,118,108,79,83,76,84,85,106,101,87,87,94,112,78,80,128,93,100,105,95,101",
                         "endOffsets": "16811,16931,17050,17159,17239,17323,17400,17485,17571,17678,17780,17868,17956,18051,18164,18243,18324,18453,18547,18648,18754,18850,18952"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.0.2.aar\\a737afcaf16e77f3307556bf65ed300c\\res\\values-ko\\values-ko.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "427",
-                        "startColumns": "4",
-                        "startOffsets": "26123",
-                        "endColumns": "100",
-                        "endOffsets": "26219"
                     }
                 }
             ]

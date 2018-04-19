@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/accountBackground"
-    tools:context="com.trasimus.tictactoe.online.Account.AccountActivity">
+    tools:context="com.trasimus.tictactoe.online.account.AccountActivity">
 
     <ImageView
         android:id="@+id/profile_image"
@@ -157,7 +157,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view2"
         app:layout_constraintVertical_bias="0.7"
-        android:visibility="gone"/>
+        android:visibility="gone"
+        android:textAlignment="center"/>
 
     <TextView
         android:id="@+id/countryLabel"
@@ -199,7 +200,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view2"
-        app:layout_constraintVertical_bias="0.9" />
+        app:layout_constraintVertical_bias="0.9"
+        android:textAlignment="center"/>
 
 
     <TextView
@@ -229,6 +231,56 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.95" />
+        app:layout_constraintVertical_bias="0.95"
+        android:textAlignment="center"/>
+
+    <ImageView
+        android:id="@+id/grumpy"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/grumpy"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/horse"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/grumpy"
+        app:srcCompat="@drawable/kon"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/opica"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/opica"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/default_profile"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/opica"
+        app:srcCompat="@drawable/icon_profile_empty"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/profileInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Select your profile picture"
+        app:layout_constraintEnd_toStartOf="@+id/grumpy"
+        app:layout_constraintStart_toEndOf="@+id/opica"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"/>
 
 </android.support.constraint.ConstraintLayout>
