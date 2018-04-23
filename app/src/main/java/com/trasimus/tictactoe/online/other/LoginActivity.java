@@ -1,5 +1,7 @@
 package com.trasimus.tictactoe.online.other;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +18,7 @@ import com.facebook.accountkit.AccessToken;
 import com.facebook.accountkit.AccountKit;
 import com.facebook.accountkit.AccountKitLoginResult;
 import com.facebook.appevents.AppEventsLogger;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -30,6 +33,7 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DataSnapshot;
@@ -41,6 +45,7 @@ import com.trasimus.tictactoe.online.DefaultUser;
 import com.trasimus.tictactoe.online.FontHelper;
 import com.trasimus.tictactoe.online.R;
 import com.trasimus.tictactoe.online.UserMap;
+import com.trasimus.tictactoe.online.account.AccountActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -67,6 +72,10 @@ public class LoginActivity extends AppCompatActivity {
     private String mailX;
 
     private ArrayList<ArrayList<String>> friends;
+
+    private DatabaseReference mReference;
+
+    private String key;
 
 
     @Override
@@ -122,12 +131,11 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
                 com.facebook.AccessToken token1 = loginResult.getAccessToken();
                 handleFacebookAccessToken(token1);
-
             }
 
             @Override
             public void onCancel() {
-                Toast.makeText(LoginActivity.this, "Login cancelled", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "Login cancelled, try restarting your device", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -151,15 +159,25 @@ public class LoginActivity extends AppCompatActivity {
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
                             launchAccountActivity();
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Toast.makeText(LoginActivity.this, "Authentication failed " + task.getResult().toString(),
+                        } else if (!task.isSuccessful()) {
+                            Log.w("test", "signInWithCredential", task.getException());
+                            Toast.makeText(getApplicationContext(), "Firebase Facebook login failed",
                                     Toast.LENGTH_SHORT).show();
+
+                            if(task.getException() instanceof FirebaseAuthUserCollisionException) {
+                                Toast.makeText(getApplicationContext(), "User with Email id already exists, please login with your default login provider or link this provider with your account",
+                                        Toast.LENGTH_LONG).show();
+                            }
+                            LoginManager.getInstance().logOut();
                         }
+                            // If sign in fails, display a message to the user.
+
+
 
                         // ...
                     }
@@ -178,9 +196,16 @@ public class LoginActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
                             launchAccountActivity();
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Toast.makeText(LoginActivity.this, "Error while signing in", Toast.LENGTH_SHORT).show();
+                        } else if (!task.isSuccessful()) {
+                            Log.w("test", "signInWithCredential", task.getException());
+                            Toast.makeText(getApplicationContext(), "Firebase Google login failed",
+                                    Toast.LENGTH_SHORT).show();
+
+                            if(task.getException() instanceof FirebaseAuthUserCollisionException) {
+                                Toast.makeText(getApplicationContext(), "User with Email id already exists, please login with your default login provider or link this provider with your account",
+                                        Toast.LENGTH_LONG).show();
+                            }
+                            LoginManager.getInstance().logOut();
                         }
 
                         // ...
@@ -247,10 +272,14 @@ public class LoginActivity extends AppCompatActivity {
                     //create new user
                     FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
+                    mReference = FirebaseDatabase.getInstance().getReference();
+
+                    key = mReference.child("games").push().getKey();
+
                     String uniqueID = UUID.randomUUID().toString();
                     UserMap map = new UserMap(mailX, uniqueID);
 
-                    DefaultUser defaultUser = new DefaultUser(uniqueID, mailX, firebaseUser.getDisplayName(), "" , "", 0, friends, null, null, null, "", "0");
+                    DefaultUser defaultUser = new DefaultUser(uniqueID, mailX, firebaseUser.getDisplayName(), "" , "", 0, friends, null, null, null, "", "0", key);
                     Log.d("test", "default user initiated");
 
 
@@ -322,7 +351,39 @@ public class LoginActivity extends AppCompatActivity {
         {
             // email is not verified, so just prompt the message to the user and restart this activity.
             // NOTE: don't forget to log out the user.
-            Toast.makeText(LoginActivity.this, "Please verify your email", Toast.LENGTH_SHORT).show();
+            new AlertDialog.Builder(LoginActivity.this)
+                    .setTitle("Email not verified")
+                    .setMessage("Your email was not verified. Do you want to resend email?")
+                    .setNegativeButton(android.R.string.no, null)
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+
+                            user.sendEmailVerification()
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                // email sent
+
+                                                Log.d("test", "Mail poslany");
+                                                // after email is sent just logout the user and finish this activity
+                                                Toast.makeText(LoginActivity.this, "Verification email was sent", Toast.LENGTH_LONG).show();
+                                            }
+                                            else
+                                            {
+                                                // email not sent, so display message and restart the activity or do whatever you wish to do
+                                                Log.d("test", "Mail sa neposlal");
+                                                Toast.makeText(LoginActivity.this, "Failed to send email. Try again later", Toast.LENGTH_LONG).show();
+
+
+                                            }
+                                        }
+                                    });
+                        }
+                    }).create().show();
             FirebaseAuth.getInstance().signOut();
             refreshActivity();
 

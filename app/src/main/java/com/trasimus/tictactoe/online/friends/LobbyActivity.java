@@ -46,6 +46,7 @@ public class LobbyActivity extends AppCompatActivity {
     private String gameID;
     private ArrayList<ArrayList<String>> messages;
     private ArrayList<String> message;
+    private ArrayList<String> displayedMessages;
     private String player1Name;
     private String player2Name;
     private boolean isDeleted = false;
@@ -107,7 +108,7 @@ public class LobbyActivity extends AppCompatActivity {
         isOnline2 = (CheckBox) findViewById(R.id.isOnline2);
         lobbyState = (TextView) findViewById(R.id.lobbyState);
 
-        mTimer = new CountDownTimer(30000, 1000) {
+        mTimer = new CountDownTimer(10000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 lobbyState.setText("Game will begin in: " + millisUntilFinished / 1000);
@@ -126,11 +127,7 @@ public class LobbyActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 }
-                try {
-                    LobbyActivity.this.wait(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+
                 if (isPlayerTwo){
                     Intent intent = new Intent(LobbyActivity.this, GameActivity.class);
                     intent.putExtra("gameID", gameID);
@@ -148,6 +145,7 @@ public class LobbyActivity extends AppCompatActivity {
 
         message = new ArrayList<String>();
         messages = new ArrayList<ArrayList<String>>();
+        displayedMessages = new ArrayList<String>();
 
         bundle = getIntent().getExtras();
         player1 = bundle.getString("p1");
@@ -168,8 +166,6 @@ public class LobbyActivity extends AppCompatActivity {
         ref = mDatabaseReference.child("Lobby").child(lobbyID);
 
         if (isPlayerOne) {
-            gameID = mDatabaseReference.child("Games").getKey();
-
             mDatabaseReference.child("Users").child(player1).child("lobbyID").setValue(lobbyID);
 
             mLobby = new Lobby(lobbyID, player1, player2, gameID, messages, true, false, false, false, "3");
@@ -211,11 +207,14 @@ public class LobbyActivity extends AppCompatActivity {
                 isOnline2.setChecked(mLobby.isConnectedP2());
 
                 if (mLobby.getMessages() != null){
-                    messages = mLobby.getMessages();
-                    String message = mLobby.getMessages().get(mLobby.getMessages().size()-1).get(0);
-                    String name = mLobby.getMessages().get(mLobby.getMessages().size()-1).get(1);
-                    message = name + ": " + message;
-                    mAdapter.add(message);
+                    if (displayedMessages.size() < mLobby.getMessages().size()) {
+                        messages = mLobby.getMessages();
+                        String message = mLobby.getMessages().get(mLobby.getMessages().size() - 1).get(0);
+                        String name = mLobby.getMessages().get(mLobby.getMessages().size() - 1).get(1);
+                        message = name + ": " + message;
+                        displayedMessages.add(message);
+                        mAdapter.add(message);
+                    }
                 }
 
                 if (mLobby.isReadyP1() && mLobby.isReadyP2() && !countdown){
@@ -224,13 +223,23 @@ public class LobbyActivity extends AppCompatActivity {
                 }
 
                 if (i<2) {
-                    if (i==0) {
-                        getUserInfo(mLobby.getPlayer1());
-                        i++;
-                    } else if (i==1){
-                        getUserInfo(mLobby.getPlayer2());
-                        i++;
+                    for (int a=0; a<2; a++) {
+                        if (i == 0) {
+                            getUserInfo(mLobby.getPlayer1());
+                            i++;
+                        } else if (i == 1) {
+                            getUserInfo(mLobby.getPlayer2());
+                            i++;
+                        }
                     }
+                }
+
+                if (mLobby.getSize()=="3"){
+                    gameSize.check(R.id.size3);
+                } else if (mLobby.getSize()=="4"){
+                    gameSize.check(R.id.size4);
+                } else if (mLobby.getSize()=="5"){
+                    gameSize.check(R.id.size5);
                 }
             }
 
@@ -328,6 +337,7 @@ public class LobbyActivity extends AppCompatActivity {
                 if (defaultUser.getUserID().equals(mLobby.getPlayer1())){
                     user1.setText(defaultUser.getName());
                     player1Name = defaultUser.getName();
+                    gameID = defaultUser.getMyGameID();
                 } else if (defaultUser.getUserID().equals(mLobby.getPlayer2())){
                     user2.setText(defaultUser.getName());
                     player2Name = defaultUser.getName();

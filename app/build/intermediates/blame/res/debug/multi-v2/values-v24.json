@@ -4,7 +4,7 @@
             "outputFile": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v24\\values-v24.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\c0da661d7de833d56b8e6945628a81b1\\res\\values-v24\\values-v24.xml",
+                    "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-27.0.2.aar\\8f2e432635c750cbc38c323cb9a73794\\res\\values-v24\\values-v24.xml",
+                    "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-27.1.1.aar\\e17141dd3db939d53683c021c6f57af5\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

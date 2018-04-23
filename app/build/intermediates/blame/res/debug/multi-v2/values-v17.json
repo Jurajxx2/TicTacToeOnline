@@ -4,7 +4,7 @@
             "outputFile": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v17\\values-v17.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\account-kit-sdk-4.31.0.aar\\08d24bcf152e268d781407371aae71e9\\res\\values-v17\\values-v17.xml",
+                    "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\account-kit-sdk-4.31.0.aar\\4c46f816dc747f2b65f128f307b5f897\\res\\values-v17\\values-v17.xml",
                     "from": {
                         "startLines": "2,14",
                         "startColumns": "4,4",
@@ -15,7 +15,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\c0da661d7de833d56b8e6945628a81b1\\res\\values-v17\\values-v17.xml",
+                    "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\values-v17\\values-v17.xml",
                     "from": {
                         "startLines": "2,5,9,12,15,18,22,26,29,32,35,39,42,46",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",

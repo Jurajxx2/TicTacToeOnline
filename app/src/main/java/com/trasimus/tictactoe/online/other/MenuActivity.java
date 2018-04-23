@@ -209,6 +209,7 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 defaultUser = dataSnapshot.getValue(DefaultUser.class);
+                userRef2.child("lobbyID").setValue("");
 
                 Log.d("test", "Tu zacina service");
                 Intent intent = new Intent(MenuActivity.this, GameInvitationListener.class);

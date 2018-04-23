@@ -4,7 +4,24 @@
             "outputFile": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-mn\\values-mn.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\f62d9d2d49d2992c50dca82b673e6337\\res\\values-mn\\values.xml",
+                    "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-ads-11.8.0.aar\\eed43b80556e2691fe755553f2307623\\res\\values-mn\\values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10",
+                        "startColumns": "0,0,0,0,0,0,0",
+                        "startOffsets": "235,306,415,482,549,632,738",
+                        "endColumns": "70,108,66,66,82,105,65",
+                        "endOffsets": "305,414,481,548,631,737,803"
+                    },
+                    "to": {
+                        "startLines": "37,38,39,40,41,42,43",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "4564,4639,4752,4823,4894,4981,5091",
+                        "endColumns": "74,112,70,70,86,109,69",
+                        "endOffsets": "4634,4747,4818,4889,4976,5086,5156"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\295583fe9261e275982bf27a616b6d8b\\res\\values-mn\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -21,41 +38,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\aa01363b79d10f83bf7d7997f8cc8f73\\res\\values-mn\\values-mn.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "45",
-                        "startColumns": "4",
-                        "startOffsets": "5242",
-                        "endColumns": "100",
-                        "endOffsets": "5338"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\c0da661d7de833d56b8e6945628a81b1\\res\\values-mn\\values-mn.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,218,318,431,518,624,736,818,900,982,1091,1195,1292,1400,1501,1604,1763,1860",
-                        "endColumns": "112,99,112,86,105,111,81,81,81,108,103,96,107,100,102,158,96,80",
-                        "endOffsets": "213,313,426,513,619,731,813,895,977,1086,1190,1287,1395,1496,1599,1758,1855,1936"
-                    },
-                    "to": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,44",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,218,318,431,518,624,736,818,900,982,1091,1195,1292,1400,1501,1604,1763,5161",
-                        "endColumns": "112,99,112,86,105,111,81,81,81,108,103,96,107,100,102,158,96,80",
-                        "endOffsets": "213,313,426,513,619,731,813,895,977,1086,1190,1287,1395,1496,1599,1758,1855,5237"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-basement-11.8.0.aar\\08c44d9abef77e922fbaa021fb4b97ad\\res\\values-mn\\values.xml",
+                    "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-basement-11.8.0.aar\\efbcbbe0d2f7924b557e066d15c227df\\res\\values-mn\\values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -72,20 +55,37 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-ads-11.8.0.aar\\bd6548c39fc7cf6f33ac4010c8984f8d\\res\\values-mn\\values.xml",
+                    "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\values-mn\\values-mn.xml",
                     "from": {
-                        "startLines": "4,5,6,7,8,9,10",
-                        "startColumns": "0,0,0,0,0,0,0",
-                        "startOffsets": "235,306,415,482,549,632,738",
-                        "endColumns": "70,108,66,66,82,105,65",
-                        "endOffsets": "305,414,481,548,631,737,803"
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,218,318,431,518,624,736,818,900,982,1091,1195,1292,1400,1501,1604,1763,1860",
+                        "endColumns": "112,99,112,86,105,111,81,81,81,108,103,96,107,100,102,158,96,80",
+                        "endOffsets": "213,313,426,513,619,731,813,895,977,1086,1190,1287,1395,1496,1599,1758,1855,1936"
                     },
                     "to": {
-                        "startLines": "37,38,39,40,41,42,43",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "4564,4639,4752,4823,4894,4981,5091",
-                        "endColumns": "74,112,70,70,86,109,69",
-                        "endOffsets": "4634,4747,4818,4889,4976,5086,5156"
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,44",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,218,318,431,518,624,736,818,900,982,1091,1195,1292,1400,1501,1604,1763,5161",
+                        "endColumns": "112,99,112,86,105,111,81,81,81,108,103,96,107,100,102,158,96,80",
+                        "endOffsets": "213,313,426,513,619,731,813,895,977,1086,1190,1287,1395,1496,1599,1758,1855,5237"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\61560cb400ba0dcf721df9ea20ce011f\\res\\values-mn\\values-mn.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "45",
+                        "startColumns": "4",
+                        "startOffsets": "5242",
+                        "endColumns": "100",
+                        "endOffsets": "5338"
                     }
                 }
             ]

@@ -133,100 +133,128 @@ public class FriendsActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (isListFunction){
                     defaultUser = dataSnapshot.getValue(DefaultUser.class);
-                    String content = defaultUser.getName();
-                    if (isAccepted.equals("0") && state.equals("RECIEVED")){
-                        content = content + " [PENDING - ACCEPT OR DENIE]";
-                    } else if (isAccepted.equals("0") && state.equals("SENT")){
-                        content = content + " [PENDING - SENT]";
+                    String content;
+                    if (defaultUser==null){
+                      content = "User was deleted";
+                    } else {
+                        content = defaultUser.getName();
+                        if (isAccepted.equals("0") && state.equals("RECIEVED")) {
+                            content = content + " [PENDING - ACCEPT OR DENIE]";
+                        } else if (isAccepted.equals("0") && state.equals("SENT")) {
+                            content = content + " [PENDING - SENT]";
+                        }
                     }
                     adapter.add(content);
                 } else if (isShowUserF){
                     defaultUser = dataSnapshot.getValue(DefaultUser.class);
-                    String title = "User " + defaultUser.getUserID();
-                    String message = "Name: " + defaultUser.getName() + "\n";
-                    if (defaultUser.getAge()!=null) {
-                        message = message + " aged " + defaultUser.getAge() + "\n";
-                    }
-                    if (defaultUser.getCountry()!=null) {
-                        message = message + " from " + defaultUser.getCountry() + "\n";
-                    }
-                    if (isAccepted.equals("0") && state.equals("RECIEVED")){
-                        positiveBTN = "Accept";
-                        negativeBTN = "Delete request";
-                    } else if (isAccepted.equals("0") && state.equals("SENT")){
-                        positiveBTN = "";
-                        negativeBTN = "Delete request";
-                    } else if (isAccepted.equals("1")){
-                        positiveBTN = "Invite to game";
-                        negativeBTN = "Delete friend";
-                    }
 
-                    int profileImage = R.drawable.icon_profile_empty;
+                    if (defaultUser==null){
+                        new AlertDialog.Builder(FriendsActivity.this)
+                                .setTitle("Deleted user")
+                                .setIcon(R.drawable.icon_profile_empty)
+                                .setMessage("User was deleted")
+                                .setNegativeButton("Delete from friends", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        mDatabaseReference.child("Users").child(userID).child("Friends").child(String.valueOf(position)).removeValue();
+                                        refreshActivity();
+                                    }
+                                })
+                                .setPositiveButton(positiveBTN, new DialogInterface.OnClickListener() {
 
-                    if (defaultUser.getPhotoID()!=null){
-                        if (defaultUser.getPhotoID().equals("grumpy")){
-                            profileImage = R.drawable.grumpy;
-                        }if (defaultUser.getPhotoID().equals("kon")){
-                            profileImage = R.drawable.kon;
-                        }if (defaultUser.getPhotoID().equals("opica")){
-                            profileImage = R.drawable.opica;
-                        }if (defaultUser.getPhotoID().equals("0")){
-                            profileImage = R.drawable.icon_profile_empty;
+                                    public void onClick(DialogInterface arg0, int arg1) {
+
+                                    }
+                                }).create().show();
+                    } else {
+                        String title = defaultUser.getUserID();
+                        String message = "Name: " + defaultUser.getName() + "\n";
+                        if (defaultUser.getAge() != null) {
+                            message = message + " aged " + defaultUser.getAge() + "\n";
                         }
+                        if (defaultUser.getCountry() != null) {
+                            message = message + " from " + defaultUser.getCountry() + "\n";
+                        }
+                        if (isAccepted.equals("0") && state.equals("RECIEVED")) {
+                            positiveBTN = "Accept";
+                            negativeBTN = "Delete request";
+                        } else if (isAccepted.equals("0") && state.equals("SENT")) {
+                            positiveBTN = "";
+                            negativeBTN = "Delete request";
+                        } else if (isAccepted.equals("1")) {
+                            positiveBTN = "Invite to game";
+                            negativeBTN = "Delete friend";
+                        }
+
+                        int profileImage = R.drawable.icon_profile_empty;
+
+                        if (defaultUser.getPhotoID() != null) {
+                            if (defaultUser.getPhotoID().equals("grumpy")) {
+                                profileImage = R.drawable.grumpy;
+                            }
+                            if (defaultUser.getPhotoID().equals("kon")) {
+                                profileImage = R.drawable.kon;
+                            }
+                            if (defaultUser.getPhotoID().equals("opica")) {
+                                profileImage = R.drawable.opica;
+                            }
+                            if (defaultUser.getPhotoID().equals("0")) {
+                                profileImage = R.drawable.icon_profile_empty;
+                            }
+                        }
+
+                        new AlertDialog.Builder(FriendsActivity.this)
+                                .setTitle(title)
+                                .setIcon(profileImage)
+                                .setMessage(message)
+                                .setNegativeButton(negativeBTN, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        if (isAccepted.equals("0") && state.equals("RECIEVED")) {
+                                            //DELETE REQUEST
+                                            mDatabaseReference.child("Users").child(userIDX).child("Friends").child(String.valueOf(position)).removeValue();
+                                            mDatabaseReference.child("Users").child(userID).child("Friends").child(String.valueOf(position)).removeValue();
+                                            refreshActivity();
+                                        } else if (isAccepted.equals("0") && state.equals("SENT")) {
+                                            //DELETE REQUEST
+                                            mDatabaseReference.child("Users").child(userIDX).child("Friends").child(String.valueOf(position)).removeValue();
+                                            mDatabaseReference.child("Users").child(userID).child("Friends").child(String.valueOf(position)).removeValue();
+                                            refreshActivity();
+                                        } else if (isAccepted.equals("1")) {
+                                            //DELETE FRIEND
+                                            mDatabaseReference.child("Users").child(userIDX).child("Friends").child(String.valueOf(position)).removeValue();
+                                            mDatabaseReference.child("Users").child(userID).child("Friends").child(String.valueOf(position)).removeValue();
+                                            refreshActivity();
+                                        }
+                                    }
+                                })
+                                .setPositiveButton(positiveBTN, new DialogInterface.OnClickListener() {
+
+                                    public void onClick(DialogInterface arg0, int arg1) {
+                                        if (isAccepted.equals("0") && state.equals("RECIEVED")) {
+                                            //ACCEPT FRIEND REQUEST
+                                            mDatabaseReference.child("Users").child(userIDX).child("Friends").child(String.valueOf(position)).child("2").setValue("1");
+                                            mDatabaseReference.child("Users").child(userID).child("Friends").child(String.valueOf(position)).child("2").setValue("1");
+                                            refreshActivity();
+                                        } else if (isAccepted.equals("1")) {
+                                            //INVITE TO GAME
+                                            Intent intent2 = new Intent(FriendsActivity.this, GameInvitationListener.class);
+                                            stopService(intent2);
+
+                                            String lobbyID = mDatabaseReference.child("Lobby").push().getKey();
+                                            mDatabaseReference.child("Users").child(userIDX).child("lobbyID").setValue(lobbyID);
+                                            //mDatabaseReference.child("Users").child(userID).child("lobbyID").setValue(lobbyID);
+                                            Toast.makeText(FriendsActivity.this, "Game Invitation Sent", Toast.LENGTH_SHORT).show();
+                                            Intent intent = new Intent(FriendsActivity.this, LobbyActivity.class);
+                                            intent.putExtra("p1", userID);
+                                            intent.putExtra("p2", defaultUser.getUserID());
+                                            intent.putExtra("lobbyID", lobbyID);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                    }
+                                }).create().show();
                     }
-
-                    new AlertDialog.Builder(FriendsActivity.this)
-                            .setTitle(title)
-                            .setIcon(profileImage)
-                            .setMessage(message)
-                            .setNegativeButton(negativeBTN, new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    if (isAccepted.equals("0") && state.equals("RECIEVED")){
-                                        //DELETE REQUEST
-                                        mDatabaseReference.child("Users").child(userIDX).child("Friends").child(String.valueOf(position)).removeValue();
-                                        mDatabaseReference.child("Users").child(userID).child("Friends").child(String.valueOf(position)).removeValue();
-                                        refreshActivity();
-                                    } else if (isAccepted.equals("0") && state.equals("SENT")){
-                                        //DELETE REQUEST
-                                        mDatabaseReference.child("Users").child(userIDX).child("Friends").child(String.valueOf(position)).removeValue();
-                                        mDatabaseReference.child("Users").child(userID).child("Friends").child(String.valueOf(position)).removeValue();
-                                        refreshActivity();
-                                    } else if (isAccepted.equals("1")){
-                                        //DELETE FRIEND
-                                        mDatabaseReference.child("Users").child(userIDX).child("Friends").child(String.valueOf(position)).removeValue();
-                                        mDatabaseReference.child("Users").child(userID).child("Friends").child(String.valueOf(position)).removeValue();
-                                        refreshActivity();
-                                    }
-                                }
-                            })
-                            .setPositiveButton(positiveBTN, new DialogInterface.OnClickListener() {
-
-                                public void onClick(DialogInterface arg0, int arg1) {
-                                    if (isAccepted.equals("0") && state.equals("RECIEVED")){
-                                        //ACCEPT FRIEND REQUEST
-                                        mDatabaseReference.child("Users").child(userIDX).child("Friends").child(String.valueOf(position)).child("2").setValue("1");
-                                        mDatabaseReference.child("Users").child(userID).child("Friends").child(String.valueOf(position)).child("2").setValue("1");
-                                        refreshActivity();
-                                    }  else if (isAccepted.equals("1")){
-                                        //INVITE TO GAME
-                                        Intent intent2 = new Intent(FriendsActivity.this, GameInvitationListener.class);
-                                        stopService(intent2);
-
-                                        String lobbyID = mDatabaseReference.child("Lobby").push().getKey();
-                                        mDatabaseReference.child("Users").child(userIDX).child("lobbyID").setValue(lobbyID);
-                                        //mDatabaseReference.child("Users").child(userID).child("lobbyID").setValue(lobbyID);
-                                        Toast.makeText(FriendsActivity.this, "Game Invitation Sent", Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(FriendsActivity.this, LobbyActivity.class);
-                                        intent.putExtra("p1", userID);
-                                        intent.putExtra("p2", defaultUser.getUserID());
-                                        intent.putExtra("lobbyID", lobbyID);
-                                        startActivity(intent);
-                                        finish();
-                                    }
-                                }
-                            }).create().show();
-
                 } else {
                     mDefaultUser = dataSnapshot.getValue(DefaultUser.class);
                     getFriendList();

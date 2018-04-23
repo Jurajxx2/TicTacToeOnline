@@ -93,7 +93,7 @@ public class GameListAdapter extends BaseAdapter {
 
         final GameObject gameObject = getItem(position);
 
-        if (!gameObject.getPlayer2().equals("")){
+        if (!gameObject.getPlayer2().equals("") || (gameObject.getPlayer1().equals("") && gameObject.getPlayer2().equals("")) || gameObject.getWinnerP1() || gameObject.getWinnerP2() || gameObject.getDraw()){
             if (convertView == null) {
                 LayoutInflater inflater = (LayoutInflater) mActivity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 convertView = inflater.inflate(R.layout.empty_item, parent, false);
@@ -115,11 +115,11 @@ public class GameListAdapter extends BaseAdapter {
             holder.params = (LinearLayout.LayoutParams) holder.game.getLayoutParams();
             convertView.setTag(holder);
         }
-
+        Log.d("test", "Is deleted" + gameObject.isDeleted());
         Log.d("test", "getView called");
         final ViewHolder holder = (ViewHolder) convertView.getTag();
 
-        String size = gameObject.getSize() + "x" + gameObject.getSize() + " game";
+        String size = gameObject.getSize() + "x" + gameObject.getSize() + " game by " + gameObject.getP1name();
         holder.game.setText(size);
 
         return convertView;

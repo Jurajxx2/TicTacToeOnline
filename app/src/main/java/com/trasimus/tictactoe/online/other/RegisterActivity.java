@@ -8,10 +8,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.facebook.login.LoginManager;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.trasimus.tictactoe.online.R;
 
@@ -143,8 +145,22 @@ public class RegisterActivity extends AppCompatActivity {
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        Toast.makeText(RegisterActivity.this, "User succsesfully created, please verify your mail", Toast.LENGTH_SHORT).show();
-                        Log.d("test", "User was created");
+                        if (task.isSuccessful()) {
+                            Toast.makeText(RegisterActivity.this, "User succsesfully created, please verify your mail", Toast.LENGTH_SHORT).show();
+                            Log.d("test", "User was created");
+                            // Sign in success, update UI with the signed-in user's information
+                        } else if (!task.isSuccessful()) {
+                            Log.w("test", "signInWithCredential", task.getException());
+                            Toast.makeText(getApplicationContext(), "Firebase Google login failed",
+                                    Toast.LENGTH_SHORT).show();
+
+                            if(task.getException() instanceof FirebaseAuthUserCollisionException) {
+                                Toast.makeText(getApplicationContext(), "User with Email ID already exists",
+                                        Toast.LENGTH_LONG).show();
+                            }
+                            LoginManager.getInstance().logOut();
+                        }
+
                     }
                 });
     }

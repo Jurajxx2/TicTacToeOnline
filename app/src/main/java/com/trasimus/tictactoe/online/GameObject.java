@@ -28,13 +28,14 @@ public class GameObject {
     private Boolean draw;
     private String p1name;
     private String p2name;
+    private boolean isDeleted;
 
 
     public GameObject(){
 
     }
 
-    public GameObject(String gameID, String player1, String player2, int size, Boolean moveP1, Boolean moveP2, Boolean startPlayer, int move, int viewID, Boolean winnerP1, Boolean winnerP2, Boolean connectedP1, Boolean connectedP2, Boolean draw, String p1name, String p2name){
+    public GameObject(String gameID, String player1, String player2, int size, Boolean moveP1, Boolean moveP2, Boolean startPlayer, int move, int viewID, Boolean winnerP1, Boolean winnerP2, Boolean connectedP1, Boolean connectedP2, Boolean draw, String p1name, String p2name, boolean isDeleted){
       this.player1 = player1;
       this.player2 = player2;
       this.moveP1 = moveP1;
@@ -51,6 +52,7 @@ public class GameObject {
       this.draw = draw;
       this.p1name = p1name;
       this.p2name = p2name;
+      this.isDeleted = isDeleted;
       //this.clickedButton = clickedButton;
       initiateGameList();
     }
@@ -808,5 +810,13 @@ public class GameObject {
 
     public void setP2name(String p2name) {
         this.p2name = p2name;
+    }
+
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
     }
 }

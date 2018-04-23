@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Thu Apr 19 10:29:39 CEST 2018
+#Sun Apr 22 16:22:35 CEST 2018
 1.base=C\:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\assets\\debug
 0.baseType=DIRECTORY
 1.baseType=DIRECTORY

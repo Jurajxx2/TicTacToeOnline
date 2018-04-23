@@ -31,6 +31,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.trasimus.tictactoe.online.DefaultUser;
 import com.trasimus.tictactoe.online.FontHelper;
+import com.trasimus.tictactoe.online.friends.LobbyActivity;
+import com.trasimus.tictactoe.online.other.GameInvitationListener;
 import com.trasimus.tictactoe.online.other.LoginActivity;
 import com.trasimus.tictactoe.online.other.MenuActivity;
 import com.trasimus.tictactoe.online.R;
@@ -96,6 +98,8 @@ public class AccountActivity extends AppCompatActivity {
                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
                         public void onClick(DialogInterface arg0, int arg1) {
+                            Intent intent = new Intent(AccountActivity.this, GameInvitationListener.class);
+                            stopService(intent);
                             mDatabaseReference.child("UserMap").child(user.getUid()).removeValue();
                             mDatabaseReference.child("Users").child(defaultUser.getUserID()).removeValue();
                             user.delete()
@@ -109,7 +113,11 @@ public class AccountActivity extends AppCompatActivity {
                                                 startActivity(intent);
                                                 finish();
                                             } else {
-                                                Toast.makeText(AccountActivity.this, "Error, account was not removed", Toast.LENGTH_LONG).show();
+                                                Toast.makeText(AccountActivity.this, "Error, account was not removed:" + task.getException() , Toast.LENGTH_LONG).show();
+                                                FirebaseAuth.getInstance().signOut();
+                                                Intent intent = new Intent(AccountActivity.this, LoginActivity.class);
+                                                startActivity(intent);
+                                                finish();
                                             }
                                         }
                                     });

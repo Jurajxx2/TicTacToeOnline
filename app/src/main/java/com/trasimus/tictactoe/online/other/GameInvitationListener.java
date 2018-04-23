@@ -11,6 +11,7 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -55,7 +56,7 @@ public class GameInvitationListener extends Service {
             CharSequence name = getString(R.string.channel_name);
             String description = getString(R.string.channel_description);
             int importance = NotificationManager.IMPORTANCE_DEFAULT;
-            NotificationChannel channel = new NotificationChannel(NotificationChannel.DEFAULT_CHANNEL_ID, name, importance);
+            NotificationChannel channel = new NotificationChannel("my_channel_id", name, importance);
             channel.setDescription(description);
             // Register the channel with the system
             //NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
@@ -68,6 +69,16 @@ public class GameInvitationListener extends Service {
         }
 
         mDatabaseReference = FirebaseDatabase.getInstance().getReference();
+
+        if (mUser==null){
+            Toast.makeText(GameInvitationListener.this, "Loading notification listener failed: you won't recieve any game invitations.", Toast.LENGTH_SHORT).show();
+            stopSelf();
+        }
+
+        if (mUser.getUid()==null){
+            Toast.makeText(GameInvitationListener.this, "Loading notification listener failed: you won't recieve any game invitations.", Toast.LENGTH_SHORT).show();
+            stopSelf();
+        }
 
         getID(mUser.getUid());
     }
@@ -116,6 +127,9 @@ public class GameInvitationListener extends Service {
         mListener = ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.getValue()==null){
+                    return;
+                }
                 lobbyID = dataSnapshot.getValue().toString();
 
                 if (lobbyID != null && !lobbyID.equals("")){
