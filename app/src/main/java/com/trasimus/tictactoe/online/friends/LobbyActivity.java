@@ -89,6 +89,11 @@ public class LobbyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lobby);
 
+        //pre istotu
+        if (ref!=null) {
+            ref.removeEventListener(mListener);
+        }
+
         //OTESTOVAT TREBA
         Intent intent = new Intent(LobbyActivity.this, GameInvitationListener.class);
         stopService(intent);
@@ -117,6 +122,7 @@ public class LobbyActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 lobbyState.setText("Starting game...");
+                ref.removeEventListener(mListener);
                 if (isPlayerOne){
                     Intent intent = new Intent(LobbyActivity.this, GameActivity.class);
                     intent.putExtra("customGame", "Y");
@@ -364,6 +370,7 @@ public class LobbyActivity extends AppCompatActivity {
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
                     public void onClick(DialogInterface arg0, int arg1) {
+                        ref.removeEventListener(mListener);
                         LobbyActivity.super.onBackPressed();
                     }
                 }).create().show();
@@ -379,6 +386,7 @@ public class LobbyActivity extends AppCompatActivity {
             }
             mLobby.setConnectedP1(false);
             ref.child("connectedP1").setValue(mLobby.isConnectedP1());
+            mDatabaseReference.child("Users").child(mLobby.getPlayer1()).child("lobbyID").setValue("");
             mDatabaseReference.child("Users").child(mLobby.getPlayer2()).child("lobbyID").setValue("");
         } else if (isPlayerTwo){
             if (mLobby.isReadyP2()) {
@@ -387,6 +395,7 @@ public class LobbyActivity extends AppCompatActivity {
             }
             mLobby.setConnectedP2(false);
             ref.child("connectedP2").setValue(mLobby.isConnectedP2());
+            mDatabaseReference.child("Users").child(mLobby.getPlayer1()).child("lobbyID").setValue("");
             mDatabaseReference.child("Users").child(mLobby.getPlayer2()).child("lobbyID").setValue("");
         }
         if (!mLobby.isConnectedP1() && !mLobby.isConnectedP2()){
@@ -409,7 +418,7 @@ public class LobbyActivity extends AppCompatActivity {
         stopService(intent);
 
 
-        if (isDeleted || mLobby.getGameID()==null){
+        if (isDeleted || mLobby.getLobbyID()==null){
             new AlertDialog.Builder(LobbyActivity.this)
                     .setTitle("Lobby ended")
                     .setMessage("The lobby you want to join ended")
@@ -421,9 +430,9 @@ public class LobbyActivity extends AppCompatActivity {
                     }).create().show();
         }
         if (isPlayerOne){
-            mDatabaseReference.child("Users").child(player1).child("lobbyID").setValue(lobbyID);
+            mDatabaseReference.child("Users").child(mLobby.getPlayer1()).child("lobbyID").setValue(mLobby.getLobbyID());
         } else if (isPlayerTwo){
-            mDatabaseReference.child("Users").child(player2).child("lobbyID").setValue(lobbyID);
+            mDatabaseReference.child("Users").child(mLobby.getPlayer2()).child("lobbyID").setValue(mLobby.getLobbyID());
         }
     }
 }

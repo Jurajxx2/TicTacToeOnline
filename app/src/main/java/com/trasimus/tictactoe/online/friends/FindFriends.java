@@ -23,6 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.trasimus.tictactoe.online.DefaultUser;
 import com.trasimus.tictactoe.online.R;
 import com.trasimus.tictactoe.online.UserMap;
+import com.trasimus.tictactoe.online.other.LoginActivity;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -241,16 +242,20 @@ public class FindFriends extends AppCompatActivity {
                             friendListArray2 = new ArrayList<ArrayList<String>>();
 
                             if (defaultUser.getFriends() == null) {
+                                Log.d("test", "Get friends is null Another user");
                                 friendListArray1.add(friendRequest);
                             } else {
+                                Log.d("test", "Friend list" + currentUser.getFriends().get(0).get(1));
+                                friendListArray1.addAll(defaultUser.getFriends());
                                 friendListArray1 = defaultUser.getFriends();
                                 friendListArray1.add(friendRequest);
                             }
 
-                            if (currentUser.getFriends() == null) {
+                            if (friends == null) {
+                                Log.d("test", "Get friends is null Current user");
                                 friendListArray2.add(friendRequest);
                             } else {
-                                friendListArray2 = currentUser.getFriends();
+                                friendListArray2.addAll(friends);
                                 friendListArray2.add(friendRequest);
                             }
 
@@ -319,6 +324,7 @@ public class FindFriends extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 currentUser = dataSnapshot.getValue(DefaultUser.class);
                 userID = currentUser.getUserID();
+
                 getFriendList();
             }
 
@@ -328,5 +334,7 @@ public class FindFriends extends AppCompatActivity {
             }
         });
     }
+
+
 
 }

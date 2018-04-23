@@ -95,7 +95,7 @@ public class MenuActivity extends AppCompatActivity {
                             Toast.makeText(MenuActivity.this, "Please, check your connection", Toast.LENGTH_SHORT).show();
                             break;
                         }
-                        if (defaultUser.getName()==null){
+                        if (defaultUser.getName()==null || defaultUser.getName().equals("")){
                             Toast.makeText(MenuActivity.this, "Please, set your name in Account to play a game", Toast.LENGTH_SHORT).show();
                             break;
                         } else {
@@ -114,7 +114,7 @@ public class MenuActivity extends AppCompatActivity {
                         if (loading){
                             Toast.makeText(MenuActivity.this, "Please, check your connection", Toast.LENGTH_SHORT).show();
                             break;
-                        } if (defaultUser.getName()==null){
+                        } if (defaultUser.getName()==null || defaultUser.getName().equals("")){
                         Toast.makeText(MenuActivity.this, "Please, set your name in Account to play a game", Toast.LENGTH_SHORT).show();
                         break;
                             }else {

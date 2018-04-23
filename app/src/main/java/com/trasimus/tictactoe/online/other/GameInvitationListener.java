@@ -104,13 +104,8 @@ public class GameInvitationListener extends Service {
         mReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if (!isAnotherPlayer) {
                     defaultUser = dataSnapshot.getValue(DefaultUser.class);
                     firebaseListenerWithNotification(defaultUser.getUserID());
-                } else if (isAnotherPlayer){
-                    otherUser = dataSnapshot.getValue(DefaultUser.class);
-                    showNotification(otherUser.getName());
-                }
             }
 
             @Override
@@ -134,23 +129,23 @@ public class GameInvitationListener extends Service {
 
                 if (lobbyID != null && !lobbyID.equals("")){
 
-                    getPlayerId(lobbyID);
-//                    Intent intent = new Intent(GameInvitationListener.this, LobbyActivity.class);
-//                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                    intent.putExtra("X", "X");
-//                    intent.putExtra("lobbyID", lobbyID);
-//                    PendingIntent pendingIntent = PendingIntent.getActivity(GameInvitationListener.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-//
-//                    Notification notification = new Notification.Builder(GameInvitationListener.this)
-//                            .setSmallIcon(R.drawable.icon_profile_empty)
-//                            .setTicker("New invitation")  // the status text
-//                            .setWhen(System.currentTimeMillis())  // the time stamp
-//                            .setContentTitle("Game Invitation")  // the label of the entry
-//                            .setContentText("You have been invited to play Tic Tac Toe with ")  // the contents of the entry
-//                            .setContentIntent(pendingIntent)  // The intent to send when the entry is clicked
-//                            .build();
-//
-//                    notificationManager.notify(NotificationManager.IMPORTANCE_DEFAULT, notification);
+                    Intent intent = new Intent(GameInvitationListener.this, LobbyActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    intent.putExtra("X", "X");
+                    intent.putExtra("lobbyID", lobbyID);
+                    PendingIntent pendingIntent = PendingIntent.getActivity(GameInvitationListener.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+                    Notification notification = new Notification.Builder(GameInvitationListener.this)
+                            .setSmallIcon(R.mipmap.ic_launcher_round)
+                            .setTicker("New invitation")  // the status text
+                            .setWhen(System.currentTimeMillis())  // the time stamp
+                            .setContentTitle("Game Invitation")  // the label of the entry
+                            .setContentText("You have been invited to play Tic Tac Toe")  // the contents of the entry
+                            .setContentIntent(pendingIntent)  // The intent to send when the entry is clicked
+                            .build();
+
+                    notificationManager.notify(NotificationManager.IMPORTANCE_DEFAULT, notification);
+                    mReference.child("lobbyID").setValue("");
                 }
             }
 
@@ -159,43 +154,6 @@ public class GameInvitationListener extends Service {
 
             }
         });
-    }
-
-    private void getPlayerId(String lobbby){
-        mDatabaseReference.child("Lobby").child(lobbby).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                mLobby = dataSnapshot.getValue(Lobby.class);
-                if (mLobby == null){
-                    return;
-                }
-                getUserInfo(mLobby.getPlayer1(), true);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
-
-    private void showNotification(String userName){
-        Intent intent = new Intent(GameInvitationListener.this, LobbyActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        intent.putExtra("X", "X");
-        intent.putExtra("lobbyID", lobbyID);
-        PendingIntent pendingIntent = PendingIntent.getActivity(GameInvitationListener.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-        Notification notification = new Notification.Builder(GameInvitationListener.this)
-                .setSmallIcon(R.mipmap.ic_launcher_round)
-                .setTicker("New invitation")  // the status text
-                .setWhen(System.currentTimeMillis())  // the time stamp
-                .setContentTitle("Game Invitation")  // the label of the entry
-                .setContentText("You have been invited to play Tic Tac Toe with ")  // the contents of the entry
-                .setContentIntent(pendingIntent)  // The intent to send when the entry is clicked
-                .build();
-
-        notificationManager.notify(NotificationManager.IMPORTANCE_DEFAULT, notification);
     }
 
     @Nullable

@@ -281,7 +281,7 @@ public class GameActivity extends AppCompatActivity {
                                 }).create().show();
                     }
 
-                    if ((!newGame.getPlayer2().equals("")) && (newGame.getMove() == 0)) {
+                    if ((!newGame.getPlayer2().equals("")) && (newGame.getMove() == 0) && newGame.getConnectedP2()) {
                         Log.d("test", "Player 2 set");
                         players.setText(newGame.getP1name() + " vs " + newGame.getP2name());
                         gameTimer();
@@ -618,6 +618,7 @@ public class GameActivity extends AppCompatActivity {
     protected void onStop() {
 
         if (playerOne) {
+            mDatabaseReference.child("games").child(key).child("connectedP1").setValue(false);
             if (newGame.getPlayer2().equals("")  && !newGame.getWinnerP1() && !newGame.getWinnerP2() && !newGame.getDraw()) {
                 firstPlayerEventListener.removeEventListener(listener1);
                 mDatabaseReference.child("games").child(key).child("connectedP1").setValue(false);
@@ -646,6 +647,7 @@ public class GameActivity extends AppCompatActivity {
         }
 
         if (playerTwo && !newGame.getWinnerP1() && !newGame.getWinnerP2() && !newGame.getDraw()) {
+            mDatabaseReference.child("games").child(key).child("connectedP2").setValue(false);
             if (!newGame.getConnectedP1()) {
                 firstPlayerEventListener.removeEventListener(listener1);
                 mDatabaseReference.child("games").child(key).child("player1").setValue("");

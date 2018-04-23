@@ -354,7 +354,13 @@ public class LoginActivity extends AppCompatActivity {
             new AlertDialog.Builder(LoginActivity.this)
                     .setTitle("Email not verified")
                     .setMessage("Your email was not verified. Do you want to resend email?")
-                    .setNegativeButton(android.R.string.no, null)
+                    .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            FirebaseAuth.getInstance().signOut();
+                            refreshActivity();
+                        }
+                    })
                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
                         public void onClick(DialogInterface arg0, int arg1) {
@@ -380,12 +386,13 @@ public class LoginActivity extends AppCompatActivity {
 
 
                                             }
+                                            FirebaseAuth.getInstance().signOut();
+                                            refreshActivity();
                                         }
                                     });
                         }
                     }).create().show();
-            FirebaseAuth.getInstance().signOut();
-            refreshActivity();
+
 
             //restart this activity
 
