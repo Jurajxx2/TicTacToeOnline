@@ -33,10 +33,11 @@ public class RankingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_rankings);
 
         mListView = findViewById(R.id.rankingsList);
-        mList = new ArrayList<DefaultUser>();
-        mStrings = new ArrayList<String>();
         mDatabaseReference = FirebaseDatabase.getInstance().getReference();
         usersReference = mDatabaseReference.child("Users");
+
+        mList = new ArrayList<DefaultUser>();
+        mStrings = new ArrayList<String>();
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
         mDefaultUser = new DefaultUser();
 
@@ -47,7 +48,6 @@ public class RankingsActivity extends AppCompatActivity {
                     mDefaultUser = snapshot.getValue(DefaultUser.class);
                     mList.add(mDefaultUser);
                 }
-
                 sortList();
             }
 

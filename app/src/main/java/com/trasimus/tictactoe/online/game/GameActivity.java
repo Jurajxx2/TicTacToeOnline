@@ -36,6 +36,7 @@ public class GameActivity extends AppCompatActivity {
     private LinearLayout mLinearLayout;
     private GridLayout mGridLayout;
     private boolean isDeleted;
+    private boolean otherPlayer = false;
 
     private Button[] tictac;
     private String[] game;
@@ -48,11 +49,6 @@ public class GameActivity extends AppCompatActivity {
     private Boolean startPlayer;
     private Boolean theOtherPlayer;
 
-    private String player1;
-    private String player2;
-    private Boolean moveP1;
-    private Boolean moveP2;
-
     private FirebaseUser mFirebaseUser;
     private DatabaseReference mDatabaseReference;
     private DatabaseReference firstPlayerEventListener;
@@ -60,13 +56,10 @@ public class GameActivity extends AppCompatActivity {
     private DatabaseReference userRef1;
     private DatabaseReference userRef2;
 
-
     private String key;
 
     private List<Button> tictacList;
     private List<String> gameList;
-
-    private GameObject value;
 
     private TextView players;
     private TextView gameState;
@@ -86,24 +79,16 @@ public class GameActivity extends AppCompatActivity {
 
     private ValueEventListener listener1;
     private ValueEventListener gameListener;
-    private ValueEventListener userListener1;
-    private ValueEventListener userListener2;
 
     private CountDownTimer mTimer;
     private TextView moveView;
 
+    private int r=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(com.trasimus.tictactoe.online.R.layout.activity_game);
-
-
-//        if (!(firstPlayerEventListener==null || myRef==null)) {
-//            firstPlayerEventListener.removeEventListener(listener1);
-//            myRef.removeEventListener(gameListener);
-//        }
-
 
         //Get extra info
         bundle = getIntent().getExtras();
@@ -130,7 +115,6 @@ public class GameActivity extends AppCompatActivity {
         mDatabaseReference = FirebaseDatabase.getInstance().getReference();
 
         playerX = mFirebaseUser.getUid();
-
 
         //Initiate CountDownTimer
         mTimer = new CountDownTimer(30000, 1000) {
@@ -199,7 +183,6 @@ public class GameActivity extends AppCompatActivity {
             }
         }
 
-
         surrender.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -243,20 +226,16 @@ public class GameActivity extends AppCompatActivity {
         gameList = Arrays.asList(game);
 
         //If player creates the game
-        if (bundle.getString("gameID") == null || bundle.getString("customGame") != null) {
+        if (bundle.getString("gameID") == null) {
 
             playerOne = true;
             playerTwo = false;
-
             key = bundle.getString("key");
-
             mRandom = new Random();
             startPlayer = mRandom.nextBoolean();
-
             theOtherPlayer = !startPlayer;
 
             newGame = new GameObject(key, mFirebaseUser.getUid(), "", bundle.getInt("size"), startPlayer, theOtherPlayer, startPlayer, 0, 0, false, false, true, false, false, "", "", false);
-
             mDatabaseReference.child("games").child(key).setValue(newGame);
 
             getID(playerX);
@@ -352,15 +331,10 @@ public class GameActivity extends AppCompatActivity {
         } else
         //If player connects to the game
         {
-
             playerOne = false;
             playerTwo = true;
-
             newGame = new GameObject();
             key = bundle.getString("gameID");
-
-            mDatabaseReference.child("games").child(key).child("player2").setValue(playerX);
-
             getID(playerX);
 
             firstPlayerEventListener = mDatabaseReference.child("games").child(key);
@@ -369,6 +343,23 @@ public class GameActivity extends AppCompatActivity {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     newGame = dataSnapshot.getValue(GameObject.class);
+
+                    if (!newGame.getConnectedP2() && r==0 && newGame.getPlayer2().equals("")){
+                        mDatabaseReference.child("games").child(key).child("player2").setValue(playerX);
+                        mDatabaseReference.child("games").child(key).child("connectedP2").setValue(true);
+                        r++;
+                    } else if ((newGame.getConnectedP2() && r==0) || (!newGame.getPlayer2().equals("") && r==0) || (!newGame.getConnectedP1() && !newGame.getConnectedP2())){
+                        otherPlayer = true;
+                        new AlertDialog.Builder(GameActivity.this)
+                                .setTitle("Game session ended")
+                                .setMessage("Game you want to connect is no longer available")
+                                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+
+                                    public void onClick(DialogInterface arg0, int arg1) {
+                                        finish();
+                                    }
+                                }).create().show();
+                    }
 
                     players.setText(newGame.getP1name() + " vs " + newGame.getP2name());
 
@@ -440,7 +431,6 @@ public class GameActivity extends AppCompatActivity {
 
         //Listener for GameList child
         myRef = mDatabaseReference.child("games").child(key).child("gameList");
-
         gameListener = myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -487,18 +477,13 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void restartTimer() {
-        if (mTimer == null) {
-            return;
-        }
+        if (mTimer == null) { return; }
         mTimer.cancel();
         mTimer.start();
     }
 
     private void stopTimer() {
-        if (mTimer == null) {
-            return;
-        }
-        Log.d("test", "Stop timer");
+        if (mTimer == null) { return; }
         mTimer.cancel();
     }
 
@@ -509,9 +494,12 @@ public class GameActivity extends AppCompatActivity {
         mTimer.start();
     }
 
-
     //On click method, when user clicks on btn in the game
     public void doSomething(View view) {
+
+        if (otherPlayer){
+            return;
+        }
 
         //If any player won, game ended
         if (newGame.getWinnerP1() || newGame.getWinnerP2()) {
@@ -522,7 +510,6 @@ public class GameActivity extends AppCompatActivity {
         if (newGame.getPlayer2().equals("")) {
             return;
         }
-
 
         //If player one is not on the move, he cannot click
         if (playerOne) {
@@ -571,15 +558,14 @@ public class GameActivity extends AppCompatActivity {
             newGame.setDraw(true);
             mDatabaseReference.child("games").child(key).child("draw").setValue(newGame.getDraw());
         }
-
-
-        //Toast.makeText(this, "Button clicked with id " + view.getId(), Toast.LENGTH_SHORT).show();
     }
 
 
     @Override
     public void onBackPressed() {
-        if (newGame.getPlayer2().equals("")) {
+        if (otherPlayer){
+            GameActivity.super.onBackPressed();
+        } else if (newGame.getPlayer2().equals("")) {
             new AlertDialog.Builder(GameActivity.this)
                     .setTitle("Really Exit?")
                     .setMessage("Are you sure you want to exit game finder?")
@@ -616,15 +602,15 @@ public class GameActivity extends AppCompatActivity {
 
     @Override
     protected void onStop() {
-
-        if (playerOne) {
+        if (otherPlayer){
+            super.onStop();
+        } else if (playerOne) {
             mDatabaseReference.child("games").child(key).child("connectedP1").setValue(false);
             if (newGame.getPlayer2().equals("")  && !newGame.getWinnerP1() && !newGame.getWinnerP2() && !newGame.getDraw()) {
                 firstPlayerEventListener.removeEventListener(listener1);
                 mDatabaseReference.child("games").child(key).child("connectedP1").setValue(false);
                 mDatabaseReference.child("games").child(key).child("player1").setValue("");
                 mDatabaseReference.child("games").child(key).child("player2").setValue("");
-                //mDatabaseReference.child("games").child(key).removeValue();
                 mDatabaseReference.child("games").child(key).child("isDeleted").setValue(true);
                 newGame.setDeleted(true);
                 isDeleted = true;
@@ -644,9 +630,7 @@ public class GameActivity extends AppCompatActivity {
                 Log.d("test", "Player disconnected");
                 mDatabaseReference.child("games").child(key).child("connectedP1").setValue(false);
             }
-        }
-
-        if (playerTwo && !newGame.getWinnerP1() && !newGame.getWinnerP2() && !newGame.getDraw()) {
+        } else if (playerTwo && !newGame.getWinnerP1() && !newGame.getWinnerP2() && !newGame.getDraw()) {
             mDatabaseReference.child("games").child(key).child("connectedP2").setValue(false);
             if (!newGame.getConnectedP1()) {
                 firstPlayerEventListener.removeEventListener(listener1);
@@ -669,15 +653,9 @@ public class GameActivity extends AppCompatActivity {
     protected void onRestart() {
         super.onRestart();
 
-        if (playerOne) {
-            Log.d("test", "Player connected");
-            mDatabaseReference.child("games").child(key).child("connectedP1").setValue(true);
-        } else if (playerTwo) {
-            Log.d("test", "Player connected");
-            mDatabaseReference.child("games").child(key).child("connectedP2").setValue(true);
-        }
-
-        if (newGame.isDeleted()) {
+        if (otherPlayer){
+            finish();
+        } else if (newGame.isDeleted()) {
             new AlertDialog.Builder(GameActivity.this)
                     .setTitle("Game ended")
                     .setMessage("The game you want to join ended")
@@ -687,7 +665,16 @@ public class GameActivity extends AppCompatActivity {
                             finish();
                         }
                     }).create().show();
-        }
+        }else if (playerOne) {
+            Log.d("test", "Player connected");
+            if (!newGame.getWinnerP1() && !newGame.getWinnerP2() && !newGame.getDraw()) {
+                mDatabaseReference.child("games").child(key).child("connectedP1").setValue(true);
+            }
+        } else if (playerTwo) {
+            Log.d("test", "Player connected");
+            if (!newGame.getWinnerP1() && !newGame.getWinnerP2() && !newGame.getDraw()) {
+                mDatabaseReference.child("games").child(key).child("connectedP2").setValue(true);
+            }        }
 
     }
 
@@ -1206,5 +1193,4 @@ public class GameActivity extends AppCompatActivity {
         mDatabaseReference.child("games").child(key).child("winnerP1").setValue(newGame.getWinnerP1());
         mDatabaseReference.child("games").child(key).child("winnerP2").setValue(newGame.getWinnerP2());
     }
-
 }

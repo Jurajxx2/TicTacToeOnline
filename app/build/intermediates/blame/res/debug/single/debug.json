@@ -1860,12 +1860,20 @@
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\facebook-login-4.31.0.aar\\9c4265675bd5763534ab965dd29fb1aa\\res\\drawable-mdpi-v4\\com_facebook_tooltip_blue_xout.png"
     },
     {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_web_view_test.xml.flat",
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\testfairy-android-sdk-1.6.4.aar\\6293867492401ca2e8d61e7627f46209\\res\\layout\\activity_web_view_test.xml"
+    },
+    {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_list_pressed_holo_dark.9.png.flat",
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\drawable-xhdpi-v4\\abc_list_pressed_holo_dark.9.png"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_googleg_disabled_color_18.png.flat",
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\295583fe9261e275982bf27a616b6d8b\\res\\drawable-xxhdpi-v4\\googleg_disabled_color_18.png"
+    },
+    {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_hidden_views_test.xml.flat",
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\testfairy-android-sdk-1.6.4.aar\\6293867492401ca2e8d61e7627f46209\\res\\layout\\hidden_views_test.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_com_facebook_tooltip_black_background.9.png.flat",

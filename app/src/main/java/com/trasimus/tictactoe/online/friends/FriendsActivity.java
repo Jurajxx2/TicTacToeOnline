@@ -34,6 +34,7 @@ public class FriendsActivity extends AppCompatActivity {
     private DatabaseReference ref;
     private DatabaseReference mDatabase;
     private DatabaseReference mReference;
+    private DatabaseReference friendReference;
     private DefaultUser mDefaultUser;
     private DefaultUser defaultUser;
     private UserMap mMap;
@@ -108,22 +109,6 @@ public class FriendsActivity extends AppCompatActivity {
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    private void getID(String playerUID){
-        mDatabase = mDatabaseReference.child("UserMap").child(playerUID);
-        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                mMap = dataSnapshot.getValue(UserMap.class);
-                getUserInfo(mMap.getUserID(), false, "", "", false, 0);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
     }
 
     private void getUserInfo(final String userIDX, final boolean isListFunction, final String isAccepted, final String state, final boolean isShowUserF, final int position) {
@@ -210,22 +195,9 @@ public class FriendsActivity extends AppCompatActivity {
                                 .setNegativeButton(negativeBTN, new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        if (isAccepted.equals("0") && state.equals("RECIEVED")) {
-                                            //DELETE REQUEST
-                                            mDatabaseReference.child("Users").child(userIDX).child("Friends").child(String.valueOf(position)).removeValue();
-                                            mDatabaseReference.child("Users").child(userID).child("Friends").child(String.valueOf(position)).removeValue();
-                                            refreshActivity();
-                                        } else if (isAccepted.equals("0") && state.equals("SENT")) {
-                                            //DELETE REQUEST
-                                            mDatabaseReference.child("Users").child(userIDX).child("Friends").child(String.valueOf(position)).removeValue();
-                                            mDatabaseReference.child("Users").child(userID).child("Friends").child(String.valueOf(position)).removeValue();
-                                            refreshActivity();
-                                        } else if (isAccepted.equals("1")) {
-                                            //DELETE FRIEND
-                                            mDatabaseReference.child("Users").child(userIDX).child("Friends").child(String.valueOf(position)).removeValue();
-                                            mDatabaseReference.child("Users").child(userID).child("Friends").child(String.valueOf(position)).removeValue();
-                                            refreshActivity();
-                                        }
+                                        friends.remove(position);
+                                        mDatabaseReference.child("Users").child(userID).child("Friends").setValue(friends);
+                                        deleteRequest(userIDX);
                                     }
                                 })
                                 .setPositiveButton(positiveBTN, new DialogInterface.OnClickListener() {
@@ -259,6 +231,33 @@ public class FriendsActivity extends AppCompatActivity {
                     mDefaultUser = dataSnapshot.getValue(DefaultUser.class);
                     getFriendList();
                 }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void deleteRequest(String friendID){
+        friendReference = mDatabaseReference.child("Users").child(friendID).child("Friends");
+        friendReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                ArrayList<ArrayList<String>> friendsOfFriendToDelete;
+
+                friendsOfFriendToDelete = (ArrayList<ArrayList<String>>) dataSnapshot.getValue();
+
+                for (int i=0; i<friendsOfFriendToDelete.size(); i++){
+                    if (friendsOfFriendToDelete.get(i).get(0).equals(userID) || friendsOfFriendToDelete.get(i).get(1).equals(userID)){
+                        friendsOfFriendToDelete.remove(i);
+                        friendReference.setValue(friendsOfFriendToDelete);
+                        break;
+                    }
+                }
+
+                refreshActivity();
             }
 
             @Override

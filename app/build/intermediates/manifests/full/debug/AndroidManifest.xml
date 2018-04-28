@@ -9,6 +9,8 @@
         android:targetSdkVersion="27" />
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.BATTERY_STATS" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- Required by older versions of Google Play services to create IID tokens -->
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
@@ -17,7 +19,9 @@
         android:name="com.trasimus.tictactoe.online.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="com.trasimus.tictactoe.online.permission.C2D_MESSAGE" />
+    <uses-permission android:name="com.trasimus.tictactoe.online.permission.C2D_MESSAGE" /> <!-- WRITE_EXTERNAL_STORAGE is needed for auto-update -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -301,6 +305,14 @@
             android:name="com.facebook.internal.FacebookInitProvider"
             android:authorities="com.trasimus.tictactoe.online.FacebookInitProvider"
             android:exported="false" />
+
+        <activity
+            android:name="com.testfairy.activities.ProvideFeedbackActivity"
+            android:configChanges="orientation|screenSize"
+            android:theme="@android:style/Theme.Holo.Light" />
+        <activity
+            android:name="com.testfairy.activities.AutoUpdateActivity"
+            android:configChanges="orientation|screenSize" />
     </application>
 
 </manifest>

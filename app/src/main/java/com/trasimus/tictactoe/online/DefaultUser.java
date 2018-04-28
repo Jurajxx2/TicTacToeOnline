@@ -10,7 +10,6 @@ public class DefaultUser {
     private String mail;
     private String name;
     private int points;
-    private Uri userIMG;
     private ArrayList<ArrayList<String>> friends;
     private String fbAccount;
     private String googleAccount;
@@ -31,7 +30,6 @@ public class DefaultUser {
         this.mail = mail;
         this.name = name;
         this.points = points;
-        this.userIMG = userIMG;
         this.friends = friends;
         this.fbAccount = fbAccount;
         this.googleAccount = googleAccount;
@@ -73,14 +71,6 @@ public class DefaultUser {
 
     public void setPoints(int points) {
         this.points = points;
-    }
-
-    public Uri getUserIMG() {
-        return userIMG;
-    }
-
-    public void setUserIMG(Uri userIMG) {
-        this.userIMG = userIMG;
     }
 
     public ArrayList<ArrayList<String>> getFriends() {

@@ -41,6 +41,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.testfairy.TestFairy;
 import com.trasimus.tictactoe.online.DefaultUser;
 import com.trasimus.tictactoe.online.FontHelper;
 import com.trasimus.tictactoe.online.R;
@@ -57,7 +58,6 @@ public class LoginActivity extends AppCompatActivity {
     public static int RC_SIGN_IN = 123;
     LoginButton fbLoginButton;
     CallbackManager callbackManager = CallbackManager.Factory.create();
-    AppEventsLogger logger;
     private static final String EMAIL = "email";
     private GoogleSignInClient mGoogleSignInClient;
     private FirebaseAuth mAuth;
@@ -84,6 +84,8 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(com.trasimus.tictactoe.online.R.layout.activity_login);
         FontHelper.setCustomTypeface(findViewById(com.trasimus.tictactoe.online.R.id.view_root));
 
+        TestFairy.begin(this, "2574a6227e6a3e46d0d28cf1584fb72823002c36");
+
         mail = (EditText) findViewById(R.id.mailInput);
         pass = (EditText) findViewById(R.id.passwordInput);
 
@@ -91,7 +93,7 @@ public class LoginActivity extends AppCompatActivity {
 
         currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
-            launchAccountActivity();
+            launchMenuActivity();
         }
 
         SignInButton signInButton = findViewById(R.id.sign_in_button);
@@ -106,21 +108,6 @@ public class LoginActivity extends AppCompatActivity {
 
         // Build a GoogleSignInClient with the options specified by gso.
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-//        if (account != null) {
-//            launchAccountActivity();
-//        }
-
-        logger = AppEventsLogger.newLogger(this);
-
-        AccessToken accessToken = AccountKit.getCurrentAccessToken();
-        com.facebook.AccessToken token = com.facebook.AccessToken.getCurrentAccessToken();
-
-//        if (accessToken != null || token != null) {
-//            //Handle Returning User
-//            launchAccountActivity();
-//        }
 
         fbLoginButton = (LoginButton) findViewById(com.trasimus.tictactoe.online.R.id.facebook_login_button);
         fbLoginButton.setReadPermissions(Arrays.asList(EMAIL));
@@ -163,7 +150,7 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
-                            launchAccountActivity();
+                            launchMenuActivity();
                         } else if (!task.isSuccessful()) {
                             Log.w("test", "signInWithCredential", task.getException());
                             Toast.makeText(getApplicationContext(), "Firebase Facebook login failed",
@@ -175,18 +162,11 @@ public class LoginActivity extends AppCompatActivity {
                             }
                             LoginManager.getInstance().logOut();
                         }
-                            // If sign in fails, display a message to the user.
-
-
-
-                        // ...
                     }
                 });
-
     }
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
-
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -195,7 +175,7 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
-                            launchAccountActivity();
+                            launchMenuActivity();
                         } else if (!task.isSuccessful()) {
                             Log.w("test", "signInWithCredential", task.getException());
                             Toast.makeText(getApplicationContext(), "Firebase Google login failed",
@@ -207,8 +187,6 @@ public class LoginActivity extends AppCompatActivity {
                             }
                             LoginManager.getInstance().logOut();
                         }
-
-                        // ...
                     }
                 });
     }
@@ -222,22 +200,17 @@ public class LoginActivity extends AppCompatActivity {
 
         super.onActivityResult(requestCode, resultCode, data);
 
-        // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
-            // The Task returned from this call is always completed, no need to attach
-            // a listener.
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 firebaseAuthWithGoogle(account);
             } catch (ApiException e) {
-                // Google Sign In failed, update UI appropriately
-                // ...
+                // Google Sign In failed
                 Toast.makeText(this, "Error while signing in", Toast.LENGTH_SHORT).show();
             }
         }
-
 
         if (requestCode == APP_REQUEST_CODE) { // confirm that this response matches your request
             AccountKitLoginResult loginResult = data.getParcelableExtra(AccountKitLoginResult.RESULT_KEY);
@@ -247,13 +220,13 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(this, toastMessage, Toast.LENGTH_LONG).show();
             } else {
                 if (loginResult.getAccessToken() != null) {
-                    launchAccountActivity();
+                    launchMenuActivity();
                 }
             }
         }
     }
 
-    private void launchAccountActivity() {
+    private void launchMenuActivity() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         checkIfUserExist(user);
@@ -269,25 +242,16 @@ public class LoginActivity extends AppCompatActivity {
                 Log.d("test", "onDataChange started");
                 if(!dataSnapshot.exists()) {
                     friends = new ArrayList<ArrayList<String>>();
-                    //create new user
                     FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-
                     mReference = FirebaseDatabase.getInstance().getReference();
 
                     key = mReference.child("games").push().getKey();
 
                     String uniqueID = UUID.randomUUID().toString();
                     UserMap map = new UserMap(mailX, uniqueID);
-
                     DefaultUser defaultUser = new DefaultUser(uniqueID, mailX, firebaseUser.getDisplayName(), "" , "", 0, friends, null, null, null, "", "0", key);
-                    Log.d("test", "default user initiated");
-
-
                     FirebaseDatabase.getInstance().getReference().child("UserMap").child(firebaseUser.getUid()).setValue(map);
-                    Log.d("test", "user map zapisany v databaze");
-
                     FirebaseDatabase.getInstance().getReference().child("Users").child(uniqueID).setValue(defaultUser);
-                    Log.d("test", "toto tu este je?");
                 }
                 startActivity();
             }
@@ -345,7 +309,7 @@ public class LoginActivity extends AppCompatActivity {
         {
             // user is verified, so you can finish this activity or send user to activity which you want.
             Toast.makeText(LoginActivity.this, "Successfully logged in", Toast.LENGTH_SHORT).show();
-            launchAccountActivity();
+            launchMenuActivity();
         }
         else
         {

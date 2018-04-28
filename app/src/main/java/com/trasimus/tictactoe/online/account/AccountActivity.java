@@ -276,11 +276,8 @@ public class AccountActivity extends AppCompatActivity {
             grumpy.setVisibility(View.GONE);
             default_profile.setVisibility(View.GONE);
             profileInfo.setVisibility(View.GONE);
-
-
         }
     }
-
 
     private void getID(String playerUID){
         mDatabase = mDatabaseReference.child("UserMap").child(playerUID);
@@ -306,7 +303,6 @@ public class AccountActivity extends AppCompatActivity {
                 defaultUser = dataSnapshot.getValue(DefaultUser.class);
 
                 name.setText(defaultUser.getName());
-                //email.setText(defaultUser.getMail());
                 id.setText(defaultUser.getUserID());
                 score.setText(String.valueOf(defaultUser.getPoints()));
                 ageView.setText(defaultUser.getAge());

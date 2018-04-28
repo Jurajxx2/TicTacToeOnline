@@ -158,9 +158,7 @@ import java.util.Arrays;
                  if (task.isSuccessful()) {
                      Toast.makeText(ConnectAccountsActivity.this, "Linking to another account succesful", Toast.LENGTH_SHORT).show();
                  } else {
-                     //FirebaseUser prevUser = currentUser;
-                     //currentUser = mAuth.signInWithCredential(credential)
-
+                     //Zatial tu nic nie je
                  }
              }
          });
@@ -191,19 +189,6 @@ import java.util.Arrays;
              }
          }
 
-
-         if (requestCode == APP_REQUEST_CODE) { // confirm that this response matches your request
-             AccountKitLoginResult loginResult = data.getParcelableExtra(AccountKitLoginResult.RESULT_KEY);
-             String toastMessage;
-             if (loginResult.getError() != null) {
-                 toastMessage = loginResult.getError().getErrorType().getMessage();
-                 Toast.makeText(this, toastMessage, Toast.LENGTH_LONG).show();
-             } else {
-                 if (loginResult.getAccessToken() != null) {
-                    // launchAccountActivity();
-                 }
-             }
-         }
      }
 
      private void checkIfEmailVerified()

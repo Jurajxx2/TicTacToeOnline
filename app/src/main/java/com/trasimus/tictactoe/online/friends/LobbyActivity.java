@@ -90,7 +90,7 @@ public class LobbyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lobby);
 
         //pre istotu
-        if (ref!=null) {
+        if (ref != null) {
             ref.removeEventListener(mListener);
         }
 
@@ -123,7 +123,7 @@ public class LobbyActivity extends AppCompatActivity {
             public void onFinish() {
                 lobbyState.setText("Starting game...");
                 ref.removeEventListener(mListener);
-                if (isPlayerOne){
+                if (isPlayerOne) {
                     Intent intent = new Intent(LobbyActivity.this, GameActivity.class);
                     intent.putExtra("customGame", "Y");
                     intent.putExtra("IDofGame", gameID);
@@ -134,7 +134,7 @@ public class LobbyActivity extends AppCompatActivity {
                     finish();
                 }
 
-                if (isPlayerTwo){
+                if (isPlayerTwo) {
                     Intent intent = new Intent(LobbyActivity.this, GameActivity.class);
                     intent.putExtra("gameID", gameID);
                     startActivity(intent);
@@ -159,11 +159,13 @@ public class LobbyActivity extends AppCompatActivity {
         lobbyID = bundle.getString("lobbyID");
         flag = getIntent().getStringExtra("X");
 
-        if (flag==null){
+        if (flag == null) {
             isPlayerOne = true;
+            switch2.setClickable(false);
             Log.d("test", "Player 1");
-        } else if (flag.equals("X")){
+        } else if (flag.equals("X")) {
             isPlayerTwo = true;
+            switch1.setClickable(false);
             Log.d("test", "Player 2");
         }
 
@@ -177,7 +179,7 @@ public class LobbyActivity extends AppCompatActivity {
             mLobby = new Lobby(lobbyID, player1, player2, gameID, messages, true, false, false, false, "3");
 
             ref.setValue(mLobby);
-        } else if (isPlayerTwo){
+        } else if (isPlayerTwo) {
             mLobby = new Lobby();
             ref.child("connectedP2").setValue(true);
         }
@@ -187,7 +189,7 @@ public class LobbyActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 mLobby = dataSnapshot.getValue(Lobby.class);
 
-                if (mLobby == null){
+                if (mLobby == null) {
                     ref.removeEventListener(mListener);
                     new AlertDialog.Builder(LobbyActivity.this)
                             .setTitle("Lobby not found")
@@ -200,7 +202,7 @@ public class LobbyActivity extends AppCompatActivity {
                             }).create().show();
                 }
 
-                if (countdown){
+                if (countdown) {
                     countdown = false;
                     cancelCountdown();
                     lobbyState.setText("Waiting for players");
@@ -212,7 +214,7 @@ public class LobbyActivity extends AppCompatActivity {
                 isOnline1.setChecked(mLobby.isConnectedP1());
                 isOnline2.setChecked(mLobby.isConnectedP2());
 
-                if (mLobby.getMessages() != null){
+                if (mLobby.getMessages() != null) {
                     if (displayedMessages.size() < mLobby.getMessages().size()) {
                         messages = mLobby.getMessages();
                         String message = mLobby.getMessages().get(mLobby.getMessages().size() - 1).get(0);
@@ -223,13 +225,13 @@ public class LobbyActivity extends AppCompatActivity {
                     }
                 }
 
-                if (mLobby.isReadyP1() && mLobby.isReadyP2() && !countdown){
+                if (mLobby.isReadyP1() && mLobby.isReadyP2() && !countdown) {
                     countdown = true;
                     startCountdown();
                 }
 
-                if (i<2) {
-                    for (int a=0; a<2; a++) {
+                if (i < 2) {
+                    for (int a = 0; a < 2; a++) {
                         if (i == 0) {
                             getUserInfo(mLobby.getPlayer1());
                             i++;
@@ -239,12 +241,12 @@ public class LobbyActivity extends AppCompatActivity {
                         }
                     }
                 }
-
-                if (mLobby.getSize()=="3"){
+                Log.d("test", "Size: " + mLobby.getSize());
+                if (mLobby.getSize() == "3") {
                     gameSize.check(R.id.size3);
-                } else if (mLobby.getSize()=="4"){
+                } else if (mLobby.getSize() == "4") {
                     gameSize.check(R.id.size4);
-                } else if (mLobby.getSize()=="5"){
+                } else if (mLobby.getSize() == "5") {
                     gameSize.check(R.id.size5);
                 }
             }
@@ -258,14 +260,14 @@ public class LobbyActivity extends AppCompatActivity {
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mEditText.getText().toString().length()==0){
+                if (mEditText.getText().toString().length() == 0) {
                     return;
                 }
                 message.clear();
                 message.add(mEditText.getText().toString());
                 if (isPlayerOne) {
                     message.add(player1Name);
-                } else if (isPlayerTwo){
+                } else if (isPlayerTwo) {
                     message.add(player2Name);
                 }
                 messages.add(message);
@@ -295,13 +297,13 @@ public class LobbyActivity extends AppCompatActivity {
         gameSize.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == size3.getId()){
+                if (checkedId == size3.getId()) {
                     mLobby.setSize("3");
                     ref.child("size").setValue(mLobby.getSize());
-                } else if (checkedId == size4.getId()){
+                } else if (checkedId == size4.getId()) {
                     mLobby.setSize("4");
                     ref.child("size").setValue(mLobby.getSize());
-                } else if (checkedId == size5.getId()){
+                } else if (checkedId == size5.getId()) {
                     mLobby.setSize("5");
                     ref.child("size").setValue(mLobby.getSize());
                 }
@@ -309,11 +311,11 @@ public class LobbyActivity extends AppCompatActivity {
         });
     }
 
-    private void startCountdown(){
+    private void startCountdown() {
         mTimer.start();
     }
 
-    private void cancelCountdown(){
+    private void cancelCountdown() {
         mTimer.cancel();
     }
 
@@ -340,11 +342,11 @@ public class LobbyActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 defaultUser = dataSnapshot.getValue(DefaultUser.class);
 
-                if (defaultUser.getUserID().equals(mLobby.getPlayer1())){
+                if (defaultUser.getUserID().equals(mLobby.getPlayer1())) {
                     user1.setText(defaultUser.getName());
                     player1Name = defaultUser.getName();
                     gameID = defaultUser.getMyGameID();
-                } else if (defaultUser.getUserID().equals(mLobby.getPlayer2())){
+                } else if (defaultUser.getUserID().equals(mLobby.getPlayer2())) {
                     user2.setText(defaultUser.getName());
                     player2Name = defaultUser.getName();
                 }
@@ -374,12 +376,12 @@ public class LobbyActivity extends AppCompatActivity {
                         LobbyActivity.super.onBackPressed();
                     }
                 }).create().show();
-        }
+    }
 
     @Override
     protected void onStop() {
 
-        if (isPlayerOne){
+        if (isPlayerOne) {
             if (mLobby.isReadyP1()) {
                 mLobby.setReadyP1(!mLobby.isReadyP1());
                 ref.child("readyP1").setValue(mLobby.isReadyP1());
@@ -388,7 +390,7 @@ public class LobbyActivity extends AppCompatActivity {
             ref.child("connectedP1").setValue(mLobby.isConnectedP1());
             mDatabaseReference.child("Users").child(mLobby.getPlayer1()).child("lobbyID").setValue("");
             mDatabaseReference.child("Users").child(mLobby.getPlayer2()).child("lobbyID").setValue("");
-        } else if (isPlayerTwo){
+        } else if (isPlayerTwo) {
             if (mLobby.isReadyP2()) {
                 mLobby.setReadyP2(!mLobby.isReadyP2());
                 ref.child("readyP2").setValue(mLobby.isReadyP2());
@@ -398,7 +400,7 @@ public class LobbyActivity extends AppCompatActivity {
             mDatabaseReference.child("Users").child(mLobby.getPlayer1()).child("lobbyID").setValue("");
             mDatabaseReference.child("Users").child(mLobby.getPlayer2()).child("lobbyID").setValue("");
         }
-        if (!mLobby.isConnectedP1() && !mLobby.isConnectedP2()){
+        if (!mLobby.isConnectedP1() && !mLobby.isConnectedP2()) {
             ref.removeValue();
             isDeleted = true;
         }
@@ -418,7 +420,7 @@ public class LobbyActivity extends AppCompatActivity {
         stopService(intent);
 
 
-        if (isDeleted || mLobby.getLobbyID()==null){
+        if (isDeleted || mLobby.getLobbyID() == null) {
             new AlertDialog.Builder(LobbyActivity.this)
                     .setTitle("Lobby ended")
                     .setMessage("The lobby you want to join ended")
@@ -429,9 +431,9 @@ public class LobbyActivity extends AppCompatActivity {
                         }
                     }).create().show();
         }
-        if (isPlayerOne){
+        if (isPlayerOne) {
             mDatabaseReference.child("Users").child(mLobby.getPlayer1()).child("lobbyID").setValue(mLobby.getLobbyID());
-        } else if (isPlayerTwo){
+        } else if (isPlayerTwo) {
             mDatabaseReference.child("Users").child(mLobby.getPlayer2()).child("lobbyID").setValue(mLobby.getLobbyID());
         }
     }

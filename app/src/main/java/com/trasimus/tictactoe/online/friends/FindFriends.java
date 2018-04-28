@@ -33,9 +33,6 @@ public class FindFriends extends AppCompatActivity {
 
     private String[] countries;
     private EditText nameFind;
-    private AutoCompleteTextView countryFind;
-    private EditText ageFind;
-    private ArrayAdapter<String> adapter;
     private ArrayAdapter<String> adapter2;
 
     private FirebaseUser mUser;
@@ -44,16 +41,17 @@ public class FindFriends extends AppCompatActivity {
     private DatabaseReference mDatabase;
     private DatabaseReference reference;
     private DatabaseReference ref;
-    private ValueEventListener mListener;
+    private DatabaseReference ref2;
     private ArrayList<String> friendRequest;
+    private DefaultUser showUser;
     private boolean isFriend;
+    private int alpha;
 
     private DefaultUser mDefaultUser;
     private ArrayList<DefaultUser> mList;
     private ArrayList<String> mUsers;
     private ArrayList<Integer> listedUsers;
     private String userID;
-    private DefaultUser defaultUser;
     private UserMap userMap;
     private DefaultUser currentUser;
     private ArrayList<ArrayList<String>> friendListArray1;
@@ -98,8 +96,8 @@ public class FindFriends extends AppCompatActivity {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.d("test", "test " + listedUsers.get(position));
-                getUser(mList.get(listedUsers.get(position)), position);
+                showUser = mList.get(listedUsers.get(position));
+                showUser(position);
             }
         });
     }
@@ -148,7 +146,9 @@ public class FindFriends extends AppCompatActivity {
 
     private void nextStep(){
         int position = 1;
+
         String content;
+
         for (int x=0; x<mList.size(); x++){
             if (!mList.get(x).getName().contains(nameFind.getText().toString()) || mList.get(x).getUserID().equals(currentUser.getUserID())){
                 continue;
@@ -160,12 +160,14 @@ public class FindFriends extends AppCompatActivity {
 
             for (int all=0; all<friendIDs.size(); all++) {
                 if (mList.get(x).getUserID().equals(friendIDs.get(all))){
-                    friendsInSearchResult.add("X");
+                    //friendsInSearchResult.add("X");
+                    friendsInSearchResult.add(position-1, "X");
+                    break;
                 } else {
-                    friendsInSearchResult.add("O");
+                    friendsInSearchResult.add(position-1, "O");
                 }
             }
-
+            //Toast.makeText(this, "ArraySize: " + friendsInSearchResult.size(), Toast.LENGTH_SHORT).show();
             if (mList.get(x).getAge()!=null) {
                 content = content + " aged " + mList.get(x).getAge();
             }
@@ -181,16 +183,11 @@ public class FindFriends extends AppCompatActivity {
         }
     }
 
-    private void getUser(DefaultUser defaultUser, int positionInResult){
-        showUser(defaultUser, positionInResult);
-    }
-
-    private void showUser(final DefaultUser defaultUser, int positionInResult){
+    private void showUser(int positionInResult){
 
         if (friendsInSearchResult.size()>0) {
             if (friendsInSearchResult.get(positionInResult).equals("X")) {
                 isFriend = true;
-
             } else {
                 isFriend = false;
             }
@@ -200,27 +197,27 @@ public class FindFriends extends AppCompatActivity {
 
 
         if (isFriend){
-            Toast.makeText(this, defaultUser.getName() + " is your friend or friend request was sent", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, showUser.getName() + " is your friend or friend request was sent", Toast.LENGTH_LONG).show();
         } else {
-            String title = "User " + defaultUser.getUserID();
-            String message = "Name: " + defaultUser.getName() + "\n";
-            if (defaultUser.getAge() != null) {
-                message = message + " aged " + defaultUser.getAge() + "\n";
+            String title = "User " + showUser.getUserID();
+            String message = "Name: " + showUser.getName() + "\n";
+            if (showUser.getAge() != null) {
+                message = message + " aged " + showUser.getAge() + "\n";
             }
-            if (defaultUser.getCountry() != null) {
-                message = message + " from " + defaultUser.getCountry() + "\n";
+            if (showUser.getCountry() != null) {
+                message = message + " from " + showUser.getCountry() + "\n";
             }
 
             int profileImage = R.drawable.icon_profile_empty;
 
-            if (defaultUser.getPhotoID()!=null){
-                if (defaultUser.getPhotoID().equals("grumpy")){
+            if (showUser.getPhotoID()!=null){
+                if (showUser.getPhotoID().equals("grumpy")){
                     profileImage = R.drawable.grumpy;
-                }if (defaultUser.getPhotoID().equals("kon")){
+                }if (showUser.getPhotoID().equals("kon")){
                     profileImage = R.drawable.kon;
-                }if (defaultUser.getPhotoID().equals("opica")){
+                }if (showUser.getPhotoID().equals("opica")){
                     profileImage = R.drawable.opica;
-                }if (defaultUser.getPhotoID().equals("0")){
+                }if (showUser.getPhotoID().equals("0")){
                     profileImage = R.drawable.icon_profile_empty;
                 }
             }
@@ -235,21 +232,13 @@ public class FindFriends extends AppCompatActivity {
                         public void onClick(DialogInterface arg0, int arg1) {
                             friendRequest = new ArrayList<String>();
                             friendRequest.add(currentUser.getUserID());//WHO SENT REQUEST
-                            friendRequest.add(defaultUser.getUserID());//WHO RECIEVE REQUEST
+                            friendRequest.add(showUser.getUserID());//WHO RECIEVE REQUEST
                             friendRequest.add("0");//IF WAS ACCEPTED
 
                             friendListArray1 = new ArrayList<ArrayList<String>>();
                             friendListArray2 = new ArrayList<ArrayList<String>>();
 
-                            if (defaultUser.getFriends() == null) {
-                                Log.d("test", "Get friends is null Another user");
-                                friendListArray1.add(friendRequest);
-                            } else {
-                                Log.d("test", "Friend list" + currentUser.getFriends().get(0).get(1));
-                                friendListArray1.addAll(defaultUser.getFriends());
-                                friendListArray1 = defaultUser.getFriends();
-                                friendListArray1.add(friendRequest);
-                            }
+                            getFriendsFriendList(showUser.getUserID());
 
                             if (friends == null) {
                                 Log.d("test", "Get friends is null Current user");
@@ -259,7 +248,6 @@ public class FindFriends extends AppCompatActivity {
                                 friendListArray2.add(friendRequest);
                             }
 
-                            mDatabaseReference.child("Users").child(defaultUser.getUserID()).child("Friends").setValue(friendListArray1);
                             mDatabaseReference.child("Users").child(currentUser.getUserID()).child("Friends").setValue(friendListArray2);
                             Toast.makeText(FindFriends.this, "Friend request was sent", Toast.LENGTH_SHORT);
                             finish();
@@ -289,6 +277,33 @@ public class FindFriends extends AppCompatActivity {
                         friendIDs.add(friends.get(i).get(0));
                     }
                 }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+    private void getFriendsFriendList(final String friendID){
+        ref2 = mDatabaseReference.child("Users").child(friendID).child("Friends");
+        ref2.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                ArrayList<ArrayList<String>> friendsOfFriend = new ArrayList<ArrayList<String>>();
+
+                friendsOfFriend = (ArrayList<ArrayList<String>>) dataSnapshot.getValue();
+
+                if (friendsOfFriend == null) {
+                    Log.d("test", "Get friends is null Another user");
+                    friendListArray1.add(friendRequest);
+                } else {
+                    friendListArray1.addAll(friendsOfFriend);
+                    friendListArray1.add(friendRequest);
+                }
+                mDatabaseReference.child("Users").child(friendID).child("Friends").setValue(friendListArray1);
             }
 
             @Override

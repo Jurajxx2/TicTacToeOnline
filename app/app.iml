@@ -184,6 +184,7 @@
     <orderEntry type="library" name="Gradle: com.facebook.android:facebook-places-4.31.0" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-ads-11.8.0" level="project" />
     <orderEntry type="library" name="Gradle: android.arch.lifecycle:livedata-core-1.1.0" level="project" />
+    <orderEntry type="library" name="Gradle: testfairy:testfairy-android-sdk-1.6.4" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-tasks-11.8.0" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-auth-11.8.0" level="project" />
     <orderEntry type="library" name="Gradle: android.arch.core:common:1.1.0@jar" level="project" />

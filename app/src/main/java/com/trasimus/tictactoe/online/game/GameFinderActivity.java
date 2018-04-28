@@ -64,10 +64,7 @@ public class GameFinderActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 GameObject test = mAdapter.getItem(position);
-                test.getGameID();
-
                 getGameInfo(test.getGameID());
-                //Toast.makeText(GameFinderActivity.this, "test" + test.getGameID(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -131,8 +128,6 @@ public class GameFinderActivity extends AppCompatActivity {
     @Override
     public void onStart(){
         super.onStart();
-        Log.d("test", "test2");
-
         mAdapter = new GameListAdapter(this, myRef);
         mListView.setAdapter(mAdapter);
     }

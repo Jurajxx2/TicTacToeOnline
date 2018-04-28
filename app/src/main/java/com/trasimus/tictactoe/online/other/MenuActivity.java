@@ -57,7 +57,6 @@ public class MenuActivity extends AppCompatActivity {
 
         MobileAds.initialize(this, YOUR_ADMOB_APP_ID);
 
-
         mInterstitialAd = new InterstitialAd(this);
         mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
 
@@ -81,8 +80,6 @@ public class MenuActivity extends AppCompatActivity {
                 .build();
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-
-
 
         ListView menu = (ListView) findViewById(com.trasimus.tictactoe.online.R.id.menu);
 
@@ -159,12 +156,6 @@ public class MenuActivity extends AppCompatActivity {
         }
     }
 
-    private void checkDatabaseForCurrentUser() {
-        mFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        mFirebaseUser.getEmail();
-
-    }
-
     public void launchAccountActivity() {
         Intent intent = new Intent(this, AccountActivity.class);
         startActivity(intent);
@@ -172,12 +163,7 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void mLogout(View view){
-        //mGoogleSignInClient.signOut();
-
         FirebaseAuth.getInstance().signOut();
-
-        //AccountKit.logOut();
-        //LoginManager.getInstance().logOut();
         launchLoginActivity();
     }
 
