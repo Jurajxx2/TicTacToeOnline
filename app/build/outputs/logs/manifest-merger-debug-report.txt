@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-105:12
-INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-105:12
-INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-105:12
-INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-105:12
+ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-115:12
+INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-115:12
+INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-115:12
+INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-115:12
 MERGED from [com.facebook.android:account-kit-sdk:4.31.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\account-kit-sdk-4.31.0.aar\4c46f816dc747f2b65f128f307b5f897\AndroidManifest.xml:21:1-55:12
 MERGED from [com.facebook.android:facebook-android-sdk:4.31.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\facebook-android-sdk-4.31.0.aar\0882f40fe154de1536c4e1cf4e19072a\AndroidManifest.xml:21:1-31:12
 MERGED from [com.facebook.android:facebook-login:4.31.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\facebook-login-4.31.0.aar\9c4265675bd5763534ab965dd29fb1aa\AndroidManifest.xml:21:1-31:12
@@ -46,7 +46,7 @@ MERGED from [com.facebook.android:facebook-messenger:4.31.0] C:\Users\juraj\.gra
 MERGED from [com.facebook.android:facebook-core:4.31.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\facebook-core-4.31.0.aar\69a78829bc57c0acbbe3b6aebe6aadd9\AndroidManifest.xml:21:1-45:12
 MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\0201e2886c763d7bebe1fb52d306caa2\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-compat:27.1.1] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\61560cb400ba0dcf721df9ea20ce011f\AndroidManifest.xml:17:1-22:12
-MERGED from [testfairy:testfairy-android-sdk:1.6.4] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\testfairy-android-sdk-1.6.4.aar\6293867492401ca2e8d61e7627f46209\AndroidManifest.xml:2:1-26:12
+MERGED from [testfairy:testfairy-android-sdk:1.7.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\testfairy-android-sdk-1.7.0.aar\b273712ee2a85ee06bc4bef8366e8c07\AndroidManifest.xml:2:1-27:12
 MERGED from [com.android.support:cardview-v7:27.0.2] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.0.2.aar\9c0a5ee8b4112de67224a57a4e285694\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\8b9cc1fa2d89e1a5b1bedebe1c8aa182\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:livedata:1.1.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\livedata-1.1.0.aar\5614187c28a2d2edbf863162b9786d22\AndroidManifest.xml:17:1-22:12
@@ -68,22 +68,22 @@ MERGED from [com.google.android.gms:play-services-ads-lite-license:11.8.0] C:\Us
 MERGED from [com.google.android.gms:play-services-gass-license:11.8.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\play-services-gass-license-11.8.0.aar\e3333b8a56379888613e4fff6531e99e\AndroidManifest.xml:2:1-6:12
 MERGED from [com.google.firebase:firebase-analytics-impl-license:11.8.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-license-11.8.0.aar\f082452e9e000cec5c93b3282f23dfa9\AndroidManifest.xml:2:1-6:12
 MERGED from [com.google.firebase:firebase-iid-license:11.8.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\firebase-iid-license-11.8.0.aar\d576c657115670aed2b202e3e3b4aa49\AndroidManifest.xml:2:1-6:12
-INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-105:12
-INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-105:12
-INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-105:12
+INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-115:12
+INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-115:12
+INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-115:12
 	package
 		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:4:5-44
 		INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml
-		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-105:12
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-115:12
 		INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml
 	xmlns:tools
 		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:3:5-51
 	android:versionCode
 		INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml
-		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-105:12
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-115:12
 		INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:11-69
@@ -99,8 +99,8 @@ MERGED from [com.google.firebase:firebase-iid:11.8.0] C:\Users\juraj\.gradle\cac
 MERGED from [com.google.firebase:firebase-iid:11.8.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.8.0.aar\649856591cb676526e97eab9e0b13fe4\AndroidManifest.xml:23:5-67
 MERGED from [com.google.android.gms:play-services-ads-lite:11.8.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\play-services-ads-lite-11.8.0.aar\ac6876795671bd0906a4a8c3ee71e48e\AndroidManifest.xml:23:5-67
 MERGED from [com.google.android.gms:play-services-ads-lite:11.8.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\play-services-ads-lite-11.8.0.aar\ac6876795671bd0906a4a8c3ee71e48e\AndroidManifest.xml:23:5-67
-MERGED from [testfairy:testfairy-android-sdk:1.6.4] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\testfairy-android-sdk-1.6.4.aar\6293867492401ca2e8d61e7627f46209\AndroidManifest.xml:8:5-67
-MERGED from [testfairy:testfairy-android-sdk:1.6.4] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\testfairy-android-sdk-1.6.4.aar\6293867492401ca2e8d61e7627f46209\AndroidManifest.xml:8:5-67
+MERGED from [testfairy:testfairy-android-sdk:1.7.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\testfairy-android-sdk-1.7.0.aar\b273712ee2a85ee06bc4bef8366e8c07\AndroidManifest.xml:8:5-67
+MERGED from [testfairy:testfairy-android-sdk:1.7.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\testfairy-android-sdk-1.7.0.aar\b273712ee2a85ee06bc4bef8366e8c07\AndroidManifest.xml:8:5-67
 	android:name
 		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:6:22-64
 uses-permission#android.permission.BATTERY_STATS
@@ -116,7 +116,7 @@ ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:9:5-10
 	android:name
 		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:9:22-65
 application
-ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:12:5-103:19
+ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:12:5-113:19
 MERGED from [com.facebook.android:account-kit-sdk:4.31.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\account-kit-sdk-4.31.0.aar\4c46f816dc747f2b65f128f307b5f897\AndroidManifest.xml:28:5-53:19
 MERGED from [com.facebook.android:account-kit-sdk:4.31.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\account-kit-sdk-4.31.0.aar\4c46f816dc747f2b65f128f307b5f897\AndroidManifest.xml:28:5-53:19
 MERGED from [com.facebook.android:facebook-android-sdk:4.31.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\facebook-android-sdk-4.31.0.aar\0882f40fe154de1536c4e1cf4e19072a\AndroidManifest.xml:28:5-29:19
@@ -165,8 +165,8 @@ MERGED from [com.facebook.android:facebook-messenger:4.31.0] C:\Users\juraj\.gra
 MERGED from [com.facebook.android:facebook-messenger:4.31.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\facebook-messenger-4.31.0.aar\93091bdeb2c31262058ab204f79ea2ad\AndroidManifest.xml:28:5-29:19
 MERGED from [com.facebook.android:facebook-core:4.31.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\facebook-core-4.31.0.aar\69a78829bc57c0acbbe3b6aebe6aadd9\AndroidManifest.xml:28:5-43:19
 MERGED from [com.facebook.android:facebook-core:4.31.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\facebook-core-4.31.0.aar\69a78829bc57c0acbbe3b6aebe6aadd9\AndroidManifest.xml:28:5-43:19
-MERGED from [testfairy:testfairy-android-sdk:1.6.4] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\testfairy-android-sdk-1.6.4.aar\6293867492401ca2e8d61e7627f46209\AndroidManifest.xml:16:5-24:19
-MERGED from [testfairy:testfairy-android-sdk:1.6.4] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\testfairy-android-sdk-1.6.4.aar\6293867492401ca2e8d61e7627f46209\AndroidManifest.xml:16:5-24:19
+MERGED from [testfairy:testfairy-android-sdk:1.7.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\testfairy-android-sdk-1.7.0.aar\b273712ee2a85ee06bc4bef8366e8c07\AndroidManifest.xml:17:5-25:19
+MERGED from [testfairy:testfairy-android-sdk:1.7.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\testfairy-android-sdk-1.7.0.aar\b273712ee2a85ee06bc4bef8366e8c07\AndroidManifest.xml:17:5-25:19
 MERGED from [com.google.firebase:firebase-database-license:11.8.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\firebase-database-license-11.8.0.aar\33e8b993e1393e7092dcd20301789ea4\AndroidManifest.xml:5:5-20
 MERGED from [com.google.firebase:firebase-database-license:11.8.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\firebase-database-license-11.8.0.aar\33e8b993e1393e7092dcd20301789ea4\AndroidManifest.xml:5:5-20
 MERGED from [com.google.android.gms:play-services-ads-license:11.8.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\play-services-ads-license-11.8.0.aar\85962095aef8fbbeaa0d166c427d7d71\AndroidManifest.xml:5:5-20
@@ -330,83 +330,103 @@ ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:70:17-
 	android:name
 		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:70:27-74
 activity#com.trasimus.tictactoe.online.account.AccountActivity
-ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:73:9-76:52
+ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:73:9-77:74
 	android:screenOrientation
 		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:76:13-49
 	android:label
 		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:75:13-44
+	android:theme
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:77:13-72
 	android:name
 		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:74:13-52
 activity#com.trasimus.tictactoe.online.other.MenuActivity
-ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:77:9-79:51
+ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:78:9-81:74
 	android:screenOrientation
-		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:79:13-49
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:80:13-49
 	android:label
-		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:78:13-33
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:79:13-33
+	android:theme
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:81:13-72
 	android:name
-		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:77:19-53
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:78:19-53
 activity#com.trasimus.tictactoe.online.game.GameActivity
-ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:80:9-81:51
+ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:82:9-84:75
 	android:screenOrientation
-		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:81:13-49
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:83:13-49
+	android:theme
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:84:13-72
 	android:name
-		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:80:19-52
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:82:19-52
 activity#com.trasimus.tictactoe.online.game.GameFinderActivity
-ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:82:9-84:51
-	android:screenOrientation
-		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:84:13-49
-	android:label
-		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:83:13-40
-	android:name
-		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:82:19-58
-activity#com.trasimus.tictactoe.online.other.RegisterActivity
-ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:85:9-87:51
+ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:85:9-88:74
 	android:screenOrientation
 		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:87:13-49
 	android:label
-		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:86:13-37
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:86:13-40
+	android:theme
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:88:13-72
 	android:name
-		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:85:19-57
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:85:19-58
+activity#com.trasimus.tictactoe.online.other.RegisterActivity
+ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:89:9-92:74
+	android:screenOrientation
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:91:13-49
+	android:label
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:90:13-37
+	android:theme
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:92:13-72
+	android:name
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:89:19-57
 activity#com.trasimus.tictactoe.online.other.RankingsActivity
-ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:88:9-90:51
+ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:93:9-96:74
 	android:screenOrientation
-		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:90:13-49
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:95:13-49
 	android:label
-		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:89:13-37
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:94:13-37
+	android:theme
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:96:13-72
 	android:name
-		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:88:19-57
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:93:19-57
 activity#com.trasimus.tictactoe.online.account.ConnectAccountsActivity
-ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:91:9-93:51
-	android:screenOrientation
-		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:93:13-49
-	android:label
-		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:92:13-45
-	android:name
-		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:91:19-66
-activity#com.trasimus.tictactoe.online.friends.FriendsActivity
-ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:94:9-96:51
-	android:screenOrientation
-		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:96:13-49
-	android:label
-		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:95:13-36
-	android:name
-		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:94:19-58
-activity#com.trasimus.tictactoe.online.friends.FindFriends
-ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:97:9-99:51
+ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:97:9-100:74
 	android:screenOrientation
 		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:99:13-49
 	android:label
-		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:98:13-36
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:98:13-45
+	android:theme
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:100:13-72
 	android:name
-		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:97:19-54
-activity#com.trasimus.tictactoe.online.friends.LobbyActivity
-ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:100:9-102:51
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:97:19-66
+activity#com.trasimus.tictactoe.online.friends.FriendsActivity
+ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:101:9-104:74
 	android:screenOrientation
-		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:102:13-49
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:103:13-49
 	android:label
-		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:101:13-34
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:102:13-36
+	android:theme
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:104:13-72
 	android:name
-		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:100:19-56
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:101:19-58
+activity#com.trasimus.tictactoe.online.friends.FindFriends
+ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:105:9-108:74
+	android:screenOrientation
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:107:13-49
+	android:label
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:106:13-36
+	android:theme
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:108:13-72
+	android:name
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:105:19-54
+activity#com.trasimus.tictactoe.online.friends.LobbyActivity
+ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:109:9-112:74
+	android:screenOrientation
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:111:13-49
+	android:label
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:110:13-34
+	android:theme
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:112:13-72
+	android:name
+		ADDED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:109:19-56
 uses-sdk
 INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml
@@ -495,8 +515,8 @@ MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\juraj\.grad
 MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\0201e2886c763d7bebe1fb52d306caa2\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-compat:27.1.1] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\61560cb400ba0dcf721df9ea20ce011f\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-compat:27.1.1] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\61560cb400ba0dcf721df9ea20ce011f\AndroidManifest.xml:20:5-44
-MERGED from [testfairy:testfairy-android-sdk:1.6.4] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\testfairy-android-sdk-1.6.4.aar\6293867492401ca2e8d61e7627f46209\AndroidManifest.xml:5:5-44
-MERGED from [testfairy:testfairy-android-sdk:1.6.4] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\testfairy-android-sdk-1.6.4.aar\6293867492401ca2e8d61e7627f46209\AndroidManifest.xml:5:5-44
+MERGED from [testfairy:testfairy-android-sdk:1.7.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\testfairy-android-sdk-1.7.0.aar\b273712ee2a85ee06bc4bef8366e8c07\AndroidManifest.xml:5:5-44
+MERGED from [testfairy:testfairy-android-sdk:1.7.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\testfairy-android-sdk-1.7.0.aar\b273712ee2a85ee06bc4bef8366e8c07\AndroidManifest.xml:5:5-44
 MERGED from [com.android.support:cardview-v7:27.0.2] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.0.2.aar\9c0a5ee8b4112de67224a57a4e285694\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:cardview-v7:27.0.2] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.0.2.aar\9c0a5ee8b4112de67224a57a4e285694\AndroidManifest.xml:20:5-44
 MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\8b9cc1fa2d89e1a5b1bedebe1c8aa182\AndroidManifest.xml:20:5-44
@@ -573,8 +593,8 @@ MERGED from [com.google.firebase:firebase-iid:11.8.0] C:\Users\juraj\.gradle\cac
 MERGED from [com.google.firebase:firebase-iid:11.8.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.8.0.aar\649856591cb676526e97eab9e0b13fe4\AndroidManifest.xml:22:5-79
 MERGED from [com.google.android.gms:play-services-ads-lite:11.8.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\play-services-ads-lite-11.8.0.aar\ac6876795671bd0906a4a8c3ee71e48e\AndroidManifest.xml:24:5-79
 MERGED from [com.google.android.gms:play-services-ads-lite:11.8.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\play-services-ads-lite-11.8.0.aar\ac6876795671bd0906a4a8c3ee71e48e\AndroidManifest.xml:24:5-79
-MERGED from [testfairy:testfairy-android-sdk:1.6.4] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\testfairy-android-sdk-1.6.4.aar\6293867492401ca2e8d61e7627f46209\AndroidManifest.xml:11:5-79
-MERGED from [testfairy:testfairy-android-sdk:1.6.4] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\testfairy-android-sdk-1.6.4.aar\6293867492401ca2e8d61e7627f46209\AndroidManifest.xml:11:5-79
+MERGED from [testfairy:testfairy-android-sdk:1.7.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\testfairy-android-sdk-1.7.0.aar\b273712ee2a85ee06bc4bef8366e8c07\AndroidManifest.xml:11:5-79
+MERGED from [testfairy:testfairy-android-sdk:1.7.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\testfairy-android-sdk-1.7.0.aar\b273712ee2a85ee06bc4bef8366e8c07\AndroidManifest.xml:11:5-79
 	android:name
 		ADDED from [com.firebaseui:firebase-ui-auth:3.2.2] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\firebase-ui-auth-3.2.2.aar\ccc3f2455c5895462344699df48b4f50\AndroidManifest.xml:12:22-76
 meta-data#com.google.android.gms.version
@@ -866,22 +886,26 @@ ADDED from [com.facebook.android:facebook-core:4.31.0] C:\Users\juraj\.gradle\ca
 	android:name
 		ADDED from [com.facebook.android:facebook-core:4.31.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\facebook-core-4.31.0.aar\69a78829bc57c0acbbe3b6aebe6aadd9\AndroidManifest.xml:40:13-70
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from [testfairy:testfairy-android-sdk:1.6.4] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\testfairy-android-sdk-1.6.4.aar\6293867492401ca2e8d61e7627f46209\AndroidManifest.xml:14:5-81
+ADDED from [testfairy:testfairy-android-sdk:1.7.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\testfairy-android-sdk-1.7.0.aar\b273712ee2a85ee06bc4bef8366e8c07\AndroidManifest.xml:14:5-81
 	android:name
-		ADDED from [testfairy:testfairy-android-sdk:1.6.4] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\testfairy-android-sdk-1.6.4.aar\6293867492401ca2e8d61e7627f46209\AndroidManifest.xml:14:22-78
+		ADDED from [testfairy:testfairy-android-sdk:1.7.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\testfairy-android-sdk-1.7.0.aar\b273712ee2a85ee06bc4bef8366e8c07\AndroidManifest.xml:14:22-78
+uses-permission#android.permission.REQUEST_INSTALL_PACKAGES
+ADDED from [testfairy:testfairy-android-sdk:1.7.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\testfairy-android-sdk-1.7.0.aar\b273712ee2a85ee06bc4bef8366e8c07\AndroidManifest.xml:15:5-83
+	android:name
+		ADDED from [testfairy:testfairy-android-sdk:1.7.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\testfairy-android-sdk-1.7.0.aar\b273712ee2a85ee06bc4bef8366e8c07\AndroidManifest.xml:15:22-80
 activity#com.testfairy.activities.ProvideFeedbackActivity
-ADDED from [testfairy:testfairy-android-sdk:1.6.4] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\testfairy-android-sdk-1.6.4.aar\6293867492401ca2e8d61e7627f46209\AndroidManifest.xml:17:9-20:63
+ADDED from [testfairy:testfairy-android-sdk:1.7.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\testfairy-android-sdk-1.7.0.aar\b273712ee2a85ee06bc4bef8366e8c07\AndroidManifest.xml:18:9-21:63
 	android:configChanges
-		ADDED from [testfairy:testfairy-android-sdk:1.6.4] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\testfairy-android-sdk-1.6.4.aar\6293867492401ca2e8d61e7627f46209\AndroidManifest.xml:19:13-59
+		ADDED from [testfairy:testfairy-android-sdk:1.7.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\testfairy-android-sdk-1.7.0.aar\b273712ee2a85ee06bc4bef8366e8c07\AndroidManifest.xml:20:13-59
 	android:theme
-		ADDED from [testfairy:testfairy-android-sdk:1.6.4] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\testfairy-android-sdk-1.6.4.aar\6293867492401ca2e8d61e7627f46209\AndroidManifest.xml:20:13-60
+		ADDED from [testfairy:testfairy-android-sdk:1.7.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\testfairy-android-sdk-1.7.0.aar\b273712ee2a85ee06bc4bef8366e8c07\AndroidManifest.xml:21:13-60
 	android:name
-		ADDED from [testfairy:testfairy-android-sdk:1.6.4] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\testfairy-android-sdk-1.6.4.aar\6293867492401ca2e8d61e7627f46209\AndroidManifest.xml:18:13-76
+		ADDED from [testfairy:testfairy-android-sdk:1.7.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\testfairy-android-sdk-1.7.0.aar\b273712ee2a85ee06bc4bef8366e8c07\AndroidManifest.xml:19:13-76
 activity#com.testfairy.activities.AutoUpdateActivity
-ADDED from [testfairy:testfairy-android-sdk:1.6.4] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\testfairy-android-sdk-1.6.4.aar\6293867492401ca2e8d61e7627f46209\AndroidManifest.xml:21:9-23:62
+ADDED from [testfairy:testfairy-android-sdk:1.7.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\testfairy-android-sdk-1.7.0.aar\b273712ee2a85ee06bc4bef8366e8c07\AndroidManifest.xml:22:9-24:62
 	android:configChanges
-		ADDED from [testfairy:testfairy-android-sdk:1.6.4] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\testfairy-android-sdk-1.6.4.aar\6293867492401ca2e8d61e7627f46209\AndroidManifest.xml:23:13-59
+		ADDED from [testfairy:testfairy-android-sdk:1.7.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\testfairy-android-sdk-1.7.0.aar\b273712ee2a85ee06bc4bef8366e8c07\AndroidManifest.xml:24:13-59
 	android:name
-		ADDED from [testfairy:testfairy-android-sdk:1.6.4] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\testfairy-android-sdk-1.6.4.aar\6293867492401ca2e8d61e7627f46209\AndroidManifest.xml:22:13-71
+		ADDED from [testfairy:testfairy-android-sdk:1.7.0] C:\Users\juraj\.gradle\caches\transforms-1\files-1.1\testfairy-android-sdk-1.7.0.aar\b273712ee2a85ee06bc4bef8366e8c07\AndroidManifest.xml:23:13-71
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
-IMPLIED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-105:12 reason: com.testfairy.sdk requested WRITE_EXTERNAL_STORAGE
+IMPLIED from C:\Projects\AATicTacToeOnline\app\src\main\AndroidManifest.xml:2:1-115:12 reason: com.testfairy.sdk requested WRITE_EXTERNAL_STORAGE

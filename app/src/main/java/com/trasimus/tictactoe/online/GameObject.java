@@ -29,13 +29,16 @@ public class GameObject {
     private String p1name;
     private String p2name;
     private boolean isDeleted;
+    private boolean p1paused;
+    private boolean p2paused;
+    private ArrayList<ArrayList<String>> messages;
 
 
     public GameObject(){
 
     }
 
-    public GameObject(String gameID, String player1, String player2, int size, Boolean moveP1, Boolean moveP2, Boolean startPlayer, int move, int viewID, Boolean winnerP1, Boolean winnerP2, Boolean connectedP1, Boolean connectedP2, Boolean draw, String p1name, String p2name, boolean isDeleted){
+    public GameObject(String gameID, String player1, String player2, int size, Boolean moveP1, Boolean moveP2, Boolean startPlayer, int move, int viewID, Boolean winnerP1, Boolean winnerP2, Boolean connectedP1, Boolean connectedP2, Boolean draw, String p1name, String p2name, boolean isDeleted, boolean p1paused, boolean p2paused, ArrayList<ArrayList<String>> messages){
       this.player1 = player1;
       this.player2 = player2;
       this.moveP1 = moveP1;
@@ -53,6 +56,9 @@ public class GameObject {
       this.p1name = p1name;
       this.p2name = p2name;
       this.isDeleted = isDeleted;
+      this.p1paused = p1paused;
+      this.p2paused = p2paused;
+      this.messages = messages;
       //this.clickedButton = clickedButton;
       initiateGameList();
     }
@@ -818,5 +824,29 @@ public class GameObject {
 
     public void setDeleted(boolean deleted) {
         isDeleted = deleted;
+    }
+
+    public boolean isP1paused() {
+        return p1paused;
+    }
+
+    public void setP1paused(boolean p1paused) {
+        this.p1paused = p1paused;
+    }
+
+    public boolean isP2paused() {
+        return p2paused;
+    }
+
+    public void setP2paused(boolean p2paused) {
+        this.p2paused = p2paused;
+    }
+
+    public ArrayList<ArrayList<String>> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(ArrayList<ArrayList<String>> messages) {
+        this.messages = messages;
     }
 }

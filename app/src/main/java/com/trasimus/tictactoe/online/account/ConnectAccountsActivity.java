@@ -39,7 +39,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
  public class ConnectAccountsActivity extends AppCompatActivity {
-
+//TODO Delete this activity
      public static int APP_REQUEST_CODE = 99;
      public static int RC_SIGN_IN = 123;
      LoginButton fbLoginButton;

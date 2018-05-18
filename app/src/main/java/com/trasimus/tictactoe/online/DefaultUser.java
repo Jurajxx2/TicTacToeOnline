@@ -11,34 +11,34 @@ public class DefaultUser {
     private String name;
     private int points;
     private ArrayList<ArrayList<String>> friends;
-    private String fbAccount;
-    private String googleAccount;
-    private String mailAccount;
     private String age;
     private String country;
     private String lobbyID;
     private String photoID;
     private String myGameID;
+    private int gamesPlayed;
+    private int gamesWon;
+    private int gamesLost;
 
     public DefaultUser(){
 
     }
 
-    public DefaultUser(String userID, String mail, String name, String age, String country, int points, ArrayList<ArrayList<String>> friends, String fbAccount, String googleAccount, String mailAccount, String lobbyID, String photoID, String myGameID){
+    public DefaultUser(String userID, String mail, String name, String age, String country, int points, ArrayList<ArrayList<String>> friends, String lobbyID, String photoID, String myGameID, int gamesPlayed, int gamesWon, int gamesLost){
 
         this.userID = userID;
         this.mail = mail;
         this.name = name;
         this.points = points;
         this.friends = friends;
-        this.fbAccount = fbAccount;
-        this.googleAccount = googleAccount;
-        this.mailAccount = mailAccount;
         this.age = age;
         this.country = country;
         this.lobbyID = lobbyID;
         this.photoID = photoID;
         this.myGameID = myGameID;
+        this.gamesPlayed = gamesPlayed;
+        this.gamesWon = gamesWon;
+        this.gamesLost = gamesLost;
     }
 
     public String getUserID() {
@@ -81,30 +81,6 @@ public class DefaultUser {
         this.friends = friends;
     }
 
-    public String getFbAccount() {
-        return fbAccount;
-    }
-
-    public void setFbAccount(String fbAccount) {
-        this.fbAccount = fbAccount;
-    }
-
-    public String getGoogleAccount() {
-        return googleAccount;
-    }
-
-    public void setGoogleAccount(String googleAccount) {
-        this.googleAccount = googleAccount;
-    }
-
-    public String getMailAccount() {
-        return mailAccount;
-    }
-
-    public void setMailAccount(String mailAccount) {
-        this.mailAccount = mailAccount;
-    }
-
     public String getAge() {
         return age;
     }
@@ -143,5 +119,29 @@ public class DefaultUser {
 
     public void setMyGameID(String myGameID) {
         this.myGameID = myGameID;
+    }
+
+    public int getGamesPlayed() {
+        return gamesPlayed;
+    }
+
+    public void setGamesPlayed(int gamesPlayed) {
+        this.gamesPlayed = gamesPlayed;
+    }
+
+    public int getGamesWon() {
+        return gamesWon;
+    }
+
+    public void setGamesWon(int gamesWon) {
+        this.gamesWon = gamesWon;
+    }
+
+    public int getGamesLost() {
+        return gamesLost;
+    }
+
+    public void setGamesLost(int gamesLost) {
+        this.gamesLost = gamesLost;
     }
 }

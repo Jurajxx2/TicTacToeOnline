@@ -15,10 +15,5 @@
             android:title="Delete Account"
             app:showAsAction="collapseActionView"
             />
-        <item
-            android:id="@+id/connectAcc"
-            android:title="Connect Accounts"
-            app:showAsAction="collapseActionView"
-            />
     </group>
 </menu>

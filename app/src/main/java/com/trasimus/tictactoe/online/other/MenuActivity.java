@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.facebook.login.LoginManager;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
@@ -164,6 +165,7 @@ public class MenuActivity extends AppCompatActivity {
 
     public void mLogout(View view){
         FirebaseAuth.getInstance().signOut();
+        LoginManager.getInstance().logOut();
         launchLoginActivity();
     }
 

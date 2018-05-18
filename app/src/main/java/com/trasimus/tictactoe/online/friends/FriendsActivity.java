@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -38,6 +39,7 @@ public class FriendsActivity extends AppCompatActivity {
     private DefaultUser mDefaultUser;
     private DefaultUser defaultUser;
     private UserMap mMap;
+    private Button findFriends;
 
     private FirebaseUser mUser;
 
@@ -65,6 +67,7 @@ public class FriendsActivity extends AppCompatActivity {
         mUser = FirebaseAuth.getInstance().getCurrentUser();
 
         mListView = (ListView) findViewById(R.id.friendList);
+        findFriends = (Button) findViewById(R.id.find_friends);
 
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
 
@@ -76,6 +79,14 @@ public class FriendsActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 showUser(position);
+            }
+        });
+
+        findFriends.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(FriendsActivity.this, FindFriends.class);
+                startActivity(intent);
             }
         });
     }
@@ -92,23 +103,6 @@ public class FriendsActivity extends AppCompatActivity {
     protected void onRestart() {
         super.onRestart();
         refreshActivity();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.mymenu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        int id = item.getItemId();
-
-        if (id == R.id.menuBtn){
-            Intent intent = new Intent(this, FindFriends.class);
-            startActivity(intent);
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     private void getUserInfo(final String userIDX, final boolean isListFunction, final String isAccepted, final String state, final boolean isShowUserF, final int position) {
@@ -205,9 +199,8 @@ public class FriendsActivity extends AppCompatActivity {
                                     public void onClick(DialogInterface arg0, int arg1) {
                                         if (isAccepted.equals("0") && state.equals("RECIEVED")) {
                                             //ACCEPT FRIEND REQUEST
-                                            mDatabaseReference.child("Users").child(userIDX).child("Friends").child(String.valueOf(position)).child("2").setValue("1");
+                                            acceptRequest(userIDX);
                                             mDatabaseReference.child("Users").child(userID).child("Friends").child(String.valueOf(position)).child("2").setValue("1");
-                                            refreshActivity();
                                         } else if (isAccepted.equals("1")) {
                                             //INVITE TO GAME
                                             Intent intent2 = new Intent(FriendsActivity.this, GameInvitationListener.class);
@@ -253,6 +246,33 @@ public class FriendsActivity extends AppCompatActivity {
                     if (friendsOfFriendToDelete.get(i).get(0).equals(userID) || friendsOfFriendToDelete.get(i).get(1).equals(userID)){
                         friendsOfFriendToDelete.remove(i);
                         friendReference.setValue(friendsOfFriendToDelete);
+                        break;
+                    }
+                }
+
+                refreshActivity();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void acceptRequest(String friendID){
+        friendReference = mDatabaseReference.child("Users").child(friendID).child("Friends");
+        friendReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                ArrayList<ArrayList<String>> friendsOfFriendToAccept;
+
+                friendsOfFriendToAccept = (ArrayList<ArrayList<String>>) dataSnapshot.getValue();
+
+                for (int i=0; i<friendsOfFriendToAccept.size(); i++){
+                    if (friendsOfFriendToAccept.get(i).get(0).equals(userID) || friendsOfFriendToAccept.get(i).get(1).equals(userID)){
+                        friendsOfFriendToAccept.get(i).set(2, "1");
+                        friendReference.setValue(friendsOfFriendToAccept);
                         break;
                     }
                 }

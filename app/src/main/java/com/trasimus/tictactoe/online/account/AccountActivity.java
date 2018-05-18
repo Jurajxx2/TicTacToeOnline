@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,10 +21,30 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
+import com.google.android.gms.auth.api.credentials.Credential;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
+import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
+import com.google.firebase.auth.FirebaseAuthRecentLoginRequiredException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -39,6 +60,8 @@ import com.trasimus.tictactoe.online.R;
 import com.trasimus.tictactoe.online.UserMap;
 
 import java.util.Arrays;
+
+import static android.provider.ContactsContract.Intents.Insert.EMAIL;
 
 public class AccountActivity extends AppCompatActivity {
 
@@ -58,81 +81,26 @@ public class AccountActivity extends AppCompatActivity {
     private TextView ageView;
     private EditText ageEdit;
     private AutoCompleteTextView countryEdit;
-    private String photo;
+    private GoogleSignInClient mGoogleSignInClient;
+    public static int RC_SIGN_IN = 123;
 
-    private String username;
-    private String useremail;
-    private String country;
-    private int age;
+    private Button deleteAcc;
+    private Button editAcc;
+
     private String[] countries;
 
-    private Uri photoUrl;
     private DatabaseReference mDatabaseReference;
     private DatabaseReference mReference;
     private DatabaseReference mDatabase;
     private FirebaseUser user;
+    private String userUID;
+    private String provider;
+    private SignInButton signInButton;
 
     private UserMap userMap;
     private DefaultUser defaultUser;
     private Boolean editing;
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.accountmenu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        if (editing){
-            Toast.makeText(this, "Please, finish editing your account", Toast.LENGTH_SHORT).show();
-            return true;
-        }
-        int id = item.getItemId();
-
-        if (id == R.id.deleteAcc){
-            new AlertDialog.Builder(AccountActivity.this)
-                    .setTitle("Delete Account?")
-                    .setMessage("Are you sure you want to delete your account?")
-                    .setNegativeButton(android.R.string.no, null)
-                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-
-                        public void onClick(DialogInterface arg0, int arg1) {
-                            Intent intent = new Intent(AccountActivity.this, GameInvitationListener.class);
-                            stopService(intent);
-                            mDatabaseReference.child("UserMap").child(user.getUid()).removeValue();
-                            mDatabaseReference.child("Users").child(defaultUser.getUserID()).removeValue();
-                            user.delete()
-                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            if (task.isSuccessful()){
-                                                Toast.makeText(AccountActivity.this, "Your account was removed", Toast.LENGTH_LONG).show();
-                                                FirebaseAuth.getInstance().signOut();
-                                                Intent intent = new Intent(AccountActivity.this, LoginActivity.class);
-                                                startActivity(intent);
-                                                finish();
-                                            } else {
-                                                Toast.makeText(AccountActivity.this, "Error, account was not removed:" + task.getException() , Toast.LENGTH_LONG).show();
-                                                FirebaseAuth.getInstance().signOut();
-                                                Intent intent = new Intent(AccountActivity.this, LoginActivity.class);
-                                                startActivity(intent);
-                                                finish();
-                                            }
-                                        }
-                                    });
-                        }
-                    }).create().show();
-        }
-        if (id == R.id.connectAcc){
-            Intent intent = new Intent(AccountActivity.this, ConnectAccountsActivity.class);
-            startActivity(intent);
-        }
-        if (id == R.id.edit){
-            editSomething(item);
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
 
     @Override
@@ -155,6 +123,8 @@ public class AccountActivity extends AppCompatActivity {
         opica = (ImageView) findViewById(R.id.opica);
         default_profile = (ImageView) findViewById(R.id.default_profile);
         profileInfo = (TextView) findViewById(R.id.profileInfo);
+        deleteAcc = (Button) findViewById(R.id.deleteAccount);
+        editAcc = (Button) findViewById(R.id.editAccount);
 
         editButton = (Button) findViewById(R.id.edit);
         mEditText = (EditText) findViewById(R.id.editName);
@@ -167,7 +137,13 @@ public class AccountActivity extends AppCompatActivity {
 
 
         user = FirebaseAuth.getInstance().getCurrentUser();
+
+        provider = user.getProviders().get(0);
+
+        userUID = user.getUid();
         mDatabaseReference = FirebaseDatabase.getInstance().getReference();
+
+
 
         getID(user.getUid());
 
@@ -202,9 +178,181 @@ public class AccountActivity extends AppCompatActivity {
                 mDatabaseReference.child("Users").child(userMap.getUserID()).child("photoID").setValue("0");
             }
         });
+
+        deleteAcc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (provider.equals("facebook.com")){
+                    AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(AccountActivity.this);
+                    final LayoutInflater inflater = AccountActivity.this.getLayoutInflater();
+                    final View dialogView = inflater.inflate(R.layout.alertdialog_facebook_content, null);
+                    dialogBuilder.setView(dialogView);
+
+                    //final EditText edt = (EditText) dialogView.findViewById(R.id.edit1);
+
+                    dialogBuilder.setTitle("Relogin to delete account");
+                    //dialogBuilder.setMessage("Enter text below");
+
+                    AlertDialog b = dialogBuilder.create();
+                    b.show();
+
+                    Button relogin = (Button) dialogView.findViewById(R.id.FB_relogin);
+                    relogin.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            FirebaseAuth.getInstance().signOut();
+                            LoginManager.getInstance().logOut();
+
+                            Intent intent = new Intent(AccountActivity.this, LoginActivity.class);
+                            intent.putExtra("deletion", true);
+                            intent.putExtra("userUID", userUID);
+                            intent.putExtra("userID", defaultUser.getUserID());
+                            intent.putExtra("gameID", defaultUser.getMyGameID());
+                            startActivity(intent);
+                            finish();
+                        }
+                    });
+
+                } else if (provider.equals("google.com")){
+
+                    GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                            .requestIdToken("456171505925-4fl47ouejun7b9l5lg12ev8tacriracn.apps.googleusercontent.com")
+                            .requestEmail()
+                            .build();
+
+                    mGoogleSignInClient = GoogleSignIn.getClient(AccountActivity.this, gso);
+
+                    AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(AccountActivity.this);
+                    LayoutInflater inflater = AccountActivity.this.getLayoutInflater();
+                    final View dialogView = inflater.inflate(R.layout.alertdialog_google_content, null);
+                    dialogBuilder.setView(dialogView);
+
+                    //final EditText edt = (EditText) dialogView.findViewById(R.id.edit1);
+
+                    dialogBuilder.setTitle("Relogin to delete account");
+                    //dialogBuilder.setMessage("Enter text below");
+
+                    AlertDialog b = dialogBuilder.create();
+                    b.show();
+
+                    signInButton = (SignInButton) dialogView.findViewById(R.id.sign_in_button2);
+
+                signInButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+                        startActivityForResult(signInIntent, RC_SIGN_IN);
+                    }
+                });
+
+                } else {
+                    AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(AccountActivity.this);
+                    LayoutInflater inflater = AccountActivity.this.getLayoutInflater();
+                    final View dialogView = inflater.inflate(R.layout.alertdialog_mail_content, null);
+                    dialogBuilder.setView(dialogView);
+
+                    //final EditText edt = (EditText) dialogView.findViewById(R.id.edit1);
+
+                    dialogBuilder.setTitle("Relogin to delete account");
+                    //dialogBuilder.setMessage("Enter text below");
+
+                    AlertDialog b = dialogBuilder.create();
+                    b.show();
+                }
+            }
+        });
+
+        editAcc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editSomething();
+            }
+        });
     }
 
-    public void editSomething(MenuItem item){
+    private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
+        AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
+        user.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()){
+                    removeData();
+                    user.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()){
+                                Toast.makeText(AccountActivity.this, "Account deleted", Toast.LENGTH_LONG).show();
+                                Intent intent = new Intent(AccountActivity.this, LoginActivity.class);
+                                FirebaseAuth.getInstance().signOut();
+                                startActivity(intent);
+                                finish();
+                            } else {
+                                Toast.makeText(AccountActivity.this, "Deleting was partially successful", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    });
+                } else {
+                    Toast.makeText(AccountActivity.this, "Deleting was not successful", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
+
+
+    private void removeData(){
+        mDatabaseReference.child("UserMap").child(userUID).removeValue();
+        mDatabaseReference.child("Users").child(defaultUser.getUserID()).removeValue();
+        mDatabaseReference.child("games").child(defaultUser.getMyGameID()).removeValue();
+    }
+
+
+    public void reSignIn(View view){
+        EditText mail;
+        EditText pass;
+
+        mail = (EditText) findViewById(R.id.mailInput);
+        pass = (EditText) findViewById(R.id.passwordInput);
+
+        String usermail;
+        String password;
+
+        usermail = mail.getText().toString();
+        password = pass.getText().toString();
+
+        if (usermail.equals("") || password.equals("")){
+            Toast.makeText(this, "Please fill in the email and password fields", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        AuthCredential credential = EmailAuthProvider.getCredential(usermail, password);
+
+        user.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()){
+                    removeData();
+                    user.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()){
+                                Toast.makeText(AccountActivity.this, "Account deleted", Toast.LENGTH_LONG).show();
+                                Intent intent = new Intent(AccountActivity.this, LoginActivity.class);
+                                FirebaseAuth.getInstance().signOut();
+                                startActivity(intent);
+                                finish();
+                            } else {
+                                Toast.makeText(AccountActivity.this, "Deleting was partially successful", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    });
+                } else {
+                    Toast.makeText(AccountActivity.this, "Deleting was not successful", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
+
+    public void editSomething(){
         if (mEditText.getText().toString().length()<3 && editing){
             Toast.makeText(this, "Name has to have at least 3 characters", Toast.LENGTH_SHORT).show();
             return;
@@ -242,7 +390,7 @@ public class AccountActivity extends AppCompatActivity {
             default_profile.setVisibility(View.VISIBLE);
             profileInfo.setVisibility(View.VISIBLE);
             //editButton.setText("Save");
-            item.setTitle("Save");
+            editAcc.setText("Save");
         } else if (!editing){
             InputMethodManager inputManager = (InputMethodManager)
                     getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -257,7 +405,7 @@ public class AccountActivity extends AppCompatActivity {
             mDatabaseReference.child("Users").child(userMap.getUserID()).child("age").setValue(ageEdit.getText().toString());
 
             //editButton.setText("Edit");
-            item.setTitle("Edit");
+            editAcc.setText("Edit account");
 
             mEditText.setVisibility(View.GONE);
             name.setVisibility(View.VISIBLE);
@@ -339,5 +487,22 @@ public class AccountActivity extends AppCompatActivity {
         finish();
 
         super.onBackPressed();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == RC_SIGN_IN) {
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            try {
+                // Google Sign In was successful, authenticate with Firebase
+                GoogleSignInAccount account = task.getResult(ApiException.class);
+                firebaseAuthWithGoogle(account);
+            } catch (ApiException e) {
+                // Google Sign In failed
+                Toast.makeText(this, "Error while signing in", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }

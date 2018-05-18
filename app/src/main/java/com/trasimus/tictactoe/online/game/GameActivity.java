@@ -5,11 +5,16 @@ import android.content.DialogInterface;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.GridLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,7 +30,7 @@ import com.trasimus.tictactoe.online.DefaultUser;
 import com.trasimus.tictactoe.online.GameObject;
 import com.trasimus.tictactoe.online.R;
 import com.trasimus.tictactoe.online.UserMap;
-import com.trasimus.tictactoe.online.friends.LobbyActivity;
+import com.trasimus.tictactoe.online.account.AccountActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -33,10 +38,13 @@ import java.util.List;
 import java.util.Random;
 
 public class GameActivity extends AppCompatActivity {
+    //TODO Remove lobby, add chat support to games, like in 8ball pool, where cloud with message text appears
+    //TODO Work with player 1 and player 2, edit this in top
     private LinearLayout mLinearLayout;
     private GridLayout mGridLayout;
     private boolean isDeleted;
     private boolean otherPlayer = false;
+    private boolean paused = false;
 
     private Button[] tictac;
     private String[] game;
@@ -55,6 +63,7 @@ public class GameActivity extends AppCompatActivity {
     private DatabaseReference myRef;
     private DatabaseReference userRef1;
     private DatabaseReference userRef2;
+    private DatabaseReference userRef3;
 
     private String key;
 
@@ -67,9 +76,16 @@ public class GameActivity extends AppCompatActivity {
     private ProgressBar loadProgress;
     private ProgressBar gameProgress;
     private Button surrender;
+    private ImageView surrenderIMG;
+    private ImageView pauseIMG;
+    private ImageView chatIMG;
+
+    private ImageView profile1;
+    private ImageView profile2;
 
     private UserMap userMap;
     private DefaultUser defaultUser;
+    private DefaultUser defaultUser2;
 
     private String playerX;
     private Boolean playerOne;
@@ -83,12 +99,26 @@ public class GameActivity extends AppCompatActivity {
     private CountDownTimer mTimer;
     private TextView moveView;
 
+    private ArrayList<ArrayList<String>> messages;
+    private TextView count;
+
+    private EditText editTxt;
+    private Button sendBtn;
+    private ListView showMsg;
+    private ArrayList<String> singleMessage;
+    private DatabaseReference adapterDatabaseReference;
+    private MessageAdapter mAdapter;
+
     private int r=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(com.trasimus.tictactoe.online.R.layout.activity_game);
+
+        //Initiate arraylist of arraylist messages and single message
+        messages = new ArrayList<ArrayList<String>>();
+        singleMessage = new ArrayList<String>();
 
         //Get extra info
         bundle = getIntent().getExtras();
@@ -102,6 +132,13 @@ public class GameActivity extends AppCompatActivity {
         moveView = (TextView) findViewById(R.id.move);
         gameProgress = (ProgressBar) findViewById(R.id.progressBar);
         loadProgress = (ProgressBar) findViewById(R.id.progressBar2);
+        profile1 = (ImageView) findViewById(R.id.profile);
+        profile2 = (ImageView) findViewById(R.id.profile2);
+
+        surrenderIMG = (ImageView) findViewById(R.id.exitIMG);
+        chatIMG = (ImageView) findViewById(R.id.chatIMG);
+        pauseIMG = (ImageView) findViewById(R.id.pauseIMG);
+        count = (TextView) findViewById(R.id.counter);
 
         //Set properties for game progress bar at the bottom
         gameProgress.setMax(30);
@@ -183,6 +220,45 @@ public class GameActivity extends AppCompatActivity {
             }
         }
 
+        surrenderIMG.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (newGame.getPlayer2().equals("")) {
+                    new AlertDialog.Builder(GameActivity.this)
+                            .setTitle("Really Exit?")
+                            .setMessage("Are you sure you want to exit game finder?")
+                            .setNegativeButton(android.R.string.no, null)
+                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                                public void onClick(DialogInterface arg0, int arg1) {
+                                    GameActivity.super.onBackPressed();
+                                }
+                            }).create().show();
+                } else if (!newGame.getWinnerP1() && !newGame.getWinnerP2()) {
+                    new AlertDialog.Builder(GameActivity.this)
+                            .setTitle("Really Exit?")
+                            .setMessage("Are you sure you want to surrender?")
+                            .setNegativeButton(android.R.string.no, null)
+                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                                public void onClick(DialogInterface arg0, int arg1) {
+
+                                    if (playerOne) {
+                                        newGame.setWinnerP2(true);
+                                        mDatabaseReference.child("games").child(key).child("winnerP2").setValue(true);
+                                    } else if (playerTwo) {
+                                        newGame.setWinnerP1(true);
+                                        mDatabaseReference.child("games").child(key).child("winnerP1").setValue(true);
+                                    }
+                                    GameActivity.super.onBackPressed();
+                                }
+                            }).create().show();
+                } else if (newGame.getWinnerP1() || newGame.getWinnerP2() || newGame.getDraw()) {
+                    finish();
+                }
+            }
+        });
+
         surrender.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -235,7 +311,7 @@ public class GameActivity extends AppCompatActivity {
             startPlayer = mRandom.nextBoolean();
             theOtherPlayer = !startPlayer;
 
-            newGame = new GameObject(key, mFirebaseUser.getUid(), "", bundle.getInt("size"), startPlayer, theOtherPlayer, startPlayer, 0, 0, false, false, true, false, false, "", "", false);
+            newGame = new GameObject(key, mFirebaseUser.getUid(), "", bundle.getInt("size"), startPlayer, theOtherPlayer, startPlayer, 0, 0, false, false, true, false, false, "", "", false, false, false, messages);
             mDatabaseReference.child("games").child(key).setValue(newGame);
 
             getID(playerX);
@@ -252,6 +328,12 @@ public class GameActivity extends AppCompatActivity {
                         new AlertDialog.Builder(GameActivity.this)
                                 .setTitle("Game not found")
                                 .setMessage("Game you want to join was not found")
+                                .setOnCancelListener(new DialogInterface.OnCancelListener() {
+                                    @Override
+                                    public void onCancel(DialogInterface dialogInterface) {
+                                        finish();
+                                    }
+                                })
                                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
 
                                     public void onClick(DialogInterface arg0, int arg1) {
@@ -259,6 +341,15 @@ public class GameActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }
+
+                    if (newGame.isP1paused() && newGame.isP2paused()){
+                        count.setText("2/2");
+                    } else if ((newGame.isP1paused() && !newGame.isP2paused()) || (!newGame.isP1paused() && newGame.isP2paused())){
+                        count.setText("1/2");
+                    } else if (!newGame.isP1paused() && !newGame.isP2paused()){
+                        count.setText("0/2");
+                    }
+
 
                     if ((!newGame.getPlayer2().equals("")) && (newGame.getMove() == 0) && newGame.getConnectedP2()) {
                         Log.d("test", "Player 2 set");
@@ -268,6 +359,7 @@ public class GameActivity extends AppCompatActivity {
                         newGame.setConnectedP2(true);
                         mDatabaseReference.child("games").child(key).child("connectedP2").setValue(newGame.getConnectedP2());
                         loadProgress.setVisibility(View.GONE);
+                        otherPlayer(newGame.getPlayer2());
                     }
 
                     if ((!newGame.getPlayer2().equals(""))) {
@@ -293,12 +385,12 @@ public class GameActivity extends AppCompatActivity {
                         stopTimer();
                         surrender.setText("Leave");
                         moveView.setText("Game ended");
-                        givePoints();
                         firstPlayerEventListener.removeEventListener(listener1);
                     }
 
 
                     if (newGame.getWinnerP1() || newGame.getWinnerP2() || newGame.getDraw()) {
+                        givePoints();
                         mDatabaseReference.child("games").child(key).child("player1").setValue("");
                         mDatabaseReference.child("games").child(key).child("player2").setValue("");
                         mDatabaseReference.child("games").child(key).child("isDeleted").setValue(true);
@@ -313,6 +405,12 @@ public class GameActivity extends AppCompatActivity {
                         new AlertDialog.Builder(GameActivity.this)
                                 .setTitle("Game ended")
                                 .setMessage(message)
+                                .setOnCancelListener(new DialogInterface.OnCancelListener() {
+                                    @Override
+                                    public void onCancel(DialogInterface dialogInterface) {
+                                        finish();
+                                    }
+                                })
                                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
 
                                     public void onClick(DialogInterface arg0, int arg1) {
@@ -344,14 +442,15 @@ public class GameActivity extends AppCompatActivity {
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     newGame = dataSnapshot.getValue(GameObject.class);
 
-                    if (!newGame.getConnectedP2() && r==0 && newGame.getPlayer2().equals("")){
-                        mDatabaseReference.child("games").child(key).child("player2").setValue(playerX);
-                        mDatabaseReference.child("games").child(key).child("connectedP2").setValue(true);
-                        r++;
-                    } else if ((newGame.getConnectedP2() && r==0) || (!newGame.getPlayer2().equals("") && r==0) || (!newGame.getConnectedP1() && !newGame.getConnectedP2())){
-                        otherPlayer = true;
+                    if ((newGame.getPlayer2().equals("") && r==1) || (!newGame.getPlayer2().equals(defaultUser.getUserID()) && r==1)){
                         new AlertDialog.Builder(GameActivity.this)
                                 .setTitle("Game session ended")
+                                .setOnCancelListener(new DialogInterface.OnCancelListener() {
+                                    @Override
+                                    public void onCancel(DialogInterface dialogInterface) {
+                                        finish();
+                                    }
+                                })
                                 .setMessage("Game you want to connect is no longer available")
                                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
 
@@ -361,12 +460,24 @@ public class GameActivity extends AppCompatActivity {
                                 }).create().show();
                     }
 
-                    players.setText(newGame.getP1name() + " vs " + newGame.getP2name());
-
-                    if (newGame.getMove() == 0 && !newGame.getWinnerP1() && !newGame.getWinnerP2()) {
+                    if (newGame.getMove() == 0 && !newGame.getWinnerP1() && !newGame.getWinnerP2() && r==0) {
+                        r++;
+                        mDatabaseReference.child("games").child(key).child("player2").setValue(playerX);
+                        mDatabaseReference.child("games").child(key).child("connectedP2").setValue(true);
                         surrender.setText("Surrender");
                         gameTimer();
                         loadProgress.setVisibility(View.GONE);
+                        otherPlayer(newGame.getPlayer1());
+                        players.setText(newGame.getP2name() + " vs " + newGame.getP1name());
+                    }
+
+
+                    if (newGame.isP1paused() && newGame.isP2paused()){
+                        count.setText("2/2");
+                    } else if ((newGame.isP1paused() && !newGame.isP2paused()) || (!newGame.isP1paused() && newGame.isP2paused())){
+                        count.setText("1/2");
+                    } else if (!newGame.isP1paused() && !newGame.isP2paused()){
+                        count.setText("0/2");
                     }
 
                     if ((!newGame.getPlayer2().equals(""))) {
@@ -392,12 +503,12 @@ public class GameActivity extends AppCompatActivity {
                         stopTimer();
                         surrender.setText("Leave");
                         moveView.setText("Game ended");
-                        givePoints();
                         firstPlayerEventListener.removeEventListener(listener1);
                     }
 
 
                     if (newGame.getWinnerP1() || newGame.getWinnerP2() || newGame.getDraw()) {
+                        givePoints();
                         mDatabaseReference.child("games").child(key).child("player1").setValue("");
                         mDatabaseReference.child("games").child(key).child("player2").setValue("");
                         mDatabaseReference.child("games").child(key).child("isDeleted").setValue(true);
@@ -405,12 +516,18 @@ public class GameActivity extends AppCompatActivity {
                         if (newGame.getWinnerP1()) {
                             message = "Player " + newGame.getP1name() + " won. Better luck next time";
                         } else if (newGame.getWinnerP2()) {
-                            message = "Player " + newGame.getP2name() + " won";
+                            message = "You won!";
                         } else if (newGame.getDraw()) {
                             message = "No player won";
                         }
                         new AlertDialog.Builder(GameActivity.this)
                                 .setTitle("Game ended")
+                                .setOnCancelListener(new DialogInterface.OnCancelListener() {
+                                    @Override
+                                    public void onCancel(DialogInterface dialogInterface) {
+                                        finish();
+                                    }
+                                })
                                 .setMessage(message)
                                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
 
@@ -468,6 +585,83 @@ public class GameActivity extends AppCompatActivity {
 
             }
         });
+
+        //Chat listener
+        chatIMG.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(GameActivity.this);
+                final LayoutInflater inflater = GameActivity.this.getLayoutInflater();
+                final View dialogView = inflater.inflate(R.layout.chat_window, null);
+                dialogBuilder.setView(dialogView);
+
+                //final EditText edt = (EditText) dialogView.findViewById(R.id.edit1);
+
+                dialogBuilder.setTitle("Chat");
+                //dialogBuilder.setMessage("Enter text below");
+
+                AlertDialog b = dialogBuilder.create();
+                b.show();
+
+                editTxt = dialogView.findViewById(R.id.editTxt);
+                sendBtn = dialogView.findViewById(R.id.sendBtn);
+                showMsg = dialogView.findViewById(R.id.showMessage);
+
+
+                sendBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (editTxt.getText().toString().equals("")) {
+                            return;
+                        }
+                        if (editTxt.getText().toString().length() > 128) {
+                            Toast.makeText(GameActivity.this, "Too long message(MAX 128 characters)", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
+                        singleMessage.add(playerOne.toString());
+                        singleMessage.add(playerTwo.toString());
+                        singleMessage.add(editTxt.getText().toString());
+                        if (newGame.getMessages() != null) {
+                            messages = newGame.getMessages();
+                        }
+                        messages.add(singleMessage);
+                        newGame.setMessages(messages);
+
+                        mDatabaseReference.child("games").child(key).child("messages").setValue(newGame.getMessages());
+
+                        editTxt.setText("");
+
+                        singleMessage.clear();
+                        messages.clear();
+                    }
+                });
+            }
+        });
+
+        //Pause listener
+        pauseIMG.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!paused) {
+                    paused = true;
+                    pauseIMG.setImageResource(R.drawable.play);
+                    if (playerOne){
+                        mDatabaseReference.child("games").child(key).child("p1paused").setValue(true);
+                    } else if (playerTwo){
+                        mDatabaseReference.child("games").child(key).child("p2paused").setValue(true);
+                    }
+                } else if (paused){
+                    paused = false;
+                    pauseIMG.setImageResource(R.drawable.pause);
+                    if (playerOne){
+                        mDatabaseReference.child("games").child(key).child("p1paused").setValue(false);
+                    } else if (playerTwo){
+                        mDatabaseReference.child("games").child(key).child("p2paused").setValue(false);
+                    }
+                }
+            }
+        });
     }
 
 
@@ -498,6 +692,11 @@ public class GameActivity extends AppCompatActivity {
     public void doSomething(View view) {
 
         if (otherPlayer){
+            return;
+        }
+
+        //If game is paused
+        if (newGame.isP1paused() && newGame.isP2paused()){
             return;
         }
 
@@ -621,9 +820,6 @@ public class GameActivity extends AppCompatActivity {
                 mDatabaseReference.child("games").child(key).child("connectedP1").setValue(false);
                 mDatabaseReference.child("games").child(key).child("player1").setValue("");
                 mDatabaseReference.child("games").child(key).child("player2").setValue("");
-                //mDatabaseReference.child("games").child(key).removeValue();
-                mDatabaseReference.child("games").child(key).child("isDeleted").setValue(true);
-                newGame.setDeleted(true);
                 super.onStop();
             }
             if (newGame.getConnectedP2()  && !newGame.getWinnerP1() && !newGame.getWinnerP2() && !newGame.getDraw()) {
@@ -637,9 +833,6 @@ public class GameActivity extends AppCompatActivity {
                 mDatabaseReference.child("games").child(key).child("player1").setValue("");
                 mDatabaseReference.child("games").child(key).child("player2").setValue("");
                 mDatabaseReference.child("games").child(key).child("connectedP2").setValue(false);
-                //mDatabaseReference.child("games").child(key).removeValue();
-                mDatabaseReference.child("games").child(key).child("isDeleted").setValue(true);
-                newGame.setDeleted(true);
                 super.onStop();
             } else if (!newGame.getWinnerP1() && !newGame.getWinnerP2() && !newGame.getDraw()){
                 Log.d("test", "Player disconnected");
@@ -655,17 +848,7 @@ public class GameActivity extends AppCompatActivity {
 
         if (otherPlayer){
             finish();
-        } else if (newGame.isDeleted()) {
-            new AlertDialog.Builder(GameActivity.this)
-                    .setTitle("Game ended")
-                    .setMessage("The game you want to join ended")
-                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-
-                        public void onClick(DialogInterface arg0, int arg1) {
-                            finish();
-                        }
-                    }).create().show();
-        }else if (playerOne) {
+        } else if (playerOne) {
             Log.d("test", "Player connected");
             if (!newGame.getWinnerP1() && !newGame.getWinnerP2() && !newGame.getDraw()) {
                 mDatabaseReference.child("games").child(key).child("connectedP1").setValue(true);
@@ -674,22 +857,29 @@ public class GameActivity extends AppCompatActivity {
             Log.d("test", "Player connected");
             if (!newGame.getWinnerP1() && !newGame.getWinnerP2() && !newGame.getDraw()) {
                 mDatabaseReference.child("games").child(key).child("connectedP2").setValue(true);
-            }        }
-
+            }
+        }
     }
 
     private void givePoints() {
         if (playerOne) {
+            mDatabaseReference.child("Users").child(userMap.getUserID()).child("gamesPlayed").setValue(defaultUser.getGamesPlayed() + 1);
             if (newGame.getWinnerP1()) {
                 mDatabaseReference.child("Users").child(userMap.getUserID()).child("points").setValue(defaultUser.getPoints() + 3);
+                mDatabaseReference.child("Users").child(userMap.getUserID()).child("gamesWon").setValue(defaultUser.getGamesWon() + 1);
             } else if (newGame.getDraw()) {
                 mDatabaseReference.child("Users").child(userMap.getUserID()).child("points").setValue(defaultUser.getPoints() + 1);
+            } else if (newGame.getWinnerP2()){
+                mDatabaseReference.child("Users").child(userMap.getUserID()).child("gamesLost").setValue(defaultUser.getGamesLost() + 1);
             }
         } else if (playerTwo) {
+            mDatabaseReference.child("Users").child(userMap.getUserID()).child("gamesPlayed").setValue(defaultUser.getGamesPlayed() + 1);
             if (newGame.getWinnerP2()) {
                 mDatabaseReference.child("Users").child(userMap.getUserID()).child("points").setValue(defaultUser.getPoints() + 3);
             } else if (newGame.getDraw()) {
                 mDatabaseReference.child("Users").child(userMap.getUserID()).child("points").setValue(defaultUser.getPoints() + 1);
+            } else if (newGame.getWinnerP1()){
+                mDatabaseReference.child("Users").child(userMap.getUserID()).child("gamesLost").setValue(defaultUser.getGamesLost() + 1);
             }
         }
     }
@@ -721,6 +911,49 @@ public class GameActivity extends AppCompatActivity {
                 } else if (playerTwo) {
                     mDatabaseReference.child("games").child(key).child("p2name").setValue(defaultUser.getName());
                 }
+                if (defaultUser.getPhotoID() != null) {
+                    if (defaultUser.getPhotoID().equals("grumpy")) {
+                        profile1.setImageResource(R.drawable.grumpy);
+                    }
+                    if (defaultUser.getPhotoID().equals("kon")) {
+                        profile1.setImageResource(R.drawable.kon);
+                    }
+                    if (defaultUser.getPhotoID().equals("opica")) {
+                        profile1.setImageResource(R.drawable.opica);
+                    }
+                    if (defaultUser.getPhotoID().equals("0")) {
+                        profile1.setImageResource(R.drawable.icon_profile_empty);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void otherPlayer(String userid) {
+        userRef3 = mDatabaseReference.child("Users").child(userid);
+        userRef3.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                defaultUser2 = dataSnapshot.getValue(DefaultUser.class);
+                if (defaultUser2.getPhotoID() != null) {
+                    if (defaultUser2.getPhotoID().equals("grumpy")) {
+                        profile2.setImageResource(R.drawable.grumpy);
+                    }
+                    if (defaultUser2.getPhotoID().equals("kon")) {
+                        profile2.setImageResource(R.drawable.kon);
+                    }
+                    if (defaultUser2.getPhotoID().equals("opica")) {
+                        profile2.setImageResource(R.drawable.opica);
+                    }
+                    if (defaultUser2.getPhotoID().equals("0")) {
+                        profile2.setImageResource(R.drawable.icon_profile_empty);
+                    }
+                }
             }
 
             @Override
@@ -733,22 +966,13 @@ public class GameActivity extends AppCompatActivity {
 
     public void checkWinner(ArrayList<String> gameList) {
 
-        Log.d("test", "checkWinner called");
         if (newGame.getSize() == 3) {
-
-            if (gameList.get(0) == "x") {
-                Log.d("test", "gameList.get(0)==\"x\"");
-            }
-            if (gameList.get(0).equals("x")) {
-                Log.d("test", "gameList.get(0).equals(\"x\")");
-            }
 
             if (gameList.get(0).equals("x") && gameList.get(1).equals("x") && gameList.get(2).equals("x")) {
                 tictacList.get(0).setBackgroundColor(0xFF00FF00);
                 tictacList.get(1).setBackgroundColor(0xFF00FF00);
                 tictacList.get(2).setBackgroundColor(0xFF00FF00);
                 newGame.setWinner(true);
-                Log.d("test", "clickedButton function Winner SET");
             }
             if (gameList.get(3).equals("x") && gameList.get(4).equals("x") && gameList.get(5).equals("x")) {
                 tictacList.get(3).setBackgroundColor(0xFF00FF00);

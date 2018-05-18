@@ -47,6 +47,7 @@ import com.trasimus.tictactoe.online.FontHelper;
 import com.trasimus.tictactoe.online.R;
 import com.trasimus.tictactoe.online.UserMap;
 import com.trasimus.tictactoe.online.account.AccountActivity;
+import com.trasimus.tictactoe.online.friends.FindFriends;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -77,6 +78,13 @@ public class LoginActivity extends AppCompatActivity {
 
     private String key;
 
+    private Bundle mBundle;
+    private boolean deletion;
+    private String userUID;
+    private String userID;
+    private String gameID;
+    private FirebaseUser user;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,7 +92,13 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(com.trasimus.tictactoe.online.R.layout.activity_login);
         FontHelper.setCustomTypeface(findViewById(com.trasimus.tictactoe.online.R.id.view_root));
 
-        TestFairy.begin(this, "2574a6227e6a3e46d0d28cf1584fb72823002c36");
+        //TestFairy.begin(this, "2574a6227e6a3e46d0d28cf1584fb72823002c36");
+
+        mBundle = getIntent().getExtras();
+        deletion = mBundle.getBoolean("deletion");
+        userUID = mBundle.getString("userUID");
+        userID = mBundle.getString("userID");
+        gameID = mBundle.getString("gameID");
 
         mail = (EditText) findViewById(R.id.mailInput);
         pass = (EditText) findViewById(R.id.passwordInput);
@@ -157,7 +171,7 @@ public class LoginActivity extends AppCompatActivity {
                                     Toast.LENGTH_SHORT).show();
 
                             if(task.getException() instanceof FirebaseAuthUserCollisionException) {
-                                Toast.makeText(getApplicationContext(), "User with Email id already exists, please login with your default login provider or link this provider with your account",
+                                Toast.makeText(getApplicationContext(), "User with Email id already exists, please login with your default login provider",
                                         Toast.LENGTH_LONG).show();
                             }
                             LoginManager.getInstance().logOut();
@@ -182,7 +196,7 @@ public class LoginActivity extends AppCompatActivity {
                                     Toast.LENGTH_SHORT).show();
 
                             if(task.getException() instanceof FirebaseAuthUserCollisionException) {
-                                Toast.makeText(getApplicationContext(), "User with Email id already exists, please login with your default login provider or link this provider with your account",
+                                Toast.makeText(getApplicationContext(), "User with Email id already exists, please login with your default login provider",
                                         Toast.LENGTH_LONG).show();
                             }
                             LoginManager.getInstance().logOut();
@@ -227,9 +241,43 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void launchMenuActivity() {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        user = FirebaseAuth.getInstance().getCurrentUser();
 
-        checkIfUserExist(user);
+        if (deletion){
+
+            new AlertDialog.Builder(this)
+                    .setTitle("Delete account")
+                    .setMessage("Are you sure you want to delete your account?")
+                    .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            checkIfUserExist(user);
+                        }
+                    })
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            FirebaseDatabase.getInstance().getReference().child("UserMap").child(userUID).removeValue();
+                            FirebaseDatabase.getInstance().getReference().child("Users").child(userID).removeValue();
+                            FirebaseDatabase.getInstance().getReference().child("games").child(gameID).removeValue();
+
+                            FirebaseAuth.getInstance().getCurrentUser().delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()){
+                                        Toast.makeText(LoginActivity.this, "Account deleted", Toast.LENGTH_LONG).show();
+                                        FirebaseAuth.getInstance().signOut();
+                                        LoginManager.getInstance().logOut();
+                                    } else {
+                                        Toast.makeText(LoginActivity.this, "Deleting was partially successful", Toast.LENGTH_LONG).show();
+                                    }
+                                }
+                            });
+                        }
+                    }).create().show();
+        } else {
+            checkIfUserExist(user);
+        }
     }
 
     private void checkIfUserExist(FirebaseUser user){
@@ -249,7 +297,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     String uniqueID = UUID.randomUUID().toString();
                     UserMap map = new UserMap(mailX, uniqueID);
-                    DefaultUser defaultUser = new DefaultUser(uniqueID, mailX, firebaseUser.getDisplayName(), "" , "", 0, friends, null, null, null, "", "0", key);
+                    DefaultUser defaultUser = new DefaultUser(uniqueID, mailX, firebaseUser.getDisplayName(), "" , "", 0, friends, "", "0", key, 0, 0, 0);
                     FirebaseDatabase.getInstance().getReference().child("UserMap").child(firebaseUser.getUid()).setValue(map);
                     FirebaseDatabase.getInstance().getReference().child("Users").child(uniqueID).setValue(defaultUser);
                 }
