@@ -8,11 +8,11 @@ package com.testfairy.sdk;
 
 public final class R {
     public static final class id {
-        public static final int hidden_button_1 = 0x7f0900ce;
-        public static final int hidden_button_2 = 0x7f0900cf;
-        public static final int hidden_container = 0x7f0900d0;
-        public static final int webViewContainer = 0x7f090192;
-        public static final int webview = 0x7f090193;
+        public static final int hidden_button_1 = 0x7f0900d0;
+        public static final int hidden_button_2 = 0x7f0900d1;
+        public static final int hidden_container = 0x7f0900d2;
+        public static final int webViewContainer = 0x7f090188;
+        public static final int webview = 0x7f090189;
     }
     public static final class layout {
         public static final int activity_web_view_test = 0x7f0b0026;

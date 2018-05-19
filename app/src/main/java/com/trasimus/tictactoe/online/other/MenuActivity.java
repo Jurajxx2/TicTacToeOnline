@@ -33,6 +33,7 @@ import com.trasimus.tictactoe.online.friends.FriendsActivity;
 import com.trasimus.tictactoe.online.game.GameActivity;
 import com.trasimus.tictactoe.online.game.GameFinderActivity;
 import com.trasimus.tictactoe.online.UserMap;
+import com.trasimus.tictactoe.online.game.GameSizeChoose;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -97,7 +98,7 @@ public class MenuActivity extends AppCompatActivity {
                             Toast.makeText(MenuActivity.this, "Please, set your name in Account to play a game", Toast.LENGTH_SHORT).show();
                             break;
                         } else {
-                            Intent intent = new Intent(MenuActivity.this, GameFinderActivity.class);
+                            Intent intent = new Intent(MenuActivity.this, GameSizeChoose.class);
                             startActivity(intent);
                             break;
                         }

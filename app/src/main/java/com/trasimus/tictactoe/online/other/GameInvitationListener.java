@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
-import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -23,8 +22,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.trasimus.tictactoe.online.DefaultUser;
 import com.trasimus.tictactoe.online.Lobby;
 import com.trasimus.tictactoe.online.UserMap;
-import com.trasimus.tictactoe.online.friends.LobbyActivity;
 import com.trasimus.tictactoe.online.R;
+import com.trasimus.tictactoe.online.game.GameActivity;
 
 public class GameInvitationListener extends Service {
 
@@ -129,7 +128,7 @@ public class GameInvitationListener extends Service {
 
                 if (lobbyID != null && !lobbyID.equals("")){
 
-                    Intent intent = new Intent(GameInvitationListener.this, LobbyActivity.class);
+                    Intent intent = new Intent(GameInvitationListener.this, GameActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     intent.putExtra("X", "X");
                     intent.putExtra("lobbyID", lobbyID);

@@ -143,9 +143,10 @@ public class GameFinderActivity extends AppCompatActivity {
             Toast.makeText(this, "Please check your internet connection or try again later", Toast.LENGTH_LONG).show();
             return;
         }
+        key = myRef.child("games").push().getKey();
         Intent intent = new Intent(GameFinderActivity.this, GameActivity.class);
         intent.putExtra("size", 3);
-        intent.putExtra("key", mDefaultUser.getMyGameID());
+        intent.putExtra("key", key);
         startActivity(intent);
         finish();
     }
@@ -155,9 +156,10 @@ public class GameFinderActivity extends AppCompatActivity {
             Toast.makeText(this, "Please check your internet connection or try again later", Toast.LENGTH_LONG).show();
             return;
         }
+        key = myRef.child("games").push().getKey();
         Intent intent = new Intent(GameFinderActivity.this, GameActivity.class);
         intent.putExtra("size", 4);
-        intent.putExtra("key", mDefaultUser.getMyGameID());
+        intent.putExtra("key", key);
         startActivity(intent);
         finish();
     }
@@ -167,9 +169,10 @@ public class GameFinderActivity extends AppCompatActivity {
             Toast.makeText(this, "Please check your internet connection or try again later", Toast.LENGTH_LONG).show();
             return;
         }
+        key = myRef.child("games").push().getKey();
         Intent intent = new Intent(GameFinderActivity.this, GameActivity.class);
         intent.putExtra("size", 5);
-        intent.putExtra("key", mDefaultUser.getMyGameID());
+        intent.putExtra("key", key);
         startActivity(intent);
         finish();
     }

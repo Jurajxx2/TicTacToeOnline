@@ -297,7 +297,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     String uniqueID = UUID.randomUUID().toString();
                     UserMap map = new UserMap(mailX, uniqueID);
-                    DefaultUser defaultUser = new DefaultUser(uniqueID, mailX, firebaseUser.getDisplayName(), "" , "", 0, friends, "", "0", key, 0, 0, 0);
+                    DefaultUser defaultUser = new DefaultUser(uniqueID, mailX, firebaseUser.getDisplayName(), "" , "", 0, friends, "", "0", key, 0, 0, 0, false);
                     FirebaseDatabase.getInstance().getReference().child("UserMap").child(firebaseUser.getUid()).setValue(map);
                     FirebaseDatabase.getInstance().getReference().child("Users").child(uniqueID).setValue(defaultUser);
                 }

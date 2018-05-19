@@ -24,16 +24,16 @@
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\drawable-hdpi-v4\\abc_textfield_search_default_mtrl_alpha.9.png"
     },
     {
-        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_ic_star_half_black_16dp.png.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\drawable-hdpi-v4\\abc_ic_star_half_black_16dp.png"
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_btn_check_to_on_mtrl_000.png.flat",
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\drawable-mdpi-v4\\abc_btn_check_to_on_mtrl_000.png"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_com_accountkit_device.png.flat",
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\account-kit-sdk-4.31.0.aar\\4c46f816dc747f2b65f128f307b5f897\\res\\drawable-hdpi-v4\\com_accountkit_device.png"
     },
     {
-        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_btn_check_to_on_mtrl_000.png.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\drawable-mdpi-v4\\abc_btn_check_to_on_mtrl_000.png"
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_ic_star_half_black_16dp.png.flat",
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\drawable-hdpi-v4\\abc_ic_star_half_black_16dp.png"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_list_selector_disabled_holo_dark.9.png.flat",
@@ -468,12 +468,12 @@
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\drawable-xhdpi-v4\\abc_btn_switch_to_on_mtrl_00001.9.png"
     },
     {
-        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_list_focused_holo.9.png.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\drawable-hdpi-v4\\abc_list_focused_holo.9.png"
-    },
-    {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bubble2.9.png.flat",
         "source": "C:\\Projects\\AATicTacToeOnline\\app\\src\\main\\res\\drawable\\bubble2.9.png"
+    },
+    {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_list_focused_holo.9.png.flat",
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\drawable-hdpi-v4\\abc_list_focused_holo.9.png"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_btn_switch_to_on_mtrl_00012.9.png.flat",
@@ -708,6 +708,10 @@
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\drawable-xxhdpi-v4\\abc_btn_radio_to_on_mtrl_000.png"
     },
     {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_user_profile.xml.flat",
+        "source": "C:\\Projects\\AATicTacToeOnline\\app\\src\\main\\res\\layout\\user_profile.xml"
+    },
+    {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-watch-v20_abc_dialog_material_background.xml.flat",
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\drawable-watch-v20\\abc_dialog_material_background.xml"
     },
@@ -842,6 +846,10 @@
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_scrubber_control_to_pressed_mtrl_000.png.flat",
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\drawable-mdpi-v4\\abc_scrubber_control_to_pressed_mtrl_000.png"
+    },
+    {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_game_size_choose.xml.flat",
+        "source": "C:\\Projects\\AATicTacToeOnline\\app\\src\\main\\res\\layout\\activity_game_size_choose.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_common_google_signin_btn_text_dark.xml.flat",
@@ -1284,12 +1292,12 @@
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\account-kit-sdk-4.31.0.aar\\4c46f816dc747f2b65f128f307b5f897\\res\\drawable-mdpi-v4\\com_accountkit_check_sms.png"
     },
     {
-        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_com_accountkit_spinner_triangle.png.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\account-kit-sdk-4.31.0.aar\\4c46f816dc747f2b65f128f307b5f897\\res\\drawable-xxxhdpi-v4\\com_accountkit_spinner_triangle.png"
-    },
-    {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_chat_msg_row.xml.flat",
         "source": "C:\\Projects\\AATicTacToeOnline\\app\\src\\main\\res\\layout\\chat_msg_row.xml"
+    },
+    {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_com_accountkit_spinner_triangle.png.flat",
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\account-kit-sdk-4.31.0.aar\\4c46f816dc747f2b65f128f307b5f897\\res\\drawable-xxxhdpi-v4\\com_accountkit_spinner_triangle.png"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_com_facebook_button_icon_blue.png.flat",
@@ -2092,10 +2100,6 @@
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\drawable-xxhdpi-v4\\abc_textfield_default_mtrl_alpha.9.png"
     },
     {
-        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_lobby.xml.flat",
-        "source": "C:\\Projects\\AATicTacToeOnline\\app\\src\\main\\res\\layout\\activity_lobby.xml"
-    },
-    {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_textfield_activated_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\drawable-mdpi-v4\\abc_textfield_activated_mtrl_alpha.9.png"
     },
@@ -2248,12 +2252,12 @@
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-3.2.2.aar\\ccc3f2455c5895462344699df48b4f50\\res\\layout\\fui_activity_register_phone.xml"
     },
     {
-        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_ic_star_black_16dp.png.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\drawable-mdpi-v4\\abc_ic_star_black_16dp.png"
-    },
-    {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_scrubber_control_to_pressed_mtrl_000.png.flat",
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\drawable-xhdpi-v4\\abc_scrubber_control_to_pressed_mtrl_000.png"
+    },
+    {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_ic_star_black_16dp.png.flat",
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\drawable-mdpi-v4\\abc_ic_star_black_16dp.png"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_messenger_bubble_large_blue.png.flat",

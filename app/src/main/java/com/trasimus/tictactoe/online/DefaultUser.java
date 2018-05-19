@@ -19,12 +19,13 @@ public class DefaultUser {
     private int gamesPlayed;
     private int gamesWon;
     private int gamesLost;
+    private boolean isOnline;
 
     public DefaultUser(){
 
     }
 
-    public DefaultUser(String userID, String mail, String name, String age, String country, int points, ArrayList<ArrayList<String>> friends, String lobbyID, String photoID, String myGameID, int gamesPlayed, int gamesWon, int gamesLost){
+    public DefaultUser(String userID, String mail, String name, String age, String country, int points, ArrayList<ArrayList<String>> friends, String lobbyID, String photoID, String myGameID, int gamesPlayed, int gamesWon, int gamesLost, boolean isOnline){
 
         this.userID = userID;
         this.mail = mail;
@@ -39,6 +40,7 @@ public class DefaultUser {
         this.gamesPlayed = gamesPlayed;
         this.gamesWon = gamesWon;
         this.gamesLost = gamesLost;
+        this.isOnline = isOnline;
     }
 
     public String getUserID() {
@@ -143,5 +145,13 @@ public class DefaultUser {
 
     public void setGamesLost(int gamesLost) {
         this.gamesLost = gamesLost;
+    }
+
+    public boolean isOnline() {
+        return isOnline;
+    }
+
+    public void setOnline(boolean online) {
+        isOnline = online;
     }
 }

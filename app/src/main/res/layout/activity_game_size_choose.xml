@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".game.GameSizeChoose"
+    android:orientation="vertical"
+    android:weightSum="3">
+
+    <Button
+        android:id="@+id/game3"
+        style="@style/FirebaseUI.Button.AccountChooser.EmailButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:onClick="launchGameActivity3"
+        android:text="Play 3x3" />
+
+    <Button
+        android:id="@+id/game4"
+        style="@style/FirebaseUI.Button.AccountChooser.FacebookButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:onClick="launchGameActivity4"
+        android:text="Play 4x4" />
+
+    <Button
+        android:id="@+id/game5"
+        style="@style/FirebaseUI.Button.AccountChooser.PhoneButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:onClick="launchGameActivity5"
+        android:text="Play 5x5"
+        app:layout_constraintVertical_bias="1.0" />
+
+</LinearLayout>

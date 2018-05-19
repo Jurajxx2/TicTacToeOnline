@@ -25,6 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.trasimus.tictactoe.online.DefaultUser;
 import com.trasimus.tictactoe.online.R;
 import com.trasimus.tictactoe.online.UserMap;
+import com.trasimus.tictactoe.online.game.GameSizeChoose;
 import com.trasimus.tictactoe.online.other.GameInvitationListener;
 
 import java.util.ArrayList;
@@ -206,14 +207,8 @@ public class FriendsActivity extends AppCompatActivity {
                                             Intent intent2 = new Intent(FriendsActivity.this, GameInvitationListener.class);
                                             stopService(intent2);
 
-                                            String lobbyID = mDatabaseReference.child("Lobby").push().getKey();
-                                            mDatabaseReference.child("Users").child(userIDX).child("lobbyID").setValue(lobbyID);
-                                            //mDatabaseReference.child("Users").child(userID).child("lobbyID").setValue(lobbyID);
-                                            Toast.makeText(FriendsActivity.this, "Game Invitation Sent", Toast.LENGTH_SHORT).show();
-                                            Intent intent = new Intent(FriendsActivity.this, LobbyActivity.class);
-                                            intent.putExtra("p1", userID);
+                                            Intent intent = new Intent(FriendsActivity.this, GameSizeChoose .class);
                                             intent.putExtra("p2", defaultUser.getUserID());
-                                            intent.putExtra("lobbyID", lobbyID);
                                             startActivity(intent);
                                             finish();
                                         }

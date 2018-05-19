@@ -1,6 +1,6 @@
 #Internal package file, do not edit.
-#Thu May 17 22:31:05 CEST 2018
-1.base=C\:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\assets\\debug
+#Sun May 20 00:31:09 CEST 2018
+1.base=C\:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\11
 2.path=fonts/avenir-black.ttf
 0.baseType=DIRECTORY
 3.baseType=DIRECTORY
@@ -10,10 +10,10 @@
 1.baseType=DIRECTORY
 3.path=classes.dex
 count=4
-1.set=ASSET
-0.path=classes.dex
+1.set=DEX
+0.path=crashlytics-build.properties
 3.base=C\:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\12
-0.set=DEX
-0.base=C\:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\13
+0.set=ASSET
+0.base=C\:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\assets\\debug
 2.baseType=DIRECTORY
-1.path=crashlytics-build.properties
+1.path=classes.dex

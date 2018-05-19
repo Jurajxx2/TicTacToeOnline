@@ -146,8 +146,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
-            android:name="com.trasimus.tictactoe.online.friends.LobbyActivity"
-            android:label="Lobby"
+            android:name="com.trasimus.tictactoe.online.game.GameSizeChoose"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <!--

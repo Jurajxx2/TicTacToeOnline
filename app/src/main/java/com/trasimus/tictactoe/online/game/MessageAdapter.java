@@ -10,11 +10,15 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
+import com.trasimus.tictactoe.online.DefaultUser;
+import com.trasimus.tictactoe.online.GameObject;
 import com.trasimus.tictactoe.online.R;
 
 import java.util.ArrayList;
@@ -26,6 +30,11 @@ public class MessageAdapter extends BaseAdapter{
     private ArrayList<DataSnapshot> mSnapshotList;
     private boolean playerOne = false;
     private boolean playerTwo = false;
+    private String player1;
+    private String player2;
+    private GameObject mGameObject;
+    private ValueEventListener mValueEventListener;
+    private DatabaseReference mReference;
 
     private ChildEventListener mListener = new ChildEventListener() {
         @Override
@@ -57,13 +66,36 @@ public class MessageAdapter extends BaseAdapter{
     };
 
 
-    public MessageAdapter(Activity activity, DatabaseReference ref, boolean playerOne, boolean playerTwo){
+    public MessageAdapter(Activity activity, DatabaseReference ref, final boolean playerOne, boolean playerTwo){
+
+        mGameObject = new GameObject();
+
+        mReference = ref;
 
         mActivity = activity;
         mDatabaseReference = ref.child("messages");
         mDatabaseReference.addChildEventListener(mListener);
         this.playerOne = playerOne;
         this.playerTwo = playerTwo;
+
+        mValueEventListener = mReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                mGameObject = dataSnapshot.getValue(GameObject.class);
+
+                player1 = mGameObject.getP1name();
+                player2 = mGameObject.getP2name();
+
+                if (!player2.equals("")){
+                    mReference.removeEventListener(mValueEventListener);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
         mSnapshotList = new ArrayList<>();
     }
@@ -80,9 +112,9 @@ public class MessageAdapter extends BaseAdapter{
     }
 
     @Override
-    public Object getItem(int i) {
+    public ArrayList<String> getItem(int i) {
         DataSnapshot snapshot = mSnapshotList.get(i);
-        return (ArrayList<ArrayList<String>>)snapshot.getValue();
+        return (ArrayList<String>) snapshot.getValue();
     }
 
     @Override
@@ -102,22 +134,29 @@ public class MessageAdapter extends BaseAdapter{
             view.setTag(holder);
         }
 
-        final ArrayList<ArrayList<String>> message = (ArrayList<ArrayList<String>>) getItem(i);
+        final ArrayList<String> message = getItem(i);
         final ViewHolder holder = (ViewHolder) view.getTag();
 
         boolean isMe = false;
 
         if (playerOne) {
-            isMe = message.get(message.size() - 1).get(0).equals("true");
+            isMe = message.get(0).equals("true");
         } else if (playerTwo){
-            isMe = message.get(message.size() - 1).get(1).equals("true");
+            isMe = message.get(1).equals("true");
         }
         setChatRowAppearance(isMe, holder);
 
-        //String author = message.getAuthor();
-        //holder.authorName.setText(author);
+        String author = "";
 
-        String msg = message.get(message.size() - 1).get(2);
+        if (playerOne){
+            author = player1;
+        } else if (playerTwo){
+            author = player2;
+        }
+
+        holder.authorName.setText(author);
+
+        String msg = message.get(2);
         holder.body.setText(msg);
 
         return view;
@@ -125,7 +164,7 @@ public class MessageAdapter extends BaseAdapter{
 
     private void setChatRowAppearance(boolean isItMe, ViewHolder holder){
 
-        if(isItMe){
+        if(!isItMe){
             holder.params.gravity = Gravity.END;
             holder.authorName.setTextColor(Color.GREEN);
             holder.body.setBackgroundResource(R.drawable.bubble2);
