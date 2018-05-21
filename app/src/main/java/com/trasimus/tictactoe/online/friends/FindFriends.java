@@ -109,7 +109,6 @@ public class FindFriends extends AppCompatActivity {
                 for (DataSnapshot snapshot: dataSnapshot.getChildren()){
                     mDefaultUser = snapshot.getValue(DefaultUser.class);
                     mList.add(mDefaultUser);
-
                 }
 
                 Collections.sort(mList, new Comparator<DefaultUser>() {

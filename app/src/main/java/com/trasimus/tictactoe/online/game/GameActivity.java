@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -64,6 +65,8 @@ public class GameActivity extends AppCompatActivity {
     private DatabaseReference userRef1;
     private DatabaseReference userRef2;
     private DatabaseReference userRef3;
+    private DatabaseReference gamesRef;
+    private DatabaseReference gameRef;
 
     private String key;
 
@@ -94,6 +97,7 @@ public class GameActivity extends AppCompatActivity {
 
     private ValueEventListener listener1;
     private ValueEventListener gameListener;
+    private ValueEventListener requestListener;
 
     private CountDownTimer2 mTimer;
     private TextView moveView;
@@ -106,6 +110,7 @@ public class GameActivity extends AppCompatActivity {
     private ListView showMsg;
     private ArrayList<String> singleMessage;
     private MessageAdapter mAdapter;
+    private GameObject gameObjectToConnect;
 
     private int r=0;
 
@@ -150,6 +155,7 @@ public class GameActivity extends AppCompatActivity {
         mFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         mDatabaseReference = FirebaseDatabase.getInstance().getReference();
         playerX = mFirebaseUser.getUid();
+        gamesRef = mDatabaseReference.child("games");
 
         //Initiate CountDownTimer
         mTimer = new CountDownTimer2(30000, 1000) {
@@ -348,21 +354,98 @@ public class GameActivity extends AppCompatActivity {
 
         tictacList = Arrays.asList(tictac);
         gameList = Arrays.asList(game);
+
+        findGame();
     }
 
-    private void mainGame(){
+    private void findGame(){
+        gamesRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                GameObject gameObject = new GameObject();
+                for (DataSnapshot snapshot: dataSnapshot.getChildren()){
+                    gameObject = snapshot.getValue(GameObject.class);
+                    if (gameObject.getPlayer2()=="" && !gameObject.getConnectedP2() && gameObject.getSize()==bundle.getInt("size")){
+                        sendRequest(gameObject.getGameID());
+                        return;
+                    }
+                }
+                mainGame("");
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void sendRequest(String gameID){
+        gameRef = gamesRef.child(gameID);
+
+        gameRef.child("request").setValue(playerX);
+
+        requestListener = gameRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                gameObjectToConnect = new GameObject();
+                gameObjectToConnect = dataSnapshot.getValue(GameObject.class);
+
+                if (!gameObjectToConnect.getPlayer2().equals("") && !gameObjectToConnect.getPlayer2().equals(playerX)){
+                    gameRef.removeEventListener(requestListener);
+                    findGame();
+                }
+                if (gameObjectToConnect.getPlayer2().equals(playerX)) {
+                    new AlertDialog.Builder(GameActivity.this)
+                            .setTitle("Game found")
+                            .setMessage("Do you want to connect to game?")
+                            .setOnCancelListener(new DialogInterface.OnCancelListener() {
+                                @Override
+                                public void onCancel(DialogInterface dialogInterface) {
+                                    gameRef.child("request").setValue("");
+                                    gameRef.removeEventListener(requestListener);
+                                    findGame();
+                                    return;
+                                }
+                            })
+                            .setNegativeButton("Exit", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    gameRef.child("request").setValue("");
+                                    gameRef.removeEventListener(requestListener);
+                                    finish();
+                                }
+                            })
+                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    gameRef.removeEventListener(requestListener);
+                                    mainGame(gameObjectToConnect.getGameID());
+                                }
+                            }).create().show();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void mainGame(String gameID){
 
         //If player creates the game
-        if (bundle.getString("gameID") == null) {
+        if (gameID.equals("")) {
 
             playerOne = true;
             playerTwo = false;
-            key = bundle.getString("key");
+            key = myRef.child("games").push().getKey();
             mRandom = new Random();
             startPlayer = mRandom.nextBoolean();
             theOtherPlayer = !startPlayer;
 
-            newGame = new GameObject(key, mFirebaseUser.getUid(), "", bundle.getInt("size"), startPlayer, theOtherPlayer, startPlayer, 0, 0, false, false, true, false, false, "", "", false, false, false, messages);
+            newGame = new GameObject(key, mFirebaseUser.getUid(), "", bundle.getInt("size"), startPlayer, theOtherPlayer, startPlayer, 0, 0, false, false, true, false, false, "", "", false, false, false, messages, "");
             mDatabaseReference.child("games").child(key).setValue(newGame);
 
             getID(playerX);
@@ -389,6 +472,33 @@ public class GameActivity extends AppCompatActivity {
 
                                     public void onClick(DialogInterface arg0, int arg1) {
                                         finish();
+                                    }
+                                }).create().show();
+                    }
+
+                    if (!newGame.getRequest().equals("") || newGame.getRequest()!=null){
+                        new AlertDialog.Builder(GameActivity.this)
+                                .setTitle("Game found")
+                                .setMessage("Do you want to connect to game?")
+                                .setOnCancelListener(new DialogInterface.OnCancelListener() {
+                                    @Override
+                                    public void onCancel(DialogInterface dialogInterface) {
+                                        mDatabaseReference.child("games").child(key).child("request").setValue("");
+                                        finish();
+                                    }
+                                })
+                                .setNegativeButton("Exit", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        mDatabaseReference.child("games").child(key).child("request").setValue("");
+                                        finish();
+                                    }
+                                })
+                                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+
+                                    public void onClick(DialogInterface arg0, int arg1) {
+                                        mDatabaseReference.child("games").child(key).child("player2").setValue(newGame.getRequest());
+                                        mDatabaseReference.child("games").child(key).child("request").setValue("");
                                     }
                                 }).create().show();
                     }
@@ -422,7 +532,8 @@ public class GameActivity extends AppCompatActivity {
                     }
 
 
-                    if ((!newGame.getPlayer2().equals("")) && (newGame.getMove() == 0) && newGame.getConnectedP2()) {
+                    if ((!newGame.getPlayer2().equals("")) && (newGame.getMove() == 0) && newGame.getConnectedP2() && r==0) {
+                        r++;
                         Log.d("test", "Player 2 set");
                         players.setText(newGame.getP1name() + " vs " + newGame.getP2name());
                         gameTimer();
@@ -502,26 +613,25 @@ public class GameActivity extends AppCompatActivity {
             playerOne = false;
             playerTwo = true;
             newGame = new GameObject();
-            key = bundle.getString("gameID");
             getID(playerX);
 
-            firstPlayerEventListener = mDatabaseReference.child("games").child(key);
+            firstPlayerEventListener = mDatabaseReference.child("games").child(gameID);
 
             listener1 = firstPlayerEventListener.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     newGame = dataSnapshot.getValue(GameObject.class);
 
-                    if ((newGame.getPlayer2().equals("") && r==1) || (!newGame.getPlayer2().equals(defaultUser.getUserID()) && r==1)){
+                    if (!newGame.getPlayer2().equals(defaultUser.getUserID())){
                         new AlertDialog.Builder(GameActivity.this)
-                                .setTitle("Game session ended")
+                                .setTitle("Game error")
                                 .setOnCancelListener(new DialogInterface.OnCancelListener() {
                                     @Override
                                     public void onCancel(DialogInterface dialogInterface) {
                                         finish();
                                     }
                                 })
-                                .setMessage("Game you want to connect is no longer available")
+                                .setMessage("Problem with connecting to game, another player is already connected, please try again")
                                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
 
                                     public void onClick(DialogInterface arg0, int arg1) {
@@ -540,6 +650,7 @@ public class GameActivity extends AppCompatActivity {
                     if (newGame.getMove() == 0 && !newGame.getWinnerP1() && !newGame.getWinnerP2() && r==0) {
                         r++;
                         mDatabaseReference.child("games").child(key).child("player2").setValue(playerX);
+                        mDatabaseReference.child("games").child(key).child("request").setValue("");
                         mDatabaseReference.child("games").child(key).child("connectedP2").setValue(true);
                         gameTimer();
                         loadProgress.setVisibility(View.GONE);

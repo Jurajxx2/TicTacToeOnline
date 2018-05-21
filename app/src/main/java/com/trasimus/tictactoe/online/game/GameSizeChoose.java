@@ -28,7 +28,6 @@ public class GameSizeChoose extends AppCompatActivity {
         p2 = mBundle.getString("p2");
 
 
-        key = myRef.child("games").push().getKey();
     }
 
     public void launchGameActivity3(View view){
@@ -37,7 +36,6 @@ public class GameSizeChoose extends AppCompatActivity {
             intent.putExtra("p2", p2);
         }
         intent.putExtra("size", 3);
-        intent.putExtra("key", key);
         startActivity(intent);
         finish();
     }
@@ -48,7 +46,6 @@ public class GameSizeChoose extends AppCompatActivity {
             intent.putExtra("p2", p2);
         }
         intent.putExtra("size", 4);
-        intent.putExtra("key", key);
         startActivity(intent);
         finish();
     }
@@ -59,7 +56,6 @@ public class GameSizeChoose extends AppCompatActivity {
             intent.putExtra("p2", p2);
         }
         intent.putExtra("size", 5);
-        intent.putExtra("key", key);
         startActivity(intent);
         finish();
     }
