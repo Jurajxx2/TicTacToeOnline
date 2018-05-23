@@ -2608,7 +2608,7 @@ public final class R {
      * <tr><td>barrier</td><td>2</td><td></td></tr>
      * <tr><td>chains</td><td>4</td><td></td></tr>
      * <tr><td>dimensions</td><td>8</td><td></td></tr>
-     * <tr><td>direct</td><td>1</td><td>for now only direct & barriers</td></tr>
+     * <tr><td>direct</td><td>1</td><td></td></tr>
      * <tr><td>none</td><td>0</td><td></td></tr>
      * <tr><td>standard</td><td>3</td><td></td></tr>
      * </table>
@@ -4687,15 +4687,15 @@ public final class R {
     public static final int listMode=0x7f0900ec;
     public static final int list_item=0x7f0900ed;
     public static final int logo=0x7f0900ee;
-    public static final int logout_button=0x7f0900ef;
-    public static final int mail=0x7f0900f0;
-    public static final int mailInput=0x7f0900f1;
-    public static final int mailSignIn=0x7f0900f2;
-    public static final int mailSignUp=0x7f0900f3;
-    public static final int masked=0x7f0900f4;
-    public static final int media_actions=0x7f0900f5;
-    public static final int menu=0x7f0900f6;
-    public static final int menuBtn=0x7f0900f7;
+    public static final int mail=0x7f0900ef;
+    public static final int mailInput=0x7f0900f0;
+    public static final int mailSignIn=0x7f0900f1;
+    public static final int mailSignUp=0x7f0900f2;
+    public static final int masked=0x7f0900f3;
+    public static final int media_actions=0x7f0900f4;
+    public static final int menu=0x7f0900f5;
+    public static final int menuBtn=0x7f0900f6;
+    public static final int menuItem=0x7f0900f7;
     public static final int message=0x7f0900f8;
     public static final int messenger_send_button=0x7f0900f9;
     public static final int middle=0x7f0900fa;
@@ -4976,33 +4976,34 @@ public final class R {
     public static final int fui_welcome_back_password_prompt_layout=0x7f0b006c;
     public static final int game_item=0x7f0b006d;
     public static final int hidden_views_test=0x7f0b006e;
-    public static final int messenger_button_send_blue_large=0x7f0b006f;
-    public static final int messenger_button_send_blue_round=0x7f0b0070;
-    public static final int messenger_button_send_blue_small=0x7f0b0071;
-    public static final int messenger_button_send_white_large=0x7f0b0072;
-    public static final int messenger_button_send_white_round=0x7f0b0073;
-    public static final int messenger_button_send_white_small=0x7f0b0074;
-    public static final int notification_action=0x7f0b0075;
-    public static final int notification_action_tombstone=0x7f0b0076;
-    public static final int notification_media_action=0x7f0b0077;
-    public static final int notification_media_cancel_action=0x7f0b0078;
-    public static final int notification_template_big_media=0x7f0b0079;
-    public static final int notification_template_big_media_custom=0x7f0b007a;
-    public static final int notification_template_big_media_narrow=0x7f0b007b;
-    public static final int notification_template_big_media_narrow_custom=0x7f0b007c;
-    public static final int notification_template_custom_big=0x7f0b007d;
-    public static final int notification_template_icon_group=0x7f0b007e;
-    public static final int notification_template_lines_media=0x7f0b007f;
-    public static final int notification_template_media=0x7f0b0080;
-    public static final int notification_template_media_custom=0x7f0b0081;
-    public static final int notification_template_part_chronometer=0x7f0b0082;
-    public static final int notification_template_part_time=0x7f0b0083;
-    public static final int select_dialog_item_material=0x7f0b0084;
-    public static final int select_dialog_multichoice_material=0x7f0b0085;
-    public static final int select_dialog_singlechoice_material=0x7f0b0086;
-    public static final int support_simple_spinner_dropdown_item=0x7f0b0087;
-    public static final int threexthree=0x7f0b0088;
-    public static final int user_profile=0x7f0b0089;
+    public static final int menu_item=0x7f0b006f;
+    public static final int messenger_button_send_blue_large=0x7f0b0070;
+    public static final int messenger_button_send_blue_round=0x7f0b0071;
+    public static final int messenger_button_send_blue_small=0x7f0b0072;
+    public static final int messenger_button_send_white_large=0x7f0b0073;
+    public static final int messenger_button_send_white_round=0x7f0b0074;
+    public static final int messenger_button_send_white_small=0x7f0b0075;
+    public static final int notification_action=0x7f0b0076;
+    public static final int notification_action_tombstone=0x7f0b0077;
+    public static final int notification_media_action=0x7f0b0078;
+    public static final int notification_media_cancel_action=0x7f0b0079;
+    public static final int notification_template_big_media=0x7f0b007a;
+    public static final int notification_template_big_media_custom=0x7f0b007b;
+    public static final int notification_template_big_media_narrow=0x7f0b007c;
+    public static final int notification_template_big_media_narrow_custom=0x7f0b007d;
+    public static final int notification_template_custom_big=0x7f0b007e;
+    public static final int notification_template_icon_group=0x7f0b007f;
+    public static final int notification_template_lines_media=0x7f0b0080;
+    public static final int notification_template_media=0x7f0b0081;
+    public static final int notification_template_media_custom=0x7f0b0082;
+    public static final int notification_template_part_chronometer=0x7f0b0083;
+    public static final int notification_template_part_time=0x7f0b0084;
+    public static final int select_dialog_item_material=0x7f0b0085;
+    public static final int select_dialog_multichoice_material=0x7f0b0086;
+    public static final int select_dialog_singlechoice_material=0x7f0b0087;
+    public static final int support_simple_spinner_dropdown_item=0x7f0b0088;
+    public static final int threexthree=0x7f0b0089;
+    public static final int user_profile=0x7f0b008a;
   }
   public static final class menu {
     public static final int accountmenu=0x7f0c0000;
@@ -10863,7 +10864,7 @@ public final class R {
      * <tr><td>barrier</td><td>2</td><td></td></tr>
      * <tr><td>chains</td><td>4</td><td></td></tr>
      * <tr><td>dimensions</td><td>8</td><td></td></tr>
-     * <tr><td>direct</td><td>1</td><td>for now only direct & barriers</td></tr>
+     * <tr><td>direct</td><td>1</td><td></td></tr>
      * <tr><td>none</td><td>0</td><td></td></tr>
      * <tr><td>standard</td><td>3</td><td></td></tr>
      * </table>

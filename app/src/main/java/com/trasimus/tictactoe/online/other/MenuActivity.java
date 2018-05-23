@@ -1,6 +1,7 @@
 package com.trasimus.tictactoe.online.other;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -27,6 +30,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.trasimus.tictactoe.online.Lobby;
+import com.trasimus.tictactoe.online.R;
 import com.trasimus.tictactoe.online.account.AccountActivity;
 import com.trasimus.tictactoe.online.DefaultUser;
 import com.trasimus.tictactoe.online.friends.FriendsActivity;
@@ -46,6 +50,7 @@ public class MenuActivity extends AppCompatActivity {
     private DefaultUser defaultUser;
     private boolean loading = true;
     private String YOUR_ADMOB_APP_ID;
+    private ArrayAdapter<String> mAdapter;
 
     private InterstitialAd mInterstitialAd;
 
@@ -83,7 +88,12 @@ public class MenuActivity extends AppCompatActivity {
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
+        mAdapter = new ArrayAdapter<String>(this, R.layout.menu_item, R.id.menuItem);
         ListView menu = (ListView) findViewById(com.trasimus.tictactoe.online.R.id.menu);
+        menu.setAdapter(mAdapter);
+        mAdapter.addAll(this.getResources().getStringArray(R.array.menu));
+        mAdapter.add("Unlock Premium");
+        mAdapter.add("Logout");
 
         menu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -122,6 +132,11 @@ public class MenuActivity extends AppCompatActivity {
                             startActivity(intent3);
                             break;
                         }
+                    case 6:
+                        FirebaseAuth.getInstance().signOut();
+                        LoginManager.getInstance().logOut();
+                        launchLoginActivity();
+                        break;
                     default:
                         break;
                 }
@@ -162,12 +177,6 @@ public class MenuActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AccountActivity.class);
         startActivity(intent);
         finish();
-    }
-
-    public void mLogout(View view){
-        FirebaseAuth.getInstance().signOut();
-        LoginManager.getInstance().logOut();
-        launchLoginActivity();
     }
 
     private void launchLoginActivity() {

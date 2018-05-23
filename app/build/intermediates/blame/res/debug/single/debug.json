@@ -2320,6 +2320,10 @@
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\drawable\\abc_ratingbar_small_material.xml"
     },
     {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_menu_item.xml.flat",
+        "source": "C:\\Projects\\AATicTacToeOnline\\app\\src\\main\\res\\layout\\menu_item.xml"
+    },
+    {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_notification_bg_low_normal.9.png.flat",
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\61560cb400ba0dcf721df9ea20ce011f\\res\\drawable-hdpi-v4\\notification_bg_low_normal.9.png"
     },

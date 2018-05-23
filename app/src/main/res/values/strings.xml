@@ -22,6 +22,7 @@
         <item>Rankings</item>
         <item>My account</item>
         <item>Friends</item>
+        <item>Options</item>
     </string-array>
     <string name="title_activity_game_finder">GameFinderActivity</string>
     <string name="title_activity_rankings">RankingsActivity</string>
