@@ -13,7 +13,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_googleg_standard_color_18.png.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\295583fe9261e275982bf27a616b6d8b\\res\\drawable-hdpi-v4\\googleg_standard_color_18.png"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\33b5306a51f70a0995c6d7bbf9c4b1c7\\res\\drawable-hdpi-v4\\googleg_standard_color_18.png"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_spinner_mtrl_am_alpha.9.png.flat",
@@ -68,6 +68,10 @@
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\drawable-hdpi-v4\\abc_text_select_handle_right_mtrl_light.png"
     },
     {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_grid5.png.flat",
+        "source": "C:\\Projects\\AATicTacToeOnline\\app\\src\\main\\res\\drawable\\grid5.png"
+    },
+    {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-xxhdpi-v17_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\drawable-ldrtl-xxhdpi-v17\\abc_ic_menu_copy_mtrl_am_alpha.png"
     },
@@ -88,6 +92,10 @@
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\facebook-common-4.31.0.aar\\f684b49ff9a30e6a84b46a4e46d43a15\\res\\drawable-xhdpi-v4\\com_facebook_button_icon_blue.png"
     },
     {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_save.png.flat",
+        "source": "C:\\Projects\\AATicTacToeOnline\\app\\src\\main\\res\\drawable\\save.png"
+    },
+    {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_text_select_handle_right_mtrl_dark.png.flat",
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\drawable-hdpi-v4\\abc_text_select_handle_right_mtrl_dark.png"
     },
@@ -97,11 +105,15 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\anim_fui_slide_in_right.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-3.2.2.aar\\ccc3f2455c5895462344699df48b4f50\\res\\anim\\fui_slide_in_right.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-4.0.0.aar\\622e0afb9612b5638294250f12b826c9\\res\\anim\\fui_slide_in_right.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_text_select_handle_left_mtrl_light.png.flat",
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\drawable-xxhdpi-v4\\abc_text_select_handle_left_mtrl_light.png"
+    },
+    {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_restart_game.xml.flat",
+        "source": "C:\\Projects\\AATicTacToeOnline\\app\\src\\main\\res\\layout\\restart_game.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-xhdpi-v17_abc_spinner_mtrl_am_alpha.9.png.flat",
@@ -181,7 +193,11 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_googleg_disabled_color_18.png.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\295583fe9261e275982bf27a616b6d8b\\res\\drawable-xhdpi-v4\\googleg_disabled_color_18.png"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\33b5306a51f70a0995c6d7bbf9c4b1c7\\res\\drawable-xhdpi-v4\\googleg_disabled_color_18.png"
+    },
+    {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_login_posibilities.xml.flat",
+        "source": "C:\\Projects\\AATicTacToeOnline\\app\\src\\main\\res\\layout\\login_posibilities.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\color_design_tint_password_toggle.xml.flat",
@@ -213,7 +229,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_fui_welcome_back_password_prompt_layout.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-3.2.2.aar\\ccc3f2455c5895462344699df48b4f50\\res\\layout\\fui_welcome_back_password_prompt_layout.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-4.0.0.aar\\622e0afb9612b5638294250f12b826c9\\res\\layout\\fui_welcome_back_password_prompt_layout.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_textfield_default_mtrl_alpha.9.png.flat",
@@ -257,7 +273,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_fui_idp_button_background_twitter.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-3.2.2.aar\\ccc3f2455c5895462344699df48b4f50\\res\\drawable\\fui_idp_button_background_twitter.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-4.0.0.aar\\622e0afb9612b5638294250f12b826c9\\res\\drawable\\fui_idp_button_background_twitter.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_bg_wave.png.flat",
@@ -269,7 +285,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_fui_idp_button_google.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-3.2.2.aar\\ccc3f2455c5895462344699df48b4f50\\res\\layout\\fui_idp_button_google.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-4.0.0.aar\\622e0afb9612b5638294250f12b826c9\\res\\layout\\fui_idp_button_google.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_bg_wave.png.flat",
@@ -321,7 +337,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_common_google_signin_btn_icon_light_normal_background.9.png.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\295583fe9261e275982bf27a616b6d8b\\res\\drawable-xhdpi-v4\\common_google_signin_btn_icon_light_normal_background.9.png"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\33b5306a51f70a0995c6d7bbf9c4b1c7\\res\\drawable-xhdpi-v4\\common_google_signin_btn_icon_light_normal_background.9.png"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_threexthree.xml.flat",
@@ -377,7 +393,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_fui_confirmation_code_layout.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-3.2.2.aar\\ccc3f2455c5895462344699df48b4f50\\res\\layout\\fui_confirmation_code_layout.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-4.0.0.aar\\622e0afb9612b5638294250f12b826c9\\res\\layout\\fui_confirmation_code_layout.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_cab_background_top_material.xml.flat",
@@ -393,7 +409,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_common_google_signin_btn_text_disabled.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\295583fe9261e275982bf27a616b6d8b\\res\\drawable\\common_google_signin_btn_text_disabled.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\33b5306a51f70a0995c6d7bbf9c4b1c7\\res\\drawable\\common_google_signin_btn_text_disabled.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_text_select_handle_middle_mtrl_light.png.flat",
@@ -445,7 +461,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_common_google_signin_btn_icon_dark_normal_background.9.png.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\295583fe9261e275982bf27a616b6d8b\\res\\drawable-hdpi-v4\\common_google_signin_btn_icon_dark_normal_background.9.png"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\33b5306a51f70a0995c6d7bbf9c4b1c7\\res\\drawable-hdpi-v4\\common_google_signin_btn_icon_dark_normal_background.9.png"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\color_abc_background_cache_hint_selector_material_dark.xml.flat",
@@ -460,12 +476,12 @@
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\facebook-login-4.31.0.aar\\9c4265675bd5763534ab965dd29fb1aa\\res\\drawable-mdpi-v4\\com_facebook_profile_picture_blank_square.png"
     },
     {
-        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_com_accountkit_progress_complete_vector.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\account-kit-sdk-4.31.0.aar\\4c46f816dc747f2b65f128f307b5f897\\res\\drawable\\com_accountkit_progress_complete_vector.xml"
-    },
-    {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_btn_switch_to_on_mtrl_00001.9.png.flat",
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\drawable-xhdpi-v4\\abc_btn_switch_to_on_mtrl_00001.9.png"
+    },
+    {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_com_accountkit_progress_complete_vector.xml.flat",
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\account-kit-sdk-4.31.0.aar\\4c46f816dc747f2b65f128f307b5f897\\res\\drawable\\com_accountkit_progress_complete_vector.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bubble2.9.png.flat",
@@ -485,7 +501,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_fui_idp_button_twitter.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-3.2.2.aar\\ccc3f2455c5895462344699df48b4f50\\res\\layout\\fui_idp_button_twitter.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-4.0.0.aar\\622e0afb9612b5638294250f12b826c9\\res\\layout\\fui_idp_button_twitter.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_btn_switch_to_on_mtrl_00001.9.png.flat",
@@ -509,7 +525,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_common_google_signin_btn_text_dark_normal_background.9.png.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\295583fe9261e275982bf27a616b6d8b\\res\\drawable-xhdpi-v4\\common_google_signin_btn_text_dark_normal_background.9.png"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\33b5306a51f70a0995c6d7bbf9c4b1c7\\res\\drawable-xhdpi-v4\\common_google_signin_btn_text_dark_normal_background.9.png"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\anim_abc_slide_in_bottom.xml.flat",
@@ -521,7 +537,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_common_google_signin_btn_text_dark_focused.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\295583fe9261e275982bf27a616b6d8b\\res\\drawable\\common_google_signin_btn_text_dark_focused.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\33b5306a51f70a0995c6d7bbf9c4b1c7\\res\\drawable\\common_google_signin_btn_text_dark_focused.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_com_accountkit_spinner_triangle.png.flat",
@@ -530,6 +546,10 @@
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_design_navigation_menu_item.xml.flat",
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\cc45b8b078551f9b7845817ad5d57849\\res\\layout\\design_navigation_menu_item.xml"
+    },
+    {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_grid3b.png.flat",
+        "source": "C:\\Projects\\AATicTacToeOnline\\app\\src\\main\\res\\drawable\\grid3b.png"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_x.png.flat",
@@ -545,7 +565,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_common_google_signin_btn_icon_dark_normal_background.9.png.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\295583fe9261e275982bf27a616b6d8b\\res\\drawable-xxhdpi-v4\\common_google_signin_btn_icon_dark_normal_background.9.png"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\33b5306a51f70a0995c6d7bbf9c4b1c7\\res\\drawable-xxhdpi-v4\\common_google_signin_btn_icon_dark_normal_background.9.png"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_design_navigation_menu.xml.flat",
@@ -560,12 +580,16 @@
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\drawable-xhdpi-v4\\abc_text_select_handle_right_mtrl_light.png"
     },
     {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_grid3.png.flat",
+        "source": "C:\\Projects\\AATicTacToeOnline\\app\\src\\main\\res\\drawable\\grid3.png"
+    },
+    {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_btn_switch_to_on_mtrl_00012.9.png.flat",
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\drawable-xxxhdpi-v4\\abc_btn_switch_to_on_mtrl_00012.9.png"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_common_google_signin_btn_icon_dark_normal_background.9.png.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\295583fe9261e275982bf27a616b6d8b\\res\\drawable-mdpi-v4\\common_google_signin_btn_icon_dark_normal_background.9.png"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\33b5306a51f70a0995c6d7bbf9c4b1c7\\res\\drawable-mdpi-v4\\common_google_signin_btn_icon_dark_normal_background.9.png"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_template_icon_group.xml.flat",
@@ -593,11 +617,11 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_googleg_standard_color_18.png.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\295583fe9261e275982bf27a616b6d8b\\res\\drawable-xhdpi-v4\\googleg_standard_color_18.png"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\33b5306a51f70a0995c6d7bbf9c4b1c7\\res\\drawable-xhdpi-v4\\googleg_standard_color_18.png"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-watch-v20_common_google_signin_btn_text_disabled.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-auth-11.8.0.aar\\a427d77070e23de1502ab75c5a7be18b\\res\\drawable-watch-v20\\common_google_signin_btn_text_disabled.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-auth-15.0.1.aar\\c8d13e2e937a2a1af9e7c4fe6df03e57\\res\\drawable-watch-v20\\common_google_signin_btn_text_disabled.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_btn_radio_to_on_mtrl_000.png.flat",
@@ -634,6 +658,10 @@
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\color_abc_btn_colored_borderless_text_material.xml.flat",
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\color\\abc_btn_colored_borderless_text_material.xml"
+    },
+    {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_grid5b.png.flat",
+        "source": "C:\\Projects\\AATicTacToeOnline\\app\\src\\main\\res\\drawable\\grid5b.png"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_com_facebook_button_send_icon_white.png.flat",
@@ -696,6 +724,10 @@
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\drawable-hdpi-v4\\abc_btn_check_to_on_mtrl_000.png"
     },
     {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_gradient5.png.flat",
+        "source": "C:\\Projects\\AATicTacToeOnline\\app\\src\\main\\res\\drawable\\gradient5.png"
+    },
+    {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_com_accountkit_fragment_verifying_code_center.xml.flat",
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\account-kit-sdk-4.31.0.aar\\4c46f816dc747f2b65f128f307b5f897\\res\\layout\\com_accountkit_fragment_verifying_code_center.xml"
     },
@@ -729,7 +761,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\color_common_google_signin_btn_text_dark.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\295583fe9261e275982bf27a616b6d8b\\res\\color\\common_google_signin_btn_text_dark.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\33b5306a51f70a0995c6d7bbf9c4b1c7\\res\\color\\common_google_signin_btn_text_dark.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\anim-v21_design_bottom_sheet_slide_out.xml.flat",
@@ -745,7 +777,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_fui_phone_layout.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-3.2.2.aar\\ccc3f2455c5895462344699df48b4f50\\res\\layout\\fui_phone_layout.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-4.0.0.aar\\622e0afb9612b5638294250f12b826c9\\res\\layout\\fui_phone_layout.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_notify_panel_notification_icon_bg.png.flat",
@@ -765,7 +797,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_common_google_signin_btn_icon_light_focused.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\295583fe9261e275982bf27a616b6d8b\\res\\drawable\\common_google_signin_btn_icon_light_focused.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\33b5306a51f70a0995c6d7bbf9c4b1c7\\res\\drawable\\common_google_signin_btn_icon_light_focused.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_btn_colored_material.xml.flat",
@@ -793,7 +825,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21_fui_idp_button_background_facebook.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-3.2.2.aar\\ccc3f2455c5895462344699df48b4f50\\res\\drawable-v21\\fui_idp_button_background_facebook.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-4.0.0.aar\\622e0afb9612b5638294250f12b826c9\\res\\drawable-v21\\fui_idp_button_background_facebook.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_ic_star_half_black_36dp.png.flat",
@@ -837,7 +869,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_fui_phone_progress_dialog.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-3.2.2.aar\\ccc3f2455c5895462344699df48b4f50\\res\\layout\\fui_phone_progress_dialog.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-4.0.0.aar\\622e0afb9612b5638294250f12b826c9\\res\\layout\\fui_phone_progress_dialog.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_list_selector_disabled_holo_light.9.png.flat",
@@ -853,7 +885,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_common_google_signin_btn_text_dark.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\295583fe9261e275982bf27a616b6d8b\\res\\drawable\\common_google_signin_btn_text_dark.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\33b5306a51f70a0995c6d7bbf9c4b1c7\\res\\drawable\\common_google_signin_btn_text_dark.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_messenger_button_send_round_shadow.png.flat",
@@ -861,7 +893,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21_fui_idp_button_background_twitter.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-3.2.2.aar\\ccc3f2455c5895462344699df48b4f50\\res\\drawable-v21\\fui_idp_button_background_twitter.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-4.0.0.aar\\622e0afb9612b5638294250f12b826c9\\res\\drawable-v21\\fui_idp_button_background_twitter.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_ic_star_half_black_48dp.png.flat",
@@ -869,7 +901,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_common_google_signin_btn_text_light_normal_background.9.png.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\295583fe9261e275982bf27a616b6d8b\\res\\drawable-hdpi-v4\\common_google_signin_btn_text_light_normal_background.9.png"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\33b5306a51f70a0995c6d7bbf9c4b1c7\\res\\drawable-hdpi-v4\\common_google_signin_btn_text_light_normal_background.9.png"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21_avd_show_password.xml.flat",
@@ -896,6 +928,10 @@
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\drawable-hdpi-v4\\abc_list_divider_mtrl_alpha.9.png"
     },
     {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_grid5a.png.flat",
+        "source": "C:\\Projects\\AATicTacToeOnline\\app\\src\\main\\res\\drawable\\grid5a.png"
+    },
+    {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_com_accountkit_fragment_confirmation_code_bottom.xml.flat",
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\account-kit-sdk-4.31.0.aar\\4c46f816dc747f2b65f128f307b5f897\\res\\layout\\com_accountkit_fragment_confirmation_code_bottom.xml"
     },
@@ -917,7 +953,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_common_google_signin_btn_text_dark_normal.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\295583fe9261e275982bf27a616b6d8b\\res\\drawable\\common_google_signin_btn_text_dark_normal.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\33b5306a51f70a0995c6d7bbf9c4b1c7\\res\\drawable\\common_google_signin_btn_text_dark_normal.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\anim_abc_fade_in.xml.flat",
@@ -929,7 +965,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\anim_fui_slide_out_left.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-3.2.2.aar\\ccc3f2455c5895462344699df48b4f50\\res\\anim\\fui_slide_out_left.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-4.0.0.aar\\622e0afb9612b5638294250f12b826c9\\res\\anim\\fui_slide_out_left.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_design_layout_snackbar.xml.flat",
@@ -940,12 +976,12 @@
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\account-kit-sdk-4.31.0.aar\\4c46f816dc747f2b65f128f307b5f897\\res\\layout\\com_accountkit_fragment_sent_code_center.xml"
     },
     {
-        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_com_facebook_button_icon_white.png.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\facebook-common-4.31.0.aar\\f684b49ff9a30e6a84b46a4e46d43a15\\res\\drawable-hdpi-v4\\com_facebook_button_icon_white.png"
-    },
-    {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_messenger_bubble_small_white.png.flat",
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\facebook-messenger-4.31.0.aar\\93091bdeb2c31262058ab204f79ea2ad\\res\\drawable-xxhdpi-v4\\messenger_bubble_small_white.png"
+    },
+    {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_com_facebook_button_icon_white.png.flat",
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\facebook-common-4.31.0.aar\\f684b49ff9a30e6a84b46a4e46d43a15\\res\\drawable-hdpi-v4\\com_facebook_button_icon_white.png"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_template_big_media_custom.xml.flat",
@@ -961,7 +997,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_common_google_signin_btn_icon_light_normal_background.9.png.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\295583fe9261e275982bf27a616b6d8b\\res\\drawable-xxhdpi-v4\\common_google_signin_btn_icon_light_normal_background.9.png"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\33b5306a51f70a0995c6d7bbf9c4b1c7\\res\\drawable-xxhdpi-v4\\common_google_signin_btn_icon_light_normal_background.9.png"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_bg_wave.png.flat",
@@ -1052,6 +1088,10 @@
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\drawable\\abc_btn_radio_material.xml"
     },
     {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_gradient1.png.flat",
+        "source": "C:\\Projects\\AATicTacToeOnline\\app\\src\\main\\res\\drawable\\gradient1.png"
+    },
+    {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\anim_design_snackbar_out.xml.flat",
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\cc45b8b078551f9b7845817ad5d57849\\res\\anim\\design_snackbar_out.xml"
     },
@@ -1073,7 +1113,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_fui_idp_button_facebook.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-3.2.2.aar\\ccc3f2455c5895462344699df48b4f50\\res\\layout\\fui_idp_button_facebook.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-4.0.0.aar\\622e0afb9612b5638294250f12b826c9\\res\\layout\\fui_idp_button_facebook.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_ic_star_black_36dp.png.flat",
@@ -1113,7 +1153,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_fui_check_email_layout.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-3.2.2.aar\\ccc3f2455c5895462344699df48b4f50\\res\\layout\\fui_check_email_layout.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-4.0.0.aar\\622e0afb9612b5638294250f12b826c9\\res\\layout\\fui_check_email_layout.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_scrubber_primary_mtrl_alpha.9.png.flat",
@@ -1132,12 +1172,16 @@
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\cc45b8b078551f9b7845817ad5d57849\\res\\drawable-anydpi-v21\\design_ic_visibility.xml"
     },
     {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_isoffline.png.flat",
+        "source": "C:\\Projects\\AATicTacToeOnline\\app\\src\\main\\res\\drawable\\isoffline.png"
+    },
+    {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_o.png.flat",
         "source": "C:\\Projects\\AATicTacToeOnline\\app\\src\\main\\res\\drawable\\o.png"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_fui_idp_button_background_facebook.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-3.2.2.aar\\ccc3f2455c5895462344699df48b4f50\\res\\drawable\\fui_idp_button_background_facebook.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-4.0.0.aar\\622e0afb9612b5638294250f12b826c9\\res\\drawable\\fui_idp_button_background_facebook.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_expanded_menu_layout.xml.flat",
@@ -1145,11 +1189,15 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_fui_done_check_mark.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-3.2.2.aar\\ccc3f2455c5895462344699df48b4f50\\res\\drawable\\fui_done_check_mark.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-4.0.0.aar\\622e0afb9612b5638294250f12b826c9\\res\\drawable\\fui_done_check_mark.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_com_facebook_button_icon.xml.flat",
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\facebook-common-4.31.0.aar\\f684b49ff9a30e6a84b46a4e46d43a15\\res\\drawable\\com_facebook_button_icon.xml"
+    },
+    {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_question.png.flat",
+        "source": "C:\\Projects\\AATicTacToeOnline\\app\\src\\main\\res\\drawable\\question.png"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_text_select_handle_left_mtrl_dark.png.flat",
@@ -1197,11 +1245,11 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_fui_ic_facebook_white_22dp.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-3.2.2.aar\\ccc3f2455c5895462344699df48b4f50\\res\\drawable\\fui_ic_facebook_white_22dp.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-4.0.0.aar\\622e0afb9612b5638294250f12b826c9\\res\\drawable\\fui_ic_facebook_white_22dp.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_common_google_signin_btn_icon_dark_normal_background.9.png.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\295583fe9261e275982bf27a616b6d8b\\res\\drawable-xhdpi-v4\\common_google_signin_btn_icon_dark_normal_background.9.png"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\33b5306a51f70a0995c6d7bbf9c4b1c7\\res\\drawable-xhdpi-v4\\common_google_signin_btn_icon_dark_normal_background.9.png"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_com_accountkit_get_call.png.flat",
@@ -1209,7 +1257,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_fui_register_email_layout.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-3.2.2.aar\\ccc3f2455c5895462344699df48b4f50\\res\\layout\\fui_register_email_layout.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-4.0.0.aar\\622e0afb9612b5638294250f12b826c9\\res\\layout\\fui_register_email_layout.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_com_accountkit_code_fb.png.flat",
@@ -1264,6 +1312,10 @@
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\layout\\abc_search_view.xml"
     },
     {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_menu_offline.xml.flat",
+        "source": "C:\\Projects\\AATicTacToeOnline\\app\\src\\main\\res\\layout\\activity_menu_offline.xml"
+    },
+    {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
         "source": "C:\\Projects\\AATicTacToeOnline\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
     },
@@ -1276,8 +1328,20 @@
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\drawable\\abc_list_selector_background_transition_holo_dark.xml"
     },
     {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_browser_actions_context_menu_page.xml.flat",
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\customtabs-27.1.1.aar\\b746bfc98b32ec85e853056bbc78e0f6\\res\\layout\\browser_actions_context_menu_page.xml"
+    },
+    {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_gradient3.png.flat",
+        "source": "C:\\Projects\\AATicTacToeOnline\\app\\src\\main\\res\\drawable\\gradient3.png"
+    },
+    {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_com_facebook_button_icon_blue.png.flat",
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\facebook-common-4.31.0.aar\\f684b49ff9a30e6a84b46a4e46d43a15\\res\\drawable-xxhdpi-v4\\com_facebook_button_icon_blue.png"
+    },
+    {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_stats.png.flat",
+        "source": "C:\\Projects\\AATicTacToeOnline\\app\\src\\main\\res\\drawable\\stats.png"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_btn_switch_to_on_mtrl_00001.9.png.flat",
@@ -1300,6 +1364,10 @@
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\account-kit-sdk-4.31.0.aar\\4c46f816dc747f2b65f128f307b5f897\\res\\drawable-xxxhdpi-v4\\com_accountkit_spinner_triangle.png"
     },
     {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_restart_game_local.xml.flat",
+        "source": "C:\\Projects\\AATicTacToeOnline\\app\\src\\main\\res\\layout\\restart_game_local.xml"
+    },
+    {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_com_facebook_button_icon_blue.png.flat",
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\facebook-common-4.31.0.aar\\f684b49ff9a30e6a84b46a4e46d43a15\\res\\drawable-mdpi-v4\\com_facebook_button_icon_blue.png"
     },
@@ -1314,6 +1382,10 @@
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_notification_bg_normal.9.png.flat",
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\61560cb400ba0dcf721df9ea20ce011f\\res\\drawable-xhdpi-v4\\notification_bg_normal.9.png"
+    },
+    {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_friend_item.xml.flat",
+        "source": "C:\\Projects\\AATicTacToeOnline\\app\\src\\main\\res\\layout\\friend_item.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_btn_radio_to_on_mtrl_015.png.flat",
@@ -1345,7 +1417,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21_fui_idp_button_background_google.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-3.2.2.aar\\ccc3f2455c5895462344699df48b4f50\\res\\drawable-v21\\fui_idp_button_background_google.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-4.0.0.aar\\622e0afb9612b5638294250f12b826c9\\res\\drawable-v21\\fui_idp_button_background_google.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_design_ic_visibility_off.png.flat",
@@ -1361,11 +1433,11 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\color_common_google_signin_btn_text_light.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\295583fe9261e275982bf27a616b6d8b\\res\\color\\common_google_signin_btn_text_light.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\33b5306a51f70a0995c6d7bbf9c4b1c7\\res\\color\\common_google_signin_btn_text_light.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_fui_ic_phone_white_24dp.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-3.2.2.aar\\ccc3f2455c5895462344699df48b4f50\\res\\drawable\\fui_ic_phone_white_24dp.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-4.0.0.aar\\622e0afb9612b5638294250f12b826c9\\res\\drawable\\fui_ic_phone_white_24dp.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_ic_star_black_36dp.png.flat",
@@ -1396,6 +1468,10 @@
         "source": "C:\\Projects\\AATicTacToeOnline\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
     },
     {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_lock.png.flat",
+        "source": "C:\\Projects\\AATicTacToeOnline\\app\\src\\main\\res\\drawable\\lock.png"
+    },
+    {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_btn_check_to_on_mtrl_015.png.flat",
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\drawable-xhdpi-v4\\abc_btn_check_to_on_mtrl_015.png"
     },
@@ -1409,7 +1485,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_common_google_signin_btn_icon_light_normal.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\295583fe9261e275982bf27a616b6d8b\\res\\drawable\\common_google_signin_btn_icon_light_normal.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\33b5306a51f70a0995c6d7bbf9c4b1c7\\res\\drawable\\common_google_signin_btn_icon_light_normal.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_alertdialog_google_content.xml.flat",
@@ -1468,12 +1544,16 @@
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\drawable\\abc_ic_arrow_drop_right_black_24dp.xml"
     },
     {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_game_size_choose_local.xml.flat",
+        "source": "C:\\Projects\\AATicTacToeOnline\\app\\src\\main\\res\\layout\\activity_game_size_choose_local.xml"
+    },
+    {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_text_select_handle_left_mtrl_dark.png.flat",
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\drawable-xxxhdpi-v4\\abc_text_select_handle_left_mtrl_dark.png"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_common_google_signin_btn_text_dark_normal_background.9.png.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\295583fe9261e275982bf27a616b6d8b\\res\\drawable-mdpi-v4\\common_google_signin_btn_text_dark_normal_background.9.png"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\33b5306a51f70a0995c6d7bbf9c4b1c7\\res\\drawable-mdpi-v4\\common_google_signin_btn_text_dark_normal_background.9.png"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_design_ic_visibility.png.flat",
@@ -1525,7 +1605,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_common_google_signin_btn_text_dark_normal_background.9.png.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\295583fe9261e275982bf27a616b6d8b\\res\\drawable-xxhdpi-v4\\common_google_signin_btn_text_dark_normal_background.9.png"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\33b5306a51f70a0995c6d7bbf9c4b1c7\\res\\drawable-xxhdpi-v4\\common_google_signin_btn_text_dark_normal_background.9.png"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_list_pressed_holo_dark.9.png.flat",
@@ -1565,7 +1645,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_common_google_signin_btn_text_light.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\295583fe9261e275982bf27a616b6d8b\\res\\drawable\\common_google_signin_btn_text_light.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\33b5306a51f70a0995c6d7bbf9c4b1c7\\res\\drawable\\common_google_signin_btn_text_light.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_notification_bg_normal_pressed.9.png.flat",
@@ -1589,7 +1669,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_common_google_signin_btn_icon_disabled.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\295583fe9261e275982bf27a616b6d8b\\res\\drawable\\common_google_signin_btn_icon_disabled.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\33b5306a51f70a0995c6d7bbf9c4b1c7\\res\\drawable\\common_google_signin_btn_icon_disabled.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_ic_menu_paste_mtrl_am_alpha.png.flat",
@@ -1624,12 +1704,16 @@
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\drawable-mdpi-v4\\abc_ic_menu_share_mtrl_alpha.png"
     },
     {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_grid3a.png.flat",
+        "source": "C:\\Projects\\AATicTacToeOnline\\app\\src\\main\\res\\drawable\\grid3a.png"
+    },
+    {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_com_accountkit_fragment_phone_login_top.xml.flat",
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\account-kit-sdk-4.31.0.aar\\4c46f816dc747f2b65f128f307b5f897\\res\\layout\\com_accountkit_fragment_phone_login_top.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_common_google_signin_btn_text_dark_normal_background.9.png.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\295583fe9261e275982bf27a616b6d8b\\res\\drawable-hdpi-v4\\common_google_signin_btn_text_dark_normal_background.9.png"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\33b5306a51f70a0995c6d7bbf9c4b1c7\\res\\drawable-hdpi-v4\\common_google_signin_btn_text_dark_normal_background.9.png"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_list_selector_disabled_holo_light.9.png.flat",
@@ -1656,12 +1740,12 @@
         "source": "C:\\Projects\\AATicTacToeOnline\\app\\src\\main\\res\\drawable-mdpi\\icon_profile_empty.png"
     },
     {
-        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_list_pressed_holo_light.9.png.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\drawable-hdpi-v4\\abc_list_pressed_holo_light.9.png"
-    },
-    {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_com_facebook_tooltip_blue_xout.png.flat",
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\facebook-login-4.31.0.aar\\9c4265675bd5763534ab965dd29fb1aa\\res\\drawable-hdpi-v4\\com_facebook_tooltip_blue_xout.png"
+    },
+    {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_list_pressed_holo_light.9.png.flat",
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\drawable-hdpi-v4\\abc_list_pressed_holo_light.9.png"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_tab_indicator_mtrl_alpha.9.png.flat",
@@ -1680,12 +1764,16 @@
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\drawable-xhdpi-v4\\abc_textfield_search_activated_mtrl_alpha.9.png"
     },
     {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_grid4.png.flat",
+        "source": "C:\\Projects\\AATicTacToeOnline\\app\\src\\main\\res\\drawable\\grid4.png"
+    },
+    {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\color_abc_primary_text_disable_only_material_light.xml.flat",
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\color\\abc_primary_text_disable_only_material_light.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_common_google_signin_btn_text_light_focused.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\295583fe9261e275982bf27a616b6d8b\\res\\drawable\\common_google_signin_btn_text_light_focused.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\33b5306a51f70a0995c6d7bbf9c4b1c7\\res\\drawable\\common_google_signin_btn_text_light_focused.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_list_selector_disabled_holo_light.9.png.flat",
@@ -1697,7 +1785,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_fui_activity_register_email.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-3.2.2.aar\\ccc3f2455c5895462344699df48b4f50\\res\\layout\\fui_activity_register_email.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-4.0.0.aar\\622e0afb9612b5638294250f12b826c9\\res\\layout\\fui_activity_register_email.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21_notification_template_icon_group.xml.flat",
@@ -1761,7 +1849,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21_fui_idp_button_background_email.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-3.2.2.aar\\ccc3f2455c5895462344699df48b4f50\\res\\drawable-v21\\fui_idp_button_background_email.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-4.0.0.aar\\622e0afb9612b5638294250f12b826c9\\res\\drawable-v21\\fui_idp_button_background_email.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_friends.xml.flat",
@@ -1772,8 +1860,12 @@
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\drawable-ldrtl-mdpi-v17\\abc_ic_menu_copy_mtrl_am_alpha.png"
     },
     {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_friend_item_simple.xml.flat",
+        "source": "C:\\Projects\\AATicTacToeOnline\\app\\src\\main\\res\\layout\\friend_item_simple.xml"
+    },
+    {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_fui_idp_button_background_phone.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-3.2.2.aar\\ccc3f2455c5895462344699df48b4f50\\res\\drawable\\fui_idp_button_background_phone.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-4.0.0.aar\\622e0afb9612b5638294250f12b826c9\\res\\drawable\\fui_idp_button_background_phone.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_btn_check_to_on_mtrl_015.png.flat",
@@ -1813,7 +1905,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\color_common_google_signin_btn_tint.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\295583fe9261e275982bf27a616b6d8b\\res\\color\\common_google_signin_btn_tint.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\33b5306a51f70a0995c6d7bbf9c4b1c7\\res\\color\\common_google_signin_btn_tint.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
@@ -1822,6 +1914,10 @@
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_textfield_search_default_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\drawable-xhdpi-v4\\abc_textfield_search_default_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_gradient4.png.flat",
+        "source": "C:\\Projects\\AATicTacToeOnline\\app\\src\\main\\res\\drawable\\gradient4.png"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_com_facebook_auth_dialog_header_background.xml.flat",
@@ -1873,7 +1969,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_fui_provider_button_phone.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-3.2.2.aar\\ccc3f2455c5895462344699df48b4f50\\res\\layout\\fui_provider_button_phone.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-4.0.0.aar\\622e0afb9612b5638294250f12b826c9\\res\\layout\\fui_provider_button_phone.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_com_accountkit_fragment_phone_login_center.xml.flat",
@@ -1901,15 +1997,11 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_common_google_signin_btn_icon_light.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\295583fe9261e275982bf27a616b6d8b\\res\\drawable\\common_google_signin_btn_icon_light.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\33b5306a51f70a0995c6d7bbf9c4b1c7\\res\\drawable\\common_google_signin_btn_icon_light.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_com_facebook_tooltip_blue_xout.png.flat",
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\facebook-login-4.31.0.aar\\9c4265675bd5763534ab965dd29fb1aa\\res\\drawable-mdpi-v4\\com_facebook_tooltip_blue_xout.png"
-    },
-    {
-        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_web_view_test.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\testfairy-android-sdk-1.7.0.aar\\b273712ee2a85ee06bc4bef8366e8c07\\res\\layout\\activity_web_view_test.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_list_pressed_holo_dark.9.png.flat",
@@ -1917,11 +2009,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_googleg_disabled_color_18.png.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\295583fe9261e275982bf27a616b6d8b\\res\\drawable-xxhdpi-v4\\googleg_disabled_color_18.png"
-    },
-    {
-        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_hidden_views_test.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\testfairy-android-sdk-1.7.0.aar\\b273712ee2a85ee06bc4bef8366e8c07\\res\\layout\\hidden_views_test.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\33b5306a51f70a0995c6d7bbf9c4b1c7\\res\\drawable-xxhdpi-v4\\googleg_disabled_color_18.png"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_com_facebook_tooltip_black_background.9.png.flat",
@@ -1929,7 +2017,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_common_google_signin_btn_text_light_normal.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\295583fe9261e275982bf27a616b6d8b\\res\\drawable\\common_google_signin_btn_text_light_normal.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\33b5306a51f70a0995c6d7bbf9c4b1c7\\res\\drawable\\common_google_signin_btn_text_light_normal.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_com_accountkit_check_sms.png.flat",
@@ -1941,7 +2029,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_fui_welcome_back_idp_prompt_layout.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-3.2.2.aar\\ccc3f2455c5895462344699df48b4f50\\res\\layout\\fui_welcome_back_idp_prompt_layout.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-4.0.0.aar\\622e0afb9612b5638294250f12b826c9\\res\\layout\\fui_welcome_back_idp_prompt_layout.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21_notification_action_tombstone.xml.flat",
@@ -1953,7 +2041,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_fui_provider_button_email.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-3.2.2.aar\\ccc3f2455c5895462344699df48b4f50\\res\\layout\\fui_provider_button_email.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-4.0.0.aar\\622e0afb9612b5638294250f12b826c9\\res\\layout\\fui_provider_button_email.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-xxxhdpi-v17_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
@@ -2004,12 +2092,16 @@
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\facebook-login-4.31.0.aar\\9c4265675bd5763534ab965dd29fb1aa\\res\\drawable-hdpi-v4\\com_facebook_tooltip_blue_background.9.png"
     },
     {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_grid3c.png.flat",
+        "source": "C:\\Projects\\AATicTacToeOnline\\app\\src\\main\\res\\drawable\\grid3c.png"
+    },
+    {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_messenger_button_white_bg_round.xml.flat",
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\facebook-messenger-4.31.0.aar\\93091bdeb2c31262058ab204f79ea2ad\\res\\drawable\\messenger_button_white_bg_round.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_fui_idp_button_background_google.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-3.2.2.aar\\ccc3f2455c5895462344699df48b4f50\\res\\drawable\\fui_idp_button_background_google.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-4.0.0.aar\\622e0afb9612b5638294250f12b826c9\\res\\drawable\\fui_idp_button_background_google.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_scrubber_control_to_pressed_mtrl_005.png.flat",
@@ -2021,7 +2113,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_fui_forgot_password_layout.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-3.2.2.aar\\ccc3f2455c5895462344699df48b4f50\\res\\layout\\fui_forgot_password_layout.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-4.0.0.aar\\622e0afb9612b5638294250f12b826c9\\res\\layout\\fui_forgot_password_layout.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_com_accountkit_code_fb.png.flat",
@@ -2044,6 +2136,10 @@
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\drawable\\abc_btn_default_mtrl_shape.xml"
     },
     {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_options.xml.flat",
+        "source": "C:\\Projects\\AATicTacToeOnline\\app\\src\\main\\res\\layout\\activity_options.xml"
+    },
+    {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-mdpi-v17_abc_spinner_mtrl_am_alpha.9.png.flat",
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\drawable-ldrtl-mdpi-v17\\abc_spinner_mtrl_am_alpha.9.png"
     },
@@ -2053,7 +2149,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_common_google_signin_btn_icon_light_normal_background.9.png.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\295583fe9261e275982bf27a616b6d8b\\res\\drawable-mdpi-v4\\common_google_signin_btn_icon_light_normal_background.9.png"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\33b5306a51f70a0995c6d7bbf9c4b1c7\\res\\drawable-mdpi-v4\\common_google_signin_btn_icon_light_normal_background.9.png"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_list_menu_item_checkbox.xml.flat",
@@ -2077,7 +2173,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_fui_idp_button_background_email.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-3.2.2.aar\\ccc3f2455c5895462344699df48b4f50\\res\\drawable\\fui_idp_button_background_email.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-4.0.0.aar\\622e0afb9612b5638294250f12b826c9\\res\\drawable\\fui_idp_button_background_email.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_notification_bg_low.xml.flat",
@@ -2105,7 +2201,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-watch-v20_common_google_signin_btn_text_dark_normal.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-auth-11.8.0.aar\\a427d77070e23de1502ab75c5a7be18b\\res\\drawable-watch-v20\\common_google_signin_btn_text_dark_normal.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-auth-15.0.1.aar\\c8d13e2e937a2a1af9e7c4fe6df03e57\\res\\drawable-watch-v20\\common_google_signin_btn_text_dark_normal.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
@@ -2117,7 +2213,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-watch-v20_common_google_signin_btn_text_light_normal.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-auth-11.8.0.aar\\a427d77070e23de1502ab75c5a7be18b\\res\\drawable-watch-v20\\common_google_signin_btn_text_light_normal.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-auth-15.0.1.aar\\c8d13e2e937a2a1af9e7c4fe6df03e57\\res\\drawable-watch-v20\\common_google_signin_btn_text_light_normal.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_scrubber_track_mtrl_alpha.9.png.flat",
@@ -2141,7 +2237,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_common_google_signin_btn_icon_dark.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\295583fe9261e275982bf27a616b6d8b\\res\\drawable\\common_google_signin_btn_icon_dark.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\33b5306a51f70a0995c6d7bbf9c4b1c7\\res\\drawable\\common_google_signin_btn_icon_dark.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_action_bar_title_item.xml.flat",
@@ -2181,7 +2277,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_fui_auth_method_picker_layout.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-3.2.2.aar\\ccc3f2455c5895462344699df48b4f50\\res\\layout\\fui_auth_method_picker_layout.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-4.0.0.aar\\622e0afb9612b5638294250f12b826c9\\res\\layout\\fui_auth_method_picker_layout.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_ic_menu_cut_mtrl_alpha.png.flat",
@@ -2249,7 +2345,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_fui_activity_register_phone.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-3.2.2.aar\\ccc3f2455c5895462344699df48b4f50\\res\\layout\\fui_activity_register_phone.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-4.0.0.aar\\622e0afb9612b5638294250f12b826c9\\res\\layout\\fui_activity_register_phone.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_scrubber_control_to_pressed_mtrl_000.png.flat",
@@ -2301,7 +2397,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_common_google_signin_btn_icon_dark_normal.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\295583fe9261e275982bf27a616b6d8b\\res\\drawable\\common_google_signin_btn_icon_dark_normal.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\33b5306a51f70a0995c6d7bbf9c4b1c7\\res\\drawable\\common_google_signin_btn_icon_dark_normal.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_com_facebook_tooltip_black_bottomnub.png.flat",
@@ -2310,6 +2406,10 @@
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_template_big_media_narrow.xml.flat",
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-27.1.1.aar\\e17141dd3db939d53683c021c6f57af5\\res\\layout\\notification_template_big_media_narrow.xml"
+    },
+    {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_fui_activity_invisible.xml.flat",
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-4.0.0.aar\\622e0afb9612b5638294250f12b826c9\\res\\layout\\fui_activity_invisible.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_ic_star_half_black_16dp.png.flat",
@@ -2393,7 +2493,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_common_google_signin_btn_text_light_normal_background.9.png.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\295583fe9261e275982bf27a616b6d8b\\res\\drawable-xhdpi-v4\\common_google_signin_btn_text_light_normal_background.9.png"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\33b5306a51f70a0995c6d7bbf9c4b1c7\\res\\drawable-xhdpi-v4\\common_google_signin_btn_text_light_normal_background.9.png"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_cab_background_top_mtrl_alpha.9.png.flat",
@@ -2445,7 +2545,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout-land_fui_auth_method_picker_layout.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-3.2.2.aar\\ccc3f2455c5895462344699df48b4f50\\res\\layout-land\\fui_auth_method_picker_layout.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-4.0.0.aar\\622e0afb9612b5638294250f12b826c9\\res\\layout-land\\fui_auth_method_picker_layout.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_ic_menu_overflow_material.xml.flat",
@@ -2458,6 +2558,10 @@
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-hdpi-v17_abc_spinner_mtrl_am_alpha.9.png.flat",
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\drawable-ldrtl-hdpi-v17\\abc_spinner_mtrl_am_alpha.9.png"
+    },
+    {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_grid5c.png.flat",
+        "source": "C:\\Projects\\AATicTacToeOnline\\app\\src\\main\\res\\drawable\\grid5c.png"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_design_navigation_item_subheader.xml.flat",
@@ -2478,6 +2582,10 @@
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_com_accountkit_spinner_triangle.png.flat",
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\account-kit-sdk-4.31.0.aar\\4c46f816dc747f2b65f128f307b5f897\\res\\drawable-xxhdpi-v4\\com_accountkit_spinner_triangle.png"
+    },
+    {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_grid4c.png.flat",
+        "source": "C:\\Projects\\AATicTacToeOnline\\app\\src\\main\\res\\drawable\\grid4c.png"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_com_accountkit_spinner_triangle.png.flat",
@@ -2501,7 +2609,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_fui_ic_googleg_color_24dp.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-3.2.2.aar\\ccc3f2455c5895462344699df48b4f50\\res\\drawable\\fui_ic_googleg_color_24dp.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-4.0.0.aar\\622e0afb9612b5638294250f12b826c9\\res\\drawable\\fui_ic_googleg_color_24dp.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_popup_background_mtrl_mult.9.png.flat",
@@ -2517,7 +2625,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_common_full_open_on_phone.png.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\295583fe9261e275982bf27a616b6d8b\\res\\drawable-xhdpi-v4\\common_full_open_on_phone.png"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\33b5306a51f70a0995c6d7bbf9c4b1c7\\res\\drawable-xhdpi-v4\\common_full_open_on_phone.png"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_list_pressed_holo_light.9.png.flat",
@@ -2549,7 +2657,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_fui_ic_twitter_bird_white_24dp.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-3.2.2.aar\\ccc3f2455c5895462344699df48b4f50\\res\\drawable\\fui_ic_twitter_bird_white_24dp.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-4.0.0.aar\\622e0afb9612b5638294250f12b826c9\\res\\drawable\\fui_ic_twitter_bird_white_24dp.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_com_facebook_favicon_blue.xml.flat",
@@ -2557,15 +2665,19 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_common_google_signin_btn_text_light_normal_background.9.png.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\295583fe9261e275982bf27a616b6d8b\\res\\drawable-xxhdpi-v4\\common_google_signin_btn_text_light_normal_background.9.png"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\33b5306a51f70a0995c6d7bbf9c4b1c7\\res\\drawable-xxhdpi-v4\\common_google_signin_btn_text_light_normal_background.9.png"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-xxhdpi-v17_abc_spinner_mtrl_am_alpha.9.png.flat",
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\drawable-ldrtl-xxhdpi-v17\\abc_spinner_mtrl_am_alpha.9.png"
     },
     {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_game_local.xml.flat",
+        "source": "C:\\Projects\\AATicTacToeOnline\\app\\src\\main\\res\\layout\\activity_game_local.xml"
+    },
+    {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_common_full_open_on_phone.png.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\295583fe9261e275982bf27a616b6d8b\\res\\drawable-hdpi-v4\\common_full_open_on_phone.png"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\33b5306a51f70a0995c6d7bbf9c4b1c7\\res\\drawable-hdpi-v4\\common_full_open_on_phone.png"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_screen_content_include.xml.flat",
@@ -2585,7 +2697,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_googleg_disabled_color_18.png.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\295583fe9261e275982bf27a616b6d8b\\res\\drawable-hdpi-v4\\googleg_disabled_color_18.png"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\33b5306a51f70a0995c6d7bbf9c4b1c7\\res\\drawable-hdpi-v4\\googleg_disabled_color_18.png"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_com_accountkit_fragment_email_login_bottom.xml.flat",
@@ -2621,15 +2733,23 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_googleg_disabled_color_18.png.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\295583fe9261e275982bf27a616b6d8b\\res\\drawable-mdpi-v4\\googleg_disabled_color_18.png"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\33b5306a51f70a0995c6d7bbf9c4b1c7\\res\\drawable-mdpi-v4\\googleg_disabled_color_18.png"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_common_google_signin_btn_text_light_normal_background.9.png.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\295583fe9261e275982bf27a616b6d8b\\res\\drawable-mdpi-v4\\common_google_signin_btn_text_light_normal_background.9.png"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\33b5306a51f70a0995c6d7bbf9c4b1c7\\res\\drawable-mdpi-v4\\common_google_signin_btn_text_light_normal_background.9.png"
+    },
+    {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_isonline.png.flat",
+        "source": "C:\\Projects\\AATicTacToeOnline\\app\\src\\main\\res\\drawable\\isonline.png"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_menu_hardkey_panel_mtrl_mult.9.png.flat",
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\drawable-mdpi-v4\\abc_menu_hardkey_panel_mtrl_mult.9.png"
+    },
+    {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_browser_actions_context_menu_row.xml.flat",
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\customtabs-27.1.1.aar\\b746bfc98b32ec85e853056bbc78e0f6\\res\\layout\\browser_actions_context_menu_row.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_messenger_button_send_white_round.xml.flat",
@@ -2641,7 +2761,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_googleg_standard_color_18.png.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\295583fe9261e275982bf27a616b6d8b\\res\\drawable-mdpi-v4\\googleg_standard_color_18.png"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\33b5306a51f70a0995c6d7bbf9c4b1c7\\res\\drawable-mdpi-v4\\googleg_standard_color_18.png"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_com_facebook_auth_dialog_background.xml.flat",
@@ -2661,7 +2781,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_common_google_signin_btn_icon_light_normal_background.9.png.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\295583fe9261e275982bf27a616b6d8b\\res\\drawable-hdpi-v4\\common_google_signin_btn_icon_light_normal_background.9.png"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\33b5306a51f70a0995c6d7bbf9c4b1c7\\res\\drawable-hdpi-v4\\common_google_signin_btn_icon_light_normal_background.9.png"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_ic_star_black_16dp.png.flat",
@@ -2673,7 +2793,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_fui_dgts_country_row.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-3.2.2.aar\\ccc3f2455c5895462344699df48b4f50\\res\\layout\\fui_dgts_country_row.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-4.0.0.aar\\622e0afb9612b5638294250f12b826c9\\res\\layout\\fui_dgts_country_row.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_ic_star_half_black_36dp.png.flat",
@@ -2681,7 +2801,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21_fui_idp_button_background_phone.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-3.2.2.aar\\ccc3f2455c5895462344699df48b4f50\\res\\drawable-v21\\fui_idp_button_background_phone.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-4.0.0.aar\\622e0afb9612b5638294250f12b826c9\\res\\drawable-v21\\fui_idp_button_background_phone.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_com_accountkit_code_fb.png.flat",
@@ -2689,7 +2809,11 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_fui_ic_mail_white_24dp.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-3.2.2.aar\\ccc3f2455c5895462344699df48b4f50\\res\\drawable\\fui_ic_mail_white_24dp.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-ui-auth-4.0.0.aar\\622e0afb9612b5638294250f12b826c9\\res\\drawable\\fui_ic_mail_white_24dp.xml"
+    },
+    {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_grid4a.png.flat",
+        "source": "C:\\Projects\\AATicTacToeOnline\\app\\src\\main\\res\\drawable\\grid4a.png"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_com_facebook_tooltip_black_bottomnub.png.flat",
@@ -2725,7 +2849,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_common_google_signin_btn_icon_dark_focused.xml.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\295583fe9261e275982bf27a616b6d8b\\res\\drawable\\common_google_signin_btn_icon_dark_focused.xml"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\33b5306a51f70a0995c6d7bbf9c4b1c7\\res\\drawable\\common_google_signin_btn_icon_dark_focused.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21_abc_btn_colored_material.xml.flat",
@@ -2757,7 +2881,7 @@
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_googleg_standard_color_18.png.flat",
-        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\295583fe9261e275982bf27a616b6d8b\\res\\drawable-xxhdpi-v4\\googleg_standard_color_18.png"
+        "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-15.0.1.aar\\33b5306a51f70a0995c6d7bbf9c4b1c7\\res\\drawable-xxhdpi-v4\\googleg_standard_color_18.png"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\anim_abc_tooltip_exit.xml.flat",
@@ -2794,6 +2918,10 @@
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_com_accountkit_get_call.png.flat",
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\account-kit-sdk-4.31.0.aar\\4c46f816dc747f2b65f128f307b5f897\\res\\drawable-hdpi-v4\\com_accountkit_get_call.png"
+    },
+    {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_background.jpg.flat",
+        "source": "C:\\Projects\\AATicTacToeOnline\\app\\src\\main\\res\\drawable\\background.jpg"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_scrubber_track_mtrl_alpha.9.png.flat",
@@ -2884,6 +3012,10 @@
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\layout\\abc_tooltip.xml"
     },
     {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable_grid4b.png.flat",
+        "source": "C:\\Projects\\AATicTacToeOnline\\app\\src\\main\\res\\drawable\\grid4b.png"
+    },
+    {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_list_longpressed_holo.9.png.flat",
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\cd348d3acafede529d0099d2d62a150c\\res\\drawable-xxhdpi-v4\\abc_list_longpressed_holo.9.png"
     },
@@ -2922,6 +3054,10 @@
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_design_navigation_item_header.xml.flat",
         "source": "C:\\Users\\juraj\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\cc45b8b078551f9b7845817ad5d57849\\res\\layout\\design_navigation_item_header.xml"
+    },
+    {
+        "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_select_char.xml.flat",
+        "source": "C:\\Projects\\AATicTacToeOnline\\app\\src\\main\\res\\layout\\select_char.xml"
     },
     {
         "merged": "C:\\Projects\\AATicTacToeOnline\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_account.xml.flat",

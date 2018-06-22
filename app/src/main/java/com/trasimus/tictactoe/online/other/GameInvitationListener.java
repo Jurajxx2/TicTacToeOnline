@@ -19,27 +19,28 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.trasimus.tictactoe.online.CountDownTimer2;
 import com.trasimus.tictactoe.online.DefaultUser;
-import com.trasimus.tictactoe.online.Lobby;
-import com.trasimus.tictactoe.online.UserMap;
 import com.trasimus.tictactoe.online.R;
 import com.trasimus.tictactoe.online.game.GameActivity;
+
+import java.text.SimpleDateFormat;
 
 public class GameInvitationListener extends Service {
 
     private FirebaseUser mUser;
     private DefaultUser defaultUser;
-    private DefaultUser otherUser;
-    private UserMap userMap;
     private DatabaseReference mDatabaseReference;
     private DatabaseReference ref;
-    private DatabaseReference mDatabase;
     private DatabaseReference mReference;
     private String userID;
     private String lobbyID;
     private NotificationManager notificationManager;
-    private Lobby mLobby;
     private ValueEventListener mListener;
+
+    private int i=0;
+
+    private CountDownTimer2 mTimer; //Timer for setting updated time to show if player is online
 
     @Override
     public void onCreate() {
@@ -79,26 +80,26 @@ public class GameInvitationListener extends Service {
             stopSelf();
         }
 
-        getID(mUser.getUid());
+
+        //Initiate CountDownTimer
+//        mTimer = new CountDownTimer2(1000, 1000) {
+//            @Override
+//            public void onTick(long millisUntilFinished) {
+//            }
+//
+//            @Override
+//            public void onFinish() {
+//                //mDatabaseReference.child("Users").child(mUser.getUid()).child("lastOnline").setValue(i);
+//                //mTimer.start();
+//                //i++;
+//            }
+//        };
+        //mTimer.start();
+
+        getUserInfo(mUser.getUid());
     }
 
-    private void getID(String playerUID){
-        mDatabase = mDatabaseReference.child("UserMap").child(playerUID);
-        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                userMap = dataSnapshot.getValue(UserMap.class);
-                getUserInfo(userMap.getUserID(), false);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
-
-    private void getUserInfo(String playerID, final boolean isAnotherPlayer) {
+    private void getUserInfo(String playerID) {
         mReference = mDatabaseReference.child("Users").child(playerID);
         mReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -117,6 +118,8 @@ public class GameInvitationListener extends Service {
     private void firebaseListenerWithNotification(String user){
         userID = user;
         ref = mDatabaseReference.child("Users").child(userID).child("lobbyID");
+        mDatabaseReference.child("Users").child(userID).child("isOnline").setValue(true);
+
 
         mListener = ref.addValueEventListener(new ValueEventListener() {
             @Override
@@ -128,18 +131,22 @@ public class GameInvitationListener extends Service {
 
                 if (lobbyID != null && !lobbyID.equals("")){
 
+                    mDatabaseReference.child("Users").child(userID).child("response").setValue(lobbyID);
+
                     Intent intent = new Intent(GameInvitationListener.this, GameActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     intent.putExtra("X", "X");
                     intent.putExtra("lobbyID", lobbyID);
                     PendingIntent pendingIntent = PendingIntent.getActivity(GameInvitationListener.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
+
+
                     Notification notification = new Notification.Builder(GameInvitationListener.this)
                             .setSmallIcon(R.mipmap.ic_launcher_round)
                             .setTicker("New invitation")  // the status text
                             .setWhen(System.currentTimeMillis())  // the time stamp
                             .setContentTitle("Game Invitation")  // the label of the entry
-                            .setContentText("You have been invited to play Tic Tac Toe")  // the contents of the entry
+                            .setContentText("You have been invited to play Tic Tac Toe Online")  // the contents of the entry
                             .setContentIntent(pendingIntent)  // The intent to send when the entry is clicked
                             .build();
 
@@ -168,6 +175,7 @@ public class GameInvitationListener extends Service {
 
     @Override
     public void onDestroy() {
+        mDatabaseReference.child("Users").child(userID).child("isOnline").setValue(false);
         ref.removeEventListener(mListener);
         super.onDestroy();
     }

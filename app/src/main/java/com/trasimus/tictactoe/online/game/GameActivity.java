@@ -2,7 +2,9 @@ package com.trasimus.tictactoe.online.game;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.CountDownTimer;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -31,8 +33,8 @@ import com.trasimus.tictactoe.online.CountDownTimer2;
 import com.trasimus.tictactoe.online.DefaultUser;
 import com.trasimus.tictactoe.online.GameObject;
 import com.trasimus.tictactoe.online.R;
-import com.trasimus.tictactoe.online.UserMap;
-import com.trasimus.tictactoe.online.account.AccountActivity;
+import com.trasimus.tictactoe.online.other.OptionsActivity;
+import com.trasimus.tictactoe.online.other.RegisterActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -85,7 +87,8 @@ public class GameActivity extends AppCompatActivity {
     private ImageView profile1;
     private ImageView profile2;
 
-    private UserMap userMap;
+    private ImageView backgroundImage;
+
     private DefaultUser defaultUser;
     private DefaultUser defaultUser2;
 
@@ -111,11 +114,19 @@ public class GameActivity extends AppCompatActivity {
     private ArrayList<String> singleMessage;
     private MessageAdapter mAdapter;
     private GameObject gameObjectToConnect;
+    private GameObject restartedGame;
 
     private AlertDialog alertDialog; //when connecting users
 
-    private int r=0; //to check if player has connected to game for the first time
-    private int req=0; //to check if player has connected to game for the first time
+    private int r = 0; //to check if player has connected to game for the first time
+    private int req = 0; //to check if player has connected to game for the first time
+
+    private String p2; //Checks if this is invitation game
+    private String lobbyID;
+    private ConstraintLayout gameBackground;
+
+    private SharedPreferences prefs; //Settings for char/gamecolor
+    public static final String CHAT_PREFS = "ChatPrefs"; //Settings for char/gamecolor
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,11 +137,14 @@ public class GameActivity extends AppCompatActivity {
         messages = new ArrayList<ArrayList<String>>();
         singleMessage = new ArrayList<String>();
 
+        //Get preferences
+        prefs = getSharedPreferences(CHAT_PREFS, 0 );
 
         //Get extra info
         bundle = getIntent().getExtras();
         int gameSize = bundle.getInt("size");
-        String p2 = bundle.getString("p2");
+        p2 = bundle.getString("p2");
+        lobbyID = bundle.getString("lobbyID");
 
         //Assign views
         mLinearLayout = (LinearLayout) findViewById(R.id.linear);
@@ -141,6 +155,7 @@ public class GameActivity extends AppCompatActivity {
         loadProgress = (ProgressBar) findViewById(R.id.progressBar2);
         profile1 = (ImageView) findViewById(R.id.profile);
         profile2 = (ImageView) findViewById(R.id.profile2);
+        gameBackground = (ConstraintLayout) findViewById(R.id.gameBackground);
 
         surrenderIMG = (ImageView) findViewById(R.id.exitIMG);
         chatIMG = (ImageView) findViewById(R.id.chatIMG);
@@ -160,7 +175,7 @@ public class GameActivity extends AppCompatActivity {
         playerX = mFirebaseUser.getUid();
         gamesRef = mDatabaseReference.child("games");
 
-        //Initiate CountDownTimer
+        //Initiate CountDownTimer for move timing
         mTimer = new CountDownTimer2(30000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -184,10 +199,52 @@ public class GameActivity extends AppCompatActivity {
             }
         };
 
-        //Initiate game layout
+        //Get user preferences
+        SharedPreferences prefs = getSharedPreferences(OptionsActivity.CHAT_PREFS, MODE_PRIVATE);
+        String gameColor = prefs.getString("gameColor", null);
+        if (gameColor == null){
+            gameBackground.setBackgroundResource(R.drawable.gradient3);
+        } else {
+            switch (gameColor) {
+                case "red":
+                    gameBackground.setBackgroundResource(R.drawable.gradient3);
+                    break;
+                case "blue":
+                    gameBackground.setBackgroundResource(R.drawable.gradient4);
+                    break;
+                case "green":
+                    gameBackground.setBackgroundResource(R.drawable.gradient5);
+                    break;
+                default:
+                    gameBackground.setBackgroundResource(R.drawable.gradient3);
+                    break;
+            }
+        }
+
+        //Initiate game layouts with asigning color and buttons of the field
         if (gameSize == 3) {
             getLayoutInflater().inflate(R.layout.threexthree, mLinearLayout);
             mGridLayout = (GridLayout) findViewById(R.id.gridLayout);
+            backgroundImage = (ImageView) findViewById(R.id.backgroundImage);
+
+            if (gameColor == null){
+                backgroundImage.setImageResource(R.drawable.grid3a);
+            } else {
+                switch (gameColor) {
+                    case "red":
+                        backgroundImage.setImageResource(R.drawable.grid3a);
+                        break;
+                    case "blue":
+                        backgroundImage.setImageResource(R.drawable.grid3b);
+                        break;
+                    case "green":
+                        backgroundImage.setImageResource(R.drawable.grid3c);
+                        break;
+                    default:
+                        backgroundImage.setImageResource(R.drawable.grid3a);
+                        break;
+                }
+            }
 
             tictac = new Button[9];
             game = new String[9];
@@ -202,6 +259,26 @@ public class GameActivity extends AppCompatActivity {
         } else if (gameSize == 4) {
             getLayoutInflater().inflate(R.layout.fourxfour, mLinearLayout);
             mGridLayout = (GridLayout) findViewById(R.id.gridLayout);
+            backgroundImage = (ImageView) findViewById(R.id.backgroundImage);
+
+            if (gameColor == null){
+                backgroundImage.setImageResource(R.drawable.grid4a);
+            } else {
+                switch (gameColor) {
+                    case "red":
+                        backgroundImage.setImageResource(R.drawable.grid4a);
+                        break;
+                    case "blue":
+                        backgroundImage.setImageResource(R.drawable.grid4b);
+                        break;
+                    case "green":
+                        backgroundImage.setImageResource(R.drawable.grid4c);
+                        break;
+                    default:
+                        backgroundImage.setImageResource(R.drawable.grid4a);
+                        break;
+                }
+            }
 
             tictac = new Button[16];
             game = new String[16];
@@ -215,6 +292,26 @@ public class GameActivity extends AppCompatActivity {
         } else if (gameSize == 5) {
             getLayoutInflater().inflate(R.layout.fivexfive, mLinearLayout);
             mGridLayout = (GridLayout) findViewById(R.id.gridLayout);
+            backgroundImage = (ImageView) findViewById(R.id.backgroundImage);
+
+            if (gameColor == null){
+                backgroundImage.setImageResource(R.drawable.grid5a);
+            } else {
+                switch (gameColor) {
+                    case "red":
+                        backgroundImage.setImageResource(R.drawable.grid5a);
+                        break;
+                    case "blue":
+                        backgroundImage.setImageResource(R.drawable.grid5b);
+                        break;
+                    case "green":
+                        backgroundImage.setImageResource(R.drawable.grid5c);
+                        break;
+                    default:
+                        backgroundImage.setImageResource(R.drawable.grid5a);
+                        break;
+                }
+            }
 
             tictac = new Button[25];
             game = new String[25];
@@ -227,11 +324,11 @@ public class GameActivity extends AppCompatActivity {
             }
         }
 
-        //Initiate button listeners
+        //Initiate button listener for exit
         surrenderIMG.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (newGame.getPlayer2().equals("")  || newGame.getGameList()==null) {
+                if (newGame.getPlayer2().equals("") || newGame.getGameList() == null) {
                     new AlertDialog.Builder(GameActivity.this)
                             .setTitle("Really Exit?")
                             .setMessage("Are you sure you want to exit game?")
@@ -268,66 +365,69 @@ public class GameActivity extends AppCompatActivity {
         });
 
 
-        //Chat listener
+        //Chat BTN listener
         chatIMG.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openedChatWindow = true;
-                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(GameActivity.this);
-                final LayoutInflater inflater = GameActivity.this.getLayoutInflater();
-                final View dialogView = inflater.inflate(R.layout.chat_window, null);
-                dialogBuilder.setView(dialogView);
-                dialogBuilder.setOnCancelListener(new DialogInterface.OnCancelListener() {
-                    @Override
-                    public void onCancel(DialogInterface dialogInterface) {
-                        mAdapter.cleanup();
-                        openedChatWindow = false;
+                if (newGame == null) {
+                    Toast.makeText(GameActivity.this, "Some error occurred, try restarting game", Toast.LENGTH_LONG).show();
+                } else if (newGame.getPlayer2() != null){
+                    if (!newGame.getPlayer2().equals("")) {
+                        openedChatWindow = true;
+                        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(GameActivity.this);
+                        final LayoutInflater inflater = GameActivity.this.getLayoutInflater();
+                        final View dialogView = inflater.inflate(R.layout.chat_window, null);
+                        dialogBuilder.setView(dialogView);
+                        dialogBuilder.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                            @Override
+                            public void onCancel(DialogInterface dialogInterface) {
+                                mAdapter.cleanup();
+                                openedChatWindow = false;
+                            }
+                        });
+                        dialogBuilder.setTitle("Chat");
+                        AlertDialog b = dialogBuilder.create();
+                        b.show();
+
+                        editTxt = dialogView.findViewById(R.id.editTxt);
+                        sendBtn = dialogView.findViewById(R.id.sendBtn);
+                        showMsg = dialogView.findViewById(R.id.showMessage);
+
+                        mAdapter = new MessageAdapter(GameActivity.this, mDatabaseReference.child("games").child(key), playerOne, playerTwo);
+                        showMsg.setAdapter(mAdapter);
+
+                        sendBtn.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                if (editTxt.getText().toString().equals("")) {
+                                    return;
+                                }
+                                if (editTxt.getText().toString().length() > 128) {
+                                    Toast.makeText(GameActivity.this, "Too long message(MAX 128 characters)", Toast.LENGTH_SHORT).show();
+                                    return;
+                                }
+
+                                singleMessage.add(playerOne.toString());
+                                singleMessage.add(playerTwo.toString());
+                                singleMessage.add(editTxt.getText().toString());
+                                if (newGame.getMessages() != null) {
+                                    messages = newGame.getMessages();
+                                }
+                                messages.add(singleMessage);
+                                newGame.setMessages(messages);
+
+                                mDatabaseReference.child("games").child(key).child("messages").setValue(newGame.getMessages());
+
+                                editTxt.setText("");
+
+                                singleMessage.clear();
+                                messages.clear();
+                            }
+                        });
+                } else {
+                        Toast.makeText(GameActivity.this, "Wait for second player to connect", Toast.LENGTH_SHORT).show();
                     }
-                });
-
-                //final EditText edt = (EditText) dialogView.findViewById(R.id.edit1);
-
-                dialogBuilder.setTitle("Chat");
-                //dialogBuilder.setMessage("Enter text below");
-
-                AlertDialog b = dialogBuilder.create();
-                b.show();
-
-                editTxt = dialogView.findViewById(R.id.editTxt);
-                sendBtn = dialogView.findViewById(R.id.sendBtn);
-                showMsg = dialogView.findViewById(R.id.showMessage);
-
-                mAdapter = new MessageAdapter(GameActivity.this, mDatabaseReference.child("games").child(key), playerOne, playerTwo);
-                showMsg.setAdapter(mAdapter);
-
-                sendBtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (editTxt.getText().toString().equals("")) {
-                            return;
-                        }
-                        if (editTxt.getText().toString().length() > 128) {
-                            Toast.makeText(GameActivity.this, "Too long message(MAX 128 characters)", Toast.LENGTH_SHORT).show();
-                            return;
-                        }
-
-                        singleMessage.add(playerOne.toString());
-                        singleMessage.add(playerTwo.toString());
-                        singleMessage.add(editTxt.getText().toString());
-                        if (newGame.getMessages() != null) {
-                            messages = newGame.getMessages();
-                        }
-                        messages.add(singleMessage);
-                        newGame.setMessages(messages);
-
-                        mDatabaseReference.child("games").child(key).child("messages").setValue(newGame.getMessages());
-
-                        editTxt.setText("");
-
-                        singleMessage.clear();
-                        messages.clear();
-                    }
-                });
+            }
             }
         });
 
@@ -335,42 +435,199 @@ public class GameActivity extends AppCompatActivity {
         pauseIMG.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (newGame==null){
+                    Toast.makeText(GameActivity.this, "Please wait, game is loading...", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 if (!paused) {
                     paused = true;
                     pauseIMG.setImageResource(R.drawable.play);
-                    if (playerOne){
+                    if (playerOne) {
                         mDatabaseReference.child("games").child(key).child("p1paused").setValue(true);
-                    } else if (playerTwo){
+                    } else if (playerTwo) {
                         mDatabaseReference.child("games").child(key).child("p2paused").setValue(true);
                     }
-                } else if (paused){
+                } else if (paused) {
                     paused = false;
                     pauseIMG.setImageResource(R.drawable.pause);
-                    if (playerOne){
+                    if (playerOne) {
                         mDatabaseReference.child("games").child(key).child("p1paused").setValue(false);
-                    } else if (playerTwo){
+                    } else if (playerTwo) {
                         mDatabaseReference.child("games").child(key).child("p2paused").setValue(false);
                     }
                 }
             }
         });
 
+        //Main player profile
+        profile1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (newGame==null){
+                    Toast.makeText(GameActivity.this, "Please wait, game is loading...", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(GameActivity.this);
+                final LayoutInflater inflater = GameActivity.this.getLayoutInflater();
+                final View dialogView = inflater.inflate(R.layout.user_profile, null);
+                dialogBuilder.setView(dialogView);
+                dialogBuilder.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialogInterface) {
+                    }
+                });
+
+                AlertDialog b = dialogBuilder.create();
+                ImageView profileIMG = dialogView.findViewById(R.id.profileIMG);
+                TextView nick = dialogView.findViewById(R.id.nick);
+                TextView age = dialogView.findViewById(R.id.age);
+                TextView from = dialogView.findViewById(R.id.from);
+                TextView wins = dialogView.findViewById(R.id.winsnum);
+                TextView loses = dialogView.findViewById(R.id.losesnum);
+                TextView points = dialogView.findViewById(R.id.pointssum);
+                TextView draws = dialogView.findViewById(R.id.drawsnum);
+                TextView ranking = dialogView.findViewById(R.id.ranking);
+
+                nick.setText(defaultUser.getName());
+
+                if (defaultUser.getAge().equals("")){
+                    age.setText("Undefined");
+                } else {
+                    age.setText(defaultUser.getAge());
+                }
+
+                if (defaultUser.getCountry().equals("")){
+                    from.setText("Undefined");
+                } else {
+                    from.setText(defaultUser.getCountry());
+                }
+
+                String won = String.valueOf(defaultUser.getGamesWon());
+                wins.setText(won);
+                String lost = String.valueOf(defaultUser.getGamesLost());
+                loses.setText(lost);
+                String point = String.valueOf(defaultUser.getPoints());
+                points.setText(point);
+
+                if (defaultUser.getPhotoID() != null) {
+                    if (defaultUser.getPhotoID().equals("grumpy")) {
+                        profileIMG.setImageResource(R.drawable.grumpy);
+                    }
+                    if (defaultUser.getPhotoID().equals("kon")) {
+                        profileIMG.setImageResource(R.drawable.kon);
+                    }
+                    if (defaultUser.getPhotoID().equals("opica")) {
+                        profileIMG.setImageResource(R.drawable.opica);
+                    }
+                    if (defaultUser.getPhotoID().equals("0")) {
+                        profileIMG.setImageResource(R.drawable.icon_profile_empty);
+                    }
+                }
+
+                b.show();
+            }
+        });
+
+        //Second player profile
+        profile2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (newGame==null){
+                    Toast.makeText(GameActivity.this, "Please wait, game is loading...", Toast.LENGTH_SHORT).show();
+                    return;
+                } else if (newGame.getPlayer2() != null){
+                    if (!newGame.getPlayer2().equals("")) {
+                        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(GameActivity.this);
+                        final LayoutInflater inflater = GameActivity.this.getLayoutInflater();
+                        final View dialogView = inflater.inflate(R.layout.user_profile, null);
+                        dialogBuilder.setView(dialogView);
+                        dialogBuilder.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                            @Override
+                            public void onCancel(DialogInterface dialogInterface) {
+
+                            }
+                        });
+                        AlertDialog b = dialogBuilder.create();
+                        ImageView profileIMG = dialogView.findViewById(R.id.profileIMG);
+                        TextView nick = dialogView.findViewById(R.id.nick);
+                        TextView age = dialogView.findViewById(R.id.age);
+                        TextView from = dialogView.findViewById(R.id.from);
+                        TextView wins = dialogView.findViewById(R.id.winsnum);
+                        TextView loses = dialogView.findViewById(R.id.losesnum);
+                        TextView points = dialogView.findViewById(R.id.pointssum);
+                        TextView ranking = dialogView.findViewById(R.id.ranking);
+                        TextView draws = dialogView.findViewById(R.id.drawsnum);
+
+                        nick.setText(defaultUser2.getName());
+
+                        if (defaultUser2.getAge().equals("")){
+                            age.setText("Undefined");
+                        } else {
+                            age.setText(defaultUser2.getAge());
+                        }
+
+                        if (defaultUser2.getCountry().equals("")){
+                            from.setText("Undefined");
+                        } else {
+                            from.setText(defaultUser2.getCountry());
+                        }
+
+                        String won = String.valueOf(defaultUser2.getGamesWon());
+                        wins.setText(won);
+                        String lost = String.valueOf(defaultUser2.getGamesLost());
+                        loses.setText(lost);
+                        String point = String.valueOf(defaultUser2.getPoints());
+                        points.setText(point);
+
+                        if (defaultUser2.getPhotoID() != null) {
+                            if (defaultUser2.getPhotoID().equals("grumpy")) {
+                                profileIMG.setImageResource(R.drawable.grumpy);
+                            }
+                            if (defaultUser2.getPhotoID().equals("kon")) {
+                                profileIMG.setImageResource(R.drawable.kon);
+                            }
+                            if (defaultUser2.getPhotoID().equals("opica")) {
+                                profileIMG.setImageResource(R.drawable.opica);
+                            }
+                            if (defaultUser2.getPhotoID().equals("0")) {
+                                profileIMG.setImageResource(R.drawable.icon_profile_empty);
+                            }
+                        }
+
+                        b.show();
+                    } else {
+                        Toast.makeText(GameActivity.this, "Wait for second player to connect", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
+
+        //Convert arrays to arraylists to work with Firebase objects
         tictacList = Arrays.asList(tictac);
         gameList = Arrays.asList(game);
 
-        findGame();
+        //Choose if it is game when player has invited someone, is invited or starts normally
+        if (p2!=null){
+            mainGame("");
+        } else if (lobbyID!=null){
+            mainGame(lobbyID);
+        } else {
+            findGame();
+        }
     }
 
-    private void findGame(){
+    private void findGame() {
         gamesRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                GameObject gameObject = new GameObject();
-                for (DataSnapshot snapshot: dataSnapshot.getChildren()){
+                GameObject gameObject;
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     gameObject = snapshot.getValue(GameObject.class);
-                    if (gameObject.getPlayer2()=="" && !gameObject.getConnectedP2() && gameObject.getSize()==bundle.getInt("size")){
-                        sendRequest(gameObject.getGameID());
-                        return;
+                    if (gameObject.getPlayer2()!=null && gameObject.getConnectedP2()!=null) {
+                        if (gameObject.getPlayer2().equals("") && !gameObject.getConnectedP2() && gameObject.getSize() == bundle.getInt("size")) {
+                            sendRequest(gameObject.getGameID());
+                            return;
+                        }
                     }
                 }
                 mainGame("");
@@ -383,22 +640,37 @@ public class GameActivity extends AppCompatActivity {
         });
     }
 
-    private void sendRequest(String gameID){
+    private void sendRequest(String gameID) {
         gameRef = gamesRef.child(gameID);
 
         gameRef.child("request").setValue(playerX);
 
-        requestListener = gameRef.addValueEventListener(new ValueEventListener() {
+        new CountDownTimer(3000, 1000) {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                gameObjectToConnect = new GameObject();
-                gameObjectToConnect = dataSnapshot.getValue(GameObject.class);
+            public void onTick(long millisUntilFinished) {
+            }
 
-                if (!gameObjectToConnect.getPlayer2().equals("") && !gameObjectToConnect.getPlayer2().equals(playerX)){
+            @Override
+            public void onFinish() {
+                if (gameObjectToConnect.getPlayer2().equals("") && !gameObjectToConnect.getPlayer2().equals(playerX)) {
+                    gameRef.removeEventListener(requestListener);
+                    gameRef.removeValue();
+                    findGame();
+                } else if (!gameObjectToConnect.getPlayer2().equals("") && !gameObjectToConnect.getPlayer2().equals(playerX)) {
                     gameRef.removeEventListener(requestListener);
                     findGame();
                 }
+            }
+        }.start();
+
+        gameObjectToConnect = new GameObject();
+        requestListener = gameRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                gameObjectToConnect = dataSnapshot.getValue(GameObject.class);
+
                 if (gameObjectToConnect.getPlayer2().equals(playerX)) {
+                    gameRef.removeEventListener(requestListener);
                     alertDialog = new AlertDialog.Builder(GameActivity.this).create();
                     alertDialog.setTitle("Game starting");
                     alertDialog.setMessage("Game will start in:");
@@ -415,17 +687,16 @@ public class GameActivity extends AppCompatActivity {
                     new CountDownTimer(5000, 1000) {
                         @Override
                         public void onTick(long millisUntilFinished) {
-                            alertDialog.setMessage("Game will start in:" + (millisUntilFinished/1000));
+                            alertDialog.setMessage("Game will start in:" + (millisUntilFinished / 1000));
                         }
 
                         @Override
                         public void onFinish() {
                             alertDialog.hide();
-                            gameRef.removeEventListener(requestListener);
                             mainGame(gameObjectToConnect.getGameID());
                         }
                     }.start();
-                    }
+                }
             }
 
             @Override
@@ -435,23 +706,12 @@ public class GameActivity extends AppCompatActivity {
         });
     }
 
-    private void mainGame(String gameID){
+    private void mainGame(String gameID) {
 
         //If player creates the game
         if (gameID.equals("")) {
-            alertDialog = new AlertDialog.Builder(GameActivity.this).create();
-            alertDialog.setTitle("Game starting");
-            alertDialog.setMessage("Looking for player\n\nTo exit, press back button");
-            alertDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-                @Override
-                public void onCancel(DialogInterface dialogInterface) {
-                    firstPlayerEventListener.removeEventListener(listener1);
-                    mDatabaseReference.child("games").child(key).removeValue();
-                    finish();
-                }
-            });
-            alertDialog.show();
 
+            //Inicialisation of basic fields
             playerOne = true;
             playerTwo = false;
             key = mDatabaseReference.child("games").push().getKey();
@@ -459,94 +719,124 @@ public class GameActivity extends AppCompatActivity {
             startPlayer = mRandom.nextBoolean();
             theOtherPlayer = !startPlayer;
 
-            newGame = new GameObject(key, mFirebaseUser.getUid(), "", bundle.getInt("size"), startPlayer, theOtherPlayer, startPlayer, 0, 0, false, false, true, false, false, "", "", false, false, false, messages, "");
+            String char1 = prefs.getString("primaryChar", null);
+            if (char1 == null){
+                char1="x";
+            }
+
+            //Inicialisation of GameObject
+            if (p2==null) {
+                newGame = new GameObject(key, mFirebaseUser.getUid(), "", bundle.getInt("size"), startPlayer, theOtherPlayer, startPlayer, 0, 0, false, false, true, false, false, "", "", false, false, messages, "", 0, 0, 0, 0, 0, false, false, char1, "");
+            } else {
+                mDatabaseReference.child("Users").child(p2).child("lobbyID").setValue(key);
+                newGame = new GameObject(key, mFirebaseUser.getUid(), p2, bundle.getInt("size"), startPlayer, theOtherPlayer, startPlayer, 0, 0, false, false, true, false, false, "", "", false, false, messages, "", 0, 0, 0, 0, 0, false, false, char1, "");
+            }
             mDatabaseReference.child("games").child(key).setValue(newGame);
 
-            getID(playerX);
+            getUserInfo();
 
             firstPlayerEventListener = mDatabaseReference.child("games").child(key);
 
+            //Listener of the place of game in Firebase database
             listener1 = firstPlayerEventListener.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     newGame = dataSnapshot.getValue(GameObject.class);
 
+                    //If object is null, listener is removed after removing game
                     if (newGame == null) {
                         firstPlayerEventListener.removeEventListener(listener1);
-                        new AlertDialog.Builder(GameActivity.this)
-                                .setTitle("Game not found")
-                                .setMessage("Game you want to join was not found")
-                                .setOnCancelListener(new DialogInterface.OnCancelListener() {
-                                    @Override
-                                    public void onCancel(DialogInterface dialogInterface) {
-                                        finish();
-                                    }
-                                })
-                                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-
-                                    public void onClick(DialogInterface arg0, int arg1) {
-                                        finish();
-                                    }
-                                }).create().show();
+                        return;
                     }
 
-                    if (!newGame.getRequest().equals("") && newGame.getRequest()!=null && req==0) {
+                    //If player requests to join the game, this make response
+                    if (!newGame.getRequest().equals("") && newGame.getRequest() != null && req == 0) {
                         req++;
                         mDatabaseReference.child("games").child(key).child("player2").setValue(newGame.getRequest());
                         mDatabaseReference.child("games").child(key).child("request").setValue("");
                     }
 
-                        if (!newGame.getPlayer2().equals("") && req==1){
+                    //Timer to start the game
+                    if (!newGame.getPlayer2().equals("") && req == 1) {
                         req++;
                         mDatabaseReference.child("games").child(key).child("player2").setValue(newGame.getRequest());
                         mDatabaseReference.child("games").child(key).child("request").setValue("");
 
-                        alertDialog.setOnCancelListener(null);
+                        alertDialog = new AlertDialog.Builder(GameActivity.this).create();
                         alertDialog.setTitle("Game starting");
                         alertDialog.setMessage("Game will start in:");
-                        alertDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-                            @Override
-                            public void onCancel(DialogInterface dialogInterface) {
-                                //mDatabaseReference.child("games").child(key).child("request").setValue("");
-                                //finish();
-                            }
-                        });
                         alertDialog.setCancelable(false);
+                        alertDialog.show();
 
                         new CountDownTimer(5000, 1000) {
                             @Override
                             public void onTick(long millisUntilFinished) {
-                                alertDialog.setMessage("Game will start in:" + (millisUntilFinished/1000));
+                                alertDialog.setMessage("Game will start in:" + (millisUntilFinished / 1000));
                             }
 
                             @Override
                             public void onFinish() {
+                                mTimer.start();
                                 alertDialog.hide();
                             }
                         }.start();
                     }
 
-                    if (newGame.getMessages() != null && sizeBefore < newGame.getMessages().size()){
+                    //If I invited player to game, countdown to check the response
+                    if (p2!=null){
+                        new CountDownTimer(3000, 1000) {
+                            @Override
+                            public void onTick(long millisUntilFinished) {
+                                //Waiting for request response
+                            }
+
+                            @Override
+                            public void onFinish() {
+                                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(GameActivity.this);
+                                dialogBuilder.setTitle("No response");
+                                dialogBuilder.setMessage("Invited player did not respond");
+                                dialogBuilder.setCancelable(true);
+                                dialogBuilder.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                                    @Override
+                                    public void onCancel(DialogInterface dialogInterface) {
+                                        finish();
+                                    }
+                                });
+                                dialogBuilder.setNegativeButton("EXIT", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                                    }
+                                });
+                                AlertDialog b = dialogBuilder.create();
+                                b.show();
+                            }
+                        }.start();
+                    }
+
+                    if (newGame.getMessages() != null && sizeBefore < newGame.getMessages().size()) {
                         sizeBefore = newGame.getMessages().size();
-                        if (newGame.getMessages().get(newGame.getMessages().size()-1).get(0).equals("false") && !openedChatWindow){
+                        if (newGame.getMessages().get(newGame.getMessages().size() - 1).get(0).equals("false") && !openedChatWindow) {
                             Toast.makeText(GameActivity.this, "New message", Toast.LENGTH_SHORT).show();
                         }
                     }
 
-                    if (newGame.isP1paused() && newGame.isP2paused()){
-                        Toast.makeText(GameActivity.this, "Game was paused", Toast.LENGTH_SHORT).show();
+                    if (newGame.isP1paused() && newGame.isP2paused()) {
+                        if (!isGamePaused) {
+                            Toast.makeText(GameActivity.this, "Game was paused", Toast.LENGTH_SHORT).show();
+                        }
                         isGamePaused = true;
                         count.setText("2/2");
                         mTimer.pause();
-                    } else if ((newGame.isP1paused() && !newGame.isP2paused()) || (!newGame.isP1paused() && newGame.isP2paused())){
-                        if (isGamePaused){
+                    } else if ((newGame.isP1paused() && !newGame.isP2paused()) || (!newGame.isP1paused() && newGame.isP2paused())) {
+                        if (isGamePaused) {
                             isGamePaused = false;
                             Toast.makeText(GameActivity.this, "Game is running", Toast.LENGTH_SHORT).show();
                             mTimer.resume();
                         }
                         count.setText("1/2");
-                    } else if (!newGame.isP1paused() && !newGame.isP2paused()){
-                        if (isGamePaused){
+                    } else if (!newGame.isP1paused() && !newGame.isP2paused()) {
+                        if (isGamePaused) {
                             isGamePaused = false;
                             Toast.makeText(GameActivity.this, "Game is running", Toast.LENGTH_SHORT).show();
                             mTimer.resume();
@@ -555,10 +845,9 @@ public class GameActivity extends AppCompatActivity {
                     }
 
 
-                    if ((!newGame.getPlayer2().equals("")) && (newGame.getMove() == 0) && newGame.getConnectedP2() && r==0) {
+                    if ((!newGame.getPlayer2().equals("")) && (newGame.getMove() == 0) && newGame.getConnectedP2() && r == 0) {
                         r++;
                         Log.d("test", "Player 2 set");
-                        players.setText(newGame.getP1name() + " vs " + newGame.getP2name());
                         gameTimer();
                         newGame.setConnectedP2(true);
                         mDatabaseReference.child("games").child(key).child("connectedP2").setValue(newGame.getConnectedP2());
@@ -567,15 +856,18 @@ public class GameActivity extends AppCompatActivity {
                     }
 
                     if ((!newGame.getPlayer2().equals(""))) {
+                        String move = null;
                         if (newGame.getMoveP1()) {
-                            moveView.setText("Player 1 is on the move");
+                            move = "You are on the move";
+                            moveView.setText(move);
                         } else if (newGame.getMoveP2()) {
-                            moveView.setText("Player 2 is on the move");
+                            move = newGame.getP2name() + " is on the move";
+                            moveView.setText(move);
                         }
                     }
 
                     if (newGame.getWinnerP1()) {
-                        gameState.setText("Player 1 wins");
+                        gameState.setText("You won");
                     } else if (newGame.getWinnerP2()) {
                         gameState.setText("Player 2 wins");
                     }
@@ -587,40 +879,119 @@ public class GameActivity extends AppCompatActivity {
                     if (newGame.getWinnerP1() || newGame.getWinnerP2() || newGame.getDraw()) {
                         myRef.removeEventListener(gameListener);
                         stopTimer();
-
                         moveView.setText("Game ended");
-                        firstPlayerEventListener.removeEventListener(listener1);
                     }
 
 
                     if (newGame.getWinnerP1() || newGame.getWinnerP2() || newGame.getDraw()) {
+                        firstPlayerEventListener.removeEventListener(listener1);
                         givePoints();
                         mDatabaseReference.child("games").child(key).child("player1").setValue("");
                         mDatabaseReference.child("games").child(key).child("player2").setValue("");
                         mDatabaseReference.child("games").child(key).child("isDeleted").setValue(true);
-                        String message = null;
+                        String title = null;
                         if (newGame.getWinnerP1()) {
-                            message = "Player " + newGame.getP1name() + " won";
+                            title = "You won";
                         } else if (newGame.getWinnerP2()) {
-                            message = "Player " + newGame.getP2name() + " won. Better luck next time";
+                            title = "You lost";
                         } else if (newGame.getDraw()) {
-                            message = "No player won";
+                            title = "Draw";
                         }
-                        new AlertDialog.Builder(GameActivity.this)
-                                .setTitle("Game ended")
-                                .setMessage(message)
-                                .setOnCancelListener(new DialogInterface.OnCancelListener() {
-                                    @Override
-                                    public void onCancel(DialogInterface dialogInterface) {
-                                        finish();
-                                    }
-                                })
-                                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
 
-                                    public void onClick(DialogInterface arg0, int arg1) {
-                                        finish();
-                                    }
-                                }).create().show();
+                        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(GameActivity.this);
+                        final LayoutInflater inflater = GameActivity.this.getLayoutInflater();
+                        final View dialogView = inflater.inflate(R.layout.restart_game, null);
+                        dialogBuilder.setView(dialogView);
+                        dialogBuilder.setTitle(title);
+                        dialogBuilder.setCancelable(false);
+                        dialogBuilder.setNegativeButton("EXIT", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                finish();
+                            }
+                        });
+                        AlertDialog b = dialogBuilder.create();
+
+                        Button leavebtn = dialogView.findViewById(R.id.leavebtn);
+                        Button restartbtn = dialogView.findViewById(R.id.restartbtn);
+
+                        TextView statswins = dialogView.findViewById(R.id.statswins);
+                        TextView statsloses = dialogView.findViewById(R.id.statsloses);
+                        TextView statsdraws = dialogView.findViewById(R.id.statsdraws);
+                        TextView playagainmsg = dialogView.findViewById(R.id.wantsplayagain);
+
+                        ImageView p1image = dialogView.findViewById(R.id.p1img);
+                        ImageView p2image = dialogView.findViewById(R.id.p2img);
+
+                        restartbtn.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                mDatabaseReference.child("games").child(key).child("playAgainP1").setValue(true);
+                            }
+                        });
+                        if (newGame.isPlayAgainP2()){
+                            playagainmsg.setVisibility(View.VISIBLE);
+                        } else if (newGame.isPlayAgainP1() && newGame.isPlayAgainP2()){
+                            //Start again
+                            req = 1;
+                            if (newGame.getWinnerP1()) {
+                                restartedGame = new GameObject(newGame.getGameID(), newGame.getPlayer1(), newGame.getPlayer2(), newGame.getSize(), startPlayer, theOtherPlayer, startPlayer, 0, 0, false, false, true, false, false, newGame.getP1name(), newGame.getP2name(), false, false, newGame.getMessages(), "", newGame.getWinsP1() + 1, newGame.getWinsP2(), newGame.getDraws(), newGame.getLosesP1(), newGame.getLosesP2() + 1, false, false, newGame.getP1char(), newGame.getP2char());
+                            }
+                            if (newGame.getWinnerP2()){
+                                restartedGame = new GameObject(newGame.getGameID(), newGame.getPlayer1(), newGame.getPlayer2(), newGame.getSize(), startPlayer, theOtherPlayer, startPlayer, 0, 0, false, false, true, false, false, newGame.getP1name(), newGame.getP2name(), false, false, newGame.getMessages(), "", newGame.getWinsP1(), newGame.getWinsP2() + 1, newGame.getDraws(), newGame.getLosesP1() + 1, newGame.getLosesP2(), false, false, newGame.getP1char(), newGame.getP2char());
+                            }
+                            if (newGame.getDraw()){
+                                restartedGame = new GameObject(newGame.getGameID(), newGame.getPlayer1(), newGame.getPlayer2(), newGame.getSize(), startPlayer, theOtherPlayer, startPlayer, 0, 0, false, false, true, false, false, newGame.getP1name(), newGame.getP2name(), false, false, newGame.getMessages(), "", newGame.getWinsP1(), newGame.getWinsP2(), newGame.getDraws() + 1, newGame.getLosesP1(), newGame.getLosesP2(), false, false, newGame.getP1char(), newGame.getP2char());
+                            }
+                            newGame = restartedGame;
+                            mDatabaseReference.child("games").child(key).setValue(newGame);
+                        } else if (!newGame.getConnectedP2()){
+                            String text = defaultUser2.getName() + " has left";
+                            playagainmsg.setText(text);
+                            playagainmsg.setVisibility(View.VISIBLE);
+                        }
+                        leavebtn.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                finish();
+                            }
+                        });
+                        String wins = "Wins: " + newGame.getWinsP1();
+                        String loses = "Loses: " + newGame.getLosesP1();
+                        String draws = "Draws: " + newGame.getDraws();
+                        statswins.setText(wins);
+                        statsloses.setText(loses);
+                        statsdraws.setText(draws);
+
+                        if (defaultUser.getPhotoID() != null) {
+                            if (defaultUser.getPhotoID().equals("grumpy")) {
+                                p1image.setImageResource(R.drawable.grumpy);
+                            }
+                            if (defaultUser.getPhotoID().equals("kon")) {
+                                p1image.setImageResource(R.drawable.kon);
+                            }
+                            if (defaultUser.getPhotoID().equals("opica")) {
+                                p1image.setImageResource(R.drawable.opica);
+                            }
+                            if (defaultUser.getPhotoID().equals("0")) {
+                                p1image.setImageResource(R.drawable.icon_profile_empty);
+                            }
+                        }
+                        if (defaultUser2.getPhotoID() != null) {
+                            if (defaultUser2.getPhotoID().equals("grumpy")) {
+                                p2image.setImageResource(R.drawable.grumpy);
+                            }
+                            if (defaultUser2.getPhotoID().equals("kon")) {
+                                p2image.setImageResource(R.drawable.kon);
+                            }
+                            if (defaultUser2.getPhotoID().equals("opica")) {
+                                p2image.setImageResource(R.drawable.opica);
+                            }
+                            if (defaultUser2.getPhotoID().equals("0")) {
+                                p2image.setImageResource(R.drawable.icon_profile_empty);
+                            }
+                        }
+                        b.show();
                     }
 
                 }
@@ -636,7 +1007,9 @@ public class GameActivity extends AppCompatActivity {
             playerOne = false;
             playerTwo = true;
             newGame = new GameObject();
-            getID(playerX);
+
+            getUserInfo();
+            key = gameID;
 
             firstPlayerEventListener = mDatabaseReference.child("games").child(gameID);
 
@@ -645,15 +1018,16 @@ public class GameActivity extends AppCompatActivity {
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     newGame = dataSnapshot.getValue(GameObject.class);
 
-                    if (!newGame.getPlayer2().equals(defaultUser.getUserID())){
+                    if (newGame == null) {
+                        firstPlayerEventListener.removeEventListener(listener1);
+                        return;
+                    }
+
+                    if (!newGame.getPlayer2().equals(defaultUser.getUserID())) {
+                        firstPlayerEventListener.removeEventListener(listener1);
                         new AlertDialog.Builder(GameActivity.this)
                                 .setTitle("Game error")
-                                .setOnCancelListener(new DialogInterface.OnCancelListener() {
-                                    @Override
-                                    public void onCancel(DialogInterface dialogInterface) {
-                                        finish();
-                                    }
-                                })
+                                .setCancelable(false)
                                 .setMessage("Problem with connecting to game, another player is already connected, please try again")
                                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
 
@@ -663,14 +1037,14 @@ public class GameActivity extends AppCompatActivity {
                                 }).create().show();
                     }
 
-                    if (newGame.getMessages() != null && sizeBefore < newGame.getMessages().size()){
+                    if (newGame.getMessages() != null && sizeBefore < newGame.getMessages().size()) {
                         sizeBefore = newGame.getMessages().size();
-                        if (newGame.getMessages().get(newGame.getMessages().size()-1).get(1).equals("false") && !openedChatWindow){
+                        if (newGame.getMessages().get(newGame.getMessages().size() - 1).get(1).equals("false") && !openedChatWindow) {
                             Toast.makeText(GameActivity.this, "New message", Toast.LENGTH_SHORT).show();
                         }
                     }
 
-                    if (newGame.getMove() == 0 && !newGame.getWinnerP1() && !newGame.getWinnerP2() && r==0) {
+                    if (newGame.getMove() == 0 && !newGame.getWinnerP1() && !newGame.getWinnerP2() && r == 0) {
                         r++;
                         mDatabaseReference.child("games").child(key).child("player2").setValue(playerX);
                         mDatabaseReference.child("games").child(key).child("request").setValue("");
@@ -678,24 +1052,30 @@ public class GameActivity extends AppCompatActivity {
                         gameTimer();
                         loadProgress.setVisibility(View.GONE);
                         otherPlayer(newGame.getPlayer1());
-                        players.setText(newGame.getP2name() + " vs " + newGame.getP1name());
+                        String char2 = prefs.getString("secondaryChar", null);
+                        if (char2 == null){
+                            char2="o";
+                        }
+                        mDatabaseReference.child("games").child(key).child("p2char").setValue(char2);
                     }
 
 
-                    if (newGame.isP1paused() && newGame.isP2paused()){
-                        Toast.makeText(GameActivity.this, "Game was paused", Toast.LENGTH_SHORT).show();
+                    if (newGame.isP1paused() && newGame.isP2paused()) {
+                        if (!isGamePaused) {
+                            Toast.makeText(GameActivity.this, "Game was paused", Toast.LENGTH_SHORT).show();
+                        }
                         isGamePaused = true;
                         count.setText("2/2");
                         mTimer.pause();
-                    } else if ((newGame.isP1paused() && !newGame.isP2paused()) || (!newGame.isP1paused() && newGame.isP2paused())){
-                        if (isGamePaused){
+                    } else if ((newGame.isP1paused() && !newGame.isP2paused()) || (!newGame.isP1paused() && newGame.isP2paused())) {
+                        if (isGamePaused) {
                             isGamePaused = false;
                             Toast.makeText(GameActivity.this, "Game is running", Toast.LENGTH_SHORT).show();
                             mTimer.resume();
                         }
                         count.setText("1/2");
-                    } else if (!newGame.isP1paused() && !newGame.isP2paused()){
-                        if (isGamePaused){
+                    } else if (!newGame.isP1paused() && !newGame.isP2paused()) {
+                        if (isGamePaused) {
                             isGamePaused = false;
                             Toast.makeText(GameActivity.this, "Game is running", Toast.LENGTH_SHORT).show();
                             mTimer.resume();
@@ -704,17 +1084,20 @@ public class GameActivity extends AppCompatActivity {
                     }
 
                     if ((!newGame.getPlayer2().equals(""))) {
+                        String move = null;
                         if (newGame.getMoveP1()) {
-                            moveView.setText("Player 1 is on the move");
+                            move = newGame.getP1name() + " is on the move";
+                            moveView.setText(move);
                         } else if (newGame.getMoveP2()) {
-                            moveView.setText("Player 2 is on the move");
+                            move = "You are on the move";
+                            moveView.setText(move);
                         }
                     }
 
                     if (newGame.getWinnerP1()) {
-                        gameState.setText("Player 1 wins");
+                        gameState.setText("You lost");
                     } else if (newGame.getWinnerP2()) {
-                        gameState.setText("Player 2 wins");
+                        gameState.setText("You won");
                     }
 
                     if (newGame.getDraw()) {
@@ -725,38 +1108,108 @@ public class GameActivity extends AppCompatActivity {
                         myRef.removeEventListener(gameListener);
                         stopTimer();
                         moveView.setText("Game ended");
-                        firstPlayerEventListener.removeEventListener(listener1);
                     }
 
 
                     if (newGame.getWinnerP1() || newGame.getWinnerP2() || newGame.getDraw()) {
+                        firstPlayerEventListener.removeEventListener(listener1);
                         givePoints();
                         mDatabaseReference.child("games").child(key).child("player1").setValue("");
                         mDatabaseReference.child("games").child(key).child("player2").setValue("");
                         mDatabaseReference.child("games").child(key).child("isDeleted").setValue(true);
-                        String message = null;
+                        String title = null;
                         if (newGame.getWinnerP1()) {
-                            message = "Player " + newGame.getP1name() + " won. Better luck next time";
+                            title = "You lost";
                         } else if (newGame.getWinnerP2()) {
-                            message = "You won!";
+                            title = "You won";
                         } else if (newGame.getDraw()) {
-                            message = "No player won";
+                            title = "Draw";
                         }
-                        new AlertDialog.Builder(GameActivity.this)
-                                .setTitle("Game ended")
-                                .setOnCancelListener(new DialogInterface.OnCancelListener() {
-                                    @Override
-                                    public void onCancel(DialogInterface dialogInterface) {
-                                        finish();
-                                    }
-                                })
-                                .setMessage(message)
-                                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
 
-                                    public void onClick(DialogInterface arg0, int arg1) {
-                                        finish();
-                                    }
-                                }).create().show();
+
+                        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(GameActivity.this);
+                        final LayoutInflater inflater = GameActivity.this.getLayoutInflater();
+                        final View dialogView = inflater.inflate(R.layout.restart_game, null);
+                        dialogBuilder.setView(dialogView);
+                        dialogBuilder.setTitle(title);
+                        dialogBuilder.setCancelable(false);
+                        dialogBuilder.setNegativeButton("EXIT", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                finish();
+                            }
+                        });
+                        AlertDialog b = dialogBuilder.create();
+
+                        Button leavebtn = dialogView.findViewById(R.id.leavebtn);
+                        Button restartbtn = dialogView.findViewById(R.id.restartbtn);
+
+                        TextView statswins = dialogView.findViewById(R.id.statswins);
+                        TextView statsloses = dialogView.findViewById(R.id.statsloses);
+                        TextView statsdraws = dialogView.findViewById(R.id.statsdraws);
+                        TextView playagainmsg = dialogView.findViewById(R.id.wantsplayagain);
+
+                        ImageView p1image = dialogView.findViewById(R.id.p1img);
+                        ImageView p2image = dialogView.findViewById(R.id.p2img);
+
+                        restartbtn.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                mDatabaseReference.child("games").child(key).child("playAgainP2").setValue(true);
+                            }
+                        });
+                        if (newGame.isPlayAgainP1()){
+                            playagainmsg.setVisibility(View.VISIBLE);
+                        } else if (newGame.isPlayAgainP1() && newGame.isPlayAgainP2()){
+                            //Start again
+                            r = 0;
+                        } else if (!newGame.getConnectedP1()){
+                            String text = defaultUser.getName() + " has left";
+                            playagainmsg.setText(text);
+                            playagainmsg.setVisibility(View.VISIBLE);
+                        }
+                        leavebtn.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                finish();
+                            }
+                        });
+                        String wins = "Wins: " + newGame.getWinsP2();
+                        String loses = "Loses: " + newGame.getLosesP2();
+                        String draws = "Draws: " + newGame.getDraws();
+                        statswins.setText(wins);
+                        statsloses.setText(loses);
+                        statsdraws.setText(draws);
+
+                        if (defaultUser.getPhotoID() != null) {
+                            if (defaultUser.getPhotoID().equals("grumpy")) {
+                                p2image.setImageResource(R.drawable.grumpy);
+                            }
+                            if (defaultUser.getPhotoID().equals("kon")) {
+                                p2image.setImageResource(R.drawable.kon);
+                            }
+                            if (defaultUser.getPhotoID().equals("opica")) {
+                                p2image.setImageResource(R.drawable.opica);
+                            }
+                            if (defaultUser.getPhotoID().equals("0")) {
+                                p2image.setImageResource(R.drawable.icon_profile_empty);
+                            }
+                        }
+                        if (defaultUser2.getPhotoID() != null) {
+                            if (defaultUser2.getPhotoID().equals("grumpy")) {
+                                p1image.setImageResource(R.drawable.grumpy);
+                            }
+                            if (defaultUser2.getPhotoID().equals("kon")) {
+                                p1image.setImageResource(R.drawable.kon);
+                            }
+                            if (defaultUser2.getPhotoID().equals("opica")) {
+                                p1image.setImageResource(R.drawable.opica);
+                            }
+                            if (defaultUser2.getPhotoID().equals("0")) {
+                                p1image.setImageResource(R.drawable.icon_profile_empty);
+                            }
+                        }
+                        b.show();
                     }
                 }
 
@@ -775,6 +1228,9 @@ public class GameActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 gameContent = (ArrayList<Object>) dataSnapshot.getValue();
 
+                if (newGame.getPlayer2()==null){
+                    return;
+                }
                 if (newGame.getPlayer2().equals("")) {
                     return;
                 }
@@ -786,16 +1242,43 @@ public class GameActivity extends AppCompatActivity {
                 }
 
                 for (int i = 0; i < gameContent.size(); i++) {
-                    //Log.d("test", "testAlpha" + gameContent.get(i));
-                    //Log.d("test", "testBeta" + newGame.getGameList().get(i));
 
                     if (gameContent.get(i).equals("x")) {
-                        //Log.d("test", "ALPHA + " + gameContent.get(i));
-                        tictacList.get(i).setBackgroundResource(R.drawable.x);
+                        switch (newGame.getP1char()) {
+                            case "x":
+                                tictacList.get(i).setBackgroundResource(R.drawable.x);
+                                break;
+                            case "a":
+                                break;
+                            case "b":
+                                break;
+                            case "c":
+                                break;
+                            case "d":
+                                break;
+                            default:
+                                tictacList.get(i).setBackgroundResource(R.drawable.x);
+                                break;
+                        }
                     }
                     if (gameContent.get(i).equals("o")) {
-                        //Log.d("test", "ALPHA + " + gameContent.get(i));
-                        tictacList.get(i).setBackgroundResource(R.drawable.o);
+                        switch (newGame.getP2char()) {
+                            case "x":
+                                tictacList.get(i).setBackgroundResource(R.drawable.o);
+                                break;
+                            case "a":
+                                break;
+                            case "b":
+                                break;
+                            case "c":
+                                break;
+                            case "d":
+                                break;
+                            default:
+                                tictacList.get(i).setBackgroundResource(R.drawable.o);
+                                break;
+                        }
+
                     }
                 }
 
@@ -809,43 +1292,31 @@ public class GameActivity extends AppCompatActivity {
         });
     }
 
-
     //Work with timer
     private void gameTimer() {
         mTimer.start();
     }
 
     private void restartTimer() {
-        if (mTimer == null) { return; }
-        mTimer.cancel();
-        mTimer.start();
-    }
-
-    private void pauseTimer() {
-        mTimer.pause();
-    }
-
-    private void resumeTimer() {
-        mTimer.resume();
-    }
-
-    private void stopTimer() {
-        if (mTimer == null) { return; }
-        mTimer.cancel();
-    }
-
-    private void startTimer() {
         if (mTimer == null) {
             return;
         }
+        mTimer.cancel();
         mTimer.start();
+    }
+
+    private void stopTimer() {
+        if (mTimer == null) {
+            return;
+        }
+        mTimer.cancel();
     }
 
     //On click method, when user clicks on btn in the game
     public void doSomething(View view) {
 
         //If game is paused
-        if (newGame.isP1paused() && newGame.isP2paused()){
+        if (newGame.isP1paused() && newGame.isP2paused()) {
             return;
         }
 
@@ -878,6 +1349,44 @@ public class GameActivity extends AppCompatActivity {
                 if (!newGame.getGameList().get(i).equals("")) {
                     return;
                 }
+            }
+        }
+
+        if (playerOne){
+            switch (newGame.getP1char()) {
+                case "x":
+                    findViewById(view.getId()).setBackgroundResource(R.drawable.x);
+                    break;
+                case "a":
+                    break;
+                case "b":
+                    break;
+                case "c":
+                    break;
+                case "d":
+                    break;
+                default:
+                    findViewById(view.getId()).setBackgroundResource(R.drawable.x);
+                    break;
+            }
+        }
+
+        if (playerTwo){
+            switch (newGame.getP2char()) {
+                case "x":
+                    findViewById(view.getId()).setBackgroundResource(R.drawable.o);
+                    break;
+                case "a":
+                    break;
+                case "b":
+                    break;
+                case "c":
+                    break;
+                case "d":
+                    break;
+                default:
+                    findViewById(view.getId()).setBackgroundResource(R.drawable.o);
+                    break;
             }
         }
 
@@ -949,16 +1458,21 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         if (playerOne) {
-            if (!newGame.getPlayer2().equals("") && !newGame.getRequest().equals("")){
+            if (!newGame.getPlayer2().equals("") && !newGame.getRequest().equals("")) {
                 mDatabaseReference.child("games").child(key).child("connectedP1").setValue(false);
                 if (newGame.getWinnerP1() || newGame.getWinnerP2() || newGame.getDraw()) {
+                    firstPlayerEventListener.removeEventListener(listener1);
                     mDatabaseReference.child("games").child(key).removeValue();
                 }
+            } else if (newGame.getPlayer2().equals("")){
+                firstPlayerEventListener.removeEventListener(listener1);
+                mDatabaseReference.child("games").child(key).removeValue();
             }
             super.onStop();
         } else if (playerTwo) {
             mDatabaseReference.child("games").child(key).child("connectedP2").setValue(false);
             if (newGame.getWinnerP1() || newGame.getWinnerP2() || newGame.getDraw()) {
+                firstPlayerEventListener.removeEventListener(listener1);
                 mDatabaseReference.child("games").child(key).removeValue();
             }
             super.onStop();
@@ -985,45 +1499,38 @@ public class GameActivity extends AppCompatActivity {
 
     private void givePoints() {
         if (playerOne) {
-            mDatabaseReference.child("Users").child(userMap.getUserID()).child("gamesPlayed").setValue(defaultUser.getGamesPlayed() + 1);
+            mDatabaseReference.child("Users").child(playerX).child("gamesPlayed").setValue(defaultUser.getGamesPlayed() + 1);
+            mDatabaseReference.child("Users").child(defaultUser2.getUserID()).child("gamesPlayed").setValue(defaultUser2.getGamesPlayed() + 1);
             if (newGame.getWinnerP1()) {
-                mDatabaseReference.child("Users").child(userMap.getUserID()).child("points").setValue(defaultUser.getPoints() + 3);
-                mDatabaseReference.child("Users").child(userMap.getUserID()).child("gamesWon").setValue(defaultUser.getGamesWon() + 1);
+                mDatabaseReference.child("Users").child(playerX).child("points").setValue(defaultUser.getPoints() + 3);
+
+                mDatabaseReference.child("Users").child(playerX).child("gamesWon").setValue(defaultUser.getGamesWon() + 1);
+                mDatabaseReference.child("Users").child(defaultUser2.getUserID()).child("gamesLost").setValue(defaultUser2.getGamesWon() + 1);
             } else if (newGame.getDraw()) {
-                mDatabaseReference.child("Users").child(userMap.getUserID()).child("points").setValue(defaultUser.getPoints() + 1);
-            } else if (newGame.getWinnerP2()){
-                mDatabaseReference.child("Users").child(userMap.getUserID()).child("gamesLost").setValue(defaultUser.getGamesLost() + 1);
+                mDatabaseReference.child("Users").child(playerX).child("points").setValue(defaultUser.getPoints() + 1);
+                mDatabaseReference.child("Users").child(defaultUser2.getUserID()).child("points").setValue(defaultUser2.getPoints() + 1);
+            } else if (newGame.getWinnerP2()) {
+                mDatabaseReference.child("Users").child(playerX).child("gamesLost").setValue(defaultUser.getGamesLost() + 1);
+                mDatabaseReference.child("Users").child(defaultUser2.getUserID()).child("gamesWon").setValue(defaultUser2.getGamesWon() + 1);
+                mDatabaseReference.child("Users").child(defaultUser2.getUserID()).child("points").setValue(defaultUser2.getPoints() + 3);
             }
         } else if (playerTwo) {
-            mDatabaseReference.child("Users").child(userMap.getUserID()).child("gamesPlayed").setValue(defaultUser.getGamesPlayed() + 1);
+            mDatabaseReference.child("Users").child(playerX).child("gamesPlayed").setValue(defaultUser.getGamesPlayed() + 1);
             if (newGame.getWinnerP2()) {
-                mDatabaseReference.child("Users").child(userMap.getUserID()).child("points").setValue(defaultUser.getPoints() + 3);
+                mDatabaseReference.child("Users").child(playerX).child("points").setValue(defaultUser.getPoints() + 3);
+                mDatabaseReference.child("Users").child(playerX).child("gamesWon").setValue(defaultUser.getGamesWon() + 1);
             } else if (newGame.getDraw()) {
-                mDatabaseReference.child("Users").child(userMap.getUserID()).child("points").setValue(defaultUser.getPoints() + 1);
-            } else if (newGame.getWinnerP1()){
-                mDatabaseReference.child("Users").child(userMap.getUserID()).child("gamesLost").setValue(defaultUser.getGamesLost() + 1);
+                mDatabaseReference.child("Users").child(playerX).child("points").setValue(defaultUser.getPoints() + 1);
+            } else if (newGame.getWinnerP1()) {
+                mDatabaseReference.child("Users").child(playerX).child("gamesLost").setValue(defaultUser.getGamesLost() + 1);
             }
         }
     }
 
-    private void getID(String playerUID) {
-        userRef1 = mDatabaseReference.child("UserMap").child(playerUID);
-        userRef1.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                userMap = dataSnapshot.getValue(UserMap.class);
-                getUserInfo();
-            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
 
     private void getUserInfo() {
-        userRef2 = mDatabaseReference.child("Users").child(userMap.getUserID());
+        userRef2 = mDatabaseReference.child("Users").child(playerX);
         userRef2.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -1076,6 +1583,12 @@ public class GameActivity extends AppCompatActivity {
                         profile2.setImageResource(R.drawable.icon_profile_empty);
                     }
                 }
+                if (playerOne){
+                    players.setText(newGame.getP1name() + " vs " + newGame.getP2name());
+                }
+                if (playerTwo){
+                    players.setText(newGame.getP2name() + " vs " + newGame.getP1name());
+                }
             }
 
             @Override
@@ -1086,7 +1599,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
 
-    public void checkWinner(ArrayList<String> gameList) {
+    private void checkWinner(ArrayList<String> gameList) {
 
         if (newGame.getSize() == 3) {
 

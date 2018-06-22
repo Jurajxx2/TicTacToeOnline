@@ -3,7 +3,6 @@ package com.trasimus.tictactoe.online.game;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -18,9 +17,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.trasimus.tictactoe.online.DefaultUser;
+import com.trasimus.tictactoe.online.GameListAdapter;
 import com.trasimus.tictactoe.online.GameObject;
 import com.trasimus.tictactoe.online.R;
-import com.trasimus.tictactoe.online.UserMap;
 
 import java.util.List;
 
@@ -38,7 +37,6 @@ public class GameFinderActivity extends AppCompatActivity {
 
     private String key;
     private DefaultUser mDefaultUser;
-    private UserMap mUserMap;
     private FirebaseUser mUser;
     private DatabaseReference mDatabaseReference;
     private DatabaseReference mDatabaseReference2;
@@ -56,7 +54,7 @@ public class GameFinderActivity extends AppCompatActivity {
 
         mUser = FirebaseAuth.getInstance().getCurrentUser();
 
-        getID(mUser.getUid());
+        getUserInfo();
 
         mListView = (ListView) findViewById(R.id.gameList);
 
@@ -69,24 +67,10 @@ public class GameFinderActivity extends AppCompatActivity {
         });
     }
 
-    private void getID(String playerUID){
-        mDatabaseReference = myRef.child("UserMap").child(playerUID);
-        mDatabaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                mUserMap = dataSnapshot.getValue(UserMap.class);
-                getUserInfo();
-            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
 
     private void getUserInfo() {
-        mDatabaseReference2 = myRef.child("Users").child(mUserMap.getUserID());
+        mDatabaseReference2 = myRef.child("Users").child(mUser.getUid());
         mDatabaseReference2.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

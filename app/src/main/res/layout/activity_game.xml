@@ -4,7 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.trasimus.tictactoe.online.game.GameActivity">
+    tools:context="com.trasimus.tictactoe.online.game.GameActivity"
+    android:background="@drawable/gradient1"
+    android:id="@+id/gameBackground">
+
+    <View
+        android:id="@+id/viewtop"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:background="#80FFFFFF"
+        app:layout_constraintBottom_toTopOf="@id/linear"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/viewbottom"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:background="#80FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linear" />
 
     <LinearLayout
         android:id="@+id/linear"
@@ -118,8 +142,8 @@
 
     <ImageView
         android:id="@+id/chatIMG"
-        android:layout_width="82dp"
-        android:layout_height="82dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -131,8 +155,8 @@
 
     <ImageView
         android:id="@+id/exitIMG"
-        android:layout_width="92dp"
-        android:layout_height="92dp"
+        android:layout_width="82dp"
+        android:layout_height="82dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -146,8 +170,8 @@
 
     <ImageView
         android:id="@+id/pauseIMG"
-        android:layout_width="82dp"
-        android:layout_height="82dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
@@ -165,8 +189,10 @@
         android:layout_marginStart="8dp"
         android:text="0/2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintHorizontal_bias="0.93"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pauseIMG" />
+
+
 
 </android.support.constraint.ConstraintLayout>

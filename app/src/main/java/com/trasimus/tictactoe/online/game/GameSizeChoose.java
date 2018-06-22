@@ -12,10 +12,7 @@ import com.trasimus.tictactoe.online.R;
 
 public class GameSizeChoose extends AppCompatActivity {
 
-    private String key;
-    private DatabaseReference myRef;
     private Bundle mBundle;
-
     private String p2;
 
     @Override
@@ -23,11 +20,8 @@ public class GameSizeChoose extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_size_choose);
 
-        myRef = FirebaseDatabase.getInstance().getReference();
         mBundle = getIntent().getExtras();
         p2 = mBundle.getString("p2");
-
-
     }
 
     public void launchGameActivity3(View view){

@@ -29,7 +29,7 @@
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:inputType="text"
-        android:hint="Type message here"
+        android:hint="Your message(max 128 chars)"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/sendBtn"
         app:layout_constraintStart_toStartOf="parent" />

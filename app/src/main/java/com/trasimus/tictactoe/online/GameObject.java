@@ -28,18 +28,26 @@ public class GameObject {
     private Boolean draw;
     private String p1name;
     private String p2name;
-    private boolean isDeleted;
     private boolean p1paused;
     private boolean p2paused;
     private ArrayList<ArrayList<String>> messages;
     private String request;
+    private int winsP1;
+    private int winsP2;
+    private int draws;
+    private int losesP1;
+    private int losesP2;
+    private boolean playAgainP1;
+    private boolean playAgainP2;
+    private String p1char;
+    private String p2char;
 
 
     public GameObject(){
 
     }
 
-    public GameObject(String gameID, String player1, String player2, int size, Boolean moveP1, Boolean moveP2, Boolean startPlayer, int move, int viewID, Boolean winnerP1, Boolean winnerP2, Boolean connectedP1, Boolean connectedP2, Boolean draw, String p1name, String p2name, boolean isDeleted, boolean p1paused, boolean p2paused, ArrayList<ArrayList<String>> messages, String request){
+    public GameObject(String gameID, String player1, String player2, int size, Boolean moveP1, Boolean moveP2, Boolean startPlayer, int move, int viewID, Boolean winnerP1, Boolean winnerP2, Boolean connectedP1, Boolean connectedP2, Boolean draw, String p1name, String p2name, boolean p1paused, boolean p2paused, ArrayList<ArrayList<String>> messages, String request, int winsP1, int winsP2, int draws, int losesP1, int losesP2, boolean playAgainP1, boolean playAgainP2, String p1char, String p2char){
       this.player1 = player1;
       this.player2 = player2;
       this.moveP1 = moveP1;
@@ -56,11 +64,19 @@ public class GameObject {
       this.draw = draw;
       this.p1name = p1name;
       this.p2name = p2name;
-      this.isDeleted = isDeleted;
       this.p1paused = p1paused;
       this.p2paused = p2paused;
       this.messages = messages;
       this.request = request;
+      this.winsP1 = winsP1;
+      this.winsP2 = winsP2;
+      this.draws = draws;
+      this.losesP1 = losesP1;
+      this.losesP2 = losesP2;
+      this.playAgainP1 = playAgainP1;
+      this.playAgainP2 = playAgainP2;
+      this.p1char = p1char;
+      this.p2char = p2char;
       //this.clickedButton = clickedButton;
       initiateGameList();
     }
@@ -159,7 +175,6 @@ public class GameObject {
                 }
             }
         }
-
 
         if (size == 5) {
 
@@ -316,13 +331,6 @@ public class GameObject {
         this.p2name = p2name;
     }
 
-    public boolean isDeleted() {
-        return isDeleted;
-    }
-
-    public void setDeleted(boolean deleted) {
-        isDeleted = deleted;
-    }
 
     public boolean isP1paused() {
         return p1paused;
@@ -354,5 +362,77 @@ public class GameObject {
 
     public void setRequest(String request) {
         this.request = request;
+    }
+
+    public int getWinsP1() {
+        return winsP1;
+    }
+
+    public void setWinsP1(int winsP1) {
+        this.winsP1 = winsP1;
+    }
+
+    public int getWinsP2() {
+        return winsP2;
+    }
+
+    public void setWinsP2(int winsP2) {
+        this.winsP2 = winsP2;
+    }
+
+    public boolean isPlayAgainP1() {
+        return playAgainP1;
+    }
+
+    public void setPlayAgainP1(boolean playAgainP1) {
+        this.playAgainP1 = playAgainP1;
+    }
+
+    public boolean isPlayAgainP2() {
+        return playAgainP2;
+    }
+
+    public void setPlayAgainP2(boolean playAgainP2) {
+        this.playAgainP2 = playAgainP2;
+    }
+
+    public String getP1char() {
+        return p1char;
+    }
+
+    public void setP1char(String p1char) {
+        this.p1char = p1char;
+    }
+
+    public String getP2char() {
+        return p2char;
+    }
+
+    public void setP2char(String p2char) {
+        this.p2char = p2char;
+    }
+
+    public int getDraws() {
+        return draws;
+    }
+
+    public void setDraws(int draws) {
+        this.draws = draws;
+    }
+
+    public int getLosesP1() {
+        return losesP1;
+    }
+
+    public void setLosesP1(int losesP1) {
+        this.losesP1 = losesP1;
+    }
+
+    public int getLosesP2() {
+        return losesP2;
+    }
+
+    public void setLosesP2(int losesP2) {
+        this.losesP2 = losesP2;
     }
 }

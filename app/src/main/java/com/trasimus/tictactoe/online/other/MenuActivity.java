@@ -1,8 +1,5 @@
 package com.trasimus.tictactoe.online.other;
 
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,7 +7,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -29,31 +25,25 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.trasimus.tictactoe.online.Lobby;
 import com.trasimus.tictactoe.online.R;
 import com.trasimus.tictactoe.online.account.AccountActivity;
 import com.trasimus.tictactoe.online.DefaultUser;
 import com.trasimus.tictactoe.online.friends.FriendsActivity;
-import com.trasimus.tictactoe.online.game.GameActivity;
-import com.trasimus.tictactoe.online.game.GameFinderActivity;
-import com.trasimus.tictactoe.online.UserMap;
 import com.trasimus.tictactoe.online.game.GameSizeChoose;
+import com.trasimus.tictactoe.online.game.GameSizeChooseLocal;
 
 public class MenuActivity extends AppCompatActivity {
 
     GoogleSignInClient mGoogleSignInClient;
     private FirebaseUser mFirebaseUser;
     private DatabaseReference mDatabaseReference;
-    private DatabaseReference userRef1;
     private DatabaseReference userRef2;
-    private UserMap userMap;
     private DefaultUser defaultUser;
     private boolean loading = true;
     private String YOUR_ADMOB_APP_ID;
-    private ArrayAdapter<String> mAdapter;
-
     private InterstitialAd mInterstitialAd;
 
+    private ArrayAdapter<String> mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +70,8 @@ public class MenuActivity extends AppCompatActivity {
 
         mDatabaseReference = FirebaseDatabase.getInstance().getReference();
         mFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        getID(mFirebaseUser.getUid());
+        //getID(mFirebaseUser.getUid());
+        getUserInfo();
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
@@ -92,7 +83,6 @@ public class MenuActivity extends AppCompatActivity {
         ListView menu = (ListView) findViewById(com.trasimus.tictactoe.online.R.id.menu);
         menu.setAdapter(mAdapter);
         mAdapter.addAll(this.getResources().getStringArray(R.array.menu));
-        mAdapter.add("Unlock Premium");
         mAdapter.add("Logout");
 
         menu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -113,18 +103,30 @@ public class MenuActivity extends AppCompatActivity {
                             break;
                         }
                     case 1:
-                        Intent intent2 = new Intent(MenuActivity.this, RankingsActivity.class);
-                        startActivity(intent2);
+                        Intent intent5 = new Intent(MenuActivity.this, GameSizeChooseLocal.class);
+                        startActivity(intent5);
                         break;
                     case 2:
-                        launchAccountActivity();
+                        if (loading){
+                            Toast.makeText(MenuActivity.this, "Please, check your connection", Toast.LENGTH_SHORT).show();
+                            break;
+                        }
+                        Intent intent2 = new Intent(MenuActivity.this, RankingsActivity.class);
+                        startActivity(intent2);
                         break;
                     case 3:
                         if (loading){
                             Toast.makeText(MenuActivity.this, "Please, check your connection", Toast.LENGTH_SHORT).show();
                             break;
+                        }
+                        launchAccountActivity();
+                        break;
+                    case 4:
+                        if (loading){
+                            Toast.makeText(MenuActivity.this, "Please, check your connection", Toast.LENGTH_SHORT).show();
+                            break;
                         } if (defaultUser.getName()==null || defaultUser.getName().equals("")){
-                        Toast.makeText(MenuActivity.this, "Please, set your name in Account to play a game", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MenuActivity.this, "Please, set your name, country of origin and age in Account to play a game", Toast.LENGTH_SHORT).show();
                         break;
                             }else {
                             Intent intent3 = new Intent(MenuActivity.this, FriendsActivity.class);
@@ -132,6 +134,15 @@ public class MenuActivity extends AppCompatActivity {
                             startActivity(intent3);
                             break;
                         }
+                    case 5:
+                        if (loading){
+                            Toast.makeText(MenuActivity.this, "Please, check your connection", Toast.LENGTH_SHORT).show();
+                            break;
+                        } else {
+                            Intent intent4 = new Intent(MenuActivity.this, OptionsActivity.class);
+                            startActivity(intent4);
+                        }
+                        break;
                     case 6:
                         FirebaseAuth.getInstance().signOut();
                         LoginManager.getInstance().logOut();
@@ -142,24 +153,6 @@ public class MenuActivity extends AppCompatActivity {
                 }
             }
         });
-    }
-
-    @Override
-    public void onBackPressed() {
-        new AlertDialog.Builder(MenuActivity.this)
-                .setTitle("Exit")
-                .setMessage("Are you sure you want to exit Tic Tac Toe Online?")
-                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                    }
-                })
-                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-
-                    public void onClick(DialogInterface arg0, int arg1) {
-                        MenuActivity.super.onBackPressed();
-                    }
-                }).create().show();
     }
 
     @Override
@@ -185,24 +178,8 @@ public class MenuActivity extends AppCompatActivity {
         finish();
     }
 
-    private void getID(String playerUID){
-        userRef1 = mDatabaseReference.child("UserMap").child(playerUID);
-        userRef1.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                userMap = dataSnapshot.getValue(UserMap.class);
-                getUserInfo();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
-
     private void getUserInfo(){
-        userRef2 = mDatabaseReference.child("Users").child(userMap.getUserID());
+        userRef2 = mDatabaseReference.child("Users").child(mFirebaseUser.getUid());
         userRef2.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

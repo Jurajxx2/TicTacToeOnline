@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "456171505925-4fl47ouejun7b9l5lg12ev8tacriracn.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "456171505925-pcmvth0fvu1d1e1cuekvo7ffgcucm0mo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.trasimus.tictactoe.online",
+            "certificate_hash": "4c059a8b2ac55ae3b469c9c74e3b8ac83f6b5436"
+          }
+        },
+        {
+          "client_id": "456171505925-2vo2n65n302u1ltrpih379pd30d88fiv.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
           "client_id": "456171505925-2vo2n65n302u1ltrpih379pd30d88fiv.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +45,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "456171505925-4fl47ouejun7b9l5lg12ev8tacriracn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2

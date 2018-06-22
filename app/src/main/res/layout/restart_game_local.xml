@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Play again!"
+        android:textAlignment="center"
+        android:textSize="24sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button31"
+            style="@style/FirebaseUI.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="3x3" />
+
+        <Button
+            android:id="@+id/button32"
+            style="@style/FirebaseUI.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="4x4" />
+
+        <Button
+            android:id="@+id/button33"
+            style="@style/FirebaseUI.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="5x5" />
+
+    </LinearLayout>
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:weightSum="2">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/p1name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Player 1"
+            android:textAlignment="center"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/p1wins"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Wins:" />
+
+        <TextView
+            android:id="@+id/p1loses"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Loses" />
+
+        <TextView
+            android:id="@+id/p1draws"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Draws:" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/p2name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Player 2"
+            android:textAlignment="center"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/p2wins"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Wins:" />
+
+        <TextView
+            android:id="@+id/p2loses"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Loses:" />
+
+        <TextView
+            android:id="@+id/p2draws"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Draws:" />
+    </LinearLayout>
+</LinearLayout>
+</LinearLayout>

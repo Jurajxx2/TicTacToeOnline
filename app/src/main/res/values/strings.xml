@@ -17,8 +17,15 @@
     <string name="fb_login_protocol_scheme">fb814480842076351</string>
     <string name="surrender">Exit</string>
 
+    <string-array name="dropdown">
+        <item>Play 3x3</item>
+        <item>Play 4x4</item>
+        <item>Play 5x5</item>
+    </string-array>
+
     <string-array name="menu">
-        <item>Play Tic Tac Toe</item>
+        <item>Play Tic Tac Toe Online</item>
+        <item>Play with friend locally</item>
         <item>Rankings</item>
         <item>My account</item>
         <item>Friends</item>
@@ -28,6 +35,10 @@
     <string name="title_activity_rankings">RankingsActivity</string>
     <string name="channel_name">Game invitation</string>
     <string name="channel_description">Tic Tac Toe Game Invitation</string>
+    <string name="dolava"><![CDATA[<<<]]></string>
+    <string name="dolavajedno"><![CDATA[<]]></string>
+    <string name="dopravajedno"><![CDATA[>]]></string>
+    <string name="doprava"><![CDATA[>>>]]></string>
 
 
     <string-array name="countries_array">

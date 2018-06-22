@@ -20,12 +20,17 @@ public class DefaultUser {
     private int gamesWon;
     private int gamesLost;
     private boolean isOnline;
+    private String response;
+    private boolean payed;
+    private boolean isSocial;
+    private String lastOnline;
+    private ArrayList<ArrayList<String>> payments;
 
     public DefaultUser(){
 
     }
 
-    public DefaultUser(String userID, String mail, String name, String age, String country, int points, ArrayList<ArrayList<String>> friends, String lobbyID, String photoID, String myGameID, int gamesPlayed, int gamesWon, int gamesLost, boolean isOnline){
+    public DefaultUser(String userID, String mail, String name, String age, String country, int points, ArrayList<ArrayList<String>> friends, String lobbyID, String photoID, String myGameID, int gamesPlayed, int gamesWon, int gamesLost, boolean isOnline, String response, boolean payed, boolean isSocial, String lastOnline, ArrayList<ArrayList<String>> payments){
 
         this.userID = userID;
         this.mail = mail;
@@ -41,6 +46,11 @@ public class DefaultUser {
         this.gamesWon = gamesWon;
         this.gamesLost = gamesLost;
         this.isOnline = isOnline;
+        this.response = response;
+        this.payed = payed;
+        this.isSocial = isSocial;
+        this.lastOnline = lastOnline;
+        this.payments = payments;
     }
 
     public String getUserID() {
@@ -153,5 +163,45 @@ public class DefaultUser {
 
     public void setOnline(boolean online) {
         isOnline = online;
+    }
+
+    public String getResponse() {
+        return response;
+    }
+
+    public void setResponse(String response) {
+        this.response = response;
+    }
+
+    public boolean isPayed() {
+        return payed;
+    }
+
+    public void setPayed(boolean payed) {
+        this.payed = payed;
+    }
+
+    public boolean isSocial() {
+        return isSocial;
+    }
+
+    public void setSocial(boolean social) {
+        isSocial = social;
+    }
+
+    public String getLastOnline() {
+        return lastOnline;
+    }
+
+    public void setLastOnline(String lastOnline) {
+        this.lastOnline = lastOnline;
+    }
+
+    public ArrayList<ArrayList<String>> getPayments() {
+        return payments;
+    }
+
+    public void setPayments(ArrayList<ArrayList<String>> payments) {
+        this.payments = payments;
     }
 }

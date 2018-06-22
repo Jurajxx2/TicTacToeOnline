@@ -1,15 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageView
+        android:id="@+id/backgroundImage"
+
+        android:layout_width="320dp"
+        android:layout_height="320dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"/>
+
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/gridLayout"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="320dp"
+    android:layout_height="320dp"
     android:layout_marginBottom="8dp"
     android:layout_marginEnd="8dp"
     android:layout_marginStart="8dp"
     android:columnCount="4"
     android:rowCount="4"
-    android:background="@color/colorPrimary"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
@@ -23,7 +36,7 @@
         android:layout_column="0"
         android:layout_margin="5dp"
         android:layout_row="0"
-        android:background="@color/cardview_light_background"
+        android:background="@color/fui_transparent"
         android:onClick="doSomething" />
 
     <Button
@@ -33,7 +46,7 @@
         android:layout_column="1"
         android:layout_margin="5dp"
         android:layout_row="0"
-        android:background="@color/cardview_light_background"
+        android:background="@color/fui_transparent"
         android:onClick="doSomething" />
 
     <Button
@@ -43,7 +56,7 @@
         android:layout_column="2"
         android:layout_margin="5dp"
         android:layout_row="0"
-        android:background="@color/cardview_light_background"
+        android:background="@color/fui_transparent"
         android:onClick="doSomething" />
 
     <Button
@@ -53,7 +66,7 @@
         android:layout_column="3"
         android:layout_margin="5dp"
         android:layout_row="0"
-        android:background="@color/cardview_light_background"
+        android:background="@color/fui_transparent"
         android:onClick="doSomething" />
 
     <Button
@@ -63,7 +76,7 @@
         android:layout_column="0"
         android:layout_margin="5dp"
         android:layout_row="1"
-        android:background="@color/cardview_light_background"
+        android:background="@color/fui_transparent"
         android:onClick="doSomething" />
 
     <Button
@@ -73,7 +86,7 @@
         android:layout_column="1"
         android:layout_margin="5dp"
         android:layout_row="1"
-        android:background="@color/cardview_light_background"
+        android:background="@color/fui_transparent"
         android:onClick="doSomething" />
 
     <Button
@@ -83,7 +96,7 @@
         android:layout_column="2"
         android:layout_margin="5dp"
         android:layout_row="1"
-        android:background="@color/cardview_light_background"
+        android:background="@color/fui_transparent"
         android:onClick="doSomething" />
 
     <Button
@@ -93,7 +106,7 @@
         android:layout_column="3"
         android:layout_margin="5dp"
         android:layout_row="1"
-        android:background="@color/cardview_light_background"
+        android:background="@color/fui_transparent"
         android:onClick="doSomething" />
 
     <Button
@@ -103,7 +116,7 @@
         android:layout_column="0"
         android:layout_margin="5dp"
         android:layout_row="2"
-        android:background="@color/cardview_light_background"
+        android:background="@color/fui_transparent"
         android:onClick="doSomething" />
 
     <Button
@@ -113,7 +126,7 @@
         android:layout_column="1"
         android:layout_margin="5dp"
         android:layout_row="2"
-        android:background="@color/cardview_light_background"
+        android:background="@color/fui_transparent"
         android:onClick="doSomething" />
 
     <Button
@@ -123,7 +136,7 @@
         android:layout_column="2"
         android:layout_margin="5dp"
         android:layout_row="2"
-        android:background="@color/cardview_light_background"
+        android:background="@color/fui_transparent"
         android:onClick="doSomething" />
 
     <Button
@@ -133,7 +146,7 @@
         android:layout_column="3"
         android:layout_margin="5dp"
         android:layout_row="2"
-        android:background="@color/cardview_light_background"
+        android:background="@color/fui_transparent"
         android:onClick="doSomething" />
 
     <Button
@@ -143,7 +156,7 @@
         android:layout_column="0"
         android:layout_margin="5dp"
         android:layout_row="3"
-        android:background="@color/cardview_light_background"
+        android:background="@color/fui_transparent"
         android:onClick="doSomething" />
 
     <Button
@@ -153,7 +166,7 @@
         android:layout_column="1"
         android:layout_margin="5dp"
         android:layout_row="3"
-        android:background="@color/cardview_light_background"
+        android:background="@color/fui_transparent"
         android:onClick="doSomething" />
 
     <Button
@@ -163,7 +176,7 @@
         android:layout_column="2"
         android:layout_margin="5dp"
         android:layout_row="3"
-        android:background="@color/cardview_light_background"
+        android:background="@color/fui_transparent"
         android:onClick="doSomething" />
 
     <Button
@@ -173,7 +186,8 @@
         android:layout_column="3"
         android:layout_margin="5dp"
         android:layout_row="3"
-        android:background="@color/cardview_light_background"
+        android:background="@color/fui_transparent"
         android:onClick="doSomething" />
 
 </GridLayout>
+</RelativeLayout>

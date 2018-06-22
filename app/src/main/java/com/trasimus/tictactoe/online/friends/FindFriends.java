@@ -2,15 +2,18 @@ package com.trasimus.tictactoe.online.friends;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,8 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.trasimus.tictactoe.online.DefaultUser;
 import com.trasimus.tictactoe.online.R;
-import com.trasimus.tictactoe.online.UserMap;
-import com.trasimus.tictactoe.online.other.LoginActivity;
+import com.trasimus.tictactoe.online.game.GameSizeChoose;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -45,19 +47,20 @@ public class FindFriends extends AppCompatActivity {
     private ArrayList<String> friendRequest;
     private DefaultUser showUser;
     private boolean isFriend;
-    private int alpha;
+    private int x=0;
 
     private DefaultUser mDefaultUser;
     private ArrayList<DefaultUser> mList;
     private ArrayList<String> mUsers;
     private ArrayList<Integer> listedUsers;
     private String userID;
-    private UserMap userMap;
     private DefaultUser currentUser;
     private ArrayList<ArrayList<String>> friendListArray1;
     private ArrayList<ArrayList<String>> friendListArray2;
     private ArrayList<ArrayList<String>> friends;
     private ArrayList<String> friendsInSearchResult;
+
+    private FindUserListAdapter mAdapter;
 
     private ArrayList<String> friendIDs;
 
@@ -80,7 +83,8 @@ public class FindFriends extends AppCompatActivity {
         mDatabaseReference = FirebaseDatabase.getInstance().getReference();
         reference = mDatabaseReference.child("Users");
         mUser = FirebaseAuth.getInstance().getCurrentUser();
-        getID(mUser.getUid());
+
+        getUserInfo();
 
         mListView = (ListView)findViewById(R.id.searchResult);
 
@@ -134,13 +138,15 @@ public class FindFriends extends AppCompatActivity {
             return;
         }
 
-        mListView.setAdapter(adapter2);
-        adapter2.clear();
-        mUsers.clear();
-        listedUsers.clear();
-        friendsInSearchResult.clear();
+        //mListView.setAdapter(adapter2);
+        //adapter2.clear();
+        //mUsers.clear();
+        //listedUsers.clear();
+        //friendsInSearchResult.clear();
 
         nextStep();
+        mAdapter = new FindUserListAdapter(this, nameFind.getText().toString());
+        mListView.setAdapter(mAdapter);
     }
 
     private void nextStep(){
@@ -196,63 +202,187 @@ public class FindFriends extends AppCompatActivity {
 
 
         if (isFriend){
-            Toast.makeText(this, showUser.getName() + " is your friend or friend request was sent", Toast.LENGTH_LONG).show();
-        } else {
-            String title = "User " + showUser.getUserID();
-            String message = "Name: " + showUser.getName() + "\n";
-            if (showUser.getAge() != null) {
-                message = message + " aged " + showUser.getAge() + "\n";
-            }
-            if (showUser.getCountry() != null) {
-                message = message + " from " + showUser.getCountry() + "\n";
-            }
+            AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(FindFriends.this);
+            final LayoutInflater inflater = FindFriends.this.getLayoutInflater();
+            final View dialogView = inflater.inflate(R.layout.user_profile, null);
+            dialogBuilder.setView(dialogView);
 
-            int profileImage = R.drawable.icon_profile_empty;
+            for (x=0; x<friends.size(); x++){
+                if (friends.get(x).get(0).equals(showUser.getUserID()) || friends.get(x).get(1).equals(showUser.getUserID())){
+                    final int omega = x;
+                    if (friends.get(x).get(0).equals(showUser.getUserID()) && friends.get(x).get(2).equals("0")){
+                        dialogBuilder.setNegativeButton("Delete request", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                friends.remove(omega);
+                                mDatabaseReference.child("Users").child(userID).child("Friends").setValue(friends);
+                                deleteRequest(showUser.getUserID());
+                            }
+                        });
+                        dialogBuilder.setPositiveButton("ACCEPT", new DialogInterface.OnClickListener() {
 
-            if (showUser.getPhotoID()!=null){
-                if (showUser.getPhotoID().equals("grumpy")){
-                    profileImage = R.drawable.grumpy;
-                }if (showUser.getPhotoID().equals("kon")){
-                    profileImage = R.drawable.kon;
-                }if (showUser.getPhotoID().equals("opica")){
-                    profileImage = R.drawable.opica;
-                }if (showUser.getPhotoID().equals("0")){
-                    profileImage = R.drawable.icon_profile_empty;
+                            public void onClick(DialogInterface arg0, int arg1) {
+                                acceptRequest(showUser.getUserID());
+                                mDatabaseReference.child("Users").child(userID).child("Friends").child(String.valueOf(omega)).child("2").setValue("1");
+                            }
+                        });
+                    } else if (friends.get(x).get(1).equals(showUser.getUserID()) && friends.get(x).get(2).equals("0")){
+                        dialogBuilder.setNegativeButton("Delete request", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                friends.remove(omega);
+                                mDatabaseReference.child("Users").child(userID).child("Friends").setValue(friends);
+                                deleteRequest(showUser.getUserID());
+                            }
+                        });
+                        dialogBuilder.setPositiveButton("", null);
+                    } else if (friends.get(x).get(2).equals("1")) {
+
+                        dialogBuilder.setNegativeButton("Delete friend", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                friends.remove(omega);
+                                mDatabaseReference.child("Users").child(userID).child("Friends").setValue(friends);
+                                deleteRequest(showUser.getUserID());
+                            }
+                        });
+                        dialogBuilder.setPositiveButton("Invite to game", new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface arg0, int arg1) {
+                                Intent intent = new Intent(FindFriends.this, GameSizeChoose.class);
+                                intent.putExtra("p2", showUser.getUserID());
+                                startActivity(intent);
+                                finish();
+                            }
+                        });
+                    }
                 }
             }
 
-            new AlertDialog.Builder(FindFriends.this)
-                    .setTitle(title)
-                    .setIcon(profileImage)
-                    .setMessage(message)
-                    .setNegativeButton(android.R.string.no, null)
-                    .setPositiveButton("Add friend", new DialogInterface.OnClickListener() {
 
-                        public void onClick(DialogInterface arg0, int arg1) {
-                            friendRequest = new ArrayList<String>();
-                            friendRequest.add(currentUser.getUserID());//WHO SENT REQUEST
-                            friendRequest.add(showUser.getUserID());//WHO RECIEVE REQUEST
-                            friendRequest.add("0");//IF WAS ACCEPTED
+            AlertDialog b = dialogBuilder.create();
+            ImageView profileIMG = dialogView.findViewById(R.id.profileIMG);
+            TextView nick = dialogView.findViewById(R.id.nick);
+            TextView age = dialogView.findViewById(R.id.age);
+            TextView from = dialogView.findViewById(R.id.from);
+            TextView wins = dialogView.findViewById(R.id.wins);
+            TextView loses = dialogView.findViewById(R.id.loses);
+            TextView points = dialogView.findViewById(R.id.points);
+            TextView ranking = dialogView.findViewById(R.id.ranking);
 
-                            friendListArray1 = new ArrayList<ArrayList<String>>();
-                            friendListArray2 = new ArrayList<ArrayList<String>>();
+            nick.setText(showUser.getName());
+            age.setText(showUser.getAge());
+            from.setText(showUser.getCountry());
+            //wins.setText(showUser.getGamesWon());
+            //loses.setText(showUser.getGamesLost());
+            //points.setText(showUser.getPoints());
 
-                            getFriendsFriendList(showUser.getUserID());
+            if (showUser.getPhotoID() != null) {
+                if (showUser.getPhotoID().equals("grumpy")) {
+                    profileIMG.setImageResource(R.drawable.grumpy);
+                }
+                if (showUser.getPhotoID().equals("kon")) {
+                    profileIMG.setImageResource(R.drawable.kon);
+                }
+                if (showUser.getPhotoID().equals("opica")) {
+                    profileIMG.setImageResource(R.drawable.opica);
+                }
+                if (showUser.getPhotoID().equals("0")) {
+                    profileIMG.setImageResource(R.drawable.icon_profile_empty);
+                }
+            }
 
-                            if (friends == null) {
-                                Log.d("test", "Get friends is null Current user");
-                                friendListArray2.add(friendRequest);
-                            } else {
-                                friendListArray2.addAll(friends);
-                                friendListArray2.add(friendRequest);
-                            }
+            b.show();        } else {
+            AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(FindFriends.this);
+            final LayoutInflater inflater = FindFriends.this.getLayoutInflater();
+            final View dialogView = inflater.inflate(R.layout.user_profile, null);
+            dialogBuilder.setView(dialogView);
+            dialogBuilder.setNegativeButton(android.R.string.no, null);
+            dialogBuilder.setPositiveButton("Add friend", new DialogInterface.OnClickListener() {
 
-                            mDatabaseReference.child("Users").child(currentUser.getUserID()).child("Friends").setValue(friendListArray2);
-                            Toast.makeText(FindFriends.this, "Friend request was sent", Toast.LENGTH_SHORT);
-                            finish();
-
+                public void onClick(DialogInterface arg0, int arg1) {
+                    if (friends!=null) {
+                        if (friends.size() > 99) {
+                            Toast.makeText(FindFriends.this, "Maximum number of friends in friend list is 100. Please delete some friends to add new", Toast.LENGTH_LONG).show();
+                            return;
                         }
-                    }).create().show();
+                    }
+                    if (showUser.getFriends() != null) {
+                        if (showUser.getFriends().size() > 99) {
+                            Toast.makeText(FindFriends.this, "Maximum number of friends in friend list is 100. Player " + showUser.getName() + " already have maximum number of friends", Toast.LENGTH_LONG).show();
+                            return;
+                        }
+                    }
+                    friendRequest = new ArrayList<String>();
+                    friendRequest.add(currentUser.getUserID());//WHO SENT REQUEST
+                    friendRequest.add(showUser.getUserID());//WHO RECIEVE REQUEST
+                    friendRequest.add("0");//IF WAS ACCEPTED
+
+                    friendListArray1 = new ArrayList<ArrayList<String>>();
+                    friendListArray2 = new ArrayList<ArrayList<String>>();
+
+                    getFriendsFriendList(showUser.getUserID());
+
+                    if (friends == null) {
+                        Log.d("test", "Get friends is null Current user");
+                        friendListArray2.add(friendRequest);
+                    } else {
+                        friendListArray2.addAll(friends);
+                        friendListArray2.add(friendRequest);
+                    }
+
+                    mDatabaseReference.child("Users").child(currentUser.getUserID()).child("Friends").setValue(friendListArray2);
+                    Toast.makeText(FindFriends.this, "Friend request was sent", Toast.LENGTH_SHORT);
+                    finish();
+
+                }
+            });
+            AlertDialog b = dialogBuilder.create();
+            ImageView profileIMG = dialogView.findViewById(R.id.profileIMG);
+            TextView nick = dialogView.findViewById(R.id.nick);
+            TextView age = dialogView.findViewById(R.id.age);
+            TextView from = dialogView.findViewById(R.id.from);
+            TextView wins = dialogView.findViewById(R.id.wins);
+            TextView loses = dialogView.findViewById(R.id.loses);
+            TextView points = dialogView.findViewById(R.id.pointssum);
+            TextView ranking = dialogView.findViewById(R.id.ranking);
+
+            nick.setText(showUser.getName());
+            if (showUser.getAge().equals("")){
+                age.setText("Undefined");
+            } else {
+                age.setText(showUser.getAge());
+            }
+
+            if (showUser.getCountry().equals("")){
+                from.setText("Undefined");
+            } else {
+                from.setText(showUser.getCountry());
+            }
+
+            String won = String.valueOf(showUser.getGamesWon());
+            wins.setText(won);
+            String lost = String.valueOf(showUser.getGamesLost());
+            loses.setText(lost);
+            String point = String.valueOf(showUser.getPoints());
+            points.setText(point);
+
+            if (showUser.getPhotoID() != null) {
+                if (showUser.getPhotoID().equals("grumpy")) {
+                    profileIMG.setImageResource(R.drawable.grumpy);
+                }
+                if (showUser.getPhotoID().equals("kon")) {
+                    profileIMG.setImageResource(R.drawable.kon);
+                }
+                if (showUser.getPhotoID().equals("opica")) {
+                    profileIMG.setImageResource(R.drawable.opica);
+                }
+                if (showUser.getPhotoID().equals("0")) {
+                    profileIMG.setImageResource(R.drawable.icon_profile_empty);
+                }
+            }
+
+            b.show();
         }
     }
 
@@ -283,7 +413,6 @@ public class FindFriends extends AppCompatActivity {
 
             }
         });
-
     }
 
     private void getFriendsFriendList(final String friendID){
@@ -313,26 +442,8 @@ public class FindFriends extends AppCompatActivity {
 
     }
 
-
-
-    private void getID(String playerUID){
-        mDatabase = mDatabaseReference.child("UserMap").child(playerUID);
-        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                userMap = dataSnapshot.getValue(UserMap.class);
-                getUserInfo();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
-
     private void getUserInfo() {
-        mReference = mDatabaseReference.child("Users").child(userMap.getUserID());
+        mReference = mDatabaseReference.child("Users").child(mUser.getUid());
         mReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -349,6 +460,56 @@ public class FindFriends extends AppCompatActivity {
         });
     }
 
+    private void deleteRequest(final String friendID){
+        reference.child(friendID).child("Friends").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                ArrayList<ArrayList<String>> friendsOfFriendToDelete;
 
+                friendsOfFriendToDelete = (ArrayList<ArrayList<String>>) dataSnapshot.getValue();
+
+                for (int i=0; i<friendsOfFriendToDelete.size(); i++){
+                    if (friendsOfFriendToDelete.get(i).get(0).equals(userID) || friendsOfFriendToDelete.get(i).get(1).equals(userID)){
+                        friendsOfFriendToDelete.remove(i);
+                        reference.child(friendID).child("Friends").setValue(friendsOfFriendToDelete);
+                        break;
+                    }
+                }
+                Toast.makeText(FindFriends.this, "User was successfully deleted from your friend list", Toast.LENGTH_LONG).show();
+                finish();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void acceptRequest(final String friendID){
+        reference.child(friendID).child("Friends").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                ArrayList<ArrayList<String>> friendsOfFriendToAccept;
+
+                friendsOfFriendToAccept = (ArrayList<ArrayList<String>>) dataSnapshot.getValue();
+
+                for (int i=0; i<friendsOfFriendToAccept.size(); i++){
+                    if (friendsOfFriendToAccept.get(i).get(0).equals(userID) || friendsOfFriendToAccept.get(i).get(1).equals(userID)){
+                        friendsOfFriendToAccept.get(i).set(2, "1");
+                        reference.child(friendID).child("Friends").setValue(friendsOfFriendToAccept);
+                        break;
+                    }
+                }
+                Toast.makeText(FindFriends.this, "Request was accepted", Toast.LENGTH_LONG).show();
+                finish();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
 
 }

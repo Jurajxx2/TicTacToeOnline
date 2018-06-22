@@ -7,17 +7,18 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
-import com.facebook.accountkit.AccessToken;
-import com.facebook.accountkit.AccountKit;
 import com.facebook.accountkit.AccountKitLoginResult;
-import com.facebook.appevents.AppEventsLogger;
+import com.facebook.login.Login;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
@@ -41,17 +42,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.testfairy.TestFairy;
 import com.trasimus.tictactoe.online.DefaultUser;
 import com.trasimus.tictactoe.online.FontHelper;
 import com.trasimus.tictactoe.online.R;
-import com.trasimus.tictactoe.online.UserMap;
-import com.trasimus.tictactoe.online.account.AccountActivity;
-import com.trasimus.tictactoe.online.friends.FindFriends;
+import com.trasimus.tictactoe.online.game.GameActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.UUID;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -81,9 +78,11 @@ public class LoginActivity extends AppCompatActivity {
     private Bundle mBundle;
     private boolean deletion;
     private String userUID;
-    private String userID;
     private String gameID;
     private FirebaseUser user;
+
+    private Button otherProviders;
+    private AlertDialog b;
 
 
     @Override
@@ -97,11 +96,38 @@ public class LoginActivity extends AppCompatActivity {
         mBundle = getIntent().getExtras();
         deletion = mBundle.getBoolean("deletion");
         userUID = mBundle.getString("userUID");
-        userID = mBundle.getString("userID");
         gameID = mBundle.getString("gameID");
 
-        mail = (EditText) findViewById(R.id.mailInput);
-        pass = (EditText) findViewById(R.id.passwordInput);
+        otherProviders = (Button) findViewById(R.id.loginProviders);
+
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(LoginActivity.this);
+        final LayoutInflater inflater = LoginActivity.this.getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.login_posibilities, null);
+        dialogBuilder.setView(dialogView);
+        dialogBuilder.setNegativeButton("Close", null);
+        b = dialogBuilder.create();
+
+        mail = dialogView.findViewById(R.id.mailInput);
+        pass = dialogView.findViewById(R.id.passwordInput);
+        fbLoginButton =  dialogView.findViewById(com.trasimus.tictactoe.online.R.id.facebook_login_button);
+
+        Button goOffline = findViewById(R.id.offline);
+
+        goOffline.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, MenuActivityOffline.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        otherProviders.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                b.show();
+            }
+        });
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -123,7 +149,7 @@ public class LoginActivity extends AppCompatActivity {
         // Build a GoogleSignInClient with the options specified by gso.
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
-        fbLoginButton = (LoginButton) findViewById(com.trasimus.tictactoe.online.R.id.facebook_login_button);
+
         fbLoginButton.setReadPermissions(Arrays.asList(EMAIL));
 
         fbLoginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
@@ -257,8 +283,7 @@ public class LoginActivity extends AppCompatActivity {
                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
                         public void onClick(DialogInterface arg0, int arg1) {
-                            FirebaseDatabase.getInstance().getReference().child("UserMap").child(userUID).removeValue();
-                            FirebaseDatabase.getInstance().getReference().child("Users").child(userID).removeValue();
+                            FirebaseDatabase.getInstance().getReference().child("Users").child(userUID).removeValue();
                             FirebaseDatabase.getInstance().getReference().child("games").child(gameID).removeValue();
 
                             FirebaseAuth.getInstance().getCurrentUser().delete().addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -281,8 +306,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void checkIfUserExist(FirebaseUser user){
-        mailX = user.getEmail();
-        DatabaseReference mDatabaseReference = FirebaseDatabase.getInstance().getReference().child("UserMap").child(user.getUid());
+        DatabaseReference mDatabaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(user.getUid());
         Log.d("test", "checking for user");
         mDatabaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -295,11 +319,9 @@ public class LoginActivity extends AppCompatActivity {
 
                     key = mReference.child("games").push().getKey();
 
-                    String uniqueID = UUID.randomUUID().toString();
-                    UserMap map = new UserMap(mailX, uniqueID);
-                    DefaultUser defaultUser = new DefaultUser(uniqueID, mailX, firebaseUser.getDisplayName(), "" , "", 0, friends, "", "0", key, 0, 0, 0, false);
-                    FirebaseDatabase.getInstance().getReference().child("UserMap").child(firebaseUser.getUid()).setValue(map);
-                    FirebaseDatabase.getInstance().getReference().child("Users").child(uniqueID).setValue(defaultUser);
+                    //String uniqueID = UUID.randomUUID().toString();
+                    DefaultUser defaultUser = new DefaultUser(firebaseUser.getUid(), mailX, "New user", "" , "", 0, friends, "", "0", key, 0, 0, 0, false, "", false, false, "", friends);
+                    FirebaseDatabase.getInstance().getReference().child("Users").child(firebaseUser.getUid()).setValue(defaultUser);
                 }
                 startActivity();
             }

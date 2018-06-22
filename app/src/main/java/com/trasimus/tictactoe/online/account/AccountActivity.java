@@ -41,7 +41,6 @@ import com.trasimus.tictactoe.online.FontHelper;
 import com.trasimus.tictactoe.online.other.LoginActivity;
 import com.trasimus.tictactoe.online.other.MenuActivity;
 import com.trasimus.tictactoe.online.R;
-import com.trasimus.tictactoe.online.UserMap;
 
 import java.util.Arrays;
 
@@ -79,7 +78,6 @@ public class AccountActivity extends AppCompatActivity {
     private String provider;
     private SignInButton signInButton;
 
-    private UserMap userMap;
     private DefaultUser defaultUser;
     private Boolean editing;
 
@@ -125,15 +123,13 @@ public class AccountActivity extends AppCompatActivity {
         userUID = user.getUid();
         mDatabaseReference = FirebaseDatabase.getInstance().getReference();
 
-
-
-        getID(user.getUid());
+        getUserInfo();
 
         grumpy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 profileImg.setImageResource(R.drawable.grumpy);
-                mDatabaseReference.child("Users").child(userMap.getUserID()).child("photoID").setValue("grumpy");
+                mDatabaseReference.child("Users").child(userUID).child("photoID").setValue("grumpy");
             }
         });
 
@@ -141,7 +137,7 @@ public class AccountActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 profileImg.setImageResource(R.drawable.kon);
-                mDatabaseReference.child("Users").child(userMap.getUserID()).child("photoID").setValue("kon");
+                mDatabaseReference.child("Users").child(userUID).child("photoID").setValue("kon");
             }
         });
 
@@ -149,7 +145,7 @@ public class AccountActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 profileImg.setImageResource(R.drawable.opica);
-                mDatabaseReference.child("Users").child(userMap.getUserID()).child("photoID").setValue("opica");
+                mDatabaseReference.child("Users").child(userUID).child("photoID").setValue("opica");
             }
         });
 
@@ -157,7 +153,7 @@ public class AccountActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 profileImg.setImageResource(R.drawable.icon_profile_empty);
-                mDatabaseReference.child("Users").child(userMap.getUserID()).child("photoID").setValue("0");
+                mDatabaseReference.child("Users").child(userUID).child("photoID").setValue("0");
             }
         });
 
@@ -282,7 +278,6 @@ public class AccountActivity extends AppCompatActivity {
 
 
     private void removeData(){
-        mDatabaseReference.child("UserMap").child(userUID).removeValue();
         mDatabaseReference.child("Users").child(defaultUser.getUserID()).removeValue();
         mDatabaseReference.child("games").child(defaultUser.getMyGameID()).removeValue();
     }
@@ -339,12 +334,8 @@ public class AccountActivity extends AppCompatActivity {
             Toast.makeText(this, "Name has to have at least 3 characters", Toast.LENGTH_SHORT).show();
             return;
         }
-        if (!Arrays.asList(countries).contains(countryEdit.getText().toString()) && editing){
-            Toast.makeText(this, "Please define your country", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        if (ageEdit.getText().toString().isEmpty() && editing){
-            Toast.makeText(this, "Please define your age", Toast.LENGTH_SHORT).show();
+        if ((!Arrays.asList(countries).contains(countryEdit.getText().toString()) && !countryEdit.getText().toString().equals("")) && editing){
+            Toast.makeText(this, "Set valid country or let field empty", Toast.LENGTH_SHORT).show();
             return;
         }
         if (ageEdit.getText().toString().length()>3 && editing){
@@ -360,11 +351,19 @@ public class AccountActivity extends AppCompatActivity {
 
             countryView.setVisibility(View.GONE);
             countryEdit.setVisibility(View.VISIBLE);
-            countryEdit.setText(countryView.getText().toString());
+            if (countryView.getText().toString().equals("Undefined")){
+                countryEdit.setText("");
+            } else {
+                countryEdit.setText(countryView.getText().toString());
+            }
 
             ageView.setVisibility(View.GONE);
             ageEdit.setVisibility(View.VISIBLE);
-            ageEdit.setText(ageView.getText().toString());
+            if (ageView.getText().toString().equals("Undefined")){
+                ageEdit.setText("");
+            } else {
+                ageEdit.setText(ageView.getText().toString());
+            }
 
             opica.setVisibility(View.VISIBLE);
             horse.setVisibility(View.VISIBLE);
@@ -382,9 +381,11 @@ public class AccountActivity extends AppCompatActivity {
                         InputMethodManager.HIDE_NOT_ALWAYS);
             }
 
-            mDatabaseReference.child("Users").child(userMap.getUserID()).child("name").setValue(mEditText.getText().toString());
-            mDatabaseReference.child("Users").child(userMap.getUserID()).child("country").setValue(countryEdit.getText().toString());
-            mDatabaseReference.child("Users").child(userMap.getUserID()).child("age").setValue(ageEdit.getText().toString());
+
+            mDatabaseReference.child("Users").child(userUID).child("name").setValue(mEditText.getText().toString());
+
+            mDatabaseReference.child("Users").child(userUID).child("country").setValue(countryEdit.getText().toString());
+            mDatabaseReference.child("Users").child(userUID).child("age").setValue(ageEdit.getText().toString());
 
             //editButton.setText("Edit");
             editAcc.setText("Edit account");
@@ -395,11 +396,21 @@ public class AccountActivity extends AppCompatActivity {
 
             countryEdit.setVisibility(View.GONE);
             countryView.setVisibility(View.VISIBLE);
-            countryView.setText(countryEdit.getText().toString());
+
+            if (countryEdit.getText().toString().equals("")){
+                countryView.setText("Undefined");
+            } else {
+                countryView.setText(countryEdit.getText().toString());
+            }
 
             ageEdit.setVisibility(View.GONE);
             ageView.setVisibility(View.VISIBLE);
-            ageView.setText(ageEdit.getText().toString());
+
+            if (ageEdit.getText().toString().equals("")){
+                ageView.setText("Undefined");
+            } else {
+                ageView.setText(ageEdit.getText().toString());
+            }
 
             opica.setVisibility(View.GONE);
             horse.setVisibility(View.GONE);
@@ -409,24 +420,8 @@ public class AccountActivity extends AppCompatActivity {
         }
     }
 
-    private void getID(String playerUID){
-        mDatabase = mDatabaseReference.child("UserMap").child(playerUID);
-        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                userMap = dataSnapshot.getValue(UserMap.class);
-                getUserInfo();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
-
     private void getUserInfo() {
-        mReference = mDatabaseReference.child("Users").child(userMap.getUserID());
+        mReference = mDatabaseReference.child("Users").child(user.getUid());
         mReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -435,8 +430,16 @@ public class AccountActivity extends AppCompatActivity {
                 name.setText(defaultUser.getName());
                 id.setText(defaultUser.getUserID());
                 score.setText(String.valueOf(defaultUser.getPoints()));
-                ageView.setText(defaultUser.getAge());
-                countryView.setText(defaultUser.getCountry());
+                if (defaultUser.getAge().equals("")){
+                    ageView.setText("Undefined");
+                } else {
+                    ageView.setText(defaultUser.getAge());
+                }
+                if (defaultUser.getCountry().equals("")){
+                    countryView.setText("Undefined");
+                } else {
+                    countryView.setText(defaultUser.getCountry());
+                }
                 if (defaultUser.getPhotoID()!=null){
                     if (defaultUser.getPhotoID().equals("grumpy")){
                         profileImg.setImageResource(R.drawable.grumpy);

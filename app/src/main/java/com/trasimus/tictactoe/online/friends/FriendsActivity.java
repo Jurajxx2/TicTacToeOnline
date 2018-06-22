@@ -3,17 +3,16 @@ package com.trasimus.tictactoe.online.friends;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -24,9 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.trasimus.tictactoe.online.DefaultUser;
 import com.trasimus.tictactoe.online.R;
-import com.trasimus.tictactoe.online.UserMap;
 import com.trasimus.tictactoe.online.game.GameSizeChoose;
-import com.trasimus.tictactoe.online.other.GameInvitationListener;
 
 import java.util.ArrayList;
 
@@ -39,8 +36,8 @@ public class FriendsActivity extends AppCompatActivity {
     private DatabaseReference friendReference;
     private DefaultUser mDefaultUser;
     private DefaultUser defaultUser;
-    private UserMap mMap;
     private Button findFriends;
+    private FriendListAdapter mAdapter;
 
     private FirebaseUser mUser;
 
@@ -72,7 +69,7 @@ public class FriendsActivity extends AppCompatActivity {
 
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
 
-        mListView.setAdapter(adapter);
+        //mListView.setAdapter(adapter);
 
         getUserInfo(userID, false, "", "", false, 0);
 
@@ -82,6 +79,7 @@ public class FriendsActivity extends AppCompatActivity {
                 showUser(position);
             }
         });
+
 
         findFriends.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,6 +103,14 @@ public class FriendsActivity extends AppCompatActivity {
         super.onRestart();
         refreshActivity();
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mAdapter = new FriendListAdapter(this, ref);
+        mListView.setAdapter(mAdapter);
+    }
+
 
     private void getUserInfo(final String userIDX, final boolean isListFunction, final String isAccepted, final String state, final boolean isShowUserF, final int position) {
         mReference = mDatabaseReference.child("Users").child(userIDX);
@@ -147,7 +153,6 @@ public class FriendsActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     } else {
-                        String title = defaultUser.getUserID();
                         String message = "Name: " + defaultUser.getName() + "\n";
                         if (defaultUser.getAge() != null) {
                             message = message + " aged " + defaultUser.getAge() + "\n";
@@ -183,37 +188,83 @@ public class FriendsActivity extends AppCompatActivity {
                             }
                         }
 
-                        new AlertDialog.Builder(FriendsActivity.this)
-                                .setTitle(title)
-                                .setIcon(profileImage)
-                                .setMessage(message)
-                                .setNegativeButton(negativeBTN, new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        friends.remove(position);
-                                        mDatabaseReference.child("Users").child(userID).child("Friends").setValue(friends);
-                                        deleteRequest(userIDX);
-                                    }
-                                })
-                                .setPositiveButton(positiveBTN, new DialogInterface.OnClickListener() {
+                        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(FriendsActivity.this);
+                        final LayoutInflater inflater = FriendsActivity.this.getLayoutInflater();
+                        final View dialogView = inflater.inflate(R.layout.user_profile, null);
+                        dialogBuilder.setView(dialogView);
+                        dialogBuilder.setNegativeButton(negativeBTN, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                friends.remove(position);
+                                mDatabaseReference.child("Users").child(userID).child("Friends").setValue(friends);
+                                deleteRequest(userIDX);
+                            }
+                        });
+                        dialogBuilder.setPositiveButton(positiveBTN, new DialogInterface.OnClickListener() {
 
-                                    public void onClick(DialogInterface arg0, int arg1) {
-                                        if (isAccepted.equals("0") && state.equals("RECIEVED")) {
-                                            //ACCEPT FRIEND REQUEST
-                                            acceptRequest(userIDX);
-                                            mDatabaseReference.child("Users").child(userID).child("Friends").child(String.valueOf(position)).child("2").setValue("1");
-                                        } else if (isAccepted.equals("1")) {
-                                            //INVITE TO GAME
-                                            Intent intent2 = new Intent(FriendsActivity.this, GameInvitationListener.class);
-                                            stopService(intent2);
+                            public void onClick(DialogInterface arg0, int arg1) {
+                                if (isAccepted.equals("0") && state.equals("RECIEVED")) {
+                                    //ACCEPT FRIEND REQUEST
+                                    acceptRequest(userIDX);
+                                    mDatabaseReference.child("Users").child(userID).child("Friends").child(String.valueOf(position)).child("2").setValue("1");
+                                } else if (isAccepted.equals("1")) {
+                                    //INVITE TO GAME
+                                    Intent intent = new Intent(FriendsActivity.this, GameSizeChoose .class);
+                                    intent.putExtra("p2", defaultUser.getUserID());
+                                    startActivity(intent);
+                                    finish();
+                                }
+                            }
+                        });
+                        AlertDialog b = dialogBuilder.create();
+                        ImageView profileIMG = dialogView.findViewById(R.id.profileIMG);
+                        TextView nick = dialogView.findViewById(R.id.nick);
+                        TextView age = dialogView.findViewById(R.id.age);
+                        TextView from = dialogView.findViewById(R.id.from);
+                        TextView wins = dialogView.findViewById(R.id.winsnum);
+                        TextView loses = dialogView.findViewById(R.id.losesnum);
+                        TextView points = dialogView.findViewById(R.id.pointssum);
+                        TextView draws = dialogView.findViewById(R.id.drawsnum);
+                        TextView ranking = dialogView.findViewById(R.id.ranking);
 
-                                            Intent intent = new Intent(FriendsActivity.this, GameSizeChoose .class);
-                                            intent.putExtra("p2", defaultUser.getUserID());
-                                            startActivity(intent);
-                                            finish();
-                                        }
-                                    }
-                                }).create().show();
+                        nick.setText(defaultUser.getName());
+
+                        if (defaultUser.getAge().equals("")){
+                            age.setText("Undefined");
+                        } else {
+                            age.setText(defaultUser.getAge());
+                        }
+
+                        if (defaultUser.getCountry().equals("")){
+                            from.setText("Undefined");
+                        } else {
+                            from.setText(defaultUser.getCountry());
+                        }
+
+                        String won = String.valueOf(defaultUser.getGamesWon());
+                        wins.setText(won);
+                        String lost = String.valueOf(defaultUser.getGamesLost());
+                        loses.setText(lost);
+                        String point = String.valueOf(defaultUser.getPoints());
+                        points.setText(point);
+                        ranking.setText("1.");
+
+                        if (defaultUser.getPhotoID() != null) {
+                            if (defaultUser.getPhotoID().equals("grumpy")) {
+                                profileIMG.setImageResource(R.drawable.grumpy);
+                            }
+                            if (defaultUser.getPhotoID().equals("kon")) {
+                                profileIMG.setImageResource(R.drawable.kon);
+                            }
+                            if (defaultUser.getPhotoID().equals("opica")) {
+                                profileIMG.setImageResource(R.drawable.opica);
+                            }
+                            if (defaultUser.getPhotoID().equals("0")) {
+                                profileIMG.setImageResource(R.drawable.icon_profile_empty);
+                            }
+                        }
+
+                        b.show();
                     }
                 } else {
                     mDefaultUser = dataSnapshot.getValue(DefaultUser.class);
